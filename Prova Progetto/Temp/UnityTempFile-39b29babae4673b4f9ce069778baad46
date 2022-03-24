@@ -1,8 +1,8 @@
 /target:library
-/out:Temp/Unity.Rider.Editor.dll
+/out:Temp/UnityEditor.UI.dll
 /nowarn:0169
 /nowarn:0649
-/refout:Temp/Unity.Rider.Editor.dll.ref
+/refout:Temp/UnityEditor.UI.dll.ref
 /deterministic
 /debug:portable
 /optimize+
@@ -10,13 +10,15 @@
 /preferreduilang:en-US
 /langversion:8.0
 /reference:Library/ScriptAssemblies/UnityEditor.TestRunner.dll
-/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
 /reference:Library/ScriptAssemblies/UnityEngine.TestRunner.dll
 /reference:Library/ScriptAssemblies/UnityEngine.UI.dll
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
-/reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
-/reference:"C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/VRProj-Play2Learn/Projects for the exam/Prova Progetto/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
+/reference:"C:/Users/pietr/unity/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll"
+/reference:"C:/Users/pietr/unity/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll"
+/reference:"C:/Users/pietr/unity/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/log4netPlastic.dll"
+/reference:"C:/Users/pietr/unity/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.15.12/Lib/Editor/PlasticSCM/unityplastic.dll"
+/reference:"C:/Users/pietr/unity/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEditor.GraphViewModule.dll"
 /reference:"C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEditor.PackageManagerUIModule.dll"
@@ -273,6 +275,9 @@
 /define:GFXDEVICE_WAITFOREVENT_MESSAGEPUMP
 /define:INCLUDE_DYNAMIC_GI
 /define:NET_4_6
+/define:PACKAGE_ANIMATION
+/define:PACKAGE_PHYSICS
+/define:PACKAGE_PHYSICS2D
 /define:PLATFORM_ARCH_64
 /define:PLATFORM_STANDALONE
 /define:PLATFORM_STANDALONE_WIN
@@ -280,7 +285,6 @@
 /define:PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP
 /define:RENDER_SOFTWARE_CURSOR
 /define:SCENE_TEMPLATE_MODULE
-/define:TEST_FRAMEWORK
 /define:TRACE
 /define:UNITY_2017_1_OR_NEWER
 /define:UNITY_2017_2_OR_NEWER
@@ -315,35 +319,40 @@
 /define:UNITY_STANDALONE_WIN
 /define:UNITY_TEAM_LICENSE
 /define:USE_SEARCH_ENGINE_API
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\Discovery.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\EditorPluginInterop.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\LoggingLevel.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\PluginSettings.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\PostProcessors\RiderAssetPostprocessor.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\AssemblyNameProvider.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\FileIOProvider.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\GUIDProvider.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\IAssemblyNameProvider.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\IFileIO.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\IGUIDGenerator.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\IGenerator.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\ProjectGeneration.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\ProjectGenerationFlag.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\ProjectGeneration\SolutionGuidGenerator.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\Properties\AssemblyInfo.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\RiderFileSystemWatcher.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\RiderInitializer.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\RiderScriptEditor.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\RiderScriptEditorData.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\UnitTesting\CallbackData.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\UnitTesting\CallbackInitializer.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\UnitTesting\RiderTestRunner.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\UnitTesting\SyncTestRunCallback.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\UnitTesting\SyncTestRunEventsHandler.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\UnitTesting\TestEvent.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\UnitTesting\TestsCallback.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\Util\CommandLineParser.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\Util\FileSystemUtil.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\Util\LibcNativeInterop.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\Util\RiderMenu.cs"
-"C:\Users\user\Documents\UNICAL\01 - MAGISTRALE AIDS\I ANNO MAGISTRALE\VR\VRProj-Play2Learn\Projects for the exam\Prova Progetto\Library\PackageCache\com.unity.ide.rider@2.0.7\Rider\Editor\Util\SerializableVersion.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\EventSystemEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\EventTriggerEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\Physics2DRaycasterEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\PhysicsRaycasterEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\Properties\AssemblyInfo.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\AspectRatioFitterEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ButtonEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\CanvasScalerEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ContentSizeFitterEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\DropdownEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\GraphicEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\GridLayoutGroupEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\HorizontalOrVerticalLayoutGroupEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ImageEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\InputFieldEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\InterceptedEventsPreview.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\LayoutElementEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\LayoutPropertiesPreview.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\MaskEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\MenuOptions.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PrefabLayoutRebuilder.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\AnimationTriggersDrawer.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\ColorBlockDrawer.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\DropdownOptionListDrawer.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\FontDataDrawer.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\NavigationDrawer.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\SpriteStateDrawer.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\RawImageEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\RectMask2DEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ScrollRectEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ScrollbarEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SelectableEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SelfControllerEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SliderEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SpriteDrawUtility.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\TextEditor.cs"
+"C:\Users\pietr\unity\Play2Learn\Prova Progetto\Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ToggleEditor.cs"
