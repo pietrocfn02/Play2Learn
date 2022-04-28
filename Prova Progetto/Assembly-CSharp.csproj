@@ -47,7 +47,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\HQ_ResidentialHouse\Scripts\DoorScript.cs" />
+     <Compile Include="Assets\HQ_ResidentialHouse\Scripts\KeyScript.cs" />
+     <Compile Include="Assets\HQ_ResidentialHouse\Bonus content_Modular Interiors\ModuleGizmos.cs" />
      <Compile Include="Assets\Scenes\HelloWorld.cs" />
+     <Compile Include="Assets\Scenes\gnegnegne.cs" />
+     <None Include="Assets\HQ_ResidentialHouse\Shaders\MaskedPBR.shader" />
+     <None Include="Assets\HQ_ResidentialHouse\Upgrade to HDRP or URP.txt" />
+     <None Include="Assets\HQ_ResidentialHouse\Readme.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
