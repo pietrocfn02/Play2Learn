@@ -60,7 +60,7 @@ public class RelativeMovement : MonoBehaviour
             float check = (_charController.height + _charController.radius) / 1.9f;
             hitGround = hit.distance <= check;
         }
-        Debug.Log(movement.magnitude);
+        //Debug.Log(movement.magnitude);
         _animator.SetFloat("speed", movement.magnitude);
 
         if (hitGround) {
