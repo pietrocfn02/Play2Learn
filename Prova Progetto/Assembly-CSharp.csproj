@@ -48,6 +48,8 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\camerazoom.cs" />
+     <Compile Include="Assets\Scripts\OrbitCamera.cs" />
+     <Compile Include="Assets\Scripts\RelativeMovement.cs" />
      <Compile Include="Assets\Scripts\SpawnCoin.cs" />
      <Compile Include="Assets\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Scripts\camerarotate.cs" />
