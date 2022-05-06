@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\camerarotate.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Scripts\DoorScript.cs" />
      <Compile Include="Assets\Scripts\charactermove.cs" />
+     <Compile Include="Assets\Scripts\Triggerator.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Scripts\KeyScript.cs" />
      <Compile Include="Assets\Scripts\EuroSpin.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Bonus content_Modular Interiors\ModuleGizmos.cs" />
