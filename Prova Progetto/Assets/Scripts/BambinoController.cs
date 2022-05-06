@@ -22,14 +22,28 @@ public class BambinoController : MonoBehaviour {
     }
 
 
-    void UpdateDiavoletto(int i) {
+    public void UpdateDiavoletto(int i) {
         diavoletto_score+=i;
+        Messenger.Broadcast(GameEvent.DIAVOLETTO_UPDATE);
+
         Debug.Log(diavoletto_score);
     }
 
 
-    void UpdateAngioletto(int i) {
+    public void UpdateAngioletto(int i) {
         angioletto_score+=i;
+        Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
+
         Debug.Log(angioletto_score);
     }
+
+
+    public int getAngiolettoScore() {
+        return angioletto_score;
+    }
+
+    public int getDiavolettoScore() {
+        return diavoletto_score;
+    }
+
 }
