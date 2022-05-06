@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections;
-public class Triggerator : MonoBehaviour {
-        
-        //[SerializeField] private GameObject[] targets;
-        
+public class AngiolettoTriggerator : MonoBehaviour {
+                
         void OnTriggerEnter(Collider other) {
             Debug.Log("SOLDI!!!!");
+            BroadcastMessage("UpdateAngioletto", 1);
             Destroy(other.gameObject);
             //foreach (GameObject target in targets) {
                 

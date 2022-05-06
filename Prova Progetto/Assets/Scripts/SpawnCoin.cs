@@ -27,7 +27,7 @@ public class SpawnCoin : MonoBehaviour
             if(_evilCoins[i] == null)
             {
                 _evilCoins[i] = Instantiate(evilCoinPrefab) as GameObject;
-                _evilCoins[i].transform.position = new Vector3(Random.Range(-20f,20f), Random.Range(1.8f, 2.6f), Random.Range(-20f,20f));
+                _evilCoins[i].transform.position = new Vector3(Random.Range(-20f,20f), Random.Range(-1.4f, -0.2f), Random.Range(-20f,20f));
                 _evilCoins[i].transform.localScale += new Vector3(8f,8f,1f);
                 float angle = Random.Range (0, 360f);
                 _evilCoins[i].transform.Rotate(0, angle, 0);
