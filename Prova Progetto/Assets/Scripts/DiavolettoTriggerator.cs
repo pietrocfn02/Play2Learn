@@ -3,7 +3,6 @@ using System.Collections;
 public class DiavolettoTriggerator : MonoBehaviour {
                 
         void OnTriggerEnter(Collider other) {
-            Debug.Log("SOLDI!!!!");
             BroadcastMessage("UpdateDiavoletto", 1);
             Destroy(other.gameObject);
             //foreach (GameObject target in targets) {

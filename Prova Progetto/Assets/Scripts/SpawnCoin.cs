@@ -10,13 +10,14 @@ public class SpawnCoin : MonoBehaviour
     public int evilCount;
 
     // Good Coin
-    //[SerializeField] private GameObject coinPrefab;
-    //private GameObject[] _coins;
-    //public int coinsCount;
+    [SerializeField] private GameObject goodCoinPrefab;
+    private GameObject[] _goodCoins;
+    public int goodCount;
     
     void Start()
     {
         _evilCoins = new GameObject[evilCount];
+        _goodCoins = new GameObject[goodCount];
     }
 
     // Update is called once per frame
@@ -33,6 +34,17 @@ public class SpawnCoin : MonoBehaviour
                 _evilCoins[i].transform.Rotate(0, angle, 0);
             }
         }        
+        for(int i=0; i<_goodCoins.Length; i++)
+        {
+            if(_goodCoins[i] == null)
+            {
+                _goodCoins[i] = Instantiate(goodCoinPrefab) as GameObject;
+                _goodCoins[i].transform.position = new Vector3(Random.Range(-20f,20f), Random.Range(-1.4f, -0.2f), Random.Range(-20f,20f));
+                _goodCoins[i].transform.localScale += new Vector3(8f,8f,1f);
+                float angle = Random.Range (0, 360f);
+                _goodCoins[i].transform.Rotate(0, angle, 0);
+            }
+        }     
     }
 
 }
