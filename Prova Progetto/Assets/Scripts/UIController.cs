@@ -8,11 +8,11 @@ public class UIController : MonoBehaviour
     [SerializeField] BambinoController bambinoController;
     [SerializeField] private Text angiolettoScoreText;
     [SerializeField] private Text diavolettoScoreText;
-
+    [SerializeField] private Text telecomandoCountText;
 
     int angioletto_score;
     int diavoletto_score;
-
+    int telecomando_count;
     void Start()
     {
         
@@ -22,6 +22,12 @@ public class UIController : MonoBehaviour
     void Awake() {
         Messenger.AddListener(GameEvent.DIAVOLETTO_UPDATE, updateDiavolettoScore );
         Messenger.AddListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
+        Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
+    }
+
+    private void updateInventary(){
+        telecomando_count = bambinoController.getTelecomandoCount();
+        telecomandoCountText.text = telecomando_count.ToString();
     }
 
     private void updateDiavolettoScore() {
@@ -45,5 +51,6 @@ public class UIController : MonoBehaviour
     void OnDestroy() {
         Messenger.RemoveListener(GameEvent.DIAVOLETTO_UPDATE, updateDiavolettoScore );
         Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
+        Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
     }
 }
