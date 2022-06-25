@@ -4,11 +4,60 @@ using UnityEngine;
 
 public class RaccogliOggetti : MonoBehaviour
 {
-              
+        //script per gestire la raccolta delle monete e degli oggetti      
         void OnTriggerEnter(Collider other) {
-            BroadcastMessage("RaccoltoTelecomando", 1);
-            Debug.Log(other.gameObject.ToString());
-            Destroy(other.gameObject);
+
+            if(other.tag == "Telecomando")
+            {   
+                BroadcastMessage("RaccoltoOggetto", 1);
+                Debug.Log(other.gameObject.ToString());
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Pastelli")
+            {
+                //BroadcastMessage("RaccoltoOggetto", 1);
+                //i pastelli sono in posizione 2 nella mia lsta di labels (texts)
+                BroadcastMessage("RaccoltoOggetto", 2);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Books")
+            {
+                //BroadcastMessage("RaccoltoOggetto", 2);
+                //i pastelli sono in posizione 3 nella mia lsta di labels (texts)
+                BroadcastMessage("RaccoltoOggetto", 3);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "EvilCoin")
+            {
+                BroadcastMessage("UpdateDiavoletto", 1);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "GoodCoin")
+            {
+                BroadcastMessage("UpdateAngioletto", 1);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Door")
+            {
+                Debug.Log("PORTA!");
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Water")
+            {
+                BroadcastMessage("LasciaOggetto", 1);
+            }
+            else if (other.tag == "Brucia")
+            {
+                BroadcastMessage("LasciaOggetto", 3);
+            }
+            else if (other.tag == "Frigo")
+            {
+                BroadcastMessage("LasciaOggetto", 2);
+            }
+            else
+            {
+                Debug.Log("OGGETTO: "+other.gameObject.ToString());
+            }
         }
 
 

@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Glass
+  - Telecomando
+  - Pastelli
+  - Books
+  - Bunny
+  - EvilCoin
+  - GoodCoin
+  - Door
+  - Water
+  - Brucia
+  - Frigo
   layers:
   - Default
   - TransparentFX

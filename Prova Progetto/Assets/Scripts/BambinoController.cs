@@ -8,7 +8,7 @@ public class BambinoController : MonoBehaviour {
 
     private int diavoletto_score = 0;
     private int angioletto_score = 0;
-    private int inventary = 0;
+    private int[] inventary = {0, 0, 0};
 
     private CharacterController _charController;
 
@@ -29,7 +29,6 @@ public class BambinoController : MonoBehaviour {
         Debug.Log(diavoletto_score);
     }
 
-
     public void UpdateAngioletto(int i) {
         angioletto_score+=i;
         Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
@@ -37,14 +36,19 @@ public class BambinoController : MonoBehaviour {
         Debug.Log(angioletto_score);
     }
 
-    public void RaccoltoTelecomando(int i){
-        inventary += i;
+    public void RaccoltoOggetto(int i){
+        inventary[i-1] += 1;
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
-        Debug.Log("Raccolto Telecomando");
+    }
+
+    public void LasciaOggetto(int i){
+        if(inventary[i-1]>0)
+            inventary[i-1]--;
+        Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
     }
     
-    public int getTelecomandoCount(){
-        return inventary;
+    public int getOggettoCount(int i){
+        return inventary[i];
     }
 
     public int getAngiolettoScore() {
