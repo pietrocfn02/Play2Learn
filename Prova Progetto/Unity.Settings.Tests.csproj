@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B3BC445D-CAE5-A663-8CBD-42679C309581}</ProjectGuid>
+    <ProjectGuid>{C05827A8-1B08-2FF9-6BBD-7ACE2573A372}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>com.unity.cinemachine.EditorTests</AssemblyName>
+    <AssemblyName>Unity.Settings.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -47,8 +47,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Packages\com.unity.cinemachine\Tests\Editor\DampingTests.cs" />
-     <None Include="Packages\com.unity.cinemachine\Tests\Editor\com.unity.cinemachine.EditorTests.asmdef" />
+     <Compile Include="Packages\com.unity.settings-manager\Tests\Editor\MultipleProjectSettings.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Tests\Editor\SettingsTests.cs" />
+     <None Include="Packages\com.unity.settings-manager\Tests\Editor\Unity.Settings.Editor.Tests.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -630,14 +631,9 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Cinemachine.csproj">
-      <Project>{00EDBCF3-2759-DFE6-7B34-A146C58E2178}</Project>
-      <Name>Cinemachine</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
-      <Project>{7FE93098-C694-6333-BCFA-2E4AB6CAE982}</Project>
-      <Name>com.unity.cinemachine.editor</Name>
+    <ProjectReference Include="Unity.Settings.Editor.csproj">
+      <Project>{67F96D14-EB64-C15B-6C0A-AC5B0BF82DA7}</Project>
+      <Name>Unity.Settings.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">

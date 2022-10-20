@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DF9480B4-B36C-0830-54EF-82AAC398469D}</ProjectGuid>
+    <ProjectGuid>{8B867D12-BDE6-CD78-7787-DC6A784F93C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Unity.TextMeshPro.Tests</AssemblyName>
+    <AssemblyName>Unity.Postprocessing.Runtime</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -47,8 +47,64 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Packages\com.unity.textmeshpro\Tests\Runtime\TMP_RuntimeTests.cs" />
-     <None Include="Packages\com.unity.textmeshpro\Tests\Runtime\Unity.TextMeshPro.Tests.asmdef" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\PostProcessEffectRendererExtensions.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\RuntimeUtilities.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\Grain.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessEvent.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\Vignette.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\DepthOfField.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\PropertySheetFactory.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\ParameterOverride.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\ScalableAO.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\PropertySheet.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessRenderContext.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\HableCurve.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Attributes\PostProcessAttribute.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessLayer.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\ChromaticAberration.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\ShaderIDs.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessManager.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Monitors\LightMeterMonitor.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\Fog.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\AutoExposure.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Monitors\WaveformMonitor.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Attributes\DisplayNameAttribute.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\TextureLerper.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\XRSettings.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\Bloom.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\ColorUtilities.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Monitors\HistogramMonitor.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessBundle.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessDebugLayer.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\Spline.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessEffectSettings.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Monitors\Monitor.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\TargetPool.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\FastApproximateAntialiasing.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\TemporalAntialiasing.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessProfile.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessDebug.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Attributes\MaxAttribute.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\MultiScaleVO.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Monitors\VectorscopeMonitor.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessEffectRenderer.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\ColorGrading.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\Dithering.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\TextureFormatUtilities.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\MotionBlur.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\LensDistortion.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\ScreenSpaceReflections.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\SubpixelMorphologicalAntialiasing.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\MeshUtilities.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Attributes\MinMaxAttribute.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\HaltonSeq.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessVolume.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\PostProcessResources.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Effects\AmbientOcclusion.cs" />
+     <Compile Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Utils\LogHistogram.cs" />
+     <None Include="Packages\com.unity.postprocessing\PostProcessing\Runtime\Unity.Postprocessing.Runtime.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -271,8 +327,23 @@
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
- <Reference Include="nunit.framework">
- <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.OSXStandalone.Extensions">
+ <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Plastic.Newtonsoft.Json">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Plastic.Antlr3.Runtime">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="log4netPlastic">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="unityplastic">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -621,21 +692,6 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{EF6719B5-0F5B-D5D8-9D29-A27450FBB9ED}</Project>
-      <Name>Unity.TextMeshPro</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{31AC3021-4A4C-1034-08EB-C2321847ECF6}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{8E5EA4B4-ECC1-DEA2-2739-593D3B4CD5B5}</Project>
-      <Name>UnityEditor.TestRunner</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{BA882BF3-9BD4-C88A-FBE7-808DB557B086}</Project>
       <Name>UnityEditor.UI</Name>

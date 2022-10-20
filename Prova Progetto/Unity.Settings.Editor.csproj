@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B3BC445D-CAE5-A663-8CBD-42679C309581}</ProjectGuid>
+    <ProjectGuid>{67F96D14-EB64-C15B-6C0A-AC5B0BF82DA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>com.unity.cinemachine.EditorTests</AssemblyName>
+    <AssemblyName>Unity.Settings.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -47,8 +47,18 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Packages\com.unity.cinemachine\Tests\Editor\DampingTests.cs" />
-     <None Include="Packages\com.unity.cinemachine\Tests\Editor\com.unity.cinemachine.EditorTests.asmdef" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\UserSettingsRepository.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\ISettingsRepository.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\Settings.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\UserSettingsProvider.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\PackageSettingsRepository.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\Attributes.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\UserSettings.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\ValueWrapper.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\UserSetting.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\SettingsDictionary.cs" />
+     <Compile Include="Packages\com.unity.settings-manager\Editor\SettingsGUILayout.cs" />
+     <None Include="Packages\com.unity.settings-manager\Editor\Unity.Settings.Editor.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -276,6 +286,18 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Plastic.Newtonsoft.Json">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Plastic.Antlr3.Runtime">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="log4netPlastic">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="unityplastic">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -630,14 +652,14 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Cinemachine.csproj">
-      <Project>{00EDBCF3-2759-DFE6-7B34-A146C58E2178}</Project>
-      <Name>Cinemachine</Name>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{BA882BF3-9BD4-C88A-FBE7-808DB557B086}</Project>
+      <Name>UnityEditor.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
-      <Project>{7FE93098-C694-6333-BCFA-2E4AB6CAE982}</Project>
-      <Name>com.unity.cinemachine.editor</Name>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{A4084740-6369-E49A-94A5-88F339AE1FC9}</Project>
+      <Name>UnityEngine.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
@@ -648,16 +670,6 @@
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
       <Project>{8E5EA4B4-ECC1-DEA2-2739-593D3B4CD5B5}</Project>
       <Name>UnityEditor.TestRunner</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{BA882BF3-9BD4-C88A-FBE7-808DB557B086}</Project>
-      <Name>UnityEditor.UI</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{A4084740-6369-E49A-94A5-88F339AE1FC9}</Project>
-      <Name>UnityEngine.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

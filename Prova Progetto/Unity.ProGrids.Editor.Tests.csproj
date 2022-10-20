@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B3BC445D-CAE5-A663-8CBD-42679C309581}</ProjectGuid>
+    <ProjectGuid>{C39F16AB-6054-28F3-B6F9-49526EC28F39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>com.unity.cinemachine.EditorTests</AssemblyName>
+    <AssemblyName>Unity.ProGrids.Editor.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -47,8 +47,12 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Packages\com.unity.cinemachine\Tests\Editor\DampingTests.cs" />
-     <None Include="Packages\com.unity.cinemachine\Tests\Editor\com.unity.cinemachine.EditorTests.asmdef" />
+     <Compile Include="Packages\com.unity.progrids\Tests\Editor\SnapOnSelectedAxisOnly.cs" />
+     <Compile Include="Packages\com.unity.progrids\Tests\Editor\SnapOnAllAxes.cs" />
+     <Compile Include="Packages\com.unity.progrids\Tests\Editor\ReflectedMethodExist.cs" />
+     <Compile Include="Packages\com.unity.progrids\Tests\Editor\IgnoreInterfaceIsRespected.cs" />
+     <Compile Include="Packages\com.unity.progrids\Tests\Editor\IgnoreAttributeIsRespected.cs" />
+     <None Include="Packages\com.unity.progrids\Tests\Editor\Unity.ProGrids.Editor.Tests.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -630,14 +634,24 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Cinemachine.csproj">
-      <Project>{00EDBCF3-2759-DFE6-7B34-A146C58E2178}</Project>
-      <Name>Cinemachine</Name>
+    <ProjectReference Include="Unity.ProGrids.Editor.csproj">
+      <Project>{B2464332-E052-76B4-A493-326574DCD0DF}</Project>
+      <Name>Unity.ProGrids.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
-      <Project>{7FE93098-C694-6333-BCFA-2E4AB6CAE982}</Project>
-      <Name>com.unity.cinemachine.editor</Name>
+    <ProjectReference Include="Unity.ProGrids.csproj">
+      <Project>{17133766-24B5-0290-069E-775661A2E2A7}</Project>
+      <Name>Unity.ProGrids</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProGrids.Runtime.Tests.csproj">
+      <Project>{DCB5B18F-1948-874B-C3F9-46B54AB54112}</Project>
+      <Name>Unity.ProGrids.Runtime.Tests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Settings.Editor.csproj">
+      <Project>{67F96D14-EB64-C15B-6C0A-AC5B0BF82DA7}</Project>
+      <Name>Unity.Settings.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
