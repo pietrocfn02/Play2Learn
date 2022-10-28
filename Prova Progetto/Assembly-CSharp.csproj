@@ -70,6 +70,7 @@
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\OvenOpen\OvenFlip.cs" />
      <Compile Include="Assets\Scripts\charactermove.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Windows\opencloseWindow.cs" />
+     <Compile Include="Assets\3DTOYS\rotatecamera.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Scripts\KeyScript.cs" />
      <Compile Include="Assets\Scripts\EuroSpin.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Doors\opencloseDoor1.cs" />
@@ -84,8 +85,10 @@
      <Compile Include="Assets\Scripts\UIController.cs" />
      <None Include="Assets\HQ_ResidentialHouse\Shaders\MaskedPBR.shader" />
      <None Include="Assets\HQ_ResidentialHouse\Upgrade to HDRP or URP.txt" />
+     <None Include="Assets\3DTOYS\readme.txt" />
      <None Include="Assets\HQ_ResidentialHouse\Readme.txt" />
      <None Include="Assets\Brick Project Studio\Apartment Kit\Scenes\Message For You Please Read Me.txt" />
+     <None Include="Assets\Dice_6\Documentation\Readmy.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
