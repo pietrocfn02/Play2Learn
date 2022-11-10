@@ -15,6 +15,11 @@ TagManager:
   - Water
   - Brucia
   - Frigo
+  - Camera_Ingresso
+  - Camera_Corridoi
+  - Camera_cucina
+  - Camera_altarino
+  - Camera_Libreria
   layers:
   - Default
   - TransparentFX
