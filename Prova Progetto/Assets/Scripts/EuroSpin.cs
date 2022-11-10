@@ -5,7 +5,7 @@ using UnityEngine;
 public class EuroSpin : MonoBehaviour
 {
     public Space relativeTo = Space.Self;
-    public float speed = 0.3f;
+    public float speed = 1f;
    
     void Start()
     {
