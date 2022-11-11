@@ -20,6 +20,8 @@ TagManager:
   - Camera_cucina
   - Camera_altarino
   - Camera_Libreria
+  - Camera_Ingresso_CAM
+  - Camera_Corridoi_CAM
   layers:
   - Default
   - TransparentFX

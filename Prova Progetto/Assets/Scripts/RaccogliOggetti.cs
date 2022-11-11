@@ -54,7 +54,8 @@ public class RaccogliOggetti : MonoBehaviour
                 BroadcastMessage("LasciaOggetto", 2);
             }
             else if (other.tag !=null && other.tag.Contains("Camera_")) 
-            {
+            { 
+                Debug.Log("Entering in action range of camera : "+other.tag);
                 BroadcastMessage("ActivateCamera", other.tag);
             }
             else
@@ -68,6 +69,7 @@ public class RaccogliOggetti : MonoBehaviour
 
             if (other.tag !=null && other.tag.Contains("Camera_")) 
             {
+                Debug.Log("Entering in action range of camera : "+other.tag);
                 BroadcastMessage("DeactivateCamera", other.tag);
             }
         }

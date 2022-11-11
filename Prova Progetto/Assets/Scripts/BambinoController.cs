@@ -48,9 +48,9 @@ public class BambinoController : MonoBehaviour {
     }
     
     public void ActivateCamera(string camera){
+        
         Debug.Log("########### "+camera+" ############");
         Messenger.Broadcast(GameEvent.ACTIVATE_CAMERA+camera);
-        
     }
 
     public void DeactivateCamera(string camera){

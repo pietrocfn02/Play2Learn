@@ -5,8 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
+
+     private List<CameraScript> cameras = new List<CameraScript>();
+     private string[] tags = {"Camera_Corridoi","Camera_Ingresso"};
+
     void Start() {
-         this.findAndSetActive(false);
+       
+
     }
 
     void Update() {
@@ -14,32 +19,25 @@ public class CameraController : MonoBehaviour
     }   
 
     void Awake() {
-        Messenger.AddListener("ACTIVATE_CAMERA_Camera_Corridoi", activateMe);
-        Messenger.AddListener("DEACTIVATE_CAMERA_Camera_Corridoi", deactivateMe);
-    }
 
-
-    private void findAndSetActive(bool value) {
-        GameObject[] toActivate =  GameObject.FindGameObjectsWithTag(this.tag);
-        foreach (GameObject g in toActivate)
-        {
-            g.SetActive(value);
+        //Suppongo la corrispondenza tra i tag e le camere
+         foreach (string tag in tags) {
+            GameObject[] camerasTmp =  GameObject.FindGameObjectsWithTag(tag+"_CAM");
+            if (camerasTmp.Length > 0) {
+                cameras.Add(camerasTmp[0].GetComponent<CameraScript>());
+            }
+            
         }
-    }
-
-
-    private void activateMe() {
+        for (int i=0 ; i < tags.Length; i++) {
+                Debug.Log("Entro qui!");
+                Debug.Log(cameras.ToArray().Length);
+                Messenger.AddListener("ACTIVATE_CAMERA_"+tags[i], cameras[i].activateMe);
+                Messenger.AddListener("DEACTIVATE_CAMERA_"+tags[i], cameras[i].deactivateMe);
+        } 
         
-        Debug.Log("Mi sto attivando!");
-        Debug.Log("Sono "+this.tag);
-        this.findAndSetActive(true);
-        
-
     }
 
-    private void deactivateMe() {
-        Debug.Log("Mi sto disattivando!");
-        this.findAndSetActive(false);
-    }
+
+    
 
 }
