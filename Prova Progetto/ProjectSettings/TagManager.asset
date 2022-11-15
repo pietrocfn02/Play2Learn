@@ -32,11 +32,12 @@ TagManager:
   - Camera_Bedroom2
   - Camera_Bedroom1_CAM
   - Camera_Bedroom2_CAM
+  - Casa
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Casa
   - Water
   - UI
   - 
