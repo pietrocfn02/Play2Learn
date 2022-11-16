@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class RabbitMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private Transform camera;
+    
+    private Vector3[] bunnyTargets = new Vector3[10];
+
+    private bool muoviti = false;
+    // 22.8 X 13.8 Z
+    // X        Y 
+    // 26.5     15.5
+    void Start(){}
+
+    void Update(){
+        transform.LookAt(camera);
+        if (muoviti){
+            transform.Translate(0.7f,0f,0.7f);
+            muoviti = false;
+        }
+    }
+    void Awake() {
+        Messenger.AddListener(GameEvent.START_TUTORIAL, startTutorial);   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void startTutorial(){
+        muoviti = true;
     }
 }
+

@@ -5,4 +5,5 @@ public static class GameEvent {
 	public const string LANCIA_OGGETTO = "LANCIA_OGGETTO";
 	public const string ACTIVATE_CAMERA = "ACTIVATE_CAMERA_";
 	public const string DEACTIVATE_CAMERA = "DEACTIVATE_CAMERA_";
+	public const string START_TUTORIAL = "START_TUTORIAL";
 }
