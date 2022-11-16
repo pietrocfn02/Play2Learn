@@ -9,10 +9,10 @@ public class RelativeMovement : MonoBehaviour
     public float moveSpeed = 1.0f;
 
 
-    public float jumpSpeed = 7.5f;
+    public float jumpSpeed = 6f;
     public float gravity = -9.8f;
     public float terminalVelocity = -10.0f;
-    public float minFall = -1.5f;
+    public float minFall = -1.2f;
     private float _vertSpeed;
     private ControllerColliderHit _contact;
 
