@@ -51,7 +51,7 @@ public class RelativeMovement : MonoBehaviour
             Quaternion direction = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Lerp(transform.rotation,direction, rotSpeed * Time.deltaTime);
 
-        } //if
+        } 
 
 
         bool hitGround = false;
@@ -60,7 +60,7 @@ public class RelativeMovement : MonoBehaviour
             float check = (_charController.height + _charController.radius) / 1.9f;
             hitGround = hit.distance <= check;
         }
-        //Debug.Log(movement.magnitude);
+
         _animator.SetFloat("speed", movement.magnitude);
 
         if (hitGround) {
@@ -83,13 +83,13 @@ public class RelativeMovement : MonoBehaviour
 
 
             if (_charController.isGrounded) {
-            if (Vector3.Dot(movement, _contact.normal) < 0) {
-                movement = _contact.normal * moveSpeed;
-                
-            } else {
-                movement += _contact.normal * moveSpeed;
-                   
-            }
+                if (Vector3.Dot(movement, _contact.normal) < 0) {
+                    movement = _contact.normal * moveSpeed;
+                    
+                } else {
+                    movement += _contact.normal * moveSpeed;
+                    
+                }
         }
 
         
