@@ -154,8 +154,8 @@
      <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\TestRunner\RemoteHelpers\PlayerConnectionMessageIds.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Commands\EnumerableTestMethodCommand.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\Utils\AssemblyProvider\AssemblyLoadProxy.cs" />
-     <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\Utils\PrebuildSceneSetupAttribute.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\Assertions\UnityTestTimeoutException.cs" />
+     <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\Utils\PrebuildSceneSetupAttribute.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\NUnitExtensions\Runner\DefaultTestWorkItem.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\Utils\FloatEqualityComparer.cs" />
      <None Include="Packages\com.unity.test-framework\UnityEngine.TestRunner\UnityEngine.TestRunner.asmdef" />
