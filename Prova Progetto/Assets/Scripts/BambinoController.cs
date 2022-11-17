@@ -47,10 +47,6 @@ public class BambinoController : MonoBehaviour {
         Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
     }
     
-    public void AvviaTutorial(){
-        Messenger.Broadcast(GameEvent.START_TUTORIAL);
-    }
-
     public void ActivateCamera(string camera){
         
         Debug.Log("########### "+camera+" ############");
@@ -62,6 +58,7 @@ public class BambinoController : MonoBehaviour {
         Messenger.Broadcast(GameEvent.DEACTIVATE_CAMERA+camera);
         
     }
+
 
     public int getOggettoCount(int i){
         return inventary[i];

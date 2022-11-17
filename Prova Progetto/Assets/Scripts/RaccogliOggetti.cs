@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RaccogliOggetti : MonoBehaviour
 {
-        private bool tutorialStarted = false;
+        //script per gestire la raccolta delle monete e degli oggetti      
         void OnTriggerEnter(Collider other) {
             if(other.tag == "Telecomando")
             {   
@@ -57,11 +57,6 @@ public class RaccogliOggetti : MonoBehaviour
             { 
                 Debug.Log("Entering in action range of camera : "+other.tag);
                 BroadcastMessage("ActivateCamera", other.tag);
-            }
-            else if (other.tag == "Bunny" && ! tutorialStarted){
-                Debug.Log(other.tag);
-                BroadcastMessage("AvviaTutorial");
-                tutorialStarted = true;
             }
             else
             {
