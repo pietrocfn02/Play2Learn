@@ -9,17 +9,22 @@ public class BambinoController : MonoBehaviour {
     private int diavoletto_score = 0;
     private int angioletto_score = 0;
     private int[] inventary = {0, 0, 0};
-
+    private bool E = false;
     private CharacterController _charController;
-
-    void Start()
-    {
+    private string tagInteraction = "";
+    void Start(){
 
     }
 
-    void Update()
-    {
-
+    void Update(){
+        if (E){
+            if (Input.GetKeyUp(KeyCode.E)){
+                Debug.Log("WOOOOW STO PREMENDO E");
+                if (tagInteraction == "Fantasmino"){
+                    Messenger.Broadcast(GameEvent.START_TUTORIAL);
+                }
+            }
+        }
     }
 
     public void UpdateDiavoletto(int i) {
@@ -46,19 +51,6 @@ public class BambinoController : MonoBehaviour {
             inventary[i-1]--;
         Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
     }
-    
-    public void ActivateCamera(string camera){
-        
-        Debug.Log("########### "+camera+" ############");
-        Messenger.Broadcast(GameEvent.ACTIVATE_CAMERA+camera);
-    }
-
-    public void DeactivateCamera(string camera){
-        Debug.Log("########### "+camera+" ############");
-        Messenger.Broadcast(GameEvent.DEACTIVATE_CAMERA+camera);
-        
-    }
-
 
     public int getOggettoCount(int i){
         return inventary[i];
@@ -72,5 +64,15 @@ public class BambinoController : MonoBehaviour {
         return diavoletto_score;
     }
 
+    public void ActivateE(string tag){
+        this.E = true;
+        this.tagInteraction = tag;
+        
+    }
 
+    public void DeactivateE(string tag){
+        this.E = false;
+        this.tagInteraction = "";
+    
+    }
 }

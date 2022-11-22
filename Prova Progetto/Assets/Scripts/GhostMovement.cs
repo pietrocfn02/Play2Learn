@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class GhostMovement : MonoBehaviour
 {
 
@@ -19,6 +20,7 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] private float frequency = 0.5f;
     [SerializeField] public GameObject peppino;
     [SerializeField] private TMP_Text peppinoText;
+    [SerializeField] private TMP_Text peppinoInteract; 
     Vector3 posOffset = new Vector3 ();
     Vector3 tempPos = new Vector3 ();
     void Start(){
@@ -26,8 +28,9 @@ public class GhostMovement : MonoBehaviour
         targets[1] = new Vector3(23.63f,1.7f,14.76f);
         targets[2] = new Vector3(20f,1.7f,14.33f);
         targets[3] = new Vector3(23.05f,1.7f,10.34f);
-         _alive=true;
-         posOffset = transform.position;
+        _alive=true;
+        posOffset = transform.position;
+        peppinoInteract.text = "";
     }
     void Update()
     {
@@ -65,21 +68,28 @@ public class GhostMovement : MonoBehaviour
                 }
                 else {
                     peppino.SetActive(true);
-                    
                     transform.LookAt(player);
                 }
             }            
         }
         else { 
-            peppino.SetActive(true);
-            peppinoText.text = "pepino";
+            float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
             transform.LookAt(player);
-        }
-
-         
+            peppino.SetActive(true);
+            peppinoText.text = "Start tutorial";
+            if (distance < 1){
+                peppinoInteract.text = "E"; 
+            }else{
+                peppinoInteract.text = ""; 
+            }
+        }         
     }
     public void SetAlive(bool alive){
         _alive = alive;
+    }
+
+    public void ActivateE(string tag){
+            
     }
 
 }

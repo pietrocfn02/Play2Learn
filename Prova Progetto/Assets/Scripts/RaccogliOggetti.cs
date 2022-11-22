@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class RaccogliOggetti : MonoBehaviour
 {
-        //script per gestire la raccolta delle monete e degli oggetti      
         void OnTriggerEnter(Collider other) {
+            if(other.tag == "Fantasmino"){
+                BroadcastMessage("ActivateE",other.tag);
+            }
             if(other.tag == "Telecomando")
             {   
                 BroadcastMessage("RaccoltoOggetto", 1);
@@ -66,11 +68,8 @@ public class RaccogliOggetti : MonoBehaviour
 
 
         void OnTriggerExit(Collider other) {
-
-            if (other.tag !=null && other.tag.Contains("Camera_")) 
-            {
-                Debug.Log("Entering in action range of camera : "+other.tag);
-                BroadcastMessage("DeactivateCamera", other.tag);
+            if(other.tag == "Fantasmino"){
+                BroadcastMessage("DeactivateE",other.tag);
             }
         }
 }

@@ -33,6 +33,7 @@ TagManager:
   - Camera_Bedroom1_CAM
   - Camera_Bedroom2_CAM
   - Casa
+  - Fantasmino
   layers:
   - Default
   - TransparentFX

@@ -25,12 +25,17 @@ public class UIController : MonoBehaviour
 
 
     void Awake() {
-        Messenger.AddListener(GameEvent.DIAVOLETTO_UPDATE, updateDiavolettoScore );
-        Messenger.AddListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
-        Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
-        Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary );
+        Messenger.AddListener(GameEvent.DIAVOLETTO_UPDATE, updateDiavolettoScore);
+        Messenger.AddListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore);
+        Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary);
+        Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary);
+        Messenger.AddListener(GameEvent.START_TUTORIAL, startTutorial);
+        
     }
 
+    private void startTutorial(){
+        Debug.Log("Ciaoooo sto startando il tutorial");
+    }
     private void updateInventary(){
         for(int i=0; i<text_counts.Count; i++)
         {
