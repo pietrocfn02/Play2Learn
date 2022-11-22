@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GhostMovement : MonoBehaviour
 {
 
@@ -17,6 +17,8 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] private float degreesPerSecond = 15.0f;
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 0.5f;
+    [SerializeField] public GameObject peppino;
+    [SerializeField] private TMP_Text peppinoText;
     Vector3 posOffset = new Vector3 ();
     Vector3 tempPos = new Vector3 ();
     void Start(){
@@ -59,15 +61,18 @@ public class GhostMovement : MonoBehaviour
 
                     Ray ray = new Ray(transform.position, transform.forward);
                     RaycastHit hit;
-                
+                    peppino.SetActive(false);
                 }
                 else {
-                
+                    peppino.SetActive(true);
+                    
                     transform.LookAt(player);
                 }
-            }
+            }            
         }
-        else {    
+        else { 
+            peppino.SetActive(true);
+            peppinoText.text = "pepino";
             transform.LookAt(player);
         }
 
