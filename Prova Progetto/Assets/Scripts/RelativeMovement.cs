@@ -66,8 +66,7 @@ public class RelativeMovement : MonoBehaviour
         if (hitGround) {
             if (Input.GetButtonDown("Jump")) {
                 _vertSpeed = jumpSpeed;
-                
-                
+                                
             } else {
                 _vertSpeed = minFall;
                 _animator.SetBool("jump", false);
@@ -83,7 +82,7 @@ public class RelativeMovement : MonoBehaviour
 
 
             if (_charController.isGrounded) {
-                if (Vector3.Dot(movement, _contact.normal) < 0) {
+                if (Vector3.Dot(movement, _contact.normal) < 0.001f) {
                     movement = _contact.normal * moveSpeed;
                     
                 } else {

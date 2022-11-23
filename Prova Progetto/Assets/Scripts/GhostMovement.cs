@@ -8,7 +8,7 @@ using TMPro;
 public class GhostMovement : MonoBehaviour
 {
 
-    private Vector3[] targets = new Vector3[3];
+    private Vector3[] targets = new Vector3[5];
 
     private int reachedTarget = 0;
     
@@ -28,19 +28,19 @@ public class GhostMovement : MonoBehaviour
 
     Vector3 posOffset = new Vector3 ();
     Vector3 tempPos = new Vector3 ();
+
     void Start(){
         targets[0] = new Vector3(25.6f,1.7f,15.8f);
-        //targets[1] = new Vector3(23.63f,1.7f,14.76f);
-        //targets[2] = new Vector3(20f,1.7f,14.33f);
-        targets[1] = new Vector3(23.05f,1.7f,10.34f);
-        targets[2] = new Vector3(29.3f,1.7f,20.5f);
+        targets[1] = new Vector3(23.63f,1.7f,14.76f);
+        targets[2] = new Vector3(20f,1.7f,14.33f);
+        targets[3] = new Vector3(23.05f,1.7f,10.34f);
+        targets[4] = new Vector3(29.3f,1.7f,20.5f);
         _alive=true;
         posOffset = transform.position;
         peppinoInteract.text = "";
     }
     void Update()
     {
-       
         move();
         Float(); 
     }
@@ -55,7 +55,7 @@ public class GhostMovement : MonoBehaviour
     }
 
     public void PrimaMarachella(){
-    peppinoText.text = "Trovami!!";
+        peppinoText.text = "Trovami!!";
     }
 
     private void move(){
@@ -108,7 +108,6 @@ public class GhostMovement : MonoBehaviour
         _alive = alive;
     }
      void OnDestroy() {
-        Messenger.RemoveListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella);
-        
+        Messenger.RemoveListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella); 
     }
 }

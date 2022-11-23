@@ -21,13 +21,19 @@ public class BambinoController : MonoBehaviour {
     void Update(){
         if (E){
             if (Input.GetKeyUp(KeyCode.E)){
-                Debug.Log("WOOOOW STO PREMENDO E");
+                Debug.Log("PREMO E");
                 if (tagInteraction == "Fantasmino"){
                     Messenger.Broadcast(GameEvent.START_TUTORIAL);
-                }else if (tagInteraction == "Pastelli"){
+                }
+                else if (tagInteraction == "Pastelli"){
                     PrimaMarachella();
                     RaccoltoOggetto(2);
-                    Destroy(objectToDestroy.gameObject);
+                }
+                else if (tagInteraction == "Telecomando"){
+                    RaccoltoOggetto(1);
+                }
+                else if (tagInteraction == "Books"){
+                    RaccoltoOggetto(3);
                 } 
             }
         }
@@ -41,12 +47,13 @@ public class BambinoController : MonoBehaviour {
     public void UpdateAngioletto(int i) {
         angioletto_score+=i;
         Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
-
-        //Debug.Log(angioletto_score);
     }
 
     public void RaccoltoOggetto(int i){
         inventary[i-1] += 1;
+        if(objectToDestroy!= null){
+            Destroy(objectToDestroy.gameObject);
+        }
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);       
     }
 
@@ -81,6 +88,5 @@ public class BambinoController : MonoBehaviour {
     public void DeactivateE(string tag){
         this.E = false;
         this.tagInteraction = "";
-    
     }
 }

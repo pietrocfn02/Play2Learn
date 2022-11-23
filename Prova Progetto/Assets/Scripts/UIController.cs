@@ -36,7 +36,6 @@ public class UIController : MonoBehaviour
     }
 
     private void startTutorial(){
-        Debug.Log("Ciaoooo sto startando il tutorial");
         labelText.text="Per iniziare raccogli i pastelli sul letto!";
     }
 
