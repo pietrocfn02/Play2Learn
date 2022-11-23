@@ -31,14 +31,14 @@ public class BambinoController : MonoBehaviour {
         diavoletto_score+=i;
         Messenger.Broadcast(GameEvent.DIAVOLETTO_UPDATE);
 
-        Debug.Log(diavoletto_score);
+        //Debug.Log(diavoletto_score);
     }
 
     public void UpdateAngioletto(int i) {
         angioletto_score+=i;
         Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
 
-        Debug.Log(angioletto_score);
+        //Debug.Log(angioletto_score);
     }
 
     public void RaccoltoOggetto(int i){
@@ -68,6 +68,10 @@ public class BambinoController : MonoBehaviour {
         this.E = true;
         this.tagInteraction = tag;
         
+    }
+    public void PrimaMarachella(){
+        Messenger.Broadcast(GameEvent.PRIMA_MARACHELLA);
+    
     }
 
     public void DeactivateE(string tag){

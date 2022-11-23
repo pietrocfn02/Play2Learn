@@ -19,6 +19,8 @@ public class RaccogliOggetti : MonoBehaviour
                 //BroadcastMessage("RaccoltoOggetto", 1);
                 //i pastelli sono in posizione 2 nella mia lsta di labels (texts)
                 BroadcastMessage("RaccoltoOggetto", 2);
+                BroadcastMessage("PrimaMarachella");
+                Debug.Log(other.gameObject.ToString());
                 Destroy(other.gameObject);
             }
             else if (other.tag == "Books")
@@ -40,7 +42,7 @@ public class RaccogliOggetti : MonoBehaviour
             }
             else if (other.tag == "Door")
             {
-                Debug.Log("PORTA!");
+                //Debug.Log("PORTA!");
                 Destroy(other.gameObject);
             }
             else if (other.tag == "Water")

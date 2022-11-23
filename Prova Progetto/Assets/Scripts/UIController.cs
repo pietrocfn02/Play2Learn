@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text telecomandoCountText;
     [SerializeField] private Text pastelliCountText;
     [SerializeField] private Text libriCountText;
+    [SerializeField] private TMP_Text labelText;
 
     int angioletto_score;
     int diavoletto_score;
@@ -35,7 +37,9 @@ public class UIController : MonoBehaviour
 
     private void startTutorial(){
         Debug.Log("Ciaoooo sto startando il tutorial");
+        labelText.text="Per iniziare raccogli i pastelli sul letto!";
     }
+
     private void updateInventary(){
         for(int i=0; i<text_counts.Count; i++)
         {
@@ -47,6 +51,7 @@ public class UIController : MonoBehaviour
             else if(i==2)
                 libriCountText.text = text_counts[i].ToString();
         }
+        labelText.text="Hai raccolto i pastelli! Mettili al fresco in frigo!";
     }
 
     
