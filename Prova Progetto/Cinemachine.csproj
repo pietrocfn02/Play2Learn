@@ -47,8 +47,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachinePath.cs" />
      <Compile Include="Packages\com.unity.cinemachine\Runtime\PostProcessing\CinemachineVolumeSettings.cs" />
+     <Compile Include="Packages\com.unity.cinemachine\Runtime\Behaviours\CinemachinePath.cs" />
      <Compile Include="Packages\com.unity.cinemachine\Runtime\Core\ICinemachineCamera.cs" />
      <Compile Include="Packages\com.unity.cinemachine\Runtime\Core\CinemachineDebug.cs" />
      <Compile Include="Packages\com.unity.cinemachine\Runtime\Core\UnityVectorExtensions.cs" />

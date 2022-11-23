@@ -12,6 +12,8 @@ public class BambinoController : MonoBehaviour {
     private bool E = false;
     private CharacterController _charController;
     private string tagInteraction = "";
+
+    private Collider objectToDestroy;
     void Start(){
 
     }
@@ -22,7 +24,11 @@ public class BambinoController : MonoBehaviour {
                 Debug.Log("WOOOOW STO PREMENDO E");
                 if (tagInteraction == "Fantasmino"){
                     Messenger.Broadcast(GameEvent.START_TUTORIAL);
-                }
+                }else if (tagInteraction == "Pastelli"){
+                    PrimaMarachella();
+                    RaccoltoOggetto(2);
+                    Destroy(objectToDestroy.gameObject);
+                } 
             }
         }
     }
@@ -30,8 +36,6 @@ public class BambinoController : MonoBehaviour {
     public void UpdateDiavoletto(int i) {
         diavoletto_score+=i;
         Messenger.Broadcast(GameEvent.DIAVOLETTO_UPDATE);
-
-        //Debug.Log(diavoletto_score);
     }
 
     public void UpdateAngioletto(int i) {
@@ -43,7 +47,7 @@ public class BambinoController : MonoBehaviour {
 
     public void RaccoltoOggetto(int i){
         inventary[i-1] += 1;
-        Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
+        Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);       
     }
 
     public void LasciaOggetto(int i){
@@ -64,14 +68,14 @@ public class BambinoController : MonoBehaviour {
         return diavoletto_score;
     }
 
-    public void ActivateE(string tag){
+    public void ActivateE(Collider objectRecived){
         this.E = true;
-        this.tagInteraction = tag;
+        this.tagInteraction = objectRecived.tag;
+        this.objectToDestroy = objectRecived;
         
     }
     public void PrimaMarachella(){
         Messenger.Broadcast(GameEvent.PRIMA_MARACHELLA);
-    
     }
 
     public void DeactivateE(string tag){

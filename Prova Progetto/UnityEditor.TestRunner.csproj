@@ -178,8 +178,8 @@
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\Analytics\TestTreeData.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestLaunchers\PrebuildSetupAttributeFinder.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\SaveModiedSceneTask.cs" />
-     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\AssemblyInfo.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\PerformUndoTask.cs" />
+     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\AssemblyInfo.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Utils\EditorCompilationInterfaceProxy.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\FileCleanupVerifierTaskBase.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\TestAdaptorFactory.cs" />

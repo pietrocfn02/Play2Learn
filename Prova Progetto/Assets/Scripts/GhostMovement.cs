@@ -55,20 +55,7 @@ public class GhostMovement : MonoBehaviour
     }
 
     public void PrimaMarachella(){
-        // transform.LookAt(targets[2]);
-        // //float distancewithTarget = Vector3.Distance(targets[reachedTarget], this.gameObject.transform.position);
-        // float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
-        // if(_alive && distance < 1)
-        // {
-        //     transform.Translate(0, 0, speed*Time.deltaTime);
-
-        //     Ray ray = new Ray(transform.position, transform.forward);
-        //     RaycastHit hit;
-        // }
-        // else {
-        //     transform.LookAt(player);
-        //}
-        Debug.Log("prima marachella");
+    peppinoText.text = "Trovami!!";
     }
 
     private void move(){
@@ -124,8 +111,4 @@ public class GhostMovement : MonoBehaviour
         Messenger.RemoveListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella);
         
     }
-    public void ActivateE(string tag){
-            
-    }
-
 }

@@ -109,8 +109,8 @@
      <Compile Include="Packages\com.unity.services.core\Editor\Core\ServiceActivationPopup\IActivationPopupVisual.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\ServiceActivationPopup\Visuals\ServiceActivationConfirmationVisual.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\ServiceActivationPopup\Visuals\CoppaVisual.cs" />
-     <Compile Include="Packages\com.unity.services.core\Editor\Core\Networking\HttpOptions.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\UiHelpers\PlatformSupportUiHelper.cs" />
+     <Compile Include="Packages\com.unity.services.core\Editor\Core\Networking\HttpOptions.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\ServiceActivationPopup\Visuals\OfflineVisual.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\Networking\HttpRequest.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\AssemblyInfo.cs" />
