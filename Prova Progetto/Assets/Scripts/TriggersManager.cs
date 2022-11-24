@@ -10,6 +10,7 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.PASTELLI_TAG,
                                         GameEvent.BOOKS_TAG
                                         };
+    
 
     void OnTriggerEnter(Collider other) {
         if(tagsList.Contains(other.tag))
@@ -55,6 +56,7 @@ public class TriggersManager : MonoBehaviour
 
 
     void OnTriggerExit(Collider other) {
-        BroadcastMessage("DeactivateE",other.tag);
+        if(tagsList.Contains(other.tag))
+            BroadcastMessage("DeactivateE",other);
     }
 }

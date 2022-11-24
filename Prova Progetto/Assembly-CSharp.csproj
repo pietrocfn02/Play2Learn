@@ -47,66 +47,92 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\RadialAnim.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\MyCanvasSetting.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
      <Compile Include="Assets\Scripts\Messenger.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\PlayerMovement.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\LocalTransition.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\FadingTransitionDemo.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\Scripts\GameEvent.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
      <Compile Include="Assets\Scripts\RelativeMovement.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\DragPanel.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\NoiseGenerator.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Z Axis -1\Drawer_Pull_Zopp.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\SoftwareCursor.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\AlignSectionPointToCenter.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\GetBuildScenes.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Drawer\X Axis\Drawer_Pull_X.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\Scripts\SpawnCoin.cs" />
      <Compile Include="Assets\Scripts\Floater.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\MaxCamera.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\AdvancedGizmo\Hover.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Drawer\Z Axis\Drawer_Pull_Z.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\SceneSwitchGen.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\GizmoAnim.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\AnimateRings.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Scripts\SceneMovement.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\TransitionGradient.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\Scripts\RabbitMovement.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\GradientSelector.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Closet\ClosetopencloseDoor.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\TableFlip\TableFlipR.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\EnvironmentTransitionExample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Doors\opencloseDoor.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\MouseLook.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Slide\opencloseSlide.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Scripts\DoorScript.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\MultipleSphereTransitionExample.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\OvenOpen\OvenFlip.cs" />
      <Compile Include="Assets\Scripts\charactermove.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Windows\opencloseWindow.cs" />
      <Compile Include="Assets\3DTOYS\rotatecamera.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\FadingTransition.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Scripts\KeyScript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\LocalSphereTransitionExample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\Scripts\EuroSpin.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\ReadOnlyDrawer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Doors\opencloseDoor1.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Windows\opencloseWindowApt.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\TextureSelector.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\GizmoFollow.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\FPS_.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\SpawnOneTypeCoin.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Slide\BRGlassDoor.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\RenderingModeSwitch.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Bonus content_Modular Interiors\ModuleGizmos.cs" />
      <Compile Include="Assets\Scripts\BambinoController.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\SceneSwitch.cs" />
      <Compile Include="Assets\Scripts\TriggersManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\TableFlip\TableFlipL.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\AdvancedGizmo\Gizmo.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
@@ -115,38 +141,12 @@
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
      <Compile Include="Assets\Scripts\GhostMovement.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\CamAnim.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+     <Compile Include="Assets\WorldSpaceTransitions\common\ReadOnlyAttribute.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\WonderingAI.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\EnvironmentTransitionExample.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\RenderingModeSwitch.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\ReadOnlyDrawer.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\FPS_.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\GradientSelector.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\CamAnim.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\AdvancedGizmo\Gizmo.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\ReadOnlyAttribute.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\AnimateRings.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\AdvancedGizmo\Hover.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\NoiseGenerator.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\DragPanel.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\LocalTransition.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\AlignSectionPointToCenter.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\RadialAnim.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\TransitionGradient.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\MyCanvasSetting.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\TextureSelector.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\GetBuildScenes.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\FadingTransitionDemo.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\SoftwareCursor.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\SceneSwitch.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\MultipleSphereTransitionExample.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\MaxCamera.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\FadingTransition.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\GizmoAnim.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\LocalSphereTransitionExample.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\GizmoFollow.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\SpacemaskOpaque.shader" />
@@ -762,17 +762,8 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
- <Reference Include="Cinemachine">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
- </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.cinemachine.editor">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -780,14 +771,17 @@
  <Reference Include="Unity.VisualStudio.Editor">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Searcher.Editor">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Runtime">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Postprocessing.Editor">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
@@ -801,32 +795,38 @@
  <Reference Include="Unity.Rider.Editor">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.ProGrids.Editor">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="Unity.ProGrids">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+ <Reference Include="Unity.ShaderGraph.Editor">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Runtime">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+ <Reference Include="Cinemachine">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Searcher.Editor">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.RenderPipelines.Core.Editor">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ <Reference Include="Unity.Postprocessing.Runtime">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
  <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
  </Reference>
- <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ <Reference Include="Unity.Timeline.Editor">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ProGrids">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Editor">
+ <HintPath>C:/Users/user/Documents/UNICAL/01 - MAGISTRALE AIDS/I ANNO MAGISTRALE/VR/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

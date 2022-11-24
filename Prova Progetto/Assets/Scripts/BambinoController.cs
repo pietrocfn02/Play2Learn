@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+using TMPro;
+//to do something
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/BambinoController")]
 
@@ -52,6 +53,8 @@ public class BambinoController : MonoBehaviour {
     public void RaccoltoOggetto(int i){
         inventary[i-1] += 1;
         if(objectToDestroy!= null){
+            Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
+            Debug.Log(childText.GetType());
             Destroy(objectToDestroy.gameObject);
         }
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);       
@@ -79,14 +82,21 @@ public class BambinoController : MonoBehaviour {
         this.E = true;
         this.tagInteraction = objectRecived.tag;
         this.objectToDestroy = objectRecived;
-        
+        Transform transform = objectRecived.transform;
+        foreach(Transform t in transform){
+            t.gameObject.SetActive(true);
+        }
     }
     public void PrimaMarachella(){
         Messenger.Broadcast(GameEvent.PRIMA_MARACHELLA);
     }
 
-    public void DeactivateE(string tag){
+    public void DeactivateE(Collider objectRecived){
         this.E = false;
         this.tagInteraction = "";
+        Transform transform = objectRecived.transform;
+        foreach(Transform t in transform){
+            t.gameObject.SetActive(false);
+        }
     }
 }
