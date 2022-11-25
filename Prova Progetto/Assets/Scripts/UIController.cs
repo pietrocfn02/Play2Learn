@@ -8,12 +8,13 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] BambinoController bambinoController;
     //[SerializeField] private Text angiolettoScoreText;
-    [SerializeField] private Text diavolettoScoreText;
+    [SerializeField] private TMP_Text diavolettoScoreText;
     //TODO: lista di countText (inventario fisso)
-    [SerializeField] private Text telecomandoCountText;
-    [SerializeField] private Text pastelliCountText;
-    [SerializeField] private Text libriCountText;
+    [SerializeField] private TMP_Text telecomandoCountText;
+    [SerializeField] private TMP_Text pastelliCountText;
+    [SerializeField] private TMP_Text libriCountText;
     [SerializeField] private TMP_Text labelText;
+    [SerializeField] private GameObject imageText;
 
     int angioletto_score;
     int diavoletto_score;
@@ -69,7 +70,12 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(labelText.text=="")
+        {
+            imageText.SetActive(false);
+        } else {
+            imageText.SetActive(true);
+        }
     }
 
 
