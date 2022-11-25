@@ -12,10 +12,9 @@ public class EuroSpin : MonoBehaviour
         
     }
 
-    
+    // Ruota le monte 
     void Update()
     {
         transform.Rotate(0, speed, 0, Space.World);
-        //transform.Translate (0, speed, 0);
     }
 }

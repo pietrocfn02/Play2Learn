@@ -80,9 +80,9 @@
      <Compile Include="Packages\com.unity.timeline\Runtime\Evaluation\RuntimeClip.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Scripting\PlayableTrack.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Animation\ICurvesOwner.cs" />
+     <Compile Include="Packages\com.unity.timeline\Runtime\AssetUpgrade\TrackUpgrade.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Audio\AudioClipProperties.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Playables\BasicScriptPlayable.cs" />
-     <Compile Include="Packages\com.unity.timeline\Runtime\AssetUpgrade\TrackUpgrade.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Animation\AnimationTrack.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Extensions\TrackExtensions.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Evaluation\IntervalTree.cs" />
@@ -103,8 +103,8 @@
      <Compile Include="Packages\com.unity.timeline\Runtime\Events\Marker.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\AssetUpgrade\AnimationTrackUpgrade.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\DiscreteTime.cs" />
-     <Compile Include="Packages\com.unity.timeline\Runtime\Playables\TimeNotificationBehaviour.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Attributes\TrackColorAttribute.cs" />
+     <Compile Include="Packages\com.unity.timeline\Runtime\Playables\TimeNotificationBehaviour.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\AssetUpgrade\TimelineUpgrade.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\AssetUpgrade\ClipUpgrade.cs" />
      <Compile Include="Packages\com.unity.timeline\Runtime\Playables\ActivationControlPlayable.cs" />
@@ -354,6 +354,9 @@
  </Reference>
  <Reference Include="log4netPlastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.render-pipelines.core@10.8.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>

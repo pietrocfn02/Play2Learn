@@ -57,8 +57,8 @@
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Callbacks\RerunCallback.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\GUI\TestListTreeView\TestListTreeViewGUI.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Messages\EnterPlayMode.cs" />
-     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\PrebuildSetupTask.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestResultSerializer.cs" />
+     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\PrebuildSetupTask.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\EditModeRunner.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Utils\IEditorCompilationInterfaceProxy.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\Analytics\AnalyticsTestCallback.cs" />
@@ -156,9 +156,9 @@
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\CommandLineTest\ExecutionSettings.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Callbacks\EditModeRunnerCallback.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestLaunchers\EditModeLauncher.cs" />
+     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\TestResultAdaptor.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\CommandLineTest\Executer.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\ICallbacksDelegator.cs" />
-     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\TestResultAdaptor.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\TestJobData.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Utils\EditorAssemblyWrapper.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\CommandLineTest\RunData.cs" />
@@ -178,8 +178,8 @@
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\Analytics\TestTreeData.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestLaunchers\PrebuildSetupAttributeFinder.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\SaveModiedSceneTask.cs" />
-     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\PerformUndoTask.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\AssemblyInfo.cs" />
+     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\PerformUndoTask.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Utils\EditorCompilationInterfaceProxy.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\FileCleanupVerifierTaskBase.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\TestAdaptorFactory.cs" />
@@ -190,8 +190,8 @@
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\UnityTestProtocol\TestState.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestLaunchers\PlayerLauncher.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\TestStatus.cs" />
-     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestLaunchers\PlatformSetup\XboxOnePlatformSetup.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\Api\Analytics\RunFinishedData.cs" />
+     <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestLaunchers\PlatformSetup\XboxOnePlatformSetup.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestLaunchers\PlatformSetup\UwpPlatformSetup.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRunner\Messages\WaitForDomainReload.cs" />
      <Compile Include="Packages\com.unity.test-framework\UnityEditor.TestRunner\TestRun\Tasks\RegisterFilesForCleanupVerificationTask.cs" />

@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BA882BF3-9BD4-C88A-FBE7-808DB557B086}</ProjectGuid>
+    <ProjectGuid>{FB36D1DD-48B6-BC70-4CB6-5E9C0C1494C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>UnityEditor.UI</AssemblyName>
+    <AssemblyName>Unity.ShaderGraph.Editor.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -28,7 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +37,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -47,44 +47,29 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\RawImageEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\RectMask2DEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\PropertyDrawers\DropdownOptionListDrawer.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\ContentSizeFitterEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\MenuOptions.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\PropertyDrawers\FontDataDrawer.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\EventSystem\Physics2DRaycasterEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\MaskEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\SelfControllerEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\PropertyDrawers\ColorBlockDrawer.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\InterceptedEventsPreview.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\InputFieldEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\Properties\AssemblyInfo.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\LayoutPropertiesPreview.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\EventSystem\EventSystemEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\CanvasScalerEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\SpriteDrawUtility.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\PrefabLayoutRebuilder.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\GraphicEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\SelectableEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\GridLayoutGroupEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\AspectRatioFitterEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\ImageEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\SliderEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\ScrollbarEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\LayoutElementEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\ToggleEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\DropdownEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\ButtonEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\EventSystem\PhysicsRaycasterEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\TextEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\ScrollRectEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\PropertyDrawers\AnimationTriggersDrawer.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\EventSystem\EventTriggerEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\HorizontalOrVerticalLayoutGroupEditor.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\PropertyDrawers\SpriteStateDrawer.cs" />
-     <Compile Include="Packages\com.unity.ugui\Editor\UI\PropertyDrawers\NavigationDrawer.cs" />
-     <None Include="Packages\com.unity.ugui\Editor\UnityEditor.UI.asmdef" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\ShaderGeneratorTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\SerializedGraphTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\MaterialGraphTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\PropertyChunkTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\ListUtilityTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\IntegrationTests\SerializationTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\BlockNodeTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\MaterialSlotTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\MessageManagerTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\PropertyNodeTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\FixedSlotTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\MaterialNodeTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\UtilityTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\TargetTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\PropertyGeneratorTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\PixelShaderNodeTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\TestSlot.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\StackTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\TestNode.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\DynamicSlotTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\IntegrationTests\NamespaceTests.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Tests\Editor\UnitTests\AbstractMaterialGraphTests.cs" />
+     <None Include="Packages\com.unity.shadergraph\Tests\Editor\Unity.ShaderGraph.Editor.Tests.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -312,21 +297,6 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Plastic.Newtonsoft.Json">
- <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Plastic.Antlr3.Runtime">
- <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="log4netPlastic">
- <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
- </Reference>
- <Reference Include="ICSharpCode.NRefactory">
- <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.render-pipelines.core@10.8.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
- </Reference>
- <Reference Include="unityplastic">
- <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -681,9 +651,9 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{A4084740-6369-E49A-94A5-88F339AE1FC9}</Project>
-      <Name>UnityEngine.UI</Name>
+    <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
+      <Project>{AAE711CA-197C-62A3-FAAB-4754D667449C}</Project>
+      <Name>Unity.ShaderGraph.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
@@ -694,6 +664,16 @@
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
       <Project>{8E5EA4B4-ECC1-DEA2-2739-593D3B4CD5B5}</Project>
       <Name>UnityEditor.TestRunner</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{BA882BF3-9BD4-C88A-FBE7-808DB557B086}</Project>
+      <Name>UnityEditor.UI</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{A4084740-6369-E49A-94A5-88F339AE1FC9}</Project>
+      <Name>UnityEngine.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

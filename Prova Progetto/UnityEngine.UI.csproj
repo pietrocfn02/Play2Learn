@@ -47,11 +47,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Toggle.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Image.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Text.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\InputModules\StandaloneInputModule.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\GraphicRaycaster.cs" />
-     <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Toggle.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Layout\LayoutElement.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\IGraphicEnabledDisabled.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Selectable.cs" />
@@ -86,8 +86,8 @@
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Scrollbar.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\FontUpdateTracker.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\RaycastResult.cs" />
-     <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Button.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\ToggleGroup.cs" />
+     <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Button.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\ColorBlock.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Navigation.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Layout\ContentSizeFitter.cs" />
@@ -116,17 +116,17 @@
      <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\EventData\AxisEventData.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\Raycasters\BaseRaycaster.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\SpecializedCollections\IndexedSet.cs" />
-     <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\EventTriggerType.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\MaskableGraphic.cs" />
+     <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\EventTriggerType.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\MultipleDisplayUtilities.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\VertexModifiers\BaseMeshEffect.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Layout\LayoutRebuilder.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\AnimationTriggers.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\Properties\AssemblyInfo.cs" />
-     <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\IMask.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Layout\HorizontalOrVerticalLayoutGroup.cs" />
-     <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\EventHandle.cs" />
+     <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\IMask.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Layout\LayoutGroup.cs" />
+     <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\EventHandle.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\InputModules\BaseInputModule.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\UI\Core\Layout\GridLayoutGroup.cs" />
      <Compile Include="Packages\com.unity.ugui\Runtime\EventSystem\InputModules\PointerInputModule.cs" />
@@ -369,6 +369,9 @@
  </Reference>
  <Reference Include="log4netPlastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.render-pipelines.core@10.8.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>

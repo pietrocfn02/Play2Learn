@@ -53,8 +53,8 @@
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Components\Menus\FloatingMenuItem.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Views\Adapters\IAdapter.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\EditorGameService\SettingsProviderVisuals\LearnMoreVisualHelper.cs" />
-     <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Components\IconButton.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Components\SearchBar.cs" />
+     <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Components\IconButton.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\EditorGameService\SettingsProviderVisuals\EnabledVisuals.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Utilities\Threading.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Views\MainPageView.cs" />
@@ -133,8 +133,8 @@
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Components\ChangeEntryGroup.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Settings\CollabSetting.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Models\Structures\IChangeEntry.cs" />
-     <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Settings\CollabSettings.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\EditorGameService\Analytics\EditorGameServiceAnalyticsSender.cs" />
+     <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Settings\CollabSettings.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Views\Adapters\ListAdapters\BaseListAdapter.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Models\Enums\ProjectStatus.cs" />
      <Compile Include="Packages\com.unity.collab-proxy\Editor\Collaborate\Components\ChangeListElements\ConflictedChangeListElement.cs" />
@@ -427,6 +427,9 @@
  </Reference>
  <Reference Include="log4netPlastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.render-pipelines.core@10.8.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>

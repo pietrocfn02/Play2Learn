@@ -11,10 +11,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4FC37970-B9A4-CD32-3F57-2306AA4A7543}</ProjectGuid>
+    <ProjectGuid>{0FE594A1-3C33-33BB-B79B-CAD05D8B8910}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Unity.RenderPipelines.Core.ShaderLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -47,155 +47,58 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\RadialAnim.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\MyCanvasSetting.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-     <Compile Include="Assets\Scripts\Messenger.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\PlayerMovement.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\LocalTransition.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\FadingTransitionDemo.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-     <Compile Include="Assets\Scripts\GameEvent.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-     <Compile Include="Assets\Scripts\RelativeMovement.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\DragPanel.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\NoiseGenerator.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Z Axis -1\Drawer_Pull_Zopp.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\SoftwareCursor.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\AlignSectionPointToCenter.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\GetBuildScenes.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Drawer\X Axis\Drawer_Pull_X.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
-     <Compile Include="Assets\Scripts\SpawnCoin.cs" />
-     <Compile Include="Assets\Scripts\Floater.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\MaxCamera.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\AdvancedGizmo\Hover.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Drawer\Z Axis\Drawer_Pull_Z.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\SceneSwitchGen.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\GizmoAnim.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\AnimateRings.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-     <Compile Include="Assets\Scripts\SceneMovement.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\TransitionGradient.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-     <Compile Include="Assets\Scripts\RabbitMovement.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\GradientSelector.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Closet\ClosetopencloseDoor.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\TableFlip\TableFlipR.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\EnvironmentTransitionExample.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Doors\opencloseDoor.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\MouseLook.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Slide\opencloseSlide.cs" />
-     <Compile Include="Assets\HQ_ResidentialHouse\Scripts\DoorScript.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\MultipleSphereTransitionExample.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\OvenOpen\OvenFlip.cs" />
-     <Compile Include="Assets\Scripts\charactermove.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Windows\opencloseWindow.cs" />
-     <Compile Include="Assets\3DTOYS\rotatecamera.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\FadingTransition.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-     <Compile Include="Assets\HQ_ResidentialHouse\Scripts\KeyScript.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\LocalSphereTransitionExample.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-     <Compile Include="Assets\Scripts\EuroSpin.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\ReadOnlyDrawer.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-     <Compile Include="Assets\Scripts\CameraScript.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Doors\opencloseDoor1.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Windows\opencloseWindowApt.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\TextureSelector.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\GizmoFollow.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\FPS_.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\SpawnOneTypeCoin.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\Slide\BRGlassDoor.cs" />
-     <Compile Include="Assets\Scripts\GameSettings.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\RenderingModeSwitch.cs" />
-     <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-     <Compile Include="Assets\HQ_ResidentialHouse\Bonus content_Modular Interiors\ModuleGizmos.cs" />
-     <Compile Include="Assets\Scripts\BambinoController.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\SceneSwitch.cs" />
-     <Compile Include="Assets\Scripts\TriggersManager.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-     <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\TableFlip\TableFlipL.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\AdvancedGizmo\Gizmo.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
-     <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Windows\opencloseWindow1.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-     <Compile Include="Assets\Scripts\UIController.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-     <Compile Include="Assets\Scripts\GhostMovement.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\CamAnim.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\WorldSpaceTransitions\common\ReadOnlyAttribute.cs" />
-     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-     <Compile Include="Assets\Scripts\WonderingAI.cs" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\SpacemaskOpaque.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\AdvancedGizmo_std\Unlit-Color.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingTransparentDS.shader" />
-     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingScreenMetalBumpedDS.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\SpacemaskDissolve.shader" />
-     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\CGIncludes\section_clipping_CS.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\ScreenDissolveGlow.shader" />
-     <None Include="Assets\HQ_ResidentialHouse\Shaders\MaskedPBR.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingScreenFading.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingDissolveMetBump.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingScreenMetalBumped.shader" />
-     <None Include="Assets\HQ_ResidentialHouse\Upgrade to HDRP or URP.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingScreenFadingDS.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingDissolveGlow.shader" />
-     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingDissolveGlowInd.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\materials\NewSurfaceShader.shader" />
-     <None Include="Assets\3DTOYS\readme.txt" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingTransparent.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-     <None Include="Assets\HQ_ResidentialHouse\Readme.txt" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\CGIncludes\standard_shadow_CS.cginc" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\SpacemaskTransparent.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-     <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingDissolve.shader" />
-     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-     <None Include="Assets\Brick Project Studio\Apartment Kit\Scenes\Message For You Please Read Me.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-     <None Include="Assets\Dice_6\Documentation\Readmy.txt" />
-     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+     <Compile Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\DummyShaderLibrary.cs" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\Validate.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Debug.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Sampling\SampleUVMappingInternal.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Random.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Refraction.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\UnityInstancing.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\SDF2D.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\EntityLighting.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Color.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Macros.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Sampling\Fibonacci.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\CommonLighting.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Sampling\SampleUVMapping.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\GLES3.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\CommonMaterial.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Filtering.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\Metal.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Sampling\Sampling.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\Vulkan.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\PhysicalCamera.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Common.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\ACES.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\GraniteShaderLibBase.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\SpaceFillingCurves.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Unity.RenderPipelines.Core.ShaderLibrary.asmdef" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\VolumeRendering.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Version.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\NormalSurfaceGradient.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\ParallaxMapping.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\SpaceTransforms.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\GLCore.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\BC6H.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\GLES2.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\CommonShadow.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\Switch.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\TextureStack.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Texture.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\UnityDOTSInstancing.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Sampling\SampleUVMappingNormalInternal.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\PerPixelDisplacement.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\AreaLighting.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Sampling\Hammersley.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\CommonDeprecated.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\API\D3D11.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Packing.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Tessellation.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\BSDF.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\ImageBasedLighting.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\GeometricTools.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\VirtualTexturing.hlsl" />
+     <None Include="Packages\com.unity.render-pipelines.core\ShaderLibrary\Shadow\ShadowSamplingTent.hlsl" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -417,6 +320,27 @@
  </Reference>
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.OSXStandalone.Extensions">
+ <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Plastic.Newtonsoft.Json">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Plastic.Antlr3.Runtime">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="log4netPlastic">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.render-pipelines.core@10.8.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+ </Reference>
+ <Reference Include="unityplastic">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.31f1/Unity/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -765,114 +689,14 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{C40BC5A6-2232-82AE-59A2-D2AC6B2C4207}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{B09274AF-E51D-D267-22E3-A444322BA8A0}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{7481BAE8-4F84-9BC9-BA6F-49CF1C517326}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{A213FE8E-2E11-4D88-6D4D-B9F0EE6BADF4}</Project>
-      <Name>Unity.Timeline</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{EF6719B5-0F5B-D5D8-9D29-A27450FBB9ED}</Project>
-      <Name>Unity.TextMeshPro</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Searcher.Editor.csproj">
-      <Project>{53DB8B48-E9F6-2A04-7418-B3982451A612}</Project>
-      <Name>Unity.Searcher.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
-      <Project>{2E3A4752-FC2C-2371-6463-1AE873E3E941}</Project>
-      <Name>Unity.RenderPipelines.Core.Runtime</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
-      <Project>{AF2E696E-0DA6-DBF6-9F0C-F6D537963B5F}</Project>
-      <Name>Unity.Postprocessing.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{BA882BF3-9BD4-C88A-FBE7-808DB557B086}</Project>
       <Name>UnityEditor.UI</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{614B8AA9-E939-4D78-C117-C6DFAD92DA66}</Project>
-      <Name>Unity.PlasticSCM.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{766C29A5-9421-C577-2922-0DE4C0264739}</Project>
-      <Name>Unity.Rider.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.csproj">
-      <Project>{0FE594A1-3C33-33BB-B79B-CAD05D8B8910}</Project>
-      <Name>Unity.RenderPipelines.Core.ShaderLibrary</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.ProGrids.Editor.csproj">
-      <Project>{B2464332-E052-76B4-A493-326574DCD0DF}</Project>
-      <Name>Unity.ProGrids.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{A4084740-6369-E49A-94A5-88F339AE1FC9}</Project>
       <Name>UnityEngine.UI</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
-      <Project>{AAE711CA-197C-62A3-FAAB-4754D667449C}</Project>
-      <Name>Unity.ShaderGraph.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Cinemachine.csproj">
-      <Project>{00EDBCF3-2759-DFE6-7B34-A146C58E2178}</Project>
-      <Name>Cinemachine</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
-      <Project>{7FE93098-C694-6333-BCFA-2E4AB6CAE982}</Project>
-      <Name>com.unity.cinemachine.editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
-      <Project>{8B867D12-BDE6-CD78-7787-DC6A784F93C7}</Project>
-      <Name>Unity.Postprocessing.Runtime</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
-      <Project>{3D274C85-8E18-C80B-FCEA-5F96CD05D99D}</Project>
-      <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{CAEC5897-50AF-3E3E-426E-B9BC7E62EE40}</Project>
-      <Name>Unity.Timeline.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.ProGrids.csproj">
-      <Project>{17133766-24B5-0290-069E-775661A2E2A7}</Project>
-      <Name>Unity.ProGrids</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj">
-      <Project>{C0C3079B-9F4E-F729-5562-716BA003FE4D}</Project>
-      <Name>Unity.RenderPipelines.Core.Editor</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

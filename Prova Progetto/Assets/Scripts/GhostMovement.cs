@@ -7,12 +7,15 @@ using TMPro;
 
 public class GhostMovement : MonoBehaviour
 {
-
+    // Il percorso che segue il fantasma
     private Vector3[] targets = new Vector3[6];
 
     private int reachedTarget = 0;
     
+    // Il player 
     [SerializeField] private Transform player;
+    
+    // Variabili per che servono per fare fluttuare il fantasma
     public float speed = 0.2f;
     public float obstacleRange = 5.0f;
     private bool _alive;
@@ -20,11 +23,14 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] private float degreesPerSecond = 15.0f;
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 0.5f;
+    
+    // Il fantasma e i vari testi che vengono disattivati e attivati a seconda delle esigenze 
     [SerializeField] public GameObject peppino;
     [SerializeField] private TMP_Text peppinoText;
     [SerializeField] private TMP_Text peppinoInteract; 
     [SerializeField] private TMP_Text labelMoves;
     [SerializeField] private TMP_Text labelTutorial;
+
 
     Vector3 posOffset = new Vector3 ();
     Vector3 tempPos = new Vector3 ();
@@ -48,6 +54,7 @@ public class GhostMovement : MonoBehaviour
         Float(); 
     }
 
+    // Serve per far fluttuare il fantasma
     private void Float(){
        
         tempPos = posOffset;
@@ -57,11 +64,14 @@ public class GhostMovement : MonoBehaviour
         transform.position = tempPos;
     }
 
+    // Inizio prima marachella
+    // e inizio tutorial
     public void PrimaMarachella(){
         peppinoText.text = "Trovami!!";
         startMarachella = true;
     }
 
+    
     private void move(){
 
         if (reachedTarget < 4){

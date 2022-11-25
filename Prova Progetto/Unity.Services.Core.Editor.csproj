@@ -72,8 +72,8 @@
      <Compile Include="Packages\com.unity.services.core\Editor\Core\AsyncOperation\AsyncOperationAwaiter.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\EditorGameService\EditorGameServiceFlagEnabler.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\UiHelpers\IProjectEditorDrawerFactory.cs" />
-     <Compile Include="Packages\com.unity.services.core\Editor\Core\AsyncOperation\AsyncOperationStatus.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\EditorGameService\IEditorGameServiceEnabler.cs" />
+     <Compile Include="Packages\com.unity.services.core\Editor\Core\AsyncOperation\AsyncOperationStatus.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\UiHelpers\VisualElementHelper.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\BackendHelpers\JsonHelper.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\ServiceActivationPopup\ServiceActivationPopupWindow.cs" />
@@ -89,9 +89,9 @@
      <Compile Include="Packages\com.unity.services.core\Editor\Core\ServiceActivationPopup\Visuals\LoggedOutVisual.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\ProjectStateManagement\ServiceFlags.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\UiHelpers\SliderToggleUiHelper.cs" />
-     <Compile Include="Packages\com.unity.services.core\Editor\Core\EditorGameService\DefaultCdnConfiguredEndpoint.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\EditorGameService\EditorGameServiceSettingsProvider.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\UiHelpers\AccessTokenErrorUiHelper.cs" />
+     <Compile Include="Packages\com.unity.services.core\Editor\Core\EditorGameService\DefaultCdnConfiguredEndpoint.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\EditorGameService\EditorGameServiceDashboardHelper.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\EditorGameService\IEditorGameServiceIdentifier.cs" />
      <Compile Include="Packages\com.unity.services.core\Editor\Core\AsyncOperation\IAsyncOperationAwaiter.cs" />
@@ -373,6 +373,9 @@
  </Reference>
  <Reference Include="log4netPlastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.NRefactory">
+ <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.render-pipelines.core@10.8.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
  <HintPath>/Users/eliocapalbo/IGPE/git/Play2Learn/Prova Progetto/Library/PackageCache/com.unity.collab-proxy@1.17.2/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
