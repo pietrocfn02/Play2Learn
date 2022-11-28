@@ -17,8 +17,15 @@ public class GameSettings : MonoBehaviour
     [SerializeField] public TMP_Text audioLevel;
     [SerializeField] public TMP_Text speedLevel;
     [SerializeField] public Button menuButton;
+    [SerializeField] public Button nextResolutionButton;
+    [SerializeField] public TMP_Text resolutionText;
     
+    private int [] heights = {1280, 1920,2048,3840};
+    private int [] widths = {800, 1080,1080,2160};
+    private int pos = 0;
+
     public void Start(){
+        resolutionText.text = "Risoluzione";
         startGame.gameObject.SetActive(true);
         settings.gameObject.SetActive(true);
         settingsPanel.SetActive(false);
@@ -45,8 +52,6 @@ public class GameSettings : MonoBehaviour
     public void ChangeSettings(){
         speedLevel.text = speedSlider.value.ToString();
         audioLevel.text = audioSlider.value.ToString();
-        //Debug.Log("#audio value:" + audioSlider.value + "#########");
-        //Debug.Log("#speed value:" + speedSlider.value + "#########");
     }
 
     public void menu(){
@@ -65,5 +70,28 @@ public class GameSettings : MonoBehaviour
             // disattivare tutorial
             Debug.Log("##### DISATTIVO #####");
         }
+    }
+
+
+    public void SetScreenSize(int size){
+        if (pos != widths.Length-1){
+            pos += size;
+        }else{
+            pos = 0;
+        }
+        
+        bool fullscreen = Screen.fullScreen;
+        int width = widths[pos];
+        int height = heights[pos];
+        //Debug.Log(height + "x" + width);
+        resolutionText.text = height + "x" + width;
+        Screen.SetResolution(width,height,fullscreen);
+    }
+
+    public void SetFullscreen(bool _fullScreen){
+        Screen.fullScreen = _fullScreen;
+    }
+    public void nextResolution(){
+        SetScreenSize(1);
     }
 }
