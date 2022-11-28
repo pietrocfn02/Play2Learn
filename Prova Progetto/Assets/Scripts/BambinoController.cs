@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-//to do something
+
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/BambinoController")]
 
 public class BambinoController : MonoBehaviour {
+
+    [SerializeField] private TMP_Text labelText;
+    [SerializeField] private GameObject textWindow;
 
     private int diavoletto_score = 0;
     private int angioletto_score = 0;
@@ -22,8 +25,6 @@ public class BambinoController : MonoBehaviour {
     void Update(){
         if (E){
             if (Input.GetKeyUp(KeyCode.E)){
-                Debug.Log("prima di premere"+this.tagInteraction);
-                Debug.Log("PREMO E");
                 if (tagInteraction == GameEvent.FANTASMINO_TAG){
                     Messenger.Broadcast(GameEvent.START_TUTORIAL);
                 }
@@ -32,6 +33,8 @@ public class BambinoController : MonoBehaviour {
                     RaccoltoOggetto(GameEvent.PASTELLI_INDEX);
                 }
                 else if (tagInteraction == GameEvent.TELECOMANDO_TAG){
+                    this.labelText.text = "Potresti far fare una nuotata al telecomando!";
+                    this.textWindow.SetActive(true);
                     RaccoltoOggetto(GameEvent.TELECOMANDO_INDEX);
                 }
                 else if (tagInteraction == GameEvent.BOOKS_TAG){
@@ -44,12 +47,10 @@ public class BambinoController : MonoBehaviour {
                     LasciaOggetto(GameEvent.PASTELLI_INDEX);
                 }
                 else if (tagInteraction == GameEvent.BRUCIA_TAG){
+                    this.labelText.text = "Hai qualcosa da bruciare?";
+                    this.textWindow.SetActive(true);
                     LasciaOggetto(GameEvent.BOOKS_INDEX);
-                }
-                else {
-                    Debug.Log("nell'else"+this.tagInteraction);
-                }
-                Debug.Log("dopo premere"+this.tagInteraction);  
+                }  
             }
         }
     }
@@ -68,7 +69,6 @@ public class BambinoController : MonoBehaviour {
         inventary[i-1] += 1;
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
-            Debug.Log(childText.GetType());
             Destroy(objectToDestroy.gameObject);
             objectToDestroy=null;
         }

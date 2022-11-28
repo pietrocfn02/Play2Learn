@@ -39,10 +39,6 @@ public class TriggersManager : MonoBehaviour
         //     Debug.Log("Entering in action range of camera : "+other.tag);
         //     BroadcastMessage("ActivateCamera", other.tag);
         // }
-        else
-        {
-            Debug.Log("TAG DIVERSO: "+other.tag);
-        }
     }
 
 

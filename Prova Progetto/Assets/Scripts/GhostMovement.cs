@@ -53,7 +53,7 @@ public class GhostMovement : MonoBehaviour
 
         targetsFrigo[0] = new Vector3(26.05f,1.7f,14.33f);
         targetsFrigo[1] = new Vector3(26.73f,1.7f,18.2f);
-        targetsFrigo[2] = new Vector3(29.3f,1.7f,20.5f);
+        targetsFrigo[2] = new Vector3(29.3f,1.7f,20.0f);
 
         _alive=true;
         posOffset = transform.position;
@@ -109,6 +109,7 @@ public class GhostMovement : MonoBehaviour
                 }
             }            
         } else if (startMarachella) {
+            labelTutorial.text="Hai raccolto i pastelli! Ce ne sono altri in giro per casa... Se non sai dove cercare cerca Me!";
             if(reachedSecondPastelli < targetsSecondPastelli.Length){
                 transform.LookAt(targetsSecondPastelli[reachedSecondPastelli]);
                 float distanceWithTarget = Vector3.Distance(targetsSecondPastelli[reachedSecondPastelli], this.gameObject.transform.position);
@@ -156,7 +157,7 @@ public class GhostMovement : MonoBehaviour
                 }
             } else if(reachedFrigo == targetsFrigo.Length){
                 transform.LookAt(player);
-                labelTutorial.text="Congratulazioni! Hai completato la tua prima marachella! Raccogli le Diavoletto Coins!";
+                labelTutorial.text="Congratulazioni! Hai completato la tua prima marachella! Raccogli le Diavoletto Coins! Ora continua senza di me";
             }
         } else { 
             float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
