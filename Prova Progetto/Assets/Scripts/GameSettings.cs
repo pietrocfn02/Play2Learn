@@ -19,14 +19,17 @@ public class GameSettings : MonoBehaviour
     [SerializeField] public Button menuButton;
     [SerializeField] public Button nextResolutionButton;
     [SerializeField] public TMP_Text resolutionText;
+    [SerializeField] public Button _exitGame;
     
     private int [] heights = {1280, 1920,2048,3840};
     private int [] widths = {800, 1080,1080,2160};
     private int pos = 0;
+    private bool gameIsPaused = false;
 
     public void Start(){
         resolutionText.text = "Risoluzione";
         startGame.gameObject.SetActive(true);
+        _exitGame.gameObject.SetActive(true);
         settings.gameObject.SetActive(true);
         settingsPanel.SetActive(false);
         menuButton.gameObject.SetActive(false);
@@ -44,6 +47,7 @@ public class GameSettings : MonoBehaviour
     public void GoSettings(){
         startGame.gameObject.SetActive(false);
         settings.gameObject.SetActive(false);
+        _exitGame.gameObject.SetActive(false);
         menuButton.gameObject.SetActive(true);
         settingsPanel.SetActive(true);
     }
@@ -54,9 +58,10 @@ public class GameSettings : MonoBehaviour
         audioLevel.text = audioSlider.value.ToString();
     }
 
-    public void menu(){
+    public void Menu(){
         startGame.gameObject.SetActive(true);
         settings.gameObject.SetActive(true);
+        _exitGame.gameObject.SetActive(true);
         settingsPanel.SetActive(false);
         menuButton.gameObject.SetActive(false);
     }
@@ -83,15 +88,50 @@ public class GameSettings : MonoBehaviour
         bool fullscreen = Screen.fullScreen;
         int width = widths[pos];
         int height = heights[pos];
-        //Debug.Log(height + "x" + width);
         resolutionText.text = height + "x" + width;
-        Screen.SetResolution(width,height,fullscreen);
+        Screen.SetResolution(height,width,fullscreen);
     }
 
+    public void ExitGame(){
+        Application.Quit();
+    }
+
+    public void SetAudio(){
+        // Manda un messaggio broadcast per settare l'audio del gioco
+        //potrebbe non servire mettendo un serialized field dell'audio
+    }
+
+    public void SetSpeed(){
+        // Manda un messaggio broadcast per settare la velocità del player
+    }
     public void SetFullscreen(bool _fullScreen){
         Screen.fullScreen = _fullScreen;
     }
-    public void nextResolution(){
+    public void NextResolution(){
         SetScreenSize(1);
+    }
+
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            if (gameIsPaused){
+                ResumeGame();
+            }else{
+                PauseGame();
+            }
+        }
+    }
+
+    public void PauseGame(){
+        settingsPanel.SetActive(true);
+        Time.timeScale = 0;
+        gameIsPaused = true;
+        Debug.Log("Stop");
+    }
+
+    public void ResumeGame(){
+        settingsPanel.SetActive(false);
+        Time.timeScale = 1;
+        gameIsPaused = false;
+        Debug.Log("Go");
     }
 }
