@@ -23,6 +23,8 @@ public class MammaMovement : MonoBehaviour
     public float obstacleRange = 5.0f;
     private bool _alive;   
 
+
+    private int respawns = 0;
     private int updates = 1;
 
     Vector3 posOffset = new Vector3 ();
@@ -35,13 +37,21 @@ public class MammaMovement : MonoBehaviour
     }
     void Update()
     {
-        if (updates % 1000 == 0) {
-            speed= speed + 0.2f;
+        if (updates % 100 == 0) {
+            speed= speed + (speed*0.1f);
         }
+        
         target = player.position;
         target.y = 2.0f;
-        move();
-        Float(); 
+        if (updates % 2500 == 2499) {
+            transform.position = new Vector3(Random.Range(8,16), 2.0f, Random.Range(4,24));
+            this.respawns ++;
+        }
+        else {
+            move();
+            Float(); 
+        }
+        
         updates++;
         Debug.Log(updates);
     }
@@ -53,11 +63,15 @@ public class MammaMovement : MonoBehaviour
         transform.LookAt(target);
         float distancewithTarget = Vector3.Distance(target, this.gameObject.transform.position);
         Debug.Log(distancewithTarget);
-        if (distancewithTarget < 0.33f) {
+        if (distancewithTarget < 0.35f) {
             Debug.Log("PRESA, STUPIDA BAMBINA!");
         }
+        
         else {
-            float distance = Vector3.Distance(player.transform.position,this.gameObject.transform.position);
+            if (distancewithTarget < 1.9f /*&& this.respawns > 2*/) {
+                Debug.Log("TURBOOOOO");
+                transform.Translate(0, 0, speed*Time.deltaTime*6);
+            }
             transform.Translate(0, 0, speed*Time.deltaTime);
         }     
         

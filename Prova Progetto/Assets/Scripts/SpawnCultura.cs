@@ -19,9 +19,9 @@ public class SpawnCultura : MonoBehaviour
     {
         Debug.Log("CULTURA: "+updates);
         Vector3 bimboPosition = bimbo.transform.position;
-        if (updates % 100 > 80 && updates % 100 < 99){
+        if (updates % 1000 == 927){
             GameObject x = Instantiate(prefab) as GameObject;
-            Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-1,bimboPosition.x+1), 1.7f, Random.Range(bimboPosition.z-1,bimboPosition.z+1));
+            Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-1,bimboPosition.x+1), 1.5f, Random.Range(bimboPosition.z-1,bimboPosition.z+1));
             x.transform.position = spawnPosition;
             Debug.Log("SPAWN AT :"+ spawnPosition.x + ' '+ spawnPosition.z);
         }

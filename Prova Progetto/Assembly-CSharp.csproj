@@ -49,7 +49,9 @@
   <ItemGroup>
      <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\RadialAnim.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\common\MyCanvasSetting.cs" />
+     <Compile Include="Assets\Scripts\CulturaOrbitante.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+     <Compile Include="Assets\Scripts\SpawnCultura.cs" />
      <Compile Include="Assets\Scripts\Messenger.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\PlayerMovement.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
@@ -74,6 +76,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\common\MaxCamera.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\AdvancedGizmo\Hover.cs" />
+     <Compile Include="Assets\Scripts\MammaMovement.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Drawer\Z Axis\Drawer_Pull_Z.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\First Person Player\SceneSwitchGen.cs" />
