@@ -8,9 +8,13 @@ using TMPro;
 public class GhostMovement : MonoBehaviour
 {
     // Il percorso che segue il fantasma
-    private Vector3[] targets = new Vector3[6];
+    private Vector3[] targetsFirstPastelli = new Vector3[4];
+    private Vector3[] targetsSecondPastelli = new Vector3[4];
+    private Vector3[] targetsFrigo = new Vector3 [3];
 
-    private int reachedTarget = 0;
+    private int reachedFirstPastelli = 0;
+    private int reachedSecondPastelli = 0;
+    private int reachedFrigo = 0;
     
     // Il player 
     [SerializeField] private Transform player;
@@ -25,9 +29,9 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] private float frequency = 0.5f;
     
     // Il fantasma e i vari testi che vengono disattivati e attivati a seconda delle esigenze 
-    [SerializeField] public GameObject peppino;
-    [SerializeField] private TMP_Text peppinoText;
-    [SerializeField] private TMP_Text peppinoInteract; 
+    [SerializeField] public GameObject ghostTextWindow;
+    [SerializeField] private TMP_Text ghostTextMessage;
+    [SerializeField] private TMP_Text ghostTextE; 
     [SerializeField] private TMP_Text labelMoves;
     [SerializeField] private TMP_Text labelTutorial;
 
@@ -37,16 +41,23 @@ public class GhostMovement : MonoBehaviour
     private bool startMarachella = false;
 
     void Start(){
-        targets[0] = new Vector3(25.6f,1.7f,15.8f);
-        targets[1] = new Vector3(23.63f,1.7f,14.76f);
-        targets[2] = new Vector3(20f,1.7f,14.33f);
-        targets[3] = new Vector3(23.05f,1.7f,10.34f);
-        targets[4] = new Vector3(28.85f, 1.7f, 11.5f);
-        targets[5] = new Vector3(29.3f,1.7f,20.5f);
+        targetsFirstPastelli[0] = new Vector3(25.6f,1.7f,15.8f);
+        targetsFirstPastelli[1] = new Vector3(23.63f,1.7f,14.76f);
+        targetsFirstPastelli[2] = new Vector3(20.0f,1.7f,14.33f);
+        targetsFirstPastelli[3] = new Vector3(23.05f,1.7f,10.34f);
+
+        targetsSecondPastelli[0] = new Vector3(22.6f, 1.7f, 14.0f);
+        targetsSecondPastelli[1] = new Vector3(24.95f, 1.7f, 15.47f);
+        targetsSecondPastelli[2] = new Vector3(25.67f, 1.7f, 10.7f);          
+        targetsSecondPastelli[3] = new Vector3(29.0f, 1.7f, 11.4f);
+
+        targetsFrigo[0] = new Vector3(26.05f,1.7f,14.33f);
+        targetsFrigo[1] = new Vector3(26.73f,1.7f,18.2f);
+        targetsFrigo[2] = new Vector3(29.3f,1.7f,20.5f);
 
         _alive=true;
         posOffset = transform.position;
-        peppinoInteract.text = "";
+        ghostTextE.text = "";
     }
     void Update()
     {
@@ -67,18 +78,19 @@ public class GhostMovement : MonoBehaviour
     // Inizio prima marachella
     // e inizio tutorial
     public void PrimaMarachella(){
-        peppinoText.text = "Trovami!!";
+        ghostTextMessage.text = "Trovami!";
+        ghostTextE.text="";
         startMarachella = true;
     }
 
     
     private void move(){
 
-        if (reachedTarget < 4){
-            transform.LookAt(targets[reachedTarget]);
-            float distancewithTarget = Vector3.Distance(targets[reachedTarget], this.gameObject.transform.position);
-            if (distancewithTarget < 0.05f) {
-                reachedTarget++;
+        if (reachedFirstPastelli < targetsFirstPastelli.Length){
+            transform.LookAt(targetsFirstPastelli[reachedFirstPastelli]);
+            float distanceWithTarget = Vector3.Distance(targetsFirstPastelli[reachedFirstPastelli], this.gameObject.transform.position);
+            if (distanceWithTarget < 0.05f) {
+                reachedFirstPastelli++;
             }
             else {
                 float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
@@ -89,59 +101,77 @@ public class GhostMovement : MonoBehaviour
 
                     Ray ray = new Ray(transform.position, transform.forward);
                     RaycastHit hit;
-                    peppino.SetActive(false);
+                    ghostTextWindow.SetActive(false);
                 }
                 else {
-                    peppino.SetActive(true);
+                    ghostTextWindow.SetActive(true);
                     transform.LookAt(player);
                 }
             }            
-        }
-        else if(startMarachella) {
-            peppinoInteract.text = "";
-            transform.LookAt(targets[4]);
-            float distancewithTarget = Vector3.Distance(targets[4], this.gameObject.transform.position);
-            if (distancewithTarget > 0.05f) {
-                float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
-                if(_alive && distance < 2)
-                {
-                    transform.Translate(0, 0, speed*Time.deltaTime);
-
-                    Ray ray = new Ray(transform.position, transform.forward);
-                    RaycastHit hit;
-                    peppino.SetActive(false);
+        } else if (startMarachella) {
+            if(reachedSecondPastelli < targetsSecondPastelli.Length){
+                transform.LookAt(targetsSecondPastelli[reachedSecondPastelli]);
+                float distanceWithTarget = Vector3.Distance(targetsSecondPastelli[reachedSecondPastelli], this.gameObject.transform.position);
+                if (distanceWithTarget < 0.05f) {
+                    reachedSecondPastelli++;
                 }
                 else {
-                    peppino.SetActive(true);
-                    transform.LookAt(player);
-                }
-            } else {
-                transform.LookAt(targets[5]);
-                distancewithTarget = Vector3.Distance(targets[5], this.gameObject.transform.position);
-                if (distancewithTarget > 0.05f) {
                     float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
                 
-                    transform.Translate(0, 0, speed*Time.deltaTime);
+                    if(_alive && distance < 1.7)
+                    {
+                        transform.Translate(0, 0, speed*Time.deltaTime);
 
-                    Ray ray = new Ray(transform.position, transform.forward);
-                    RaycastHit hit;
-                    peppino.SetActive(false);
+                        Ray ray = new Ray(transform.position, transform.forward);
+                        RaycastHit hit;
+                        ghostTextWindow.SetActive(false);
+                    }
+                    else {
+                        ghostTextWindow.SetActive(true);
+                        transform.LookAt(player);
+                    }
                 }
-            }     
+            } else if (reachedSecondPastelli == targetsSecondPastelli.Length && reachedFrigo < targetsFrigo.Length){
+                labelTutorial.text="Raccogli altri pastelli! Mettili al fresco in frigo!";
+                transform.LookAt(targetsFrigo[reachedFrigo]);
+                float distanceWithTarget = Vector3.Distance(targetsFrigo[reachedFrigo], this.gameObject.transform.position);
+                if (distanceWithTarget < 0.05f) {
+                    reachedFrigo++;
+                }
+                else {
+                    float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
+                
+                    if(_alive && distance < 1.5)
+                    {
+                        transform.Translate(0, 0, speed*Time.deltaTime);
+
+                        Ray ray = new Ray(transform.position, transform.forward);
+                        RaycastHit hit;
+                        ghostTextWindow.SetActive(false);
+                    }
+                    else {
+                        ghostTextWindow.SetActive(true);
+                        transform.LookAt(player);
+                    }
+                }
+            } else if(reachedFrigo == targetsFrigo.Length){
+                transform.LookAt(player);
+                labelTutorial.text="Congratulazioni! Hai completato la tua prima marachella! Raccogli le Diavoletto Coins!";
+            }
         } else { 
             float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
             transform.LookAt(player);
-            peppino.SetActive(true);
-            peppinoText.text = "Start tutorial";
+            ghostTextWindow.SetActive(true);
+            ghostTextMessage.text = "Start tutorial";
             if (distance < 1){
-                peppinoInteract.text = "E";
+                ghostTextE.text = "E";
                 if (labelTutorial.text.Contains("Usa i tasti per muoverti")){
                     labelTutorial.text="";
                 }
                 labelMoves.text="";
                  
             }else{
-                peppinoInteract.text = ""; 
+                ghostTextE.text = ""; 
             }
         }         
     }
@@ -149,9 +179,11 @@ public class GhostMovement : MonoBehaviour
     void Awake(){
         Messenger.AddListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella);
     }
+
     public void SetAlive(bool alive){
         _alive = alive;
     }
+
      void OnDestroy() {
         Messenger.RemoveListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella); 
     }

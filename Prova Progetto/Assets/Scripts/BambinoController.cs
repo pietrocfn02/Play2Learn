@@ -13,8 +13,8 @@ public class BambinoController : MonoBehaviour {
     private bool E = false;
     private CharacterController _charController;
     private string tagInteraction = "";
-
     private Collider objectToDestroy;
+    
     void Start(){
 
     }
@@ -22,20 +22,34 @@ public class BambinoController : MonoBehaviour {
     void Update(){
         if (E){
             if (Input.GetKeyUp(KeyCode.E)){
+                Debug.Log("prima di premere"+this.tagInteraction);
                 Debug.Log("PREMO E");
-                if (tagInteraction == "Fantasmino"){
+                if (tagInteraction == GameEvent.FANTASMINO_TAG){
                     Messenger.Broadcast(GameEvent.START_TUTORIAL);
                 }
-                else if (tagInteraction == "Pastelli"){
+                else if (tagInteraction == GameEvent.PASTELLI_TAG){
                     PrimaMarachella();
-                    RaccoltoOggetto(2);
+                    RaccoltoOggetto(GameEvent.PASTELLI_INDEX);
                 }
-                else if (tagInteraction == "Telecomando"){
-                    RaccoltoOggetto(1);
+                else if (tagInteraction == GameEvent.TELECOMANDO_TAG){
+                    RaccoltoOggetto(GameEvent.TELECOMANDO_INDEX);
                 }
-                else if (tagInteraction == "Books"){
-                    RaccoltoOggetto(3);
+                else if (tagInteraction == GameEvent.BOOKS_TAG){
+                    RaccoltoOggetto(GameEvent.BOOKS_INDEX);
+                }
+                else if (tagInteraction == GameEvent.WATER_TAG){
+                    LasciaOggetto(GameEvent.TELECOMANDO_INDEX);
                 } 
+                else if (tagInteraction == GameEvent.FRIGO_TAG){
+                    LasciaOggetto(GameEvent.PASTELLI_INDEX);
+                }
+                else if (tagInteraction == GameEvent.BRUCIA_TAG){
+                    LasciaOggetto(GameEvent.BOOKS_INDEX);
+                }
+                else {
+                    Debug.Log("nell'else"+this.tagInteraction);
+                }
+                Debug.Log("dopo premere"+this.tagInteraction);  
             }
         }
     }
@@ -56,13 +70,14 @@ public class BambinoController : MonoBehaviour {
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Debug.Log(childText.GetType());
             Destroy(objectToDestroy.gameObject);
+            objectToDestroy=null;
         }
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);       
     }
 
     public void LasciaOggetto(int i){
         if(inventary[i-1]>0)
-            inventary[i-1]--;
+            inventary[i-1]=0;
         Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
     }
 
@@ -96,7 +111,8 @@ public class BambinoController : MonoBehaviour {
         this.tagInteraction = "";
         Transform transform = objectRecived.transform;
         foreach(Transform t in transform){
-            t.gameObject.SetActive(false);
+            if(t.gameObject.name.Contains("Canvas"))
+                t.gameObject.SetActive(false);
         }
     }
 }

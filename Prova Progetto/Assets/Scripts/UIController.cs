@@ -51,7 +51,9 @@ public class UIController : MonoBehaviour
             else if(i==2)
                 libriCountText.text = text_counts[i].ToString();
         }
-        labelText.text="Hai raccolto i pastelli! Ce ne sono altri in giro per casa... Se non sai dove cercare cerca Me!";
+        if(bambinoController.getOggettoCount(GameEvent.PASTELLI_INDEX)==1){
+            labelText.text="Hai raccolto i pastelli! Ce ne sono altri in giro per casa... Se non sai dove cercare cerca Me!";
+        }
     }
 
     
