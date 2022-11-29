@@ -15,6 +15,7 @@ public class TriggersManager : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if(tagsList.Contains(other.tag))
         {
+            Debug.Log("CIAOOOOOO");
             BroadcastMessage("ActivateE",other);
         }
         else if (other.tag == "EvilCoin")
