@@ -5,7 +5,7 @@ using TMPro;
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/BambinoController")]
 
-public class BambinoController : MonoBehaviour {
+public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
     private int diavoletto_score = 0;
     private int angioletto_score = 0;
@@ -24,19 +24,9 @@ public class BambinoController : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.E)){
                 Debug.Log("PREMO E");
                 E = false;
-                if (tagInteraction == "Fantasmino"){
-                    Messenger.Broadcast(GameEvent.START_TUTORIAL);
-                }
-                else if (tagInteraction == "Pastelli"){
-                    PrimaMarachella();
+                if (tagInteraction == "Pastelli"){
                     RaccoltoOggetto(2);
                 }
-                else if (tagInteraction == "Telecomando"){
-                    RaccoltoOggetto(1);
-                }
-                else if (tagInteraction == "Books"){
-                    RaccoltoOggetto(3);
-                } 
             }
         }
     }
@@ -53,12 +43,16 @@ public class BambinoController : MonoBehaviour {
 
     public void RaccoltoOggetto(int i){
         inventary[i-1] += 1;
+        Debug.Log(objectToDestroy);
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Debug.Log(childText.GetType());
             Destroy(objectToDestroy.gameObject);
         }
-        Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);       
+        Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
+        if (inventary[i-1] >= 12)}{
+            
+        }     
     }
 
     public void LasciaOggetto(int i){
@@ -93,6 +87,7 @@ public class BambinoController : MonoBehaviour {
     }
 
     public void DeactivateE(Collider objectRecived){
+        
         this.E = false;
         this.tagInteraction = "";
         Transform transform = objectRecived.transform;
