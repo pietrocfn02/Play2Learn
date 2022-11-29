@@ -5846,6 +5846,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1428192103463151185, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
+      propertyPath: speedSlider
+      value: 
+      objectReference: {fileID: 414901516}
+    - target: {fileID: 1428192103463151185, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
       propertyPath: terminalVelocity
       value: -10
       objectReference: {fileID: 0}
@@ -21071,7 +21075,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624537559}
-  m_LocalRotation: {x: 0.022650208, y: 0.43859282, z: -0.011058512, w: 0.89833236}
+  m_LocalRotation: {x: 0.022646984, y: 0.4388548, z: -0.011065119, w: 0.8982044}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -67985,7 +67989,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974556008}
-  m_LocalRotation: {x: 0.022650206, y: 0.43859282, z: -0.011058513, w: 0.89833236}
+  m_LocalRotation: {x: 0.022646984, y: 0.4388548, z: -0.011065119, w: 0.89820445}
   m_LocalPosition: {x: 28.911827, y: 1.801, z: 16.656319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

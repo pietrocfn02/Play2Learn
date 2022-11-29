@@ -25,8 +25,9 @@ public class GameSettings : MonoBehaviour
     private int [] widths = {800, 1080,1080,2160};
     private int pos = 0;
     private bool gameIsPaused = false;
-    private int speedValue = 0;
-    private int audioValue = 0;
+    private static int speedValue;
+    private static int audioValue;
+    
     // Metodo che cambia scena 
     public void ChangeScene(){
         SceneManager.LoadScene("Diavoletto_Scene");
@@ -99,23 +100,28 @@ public class GameSettings : MonoBehaviour
     }
 
     void Update(){
-        if (speedLevel != null){
-            speedValue = (int) speedSlider.value;
-            speedLevel.text = speedValue.ToString();
-        }
-        if (audioLevel != null){
-            audioValue = (int) audioSlider.value;
-            audioLevel.text = audioValue.ToString();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            speedValue = (int) speedSlider.value;
-            audioValue = (int) audioSlider.value;
-            speedLevel.text = speedValue.ToString();
-            audioLevel.text = audioValue.ToString();
-            if (gameIsPaused){
-                ResumeGame();
-            }else{
-                PauseGame();
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene != "StartGame_Scene"){
+            if (speedLevel != null){
+                speedValue = (int) speedSlider.value;
+                speedLevel.text = speedValue.ToString();
+                Debug.Log("###### " + (int) speedSlider.value + " ######");
+                RelativeMovement.SetMovementSpeed(speedValue);
+            }
+            if (audioLevel != null){
+                audioValue = (int) audioSlider.value;
+                audioLevel.text = audioValue.ToString();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape)){
+                speedValue = (int) speedSlider.value;
+                audioValue = (int) audioSlider.value;
+                speedLevel.text = speedValue.ToString();
+                audioLevel.text = audioValue.ToString();
+                if (gameIsPaused){
+                    ResumeGame();
+                }else{
+                    PauseGame();
+                }
             }
         }
     }
