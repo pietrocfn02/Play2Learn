@@ -1,0 +1,54 @@
+{
+    "Domande" :[
+        {
+            "TestoDomanda": "Chi è più bello?",
+            "Risposte": [
+                "Pietro",
+                "Elio",
+                "Martina",
+                "Carmelo"
+            ],
+            "RispostaCorretta": 4
+        },
+        {
+            "TestoDomanda": "Chi prende il voto più alto all'esame?",
+            "Risposte": [
+                "Pietro",
+                "Elio",
+                "Martina",
+                "Carmelo"
+            ],
+            "RispostaCorretta": 4
+        },
+        {
+            "TestoDomanda": "Chi ha scritto questo JSON?",
+            "Risposte": [
+                "Pietro",
+                "Elio",
+                "Martina",
+                "Carmelo"
+            ],
+            "RispostaCorretta": 1
+        },
+        {
+            "TestoDomanda": "In che anno è stata scoperta l'America",
+            "Risposte": [
+                "1922",
+                "1789",
+                "1492",
+                "Carmelo"
+            ],
+            "RispostaCorretta": 3
+        },
+        {
+            "TestoDomanda": "Quanto fa 7 x 7",
+            "Risposte": [
+                "77",
+                "49",
+                "17",
+                "Carmelo"
+            ],
+            "RispostaCorretta": 2
+        }
+    ]
+}

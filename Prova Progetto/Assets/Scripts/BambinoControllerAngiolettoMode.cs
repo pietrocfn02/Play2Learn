@@ -24,6 +24,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.E)){
                 Debug.Log("PREMO E");
                 E = false;
+
                 if (tagInteraction == "Pastelli"){
                     RaccoltoOggetto(2);
                 }
@@ -44,6 +45,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     public void RaccoltoOggetto(int i){
         inventary[i-1] += 1;
         Debug.Log(objectToDestroy);
+
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Debug.Log(childText.GetType());
@@ -53,6 +55,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         if (inventary[i-1] >= 12)}{
             
         }     
+
     }
 
     public void LasciaOggetto(int i){
@@ -87,7 +90,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     public void DeactivateE(Collider objectRecived){
-        
+
         this.E = false;
         this.tagInteraction = "";
         Transform transform = objectRecived.transform;
