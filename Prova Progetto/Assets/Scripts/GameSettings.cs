@@ -25,18 +25,8 @@ public class GameSettings : MonoBehaviour
     private int [] widths = {800, 1080,1080,2160};
     private int pos = 0;
     private bool gameIsPaused = false;
-
-    public void Start(){
-        resolutionText.text = "Risoluzione";
-        startGame.gameObject.SetActive(true);
-        _exitGame.gameObject.SetActive(true);
-        settings.gameObject.SetActive(true);
-        settingsPanel.SetActive(false);
-        menuButton.gameObject.SetActive(false);
-        speedLevel.text = speedSlider.value.ToString();
-        audioLevel.text = audioSlider.value.ToString();
-    }
-
+    private int speedValue = 0;
+    private int audioValue = 0;
     // Metodo che cambia scena 
     public void ChangeScene(){
         SceneManager.LoadScene("Diavoletto_Scene");
@@ -50,17 +40,13 @@ public class GameSettings : MonoBehaviour
         _exitGame.gameObject.SetActive(false);
         menuButton.gameObject.SetActive(true);
         settingsPanel.SetActive(true);
+        
     }
-
-    // Modifica le impostazioni del gioco
-    public void ChangeSettings(){
-        speedLevel.text = speedSlider.value.ToString();
-        audioLevel.text = audioSlider.value.ToString();
-    }
-
     public void Menu(){
-        startGame.gameObject.SetActive(true);
-        settings.gameObject.SetActive(true);
+        if(startGame != null && settings != null){
+            startGame.gameObject.SetActive(true);
+            settings.gameObject.SetActive(true);
+        }
         _exitGame.gameObject.SetActive(true);
         settingsPanel.SetActive(false);
         menuButton.gameObject.SetActive(false);
@@ -90,6 +76,7 @@ public class GameSettings : MonoBehaviour
         int height = heights[pos];
         resolutionText.text = height + "x" + width;
         Screen.SetResolution(height,width,fullscreen);
+        Debug.Log(height + "x" + width);
     }
 
     public void ExitGame(){
@@ -112,7 +99,19 @@ public class GameSettings : MonoBehaviour
     }
 
     void Update(){
+        if (speedLevel != null){
+            speedValue = (int) speedSlider.value;
+            speedLevel.text = speedValue.ToString();
+        }
+        if (audioLevel != null){
+            audioValue = (int) audioSlider.value;
+            audioLevel.text = audioValue.ToString();
+        }
         if (Input.GetKeyDown(KeyCode.Escape)){
+            speedValue = (int) speedSlider.value;
+            audioValue = (int) audioSlider.value;
+            speedLevel.text = speedValue.ToString();
+            audioLevel.text = audioValue.ToString();
             if (gameIsPaused){
                 ResumeGame();
             }else{
@@ -120,7 +119,7 @@ public class GameSettings : MonoBehaviour
             }
         }
     }
-
+    
     public void PauseGame(){
         settingsPanel.SetActive(true);
         Time.timeScale = 0;
