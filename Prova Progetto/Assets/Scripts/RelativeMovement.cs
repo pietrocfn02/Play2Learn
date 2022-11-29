@@ -5,27 +5,24 @@ using UnityEngine;
 public class RelativeMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    public float rotSpeed = 15.0f;
-    public float moveSpeed = 1.0f;
+    private static float rotSpeed = 15.0f;
+    private static int moveSpeed;
 
 
-    public float jumpSpeed = 6f;
-    public float gravity = -9.8f;
-    public float terminalVelocity = -10.0f;
-    public float minFall = -1.2f;
+    private float jumpSpeed = 6f;
+    private float gravity = -9.8f;
+    private float terminalVelocity = -10.0f;
+    private float minFall = -1.2f;
     private float _vertSpeed;
     private ControllerColliderHit _contact;
 
     private Animator _animator;
-
-
     private CharacterController _charController;
-    // Start is called before the first frame update
+    
     void Start()
     {
         _charController = GetComponent<CharacterController>();
         _vertSpeed = minFall;
-
         _animator = GetComponent<Animator>();
 
     }
@@ -70,8 +67,6 @@ public class RelativeMovement : MonoBehaviour
             } else {
                 _vertSpeed = minFall;
                 _animator.SetBool("jump", false);
-                
-                
             }
         } else {
             _vertSpeed += gravity * 5 * Time.deltaTime;
@@ -79,8 +74,6 @@ public class RelativeMovement : MonoBehaviour
                         _vertSpeed = terminalVelocity;
             }
             _animator.SetBool("jump", true);
-
-
             if (_charController.isGrounded) {
                 if (Vector3.Dot(movement, _contact.normal) < 0.001f) {
                     movement = _contact.normal * moveSpeed;
@@ -89,18 +82,14 @@ public class RelativeMovement : MonoBehaviour
                     movement += _contact.normal * moveSpeed;
                     
                 }
-        }
-
-        
-    }    
+            }
+        }    
         movement.y = _vertSpeed;
         movement *= Time.deltaTime;
         _charController.Move(movement);
-
-
+    }
     
-
-
-
-    } //Update
+    public static void SetMovementSpeed(int speed){
+        moveSpeed = speed;
+    }
 }

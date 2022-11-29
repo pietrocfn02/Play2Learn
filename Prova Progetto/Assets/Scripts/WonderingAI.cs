@@ -24,7 +24,7 @@ public class WonderingAI : MonoBehaviour
             transform.Translate(0, 0, speed*Time.deltaTime);
 
             Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
+            //RaycastHit hit;
            
         }
     }
