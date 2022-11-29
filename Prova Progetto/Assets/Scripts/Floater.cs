@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Floater : MonoBehaviour
 {
-    [SerializeField] private float degreesPerSecond = 15.0f;
+    //[SerializeField] private float degreesPerSecond = 15.0f;
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 0.5f;
 

@@ -77,7 +77,6 @@ public class GameSettings : MonoBehaviour
         int height = heights[pos];
         resolutionText.text = height + "x" + width;
         Screen.SetResolution(height,width,fullscreen);
-        Debug.Log(height + "x" + width);
     }
 
     public void ExitGame(){
@@ -105,7 +104,6 @@ public class GameSettings : MonoBehaviour
             if (speedLevel != null){
                 speedValue = (int) speedSlider.value;
                 speedLevel.text = speedValue.ToString();
-                Debug.Log("###### " + (int) speedSlider.value + " ######");
                 RelativeMovement.SetMovementSpeed(speedValue);
             }
             if (audioLevel != null){
@@ -123,6 +121,16 @@ public class GameSettings : MonoBehaviour
                     PauseGame();
                 }
             }
+        }else{
+            if (speedLevel != null){
+                speedValue = (int) speedSlider.value;
+                speedLevel.text = speedValue.ToString();
+                RelativeMovement.SetMovementSpeed(speedValue);
+            }
+            if (audioLevel != null){
+                audioValue = (int) audioSlider.value;
+                audioLevel.text = audioValue.ToString();
+            }
         }
     }
     
@@ -130,13 +138,11 @@ public class GameSettings : MonoBehaviour
         settingsPanel.SetActive(true);
         Time.timeScale = 0;
         gameIsPaused = true;
-        Debug.Log("Stop");
     }
 
     public void ResumeGame(){
         settingsPanel.SetActive(false);
         Time.timeScale = 1;
         gameIsPaused = false;
-        Debug.Log("Go");
     }
 }
