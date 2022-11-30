@@ -11,4 +11,14 @@ public static class GameEvent {
 	public const string TELECOMANDO_TAG = "Telecomando";
 	public const string PASTELLI_TAG = "Pastelli";
 	public const string BOOKS_TAG = "Books";
+	public const string WATER_TAG = "Water";
+	public const string BRUCIA_TAG = "Brucia";
+	public const string FRIGO_TAG = "Frigo";
+
+	public const int TELECOMANDO_INDEX = 1;
+	public const int PASTELLI_INDEX = 2;
+	public const int BOOKS_INDEX = 3;
+
+	public const string EVIL_COIN_TAG = "EvilCoin";
+	public const string GOOD_COIN_TAG = "GoodCoin";
 }
