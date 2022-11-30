@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] BambinoController bambinoController;
+    [SerializeField] BambinoControllerAngiolettoMode bambinoController;
     //[SerializeField] private Text angiolettoScoreText;
     [SerializeField] private TMP_Text diavolettoScoreText;
     //TODO: lista di countText (inventario fisso)
@@ -41,6 +41,7 @@ public class UIController : MonoBehaviour
     }
 
     private void updateInventary(){
+
         for(int i=0; i<text_counts.Count; i++)
         {
             text_counts[i] = bambinoController.getOggettoCount(i);

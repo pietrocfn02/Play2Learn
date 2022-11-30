@@ -23,6 +23,7 @@ public class BambinoController : MonoBehaviour {
         if (E){
             if (Input.GetKeyUp(KeyCode.E)){
                 Debug.Log("PREMO E");
+                E = false;
                 if (tagInteraction == "Fantasmino"){
                     Messenger.Broadcast(GameEvent.START_TUTORIAL);
                 }
