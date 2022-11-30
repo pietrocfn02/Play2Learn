@@ -28,6 +28,14 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                 if (tagInteraction == "Pastelli"){
                     RaccoltoOggetto(2);
                 }
+                if (tagInteraction == "Contenitore"){
+                    if (inventary[1] >= 12){
+                        Debug.Log(inventary[1]);
+                        LasciaOggetto(2);
+                        MissionComplete();
+                    }
+                }
+                
             }
         }
     }
@@ -44,23 +52,19 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
     public void RaccoltoOggetto(int i){
         inventary[i-1] += 1;
-        Debug.Log(objectToDestroy);
-
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Debug.Log(childText.GetType());
             Destroy(objectToDestroy.gameObject);
         }
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
-        if (inventary[i-1] >= 12)}{
-            
-        }     
 
     }
 
     public void LasciaOggetto(int i){
-        if(inventary[i-1]>0)
-            inventary[i-1]--;
+        if(inventary[i-1]>0){
+            inventary[i-1]=0;
+        }
         Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
     }
 
@@ -85,10 +89,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             t.gameObject.SetActive(true);
         }
     }
-    public void PrimaMarachella(){
-        Messenger.Broadcast(GameEvent.PRIMA_MARACHELLA);
-    }
-
     public void DeactivateE(Collider objectRecived){
 
         this.E = false;
@@ -97,5 +97,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         foreach(Transform t in transform){
             t.gameObject.SetActive(false);
         }
+    }
+
+    public void MissionComplete(){
+        Messenger.Broadcast(GameEvent.MISSIONE_PASTELLI);
     }
 }

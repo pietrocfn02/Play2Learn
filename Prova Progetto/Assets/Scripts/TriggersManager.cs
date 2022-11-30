@@ -15,7 +15,6 @@ public class TriggersManager : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if(tagsList.Contains(other.tag))
         {
-            Debug.Log("CIAOOOOOO");
             BroadcastMessage("ActivateE",other);
         }
         else if (other.tag == "EvilCoin")
@@ -44,11 +43,14 @@ public class TriggersManager : MonoBehaviour
         {
             BroadcastMessage("LasciaOggetto", 2);
         }
-        else if (other.tag !=null && other.tag.Contains("Camera_")) 
+        else if (other.tag == "Contenitore") 
         { 
-            Debug.Log("Entering in action range of camera : "+other.tag);
-            BroadcastMessage("ActivateCamera", other.tag);
+            BroadcastMessage("ActivateE",other);
         }
+        //else if (other.tag == "Telecomando"){
+        //    Debug.Log("#####" + other.tag + "#####");
+        //    BroadcastMessage("ActivateE",other);
+        //}
         else
         {
             Debug.Log("OGGETTO TAG DIVERSO");
