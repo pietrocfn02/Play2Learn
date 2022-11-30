@@ -19,12 +19,11 @@ public class GhostMovement : MonoBehaviour
     // Il player 
     [SerializeField] private Transform player;
     
-    // Variabili per che servono per fare fluttuare il fantasma
+    // Variabili utilizzate per fare fluttuare il fantasma
     public float speed = 0.2f;
     public float obstacleRange = 5.0f;
     private bool _alive;
     [SerializeField] private GameObject bimbo;
-    [SerializeField] private float degreesPerSecond = 15.0f;
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 0.5f;
     
@@ -103,6 +102,7 @@ public class GhostMovement : MonoBehaviour
                     Ray ray = new Ray(transform.position, transform.forward);
                     RaycastHit hit;
                     ghostTextWindow.SetActive(false);
+
                 }
                 else {
                     ghostTextWindow.SetActive(true);

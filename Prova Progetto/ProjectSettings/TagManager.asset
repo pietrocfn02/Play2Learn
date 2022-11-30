@@ -35,6 +35,7 @@ TagManager:
   - Casa
   - Fantasmino
   - labelE
+  - Contenitore
   layers:
   - Default
   - TransparentFX
