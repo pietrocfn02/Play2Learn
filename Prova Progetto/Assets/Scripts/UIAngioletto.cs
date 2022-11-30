@@ -44,7 +44,7 @@ public class UIAngioletto : MonoBehaviour
     
     private void completePastelli(){
         countText.text = "0";
-        labelText.text = "BUONA AZIONE COMPLETATA! BENE ORA PASSA ALLA PROSSIMA!";
+        labelText.text = "BRAVO HAI FINITO DI RIORDINARE LA STANZA, ORA PASSA ALLA PROSSIMA BUONA AZIONE!";
         inventaryImage.sprite = remoteImage;
         labelMission.text = "Raccogli un telecomando e spegni le TV.";
     }
@@ -64,8 +64,6 @@ public class UIAngioletto : MonoBehaviour
             imageText.SetActive(true);
         }
     }
-
-
     void OnDestroy() {
         Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
         Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
