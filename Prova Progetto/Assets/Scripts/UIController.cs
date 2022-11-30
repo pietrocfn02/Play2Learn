@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
     }
 
     private void startTutorial(){
-        labelText.text="Ciao! Mi chiamo Carmelo! Sono il tuo spirito guida. Per iniziare raccogli i pastelli sul letto!";
+        labelText.text = UIMessages.START_TUTORIAL_MESSAGE;
     }
 
     private void updateInventary(){

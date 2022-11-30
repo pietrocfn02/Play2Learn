@@ -34,6 +34,7 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] private TMP_Text ghostTextE; 
     [SerializeField] private TMP_Text labelMoves;
     [SerializeField] private TMP_Text labelTutorial;
+    [SerializeField] public GameObject spaceBarLabel;
 
 
     Vector3 posOffset = new Vector3 ();
@@ -57,7 +58,7 @@ public class GhostMovement : MonoBehaviour
 
         _alive=true;
         posOffset = transform.position;
-        ghostTextE.text = "";
+        ghostTextE.text = UIMessages.EMPTY_MESSAGE;
     }
     void Update()
     {
@@ -78,8 +79,8 @@ public class GhostMovement : MonoBehaviour
     // Inizio prima marachella
     // e inizio tutorial
     public void PrimaMarachella(){
-        ghostTextMessage.text = "Trovami!";
-        ghostTextE.text="";
+        ghostTextMessage.text = UIMessages.FIND_ME_LABEL;
+        ghostTextE.text = UIMessages.EMPTY_MESSAGE;
         startMarachella = true;
     }
 
@@ -109,7 +110,7 @@ public class GhostMovement : MonoBehaviour
                 }
             }            
         } else if (startMarachella) {
-            labelTutorial.text="Hai raccolto i pastelli! Ce ne sono altri in giro per casa... Se non sai dove cercare cerca Me!";
+            labelTutorial.text = UIMessages.RACCOGLI_PASTELLI;
             if(reachedSecondPastelli < targetsSecondPastelli.Length){
                 transform.LookAt(targetsSecondPastelli[reachedSecondPastelli]);
                 float distanceWithTarget = Vector3.Distance(targetsSecondPastelli[reachedSecondPastelli], this.gameObject.transform.position);
@@ -133,7 +134,7 @@ public class GhostMovement : MonoBehaviour
                     }
                 }
             } else if (reachedSecondPastelli == targetsSecondPastelli.Length && reachedFrigo < targetsFrigo.Length){
-                labelTutorial.text="Raccogli altri pastelli! Mettili al fresco in frigo!";
+                labelTutorial.text = UIMessages.FRIGO_MESSAGE;
                 transform.LookAt(targetsFrigo[reachedFrigo]);
                 float distanceWithTarget = Vector3.Distance(targetsFrigo[reachedFrigo], this.gameObject.transform.position);
                 if (distanceWithTarget < 0.05f) {
@@ -157,22 +158,22 @@ public class GhostMovement : MonoBehaviour
                 }
             } else if(reachedFrigo == targetsFrigo.Length){
                 transform.LookAt(player);
-                labelTutorial.text="Congratulazioni! Hai completato la tua prima marachella! Raccogli le Diavoletto Coins! Ora continua senza di me";
+                labelTutorial.text = UIMessages.EMPTY_MESSAGE;
             }
         } else { 
             float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
             transform.LookAt(player);
             ghostTextWindow.SetActive(true);
-            ghostTextMessage.text = "Start tutorial";
+            ghostTextMessage.text = UIMessages.START_TUTORIAL_LABEL;
             if (distance < 1){
-                ghostTextE.text = "E";
-                if (labelTutorial.text.Contains("Usa i tasti per muoverti")){
-                    labelTutorial.text="";
+                ghostTextE.text = UIMessages.E_MESSAGE;
+                if (labelTutorial.text.Contains(UIMessages.START_MESSAGE)){
+                    labelTutorial.text = UIMessages.EMPTY_MESSAGE;
                 }
-                labelMoves.text="";
-                 
+                labelMoves.text = UIMessages.EMPTY_MESSAGE;
+                spaceBarLabel.SetActive(false);                 
             }else{
-                ghostTextE.text = ""; 
+                ghostTextE.text = UIMessages.EMPTY_MESSAGE; 
             }
         }         
     }

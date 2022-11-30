@@ -24,6 +24,7 @@ public class BambinoController : MonoBehaviour {
 
     void Update(){
         if (E){
+            //this.E=false;
             if (Input.GetKeyUp(KeyCode.E)){
                 if (tagInteraction == GameEvent.FANTASMINO_TAG){
                     Messenger.Broadcast(GameEvent.START_TUTORIAL);
@@ -33,8 +34,6 @@ public class BambinoController : MonoBehaviour {
                     RaccoltoOggetto(GameEvent.PASTELLI_INDEX);
                 }
                 else if (tagInteraction == GameEvent.TELECOMANDO_TAG){
-                    this.labelText.text = "Potresti far fare una nuotata al telecomando!";
-                    this.textWindow.SetActive(true);
                     RaccoltoOggetto(GameEvent.TELECOMANDO_INDEX);
                 }
                 else if (tagInteraction == GameEvent.BOOKS_TAG){
@@ -44,11 +43,11 @@ public class BambinoController : MonoBehaviour {
                     LasciaOggetto(GameEvent.TELECOMANDO_INDEX);
                 } 
                 else if (tagInteraction == GameEvent.FRIGO_TAG){
+                    labelText.text = UIMessages.FINE_PRIMA_MARACHELLA;
+                    labelText.gameObject.SetActive(true);
                     LasciaOggetto(GameEvent.PASTELLI_INDEX);
                 }
                 else if (tagInteraction == GameEvent.BRUCIA_TAG){
-                    this.labelText.text = "Hai qualcosa da bruciare?";
-                    this.textWindow.SetActive(true);
                     LasciaOggetto(GameEvent.BOOKS_INDEX);
                 }  
             }
@@ -108,7 +107,7 @@ public class BambinoController : MonoBehaviour {
 
     public void DeactivateE(Collider objectRecived){
         this.E = false;
-        this.tagInteraction = "";
+        this.tagInteraction = UIMessages.EMPTY_MESSAGE;
         Transform transform = objectRecived.transform;
         foreach(Transform t in transform){
             if(t.gameObject.name.Contains("Canvas"))
