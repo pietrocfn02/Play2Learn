@@ -56,6 +56,7 @@ public class TriggersManager : MonoBehaviour
             Debug.Log("OGGETTO TAG DIVERSO");
         }
     }
+    
 
 
     void OnTriggerExit(Collider other) {
