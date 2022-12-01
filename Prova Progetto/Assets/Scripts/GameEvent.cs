@@ -15,6 +15,8 @@ public static class GameEvent {
 	public const string BRUCIA_TAG = "Brucia";
 	public const string FRIGO_TAG = "Frigo";
 
+	public const string CONTENITORE_TAG = "Contenitore";
+
 	public const int TELECOMANDO_INDEX = 1;
 	public const int PASTELLI_INDEX = 2;
 	public const int BOOKS_INDEX = 3;

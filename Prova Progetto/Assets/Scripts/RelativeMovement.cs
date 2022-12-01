@@ -6,7 +6,7 @@ public class RelativeMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
     private static float rotSpeed = 15.0f;
-    private static int moveSpeed;
+    private static int moveSpeed = 1;
 
 
     private float jumpSpeed = 6f;
