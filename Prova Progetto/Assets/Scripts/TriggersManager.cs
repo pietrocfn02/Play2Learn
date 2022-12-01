@@ -11,7 +11,8 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.BOOKS_TAG,
                                         GameEvent.WATER_TAG,
                                         GameEvent.BRUCIA_TAG,
-                                        GameEvent.FRIGO_TAG
+                                        GameEvent.FRIGO_TAG,
+                                        GameEvent.CONTENITORE_TAG
                                         };
     
 
