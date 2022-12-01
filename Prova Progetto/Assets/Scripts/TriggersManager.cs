@@ -42,6 +42,7 @@ public class TriggersManager : MonoBehaviour
         // }
         
     }
+    
 
 
     void OnTriggerExit(Collider other) {
