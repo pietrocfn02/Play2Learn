@@ -6,7 +6,7 @@ public class RelativeMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
     private static float rotSpeed = 15.0f;
-    private static int moveSpeed;
+    private static int moveSpeed = 1;
 
 
     private float jumpSpeed = 6f;
@@ -75,7 +75,7 @@ public class RelativeMovement : MonoBehaviour
             }
             _animator.SetBool("jump", true);
             if (_charController.isGrounded) {
-                if (Vector3.Dot(movement, _contact.normal) < 0.001f) {
+                if (Vector3.Dot(movement, _contact.normal) < 0.01f) {
                     movement = _contact.normal * moveSpeed;
                     
                 } else {

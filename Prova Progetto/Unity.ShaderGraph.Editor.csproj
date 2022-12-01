@@ -75,10 +75,10 @@
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\UV\TilingAndOffsetNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Inspector\PropertyDrawers\AbstractMaterialNodePropertyDrawer.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Graphs\NormalMaterialSlot.cs" />
-     <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Graphs\LightmappingShaderProperties.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Math\Matrix\MatrixDeterminantNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Views\ResizableElement.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Legacy\Edge0.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Graphs\LightmappingShaderProperties.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\UV\ParallaxMappingNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\ShaderGraphAnalytics.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Inspector\WindowDockingLayout.cs" />

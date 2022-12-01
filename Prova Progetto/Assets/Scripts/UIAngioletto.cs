@@ -10,12 +10,18 @@ public class UIAngioletto : MonoBehaviour
     [SerializeField] private TMP_Text angiolettoScoreText;
     
     
-    [SerializeField] private TMP_Text pastelliCountText;
+    [SerializeField] private TMP_Text countText; // testo inventario
     [SerializeField] private TMP_Text labelText;
     [SerializeField] private GameObject imageText;
+    [SerializeField] private TMP_Text labelMission; // testo missione
+    [SerializeField] private Image inventaryImage; // immagine inventario
+    [SerializeField] private Sprite remoteImage; // immagine telecomando
+    
+    
 
     int angioletto_score;
     int count = 0;
+
     void Start()
     {
     }
@@ -25,15 +31,22 @@ public class UIAngioletto : MonoBehaviour
         Messenger.AddListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore);
         Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary);
         Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary);
-        
+        Messenger.AddListener(GameEvent.MISSIONE_PASTELLI, completePastelli);
     }
     
     private void updateInventary(){
         count++;
-        pastelliCountText.text = count.ToString();
+        countText.text = count.ToString();
         if(count == 12){
             labelText.text="Hai raccolto tutti i pastelli! Ora rimettili a posto nel cestino in mezzo alla stanza!";
         }
+    }
+    
+    private void completePastelli(){
+        countText.text = "0";
+        labelText.text = "BRAVO HAI FINITO DI RIORDINARE LA STANZA, ORA PASSA ALLA PROSSIMA BUONA AZIONE!";
+        inventaryImage.sprite = remoteImage;
+        labelMission.text = "Raccogli un telecomando e spegni le TV.";
     }
     
     private void updateAngiolettoScore() {
@@ -51,11 +64,10 @@ public class UIAngioletto : MonoBehaviour
             imageText.SetActive(true);
         }
     }
-
-
     void OnDestroy() {
         Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
         Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
         Messenger.RemoveListener(GameEvent.LANCIA_OGGETTO, updateInventary );
+        Messenger.RemoveListener(GameEvent.MISSIONE_PASTELLI, completePastelli);
     }
 }
