@@ -51,30 +51,42 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                         MissionComplete(GameEvent.MISSIONE_PASTELLI);
                         Destroy(ghost);
                     }
-                    StartCoroutine(corutine());   
+                    StartCoroutine(corutine());
                 }else if (tagInteraction == "Telecomando"){
                     RaccoltoOggetto(1);
                 }else if (tagInteraction.Contains("TV_")){
                     if (inventary[0] >= 1){
                         TurnOffTV(tagInteraction);
                         if (count >= 4){
-                            count = 0;
                             spawnCoin(count);
+                            count = 0;
                             MissionComplete(GameEvent.MISSIONE_TELEVISIONI);
                         }
                     }
-                }else if (tagInteraction == "Books"){
+                    StartCoroutine(corutine());
+                }else if (tagInteraction == "Books" && inventary[0] >= 1){
                     RaccoltoOggetto(3);
                 }else if (tagInteraction == "Tavolo"){
-                    Debug.Log("### tag:" + tagInteraction);
+                    forgetSomething();
                     if (inventary[2] >= 1){
                         doHomework();
+                        // fine compiti 
+                        // spawnCoin(4); 
+                        // MissionComplete(GameEvent.MISSIONE_COMPITI);
+                    }else{
+                        forgetSomething();
                     }
+                    //StartCoroutine(corutine());
+                }else if (tagInteraction == "Books" && inventary[0] < 1){
+                    forgetSomething();
                 }
             }
         }
     }
 
+    public void forgetSomething(){
+        Messenger.Broadcast(GameEvent.FORGET);
+    }
     public void doHomework(){
         Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
     }

@@ -65,8 +65,8 @@ public class UIAngioletto : MonoBehaviour
         imageText.SetActive(false);
         count = 0;
     }
-    IEnumerator closeMessage(){
-        labelText.text = "TU...DA QUI...NON PUOI...PASSARE!";
+    IEnumerator closeMessage(string s){
+        labelText.text = s;
         imageText.SetActive(true);
         yield return new WaitForSecondsRealtime(2);
         imageText.SetActive(false);
@@ -81,15 +81,25 @@ public class UIAngioletto : MonoBehaviour
         Messenger.AddListener(GameEvent.MISSIONE_TELEVISIONI, completeTelevisioni);
         Messenger.AddListener(GameEvent.MISSIONE_COMPITI, doHomework);
         Messenger.AddListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
+        Messenger.AddListener(GameEvent.FORGET, forgetText);
+        //Messenger.AddListener(GameEvent.MISSIONE_COMPITI,end);
     }
 
     // attiva il canvas dei compiti e disattiva gli altri 
+    /*
+    public void end(){
+        passa alla scena dei conti monetine
+    }
+    */
+    public void forgetText(){
+        StartCoroutine(closeMessage("NON STARAI DIMENTICANDO QUALCOSA??"));
+    }
     public void doHomework(){
         homeworkImage.SetActive(true);
     }    
 
     public void youShallNotPass(){
-        StartCoroutine(closeMessage());
+        StartCoroutine(closeMessage("TU...DA QUI...NON PUOI...PASSARE!"));
 
     }
     public void completeTelevisioni(){
@@ -123,5 +133,7 @@ public class UIAngioletto : MonoBehaviour
         Messenger.RemoveListener(GameEvent.MISSIONE_TELEVISIONI, completeTelevisioni);
         Messenger.RemoveListener(GameEvent.MISSIONE_COMPITI, doHomework);
         Messenger.RemoveListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
+        Messenger.RemoveListener(GameEvent.FORGET, forgetText);
+        //Messenger.RemoveListener(GameEvent.MISSIONE_COMPITI,end);
     }
 }

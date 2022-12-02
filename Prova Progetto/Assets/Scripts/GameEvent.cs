@@ -12,6 +12,8 @@ public static class GameEvent {
 	public const string MISSIONE_TELEVISIONI = "MISSIONE_TELEVISIONI";
 	public const string MISSIONE_COMPITI = "MISSIONE_COMPITI";
 	public const string FANTASMINO_EVENTO = "FANTASMINO_EVENTO";
+	public const string FORGET = "FORGET";
+
 	
 	// TAGS
 	public const string FANTASMINO_CATTIVO_TAG = "Fantasmino_Cattivo";
