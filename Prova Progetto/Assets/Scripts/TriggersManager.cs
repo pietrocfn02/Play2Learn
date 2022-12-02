@@ -38,6 +38,10 @@ public class TriggersManager : MonoBehaviour
         }else if (other.tag == GameEvent.FANTASMINO_CATTIVO_TAG){
             Messenger.Broadcast(GameEvent.FANTASMINO_EVENTO);
         }
+        else if (other.tag == GameEvent.TABLE_TAG) {
+            // Fermo il tempo per evitare che la bambina scappi mentre fa i compiti :)
+            Time.timeScale = 0;
+        }
     }
     
 
