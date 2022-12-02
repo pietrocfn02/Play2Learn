@@ -4,7 +4,13 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/Play2LearnExercises/pom.xml" />
+        <option value="$PROJECT_DIR$/Play2LearnExercises/Play2LearnExerciseServer/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Play2LearnExerciseServer/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager">

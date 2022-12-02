@@ -3,27 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
-/*
-public static class ricordamiDiCancellarla{
-    public static string json = "{\"Domande\":[{\"TestoDomanda\":\"Chièpiùbello?\",\"Risposte\":[\"Pietro\",\"Elio\",\"Martina\",\"ilfantasminoCarmelo\"],\"RispostaCorretta\":4},{\"TestoDomanda\":\"Chiprendeilvotopiùaltoall'esame?\",\"Risposte\":[\"Pietro\",\"Elio\",\"Martina\",\"ilfantasminoCarmelo\"],\"RispostaCorretta\":4},{\"TestoDomanda\":\"ChihascrittoquestoJSON?\",\"Risposte\":[\"Pietro\",\"Elio\",\"Martina\",\"ilfantasminoCarmelo\"],\"RispostaCorretta\":1},{\"TestoDomanda\":\"Incheannoèstatascopertal'America\",\"Risposte\":[\"1922\",\"1789\",\"1492\",\"ilfantasminoCarmelo\"],\"RispostaCorretta\":3},{\"TestoDomanda\":\"Quantofa7x7\",\"Risposte\":[\"77\",\"49\",\"17\",\"ilfantasminoCarmelo\"],\"RispostaCorretta\":2}]}";
-
-}
 
 [Serializable]
 public class Domanda{
-    public string TestoDomanda{get; set;}    
-    public string[] Risposte{get; set;}
-    public string RispostaCorretta{get; set;}
+    public string TestoDomanda;
+    public string[] Risposte;
+    public string RispostaCorretta;
 }
 
 [Serializable]
 public class Compiti{
-    public Domanda[] Domande{get; set;}
+    public Domanda[] Domande;
+
+    public string toString() {
+        Debug.Log(this);
+        Debug.Log(this.Domande);
+        foreach(Domanda d in this.Domande) {
+            Debug.Log(d.TestoDomanda);
+        }
+        return Domande.ToString();
+    }
 }
-*/
+
 public class CompitiConnector : MonoBehaviour
 {
-    private static string url = "https://dummyjson.com/products/7";
+    private static string url = "http://localhost:8080/dyh";
     private string result = "";
     IEnumerator GetRequest(string url)
     {
@@ -36,8 +40,10 @@ public class CompitiConnector : MonoBehaviour
                 Debug.Log("RES: "+result );
                 Debug.Log("RES x: "+x);
                 //result = ricordamiDiCancellarla.json;
-                //Compiti c = Compiti.CreateFromJSON(result);
-                //Debug.Log(c);
+                //Debug.Log(ricordamiDiCancellarla.json);
+                Compiti c = JsonUtility.FromJson<Compiti>(result);
+
+                Debug.Log(c.toString());
             }
             else
             {
