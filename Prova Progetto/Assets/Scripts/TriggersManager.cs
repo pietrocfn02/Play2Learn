@@ -16,7 +16,8 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.TV_BAGNO_TAG,
                                         GameEvent.TV_CAMERA_LETTO_TAG,
                                         GameEvent.TV_SALA_GIOCHI_TAG,
-                                        GameEvent.TV_CUCINA_TAG
+                                        GameEvent.TV_CUCINA_TAG,
+                                        GameEvent.TABLE_TAG
                                         };
     
 
@@ -34,6 +35,8 @@ public class TriggersManager : MonoBehaviour
         {
             BroadcastMessage("UpdateAngioletto", 10);
             Destroy(other.gameObject);
+        }else if (other.tag == GameEvent.FANTASMINO_CATTIVO_TAG){
+            Messenger.Broadcast(GameEvent.FANTASMINO_EVENTO);
         }
     }
     

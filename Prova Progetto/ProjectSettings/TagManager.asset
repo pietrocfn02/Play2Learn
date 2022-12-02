@@ -15,22 +15,6 @@ TagManager:
   - Water
   - Brucia
   - Frigo
-  - Camera_Corridoi
-  - Camera_altarino
-  - Camera_Libreria
-  - Camera_Ingresso_CAM
-  - Camera_Corridoi_CAM
-  - Camera_Cucina
-  - Camera_Cucina_CAM
-  - Camera_Altarino
-  - Camera_Altarino_CAM
-  - Camera_Camera_2
-  - Camera_Camera_1
-  - Camera_Camera_1_CAM
-  - Camera_Bedroom1
-  - Camera_Bedroom2
-  - Camera_Bedroom1_CAM
-  - Camera_Bedroom2_CAM
   - Casa
   - Fantasmino
   - labelE
@@ -40,6 +24,8 @@ TagManager:
   - TV_Sala_Giochi
   - TV_Camera_Letto
   - TV_Bagno
+  - Tavolo
+  - Fantasmino_Cattivo
   layers:
   - Default
   - TransparentFX
