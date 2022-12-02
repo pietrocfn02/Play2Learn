@@ -44,7 +44,6 @@ public class UIAngioletto : MonoBehaviour
         labelMission.text = "Raccogli un telecomando e spegni le TV.";
         yield return new WaitForSecondsRealtime(2);
         imageText.SetActive(false);
-        // aprire la porta quando finisce la missione
         count = 0;
     }
 
