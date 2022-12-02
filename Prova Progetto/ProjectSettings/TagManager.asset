@@ -15,7 +15,6 @@ TagManager:
   - Water
   - Brucia
   - Frigo
-  - Camera_Ingresso
   - Camera_Corridoi
   - Camera_altarino
   - Camera_Libreria
@@ -36,6 +35,11 @@ TagManager:
   - Fantasmino
   - labelE
   - Contenitore
+  - TV
+  - TV_Cucina
+  - TV_Sala_Giochi
+  - TV_Camera_Letto
+  - TV_Bagno
   layers:
   - Default
   - TransparentFX
