@@ -8,7 +8,7 @@ using UnityEngine;
 public class Domanda{
     public string TestoDomanda;
     public string[] Risposte;
-    public string RispostaCorretta;
+    public int RispostaCorretta;
 }
 
 [Serializable]
@@ -45,7 +45,7 @@ public class CompitiConnector : MonoBehaviour
                 compiti = new Compiti();
                 
                 // TODO: MOCK DA ELIMINARE
-                compiti.Domande = new Domande[5];
+                compiti.Domande = new Domanda[5];
                 Domanda d1 = new Domanda();
                 d1.TestoDomanda = "Quale regione si trova più a Nord?";
                 d1.Risposte = new string[4];
