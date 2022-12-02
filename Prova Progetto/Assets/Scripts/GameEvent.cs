@@ -1,4 +1,6 @@
 public static class GameEvent {
+
+	//EVENTS
 	public const string DIAVOLETTO_UPDATE = "DIAVOLETTO_UPDATE";
 	public const string ANGIOLETTO_UPDATE = "ANGIOLETTO_UPDATE";
 	public const string RACCOLTA_UPDATE = "RACCOLTA_UPDATE";
@@ -8,11 +10,16 @@ public static class GameEvent {
 	public const string MISSIONE_PASTELLI = "MISSIONE_PASTELLI";
 	public const string COLLEZZIONA_GCOIN = "COLLEZZIONA_GCOIN";
 	public const string MISSIONE_TELEVISIONI = "MISSIONE_TELEVISIONI";
-
+	public const string MISSIONE_COMPITI = "MISSIONE_COMPITI";
+	public const string FANTASMINO_EVENTO = "FANTASMINO_EVENTO";
+	
+	// TAGS
+	public const string FANTASMINO_CATTIVO_TAG = "Fantasmino_Cattivo";
 	public const string FANTASMINO_TAG = "Fantasmino";
 	public const string TELECOMANDO_TAG = "Telecomando";
 	public const string PASTELLI_TAG = "Pastelli";
 	public const string BOOKS_TAG = "Books";
+	public const string TABLE_TAG = "Tavolo";
 	public const string WATER_TAG = "Water";
 	public const string BRUCIA_TAG = "Brucia";
 	public const string FRIGO_TAG = "Frigo";

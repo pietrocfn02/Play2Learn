@@ -17,12 +17,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private string tagInteraction = "";
     [SerializeField] private GameObject goodCoinPrefab;
     [SerializeField] private Material newMaterial;
+    [SerializeField] private GameObject ghost;
     private GameObject[] _coins;
     private GameObject[] tv;
     private Collider objectToDestroy;
     private bool nextMission = false;
     private int count = 0;
-    
+
     void Start(){
         
     }
@@ -45,11 +46,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     RaccoltoOggetto(2);
                 }else if (tagInteraction == "Contenitore"){
                     if (inventary[1] >= 12){
-                        spawnCoin(inventary[1]);                        
+                        spawnCoin(inventary[1]);
                         LasciaOggetto(2);
                         MissionComplete(GameEvent.MISSIONE_PASTELLI);
+                        Destroy(ghost);
                     }
-                    StartCoroutine(corutine());       
+                    StartCoroutine(corutine());   
                 }else if (tagInteraction == "Telecomando"){
                     RaccoltoOggetto(1);
                 }else if (tagInteraction.Contains("TV_")){
@@ -61,11 +63,21 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                             MissionComplete(GameEvent.MISSIONE_TELEVISIONI);
                         }
                     }
+                }else if (tagInteraction == "Books"){
+                    RaccoltoOggetto(3);
+                }else if (tagInteraction == "Tavolo"){
+                    Debug.Log("### tag:" + tagInteraction);
+                    if (inventary[2] >= 1){
+                        doHomework();
+                    }
                 }
             }
         }
     }
 
+    public void doHomework(){
+        Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
+    }
     public void TurnOffTV(string tag){
         tv = GameObject.FindGameObjectsWithTag(tag);
         tv[0].GetComponent<Renderer>().material = newMaterial;
@@ -154,6 +166,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     public void MissionComplete(string missionTag){
-        Messenger.Broadcast(missionTag);
+        if (missionTag == GameEvent.TABLE_TAG){
+            Debug.Log("attivo 3 missione");
+        }else {
+            Messenger.Broadcast(missionTag);
+        }
+        
     }
 }

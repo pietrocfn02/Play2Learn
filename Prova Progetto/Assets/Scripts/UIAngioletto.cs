@@ -11,14 +11,14 @@ public class UIAngioletto : MonoBehaviour
     
     
     [SerializeField] private TMP_Text countText; // testo inventario
-    [SerializeField] private TMP_Text labelText; // testo movimento
-    [SerializeField] private GameObject imageText;  // immagine testo
+    [SerializeField] private TMP_Text labelText; // testo messaggi
+    [SerializeField] private GameObject imageText;  // immagine messaggi
     [SerializeField] private TMP_Text labelMission; // testo missione
     [SerializeField] private Image inventaryImage; // immagine inventario
     [SerializeField] private Sprite tvImage; // immagine telecomando
     [SerializeField] private Sprite bookImage; // immagine libri
     [SerializeField] private TMP_Text quantityText; // testo quantità
-
+    [SerializeField] private GameObject homeworkImage; // immagine foglio
     
     
 
@@ -64,8 +64,14 @@ public class UIAngioletto : MonoBehaviour
         labelMission.text = "Prendi un quaderno e fai i compiti";
         yield return new WaitForSecondsRealtime(2);
         imageText.SetActive(false);
-        // aprire la porta quando finisce la missione
         count = 0;
+    }
+    IEnumerator closeMessage(){
+        labelText.text = "TU...DA QUI...NON PUOI...PASSARE!";
+        imageText.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        imageText.SetActive(false);
+
     }
 
     void Awake() {
@@ -74,8 +80,19 @@ public class UIAngioletto : MonoBehaviour
         Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary);
         Messenger.AddListener(GameEvent.MISSIONE_PASTELLI, completePastelli);
         Messenger.AddListener(GameEvent.MISSIONE_TELEVISIONI, completeTelevisioni);
+        Messenger.AddListener(GameEvent.MISSIONE_COMPITI, doHomework);
+        Messenger.AddListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
     }
-    
+
+    // attiva il canvas dei compiti e disattiva gli altri 
+    public void doHomework(){
+        homeworkImage.SetActive(true);
+    }    
+
+    public void youShallNotPass(){
+        StartCoroutine(closeMessage());
+
+    }
     public void completeTelevisioni(){
         StartCoroutine(tvMission());
     }
@@ -97,7 +114,6 @@ public class UIAngioletto : MonoBehaviour
         angiolettoScoreText.text = angioletto_score.ToString();
     }
 
-    // Update is called once per frame
     void Update(){}
 
     void OnDestroy() {
@@ -106,5 +122,7 @@ public class UIAngioletto : MonoBehaviour
         Messenger.RemoveListener(GameEvent.LANCIA_OGGETTO, updateInventary );
         Messenger.RemoveListener(GameEvent.MISSIONE_PASTELLI, completePastelli);
         Messenger.RemoveListener(GameEvent.MISSIONE_TELEVISIONI, completeTelevisioni);
+        Messenger.RemoveListener(GameEvent.MISSIONE_COMPITI, doHomework);
+        Messenger.RemoveListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
     }
 }
