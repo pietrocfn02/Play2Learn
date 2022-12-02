@@ -10454,7 +10454,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241007925}
-  m_LocalRotation: {x: 0.023240907, y: -0.6424591, z: 0.019499747, w: 0.7657193}
+  m_LocalRotation: {x: 0.023240903, y: -0.6424591, z: 0.019499747, w: 0.7657193}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22397,7 +22397,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531942203}
-  m_LocalRotation: {x: 0.019737022, y: -0.64045835, z: 0.016468672, w: 0.76756257}
+  m_LocalRotation: {x: 0.019732002, y: -0.64069206, z: 0.016474683, w: 0.7673676}
   m_LocalPosition: {x: 27.502388, y: 1.801, z: 16.887218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -37464,14 +37464,14 @@ MonoBehaviour:
   speed: 0.7
   obstacleRange: 5
   bimbo: {fileID: 1024608657}
-  degreesPerSecond: 15
   amplitude: 0.05
   frequency: 0.5
-  peppino: {fileID: 0}
-  peppinoText: {fileID: 0}
-  peppinoInteract: {fileID: 0}
+  ghostTextWindow: {fileID: 0}
+  ghostTextMessage: {fileID: 0}
+  ghostTextE: {fileID: 0}
   labelMoves: {fileID: 950008489}
   labelTutorial: {fileID: 119009634}
+  spaceBarLabel: {fileID: 0}
 --- !u!4 &907725860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 839253b347677a443bc5edcfb98e2520, type: 3}
@@ -40719,7 +40719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318171193469071170, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3318171193469071171, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
       propertyPath: m_RootOrder
@@ -65045,7 +65045,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617858532}
-  m_LocalRotation: {x: 0.019737016, y: -0.6404583, z: 0.016468668, w: 0.7675627}
+  m_LocalRotation: {x: 0.019732, y: -0.640692, z: 0.01647468, w: 0.7673676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
