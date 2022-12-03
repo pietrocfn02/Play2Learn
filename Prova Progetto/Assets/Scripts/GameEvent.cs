@@ -7,8 +7,11 @@ public static class GameEvent {
 	public const string LANCIA_OGGETTO = "LANCIA_OGGETTO";
 	public const string START_TUTORIAL = "START_TUTORIAL";
 	public const string PRIMA_MARACHELLA = "PRIMA_MARACHELLA";
+	public const string MISSION_COMPLETE = "MISSION_COMPLETE";
+	public const string FIRST_MISSION_COMPLETE = "FIRST_MISSION_COMPLETE";
 	public const string MISSIONE_PASTELLI = "MISSIONE_PASTELLI";
 	public const string COLLEZZIONA_GCOIN = "COLLEZZIONA_GCOIN";
+
 	public const string MISSIONE_TELEVISIONI = "MISSIONE_TELEVISIONI";
 	public const string MISSIONE_COMPITI = "MISSIONE_COMPITI";
 	public const string FANTASMINO_EVENTO = "FANTASMINO_EVENTO";

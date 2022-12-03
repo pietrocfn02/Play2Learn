@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] BambinoControllerAngiolettoMode bambinoController;
+    [SerializeField] BambinoController bambinoController;
     //[SerializeField] private Text angiolettoScoreText;
     [SerializeField] private TMP_Text diavolettoScoreText;
     //TODO: lista di countText (inventario fisso)
@@ -19,6 +19,7 @@ public class UIController : MonoBehaviour
     int angioletto_score;
     int diavoletto_score;
     ArrayList text_counts = new ArrayList();
+
     void Start()
     {
         text_counts.Add(this.telecomandoCountText);
@@ -33,7 +34,8 @@ public class UIController : MonoBehaviour
         Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary);
         Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary);
         Messenger.AddListener(GameEvent.START_TUTORIAL, startTutorial);
-        
+        Messenger.AddListener(GameEvent.MISSION_COMPLETE, missionComplete);
+        Messenger.AddListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);        
     }
 
     private void startTutorial(){
@@ -41,7 +43,7 @@ public class UIController : MonoBehaviour
     }
 
     private void updateInventary(){
-
+        
         for(int i=0; i<text_counts.Count; i++)
         {
             text_counts[i] = bambinoController.getOggettoCount(i);
@@ -54,7 +56,6 @@ public class UIController : MonoBehaviour
         }
     }
 
-    
 
     private void updateDiavolettoScore() {
         diavoletto_score = bambinoController.getDiavolettoScore();
@@ -67,10 +68,29 @@ public class UIController : MonoBehaviour
         //angiolettoScoreText.text = angioletto_score.ToString();
     }
 
+    private void missionComplete(){
+        labelText.text = UIMessages.END_MARACHELLA;
+        //labelText.ForceMeshUpdate();
+        imageText.SetActive(true);
+        Debug.Log("IN UI: "+labelText.text);
+        Update();
+    }
+
+    private void firstMissionComplete(){
+        labelText.text = UIMessages.FINE_PRIMA_MARACHELLA;
+        //labelText.ForceMeshUpdate();
+        imageText.SetActive(true);
+        Debug.Log("IN Ui: "+labelText.text);
+        Update();       
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(labelText.text=="")
+        Debug.Log("UI ##### "+labelText.text);
+        Debug.Log("UI IMG ##### "+imageText);
+
+        if(labelText.text=="" || labelText.text == UIMessages.EMPTY_MESSAGE)
         {
             imageText.SetActive(false);
         } else {
@@ -84,5 +104,7 @@ public class UIController : MonoBehaviour
         Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
         Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
         Messenger.RemoveListener(GameEvent.LANCIA_OGGETTO, updateInventary );
+        Messenger.RemoveListener(GameEvent.MISSION_COMPLETE, missionComplete);
+        Messenger.RemoveListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
     }
 }
