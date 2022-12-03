@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] BambinoControllerAngiolettoMode bambinoController;
+    [SerializeField] BambinoController bambinoController;
     //[SerializeField] private Text angiolettoScoreText;
     [SerializeField] private TMP_Text diavolettoScoreText;
     //TODO: lista di countText (inventario fisso)
@@ -19,6 +19,7 @@ public class UIController : MonoBehaviour
     int angioletto_score;
     int diavoletto_score;
     ArrayList text_counts = new ArrayList();
+
     void Start()
     {
         text_counts.Add(this.telecomandoCountText);
@@ -32,8 +33,7 @@ public class UIController : MonoBehaviour
         Messenger.AddListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore);
         Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary);
         Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary);
-        Messenger.AddListener(GameEvent.START_TUTORIAL, startTutorial);
-        
+        Messenger.AddListener(GameEvent.START_TUTORIAL, startTutorial);        
     }
 
     private void startTutorial(){
@@ -54,7 +54,6 @@ public class UIController : MonoBehaviour
         }
     }
 
-    
 
     private void updateDiavolettoScore() {
         diavoletto_score = bambinoController.getDiavolettoScore();
@@ -70,12 +69,12 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(labelText.text=="")
-        {
-            imageText.SetActive(false);
-        } else {
-            imageText.SetActive(true);
-        }
+        // if(labelText.text=="")
+        // {
+        //     imageText.SetActive(false);
+        // } else {
+        //     imageText.SetActive(true);
+        // }
     }
 
 

@@ -9,6 +9,7 @@ public static class UIMessages {
 	public const string START_TUTORIAL_MESSAGE = "Ciao! Mi chiamo Carmelo! Sono il tuo spirito guida. Per iniziare raccogli i pastelli sul letto!";
     public const string TELECOMANDO_MESSAGE = "Potresti far fare una nuotata al Telecomando!";
     public const string BRUCIA_MESSAGE = "Hai qualcosa da bruciare?";
+    public const string END_MARACHELLA = "Congratulazioni! Hai completato la marachella! Raccogli le Diavoletto Coins entro 15 secondi!";
 
     public const string START_TUTORIAL_LABEL = "Inizio Tutorial";
     public const string FOLLOW_ME_LABEL = "Seguimi!";

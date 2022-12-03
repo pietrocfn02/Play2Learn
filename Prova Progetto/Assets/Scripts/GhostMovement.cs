@@ -59,6 +59,7 @@ public class GhostMovement : MonoBehaviour
         posOffset = transform.position;
         ghostTextE.text = UIMessages.EMPTY_MESSAGE;
     }
+
     void Update()
     {
         move();
@@ -83,6 +84,17 @@ public class GhostMovement : MonoBehaviour
         startMarachella = true;
     }
 
+    private void missionComplete(){
+        labelTutorial.text = UIMessages.END_MARACHELLA;
+        labelTutorial.ForceMeshUpdate();
+        Debug.Log("IN GHOST: "+labelTutorial.text);
+    }
+
+    private void firstMissionComplete(){
+        labelTutorial.text = UIMessages.FINE_PRIMA_MARACHELLA;
+        labelTutorial.ForceMeshUpdate();
+        Debug.Log("IN GHOST: "+labelTutorial.text);       
+    }
     
     private void move(){
 
@@ -158,7 +170,7 @@ public class GhostMovement : MonoBehaviour
                 }
             } else if(reachedFrigo == targetsFrigo.Length){
                 transform.LookAt(player);
-                labelTutorial.text = UIMessages.EMPTY_MESSAGE;
+                //labelTutorial.text = UIMessages.EMPTY_MESSAGE;
             }
         } else { 
             float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
@@ -180,6 +192,8 @@ public class GhostMovement : MonoBehaviour
 
     void Awake(){
         Messenger.AddListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella);
+        Messenger.AddListener(GameEvent.MISSION_COMPLETE, missionComplete);
+        Messenger.AddListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
     }
 
     public void SetAlive(bool alive){
@@ -188,5 +202,7 @@ public class GhostMovement : MonoBehaviour
 
      void OnDestroy() {
         Messenger.RemoveListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella); 
+        Messenger.RemoveListener(GameEvent.MISSION_COMPLETE, missionComplete);
+        Messenger.RemoveListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
     }
 }
