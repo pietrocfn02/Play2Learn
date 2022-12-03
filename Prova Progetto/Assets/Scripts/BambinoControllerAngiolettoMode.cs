@@ -24,6 +24,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private bool nextMission = false;
     private int count = 0;
 
+    private bool tvComplete = false;
+
     void Start(){
         
     }
@@ -65,15 +67,21 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     }
                     StartCoroutine(corutine());
                 }else if (tagInteraction == "Books" && inventary[0] >= 1){
-                    RaccoltoOggetto(3);
+                    if(tvComplete) {
+                        RaccoltoOggetto(3);    
+                    }
+                    else {
+                        forgetSomething();
+                    }
+                    
                 }else if (tagInteraction == "Tavolo"){
                     forgetSomething();
+                    Debug.Log("Sto controllando se dimentico qualcosa oppure no");
                     if (inventary[2] >= 1){
+                        Debug.Log("Non dimentico");
                         doHomework();
-                        // fine compiti 
-                        // spawnCoin(4); 
-                        // MissionComplete(GameEvent.MISSIONE_COMPITI);
                     }else{
+                        Debug.Log("Dimentico");
                         forgetSomething();
                     }
                     //StartCoroutine(corutine());
@@ -88,6 +96,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         Messenger.Broadcast(GameEvent.FORGET);
     }
     public void doHomework(){
+        // Fermo il tempo per evitare che la bambina scappi mentre fa i compiti :)
+        Time.timeScale = 0;
+        CompitiConnector.siamoInModalitaCompiti = true;
         Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
     }
     public void TurnOffTV(string tag){
@@ -178,11 +189,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     public void MissionComplete(string missionTag){
-        if (missionTag == GameEvent.TABLE_TAG){
-            Debug.Log("attivo 3 missione");
-        }else {
-            Messenger.Broadcast(missionTag);
+        if (GameEvent.MISSIONE_TELEVISIONI == missionTag) {
+            this.tvComplete = true;
         }
+            Messenger.Broadcast(missionTag);
         
     }
 }
