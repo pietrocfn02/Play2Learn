@@ -11,11 +11,13 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Play2LearnExercises" target="17" />
+      <module name="Play2LearnExerciseServer" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Play2LearnExercises" options="-parameters" />
+      <module name="Play2LearnExerciseServer" options="-parameters" />
+      <module name="Play2LearnExercises" options="-parameters --add-modules java.base" />
     </option>
   </component>
 </project>

@@ -12,7 +12,12 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.WATER_TAG,
                                         GameEvent.BRUCIA_TAG,
                                         GameEvent.FRIGO_TAG,
-                                        GameEvent.CONTENITORE_TAG
+                                        GameEvent.CONTENITORE_TAG,
+                                        GameEvent.TV_BAGNO_TAG,
+                                        GameEvent.TV_CAMERA_LETTO_TAG,
+                                        GameEvent.TV_SALA_GIOCHI_TAG,
+                                        GameEvent.TV_CUCINA_TAG,
+                                        GameEvent.TABLE_TAG
                                         };
     
 
@@ -30,17 +35,9 @@ public class TriggersManager : MonoBehaviour
         {
             BroadcastMessage("UpdateAngioletto", 10);
             Destroy(other.gameObject);
+        }else if (other.tag == GameEvent.FANTASMINO_CATTIVO_TAG){
+            Messenger.Broadcast(GameEvent.FANTASMINO_EVENTO);
         }
-        // else if (other.tag == "Door")
-        // {
-        //     Destroy(other.gameObject);
-        // }
-        // else if (other.tag !=null && other.tag.Contains("Camera_")) 
-        // { 
-        //     Debug.Log("Entering in action range of camera : "+other.tag);
-        //     BroadcastMessage("ActivateCamera", other.tag);
-        // }
-        
     }
     
 

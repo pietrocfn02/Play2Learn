@@ -181,8 +181,8 @@
      <Compile Include="Packages\com.unity.timeline\Editor\Utilities\Scopes\GUIViewportScope.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Activation\ActivationTrackInspector.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Manipulators\Utils\ManipulatorsUtils.cs" />
-     <Compile Include="Packages\com.unity.timeline\Editor\Window\TimelineWindow_ActiveTimeline.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Extensions\AnimationTrackExtensions.cs" />
+     <Compile Include="Packages\com.unity.timeline\Editor\Window\TimelineWindow_ActiveTimeline.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Window\WindowConstants.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Manipulators\EditMode.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\treeview\Snapping\ISnappable.cs" />

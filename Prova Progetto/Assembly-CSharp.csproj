@@ -108,6 +108,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Scripts\KeyScript.cs" />
+     <Compile Include="Assets\Scripts\CompitiConnector.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\LocalSphereTransitionExample.cs" />
      <Compile Include="Assets\Scripts\UIMessages.cs" />
@@ -148,6 +149,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+     <Compile Include="Assets\Scripts\FantasminiArrabbiati.cs" />
      <Compile Include="Assets\Scripts\GhostMovement.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\CamAnim.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
