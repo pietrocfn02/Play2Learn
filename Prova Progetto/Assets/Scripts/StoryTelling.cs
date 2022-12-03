@@ -101,10 +101,10 @@ public class StoryTelling : MonoBehaviour
                     if (fraseAttuale >= completeText.Length-1) {
                         if (scene == Constants.SCENE_CHASING) {
                             Debug.Log("QUI :)");
-                            SceneManager.LoadScene("InseguimentoScene");
+                            SceneManager.LoadScene(GameEvent.INSEGUIMENTO_SCENE);
                         }
                         else {
-                            SceneManager.LoadScene("Diavoletto_Scene");
+                            SceneManager.LoadScene(GameEvent.DIAVOLETTO_SCENE);
                         }
                         
                         

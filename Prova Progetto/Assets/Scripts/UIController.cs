@@ -60,6 +60,7 @@ public class UIController : MonoBehaviour
     private void updateDiavolettoScore() {
         diavoletto_score = bambinoController.getDiavolettoScore();
         diavolettoScoreText.text = diavoletto_score.ToString();
+        labelText.text=UIMessages.EMPTY_MESSAGE;
     }
 
 
@@ -70,26 +71,17 @@ public class UIController : MonoBehaviour
 
     private void missionComplete(){
         labelText.text = UIMessages.END_MARACHELLA;
-        //labelText.ForceMeshUpdate();
         imageText.SetActive(true);
-        Debug.Log("IN UI: "+labelText.text);
-        Update();
     }
 
     private void firstMissionComplete(){
         labelText.text = UIMessages.FINE_PRIMA_MARACHELLA;
-        //labelText.ForceMeshUpdate();
-        imageText.SetActive(true);
-        Debug.Log("IN Ui: "+labelText.text);
-        Update();       
+        imageText.SetActive(true);    
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("UI ##### "+labelText.text);
-        Debug.Log("UI IMG ##### "+imageText);
-
         if(labelText.text=="" || labelText.text == UIMessages.EMPTY_MESSAGE)
         {
             imageText.SetActive(false);
