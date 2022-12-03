@@ -29,7 +29,7 @@ public class GameSettings : MonoBehaviour
     
     // Metodo che cambia scena 
     public void ChangeScene(){
-        SceneManager.LoadScene("Diavoletto_Scene");
+        SceneManager.LoadScene("Storytelling");
     }
 
     // Disattiva i pulsanti "inizia Partita" e "Impostazioni"

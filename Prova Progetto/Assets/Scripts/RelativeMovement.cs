@@ -44,10 +44,7 @@ public class RelativeMovement : MonoBehaviour
         
         float horInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
-        if (_charController.velocity.magnitude > 0f && _step) {
-            _soundSource.PlayOneShot(footStepSound);
-            StartCoroutine(WaitForFootSteps(_footStepSoundLength));
-        }
+        
         if (horInput != 0 || vertInput != 0) {
              _animator.SetFloat("speed", 1f);
             movement.x = horInput * moveSpeed;
@@ -96,6 +93,10 @@ public class RelativeMovement : MonoBehaviour
                 }
             }
         }    
+        if (_charController.velocity.magnitude > 0f && _step) {
+            _soundSource.PlayOneShot(footStepSound);
+            StartCoroutine(WaitForFootSteps(_footStepSoundLength));
+        }
         movement.y = _vertSpeed;
         movement *= Time.deltaTime;
         _charController.Move(movement);
