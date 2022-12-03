@@ -774,7 +774,7 @@
  <HintPath>C:/Users/elioc/OneDrive/Desktop/2020.3.30f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Users/elioc/OneDrive/Desktop/GitHub/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+  <HintPath>D:/Users/elioc/OneDrive/Desktop/GitHub/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>D:/Users/elioc/OneDrive/Desktop/GitHub/Play2Learn/Prova Progetto/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

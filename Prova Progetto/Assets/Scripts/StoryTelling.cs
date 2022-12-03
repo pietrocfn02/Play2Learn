@@ -12,6 +12,7 @@ public static class Constants {
     public static string SCENE_INTRO = "INTRO";
     public static string EMPTY = "";
     public static string SCENE_CHASING = "CHASE";
+    public static string SCENE_ANGIOLETTO = "ANGIOLETTO";
     public static string NEXT = "PREMI INVIO PER ANDARE AVANTI";
     public static string NEW_GAME = "QUANDO SEI PRONTA PREMI NUOVAMENTE INVIO";
 }
@@ -33,6 +34,17 @@ public class StoryTelling : MonoBehaviour
             "NON STARA' MICA PENSANDO DI FARCI FARE I COMPITI?",
             "FORSE CI CONVIENE SCAPPARE PRIMA CHE SIA TROPPO TARDI",
             "....."
+    };
+
+
+    private static  string[] angioletto = {
+        "SEMBRA CHE NON ABBIAMO SCAMPO",
+            "QUESTA VOLTA CI TOCCA DAVVERO",
+            "FARE I COMPITI",
+            "SISTEMARE LA NOSTRA STANZA",
+            "E DIVENTARE DAVVERO DEI BRAVI BAMBINI",
+            "QUASI QUASI...",
+            "SAREBBE STATO MEGLIO ANDARE A SCUOLA"
     };
 
     private string[] completeText = completeIntro;
@@ -75,6 +87,9 @@ public class StoryTelling : MonoBehaviour
         if (scene == Constants.SCENE_CHASING) {
            completeText = completeChase;
         }
+        else if (scene == Constants.SCENE_ANGIOLETTO) {
+            completeText = angioletto;
+        }
         else {
             canStartTelling = true;
         }
@@ -102,6 +117,9 @@ public class StoryTelling : MonoBehaviour
                         if (scene == Constants.SCENE_CHASING) {
                             Debug.Log("QUI :)");
                             SceneManager.LoadScene("InseguimentoScene");
+                        }
+                        else if (scene == Constants.SCENE_ANGIOLETTO) {
+                            SceneManager.LoadScene("AngiolettoScene");
                         }
                         else {
                             SceneManager.LoadScene("Diavoletto_Scene");

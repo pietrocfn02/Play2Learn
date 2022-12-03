@@ -5710,7 +5710,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -15, y: -0.5}
-  m_SizeDelta: {x: 350, y: 200}
+  m_SizeDelta: {x: 580, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119009634
 MonoBehaviour:
@@ -5732,9 +5732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Usa i tasti per muoverti
-
-    Premi "Spazio" per saltare'
+  m_text: SCAPPA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -5761,13 +5759,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.98
-  m_fontSizeBase: 36
+  m_fontSize: 144
+  m_fontSizeBase: 144
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 25.98
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -8379,8 +8377,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67, y: -202}
-  m_SizeDelta: {x: 380, y: 120}
+  m_AnchoredPosition: {x: 67, y: -175}
+  m_SizeDelta: {x: 600, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182771781
 MonoBehaviour:
@@ -10454,7 +10452,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241007925}
-  m_LocalRotation: {x: 0.023240903, y: -0.6424591, z: 0.019499747, w: 0.7657193}
+  m_LocalRotation: {x: 0.023240907, y: -0.6424591, z: 0.019499747, w: 0.7657193}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -37472,6 +37470,7 @@ MonoBehaviour:
   labelMoves: {fileID: 950008489}
   labelTutorial: {fileID: 119009634}
   spaceBarLabel: {fileID: 0}
+  imageText: {fileID: 0}
 --- !u!4 &907725860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 839253b347677a443bc5edcfb98e2520, type: 3}
@@ -39382,7 +39381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &950008488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40719,7 +40718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318171193469071170, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3318171193469071171, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
       propertyPath: m_RootOrder
@@ -42345,7 +42344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1009736153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50792,7 +50791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1251834929
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61417,8 +61416,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -261}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1539222417 stripped
 Transform:

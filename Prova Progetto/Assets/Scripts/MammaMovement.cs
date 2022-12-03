@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 
 
+using UnityEngine.SceneManagement;
+
+
 
 public class MammaMovement : MonoBehaviour
 {
@@ -27,6 +30,8 @@ public class MammaMovement : MonoBehaviour
     private int respawns = 0;
     private int updates = 1;
 
+    private int updateTaken = -1;
+
     Vector3 posOffset = new Vector3 ();
     Vector3 tempPos = new Vector3 ();
     private bool startMarachella = false;
@@ -37,6 +42,7 @@ public class MammaMovement : MonoBehaviour
     }
     void Update()
     {
+        
         if (updates % 100 == 0) {
             speed= speed + (speed*0.1f);
         }
@@ -62,13 +68,30 @@ public class MammaMovement : MonoBehaviour
 
         transform.LookAt(target);
         float distancewithTarget = Vector3.Distance(target, this.gameObject.transform.position);
+
+        if (updateTaken != -1) {
+            if (updates - updateTaken > 45) {
+
+                if (distancewithTarget < 0.5f) {
+                    Debug.Log("PRESA, STUPIDA BAMBINA!");
+                    SceneManager.LoadScene("Storytelling_angioletto");
+
+                }
+                else {
+                    updateTaken = -1;
+                }
+            }
+        }
+
         Debug.Log(distancewithTarget);
         if (distancewithTarget < 0.35f) {
-            Debug.Log("PRESA, STUPIDA BAMBINA!");
+            if (updateTaken == -1) {
+                updateTaken = updates;
+            }
         }
         
         else {
-            if (distancewithTarget < 1.9f /*&& this.respawns > 2*/) {
+            if (distancewithTarget < 1.9f && this.respawns > 2) {
                 Debug.Log("TURBOOOOO");
                 transform.Translate(0, 0, speed*Time.deltaTime*6);
             }
