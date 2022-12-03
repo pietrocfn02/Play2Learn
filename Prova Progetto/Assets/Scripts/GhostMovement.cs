@@ -34,11 +34,13 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] private TMP_Text labelMoves;
     [SerializeField] private TMP_Text labelTutorial;
     [SerializeField] public GameObject spaceBarLabel;
+    [SerializeField] public GameObject imageText;
 
 
     Vector3 posOffset = new Vector3 ();
     Vector3 tempPos = new Vector3 ();
     private bool startMarachella = false;
+    private bool endFirstMarachella = false;
 
     void Start(){
         targetsFirstPastelli[0] = new Vector3(25.6f,1.7f,15.8f);
@@ -62,7 +64,8 @@ public class GhostMovement : MonoBehaviour
 
     void Update()
     {
-        move();
+        if(!endFirstMarachella)
+            move();
         Float(); 
     }
 
@@ -84,17 +87,19 @@ public class GhostMovement : MonoBehaviour
         startMarachella = true;
     }
 
-    private void missionComplete(){
-        labelTutorial.text = UIMessages.END_MARACHELLA;
-        labelTutorial.ForceMeshUpdate();
-        Debug.Log("IN GHOST: "+labelTutorial.text);
-    }
+    // private void missionComplete(){
+    //     labelTutorial.text = UIMessages.END_MARACHELLA;
+    //     labelTutorial.ForceMeshUpdate();
+    //     imageText.SetActive(true);
+    //     Debug.Log("IN GHOST: "+labelTutorial.text);
+    // }
 
-    private void firstMissionComplete(){
-        labelTutorial.text = UIMessages.FINE_PRIMA_MARACHELLA;
-        labelTutorial.ForceMeshUpdate();
-        Debug.Log("IN GHOST: "+labelTutorial.text);       
-    }
+    // private void firstMissionComplete(){
+    //     labelTutorial.text = UIMessages.FINE_PRIMA_MARACHELLA;
+    //     labelTutorial.ForceMeshUpdate();
+    //     imageText.SetActive(true);
+    //     Debug.Log("IN GHOST: "+labelTutorial.text);       
+    // }
     
     private void move(){
 
@@ -170,7 +175,9 @@ public class GhostMovement : MonoBehaviour
                 }
             } else if(reachedFrigo == targetsFrigo.Length){
                 transform.LookAt(player);
-                //labelTutorial.text = UIMessages.EMPTY_MESSAGE;
+                labelTutorial.text = UIMessages.EMPTY_MESSAGE;
+                //startMarachella=false;
+                endFirstMarachella=true;
             }
         } else { 
             float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
@@ -192,8 +199,8 @@ public class GhostMovement : MonoBehaviour
 
     void Awake(){
         Messenger.AddListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella);
-        Messenger.AddListener(GameEvent.MISSION_COMPLETE, missionComplete);
-        Messenger.AddListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
+        // Messenger.AddListener(GameEvent.MISSION_COMPLETE, missionComplete);
+        // Messenger.AddListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
     }
 
     public void SetAlive(bool alive){
@@ -202,7 +209,7 @@ public class GhostMovement : MonoBehaviour
 
      void OnDestroy() {
         Messenger.RemoveListener(GameEvent.PRIMA_MARACHELLA, PrimaMarachella); 
-        Messenger.RemoveListener(GameEvent.MISSION_COMPLETE, missionComplete);
-        Messenger.RemoveListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
+        // Messenger.RemoveListener(GameEvent.MISSION_COMPLETE, missionComplete);
+        // Messenger.RemoveListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
     }
 }

@@ -20,6 +20,8 @@ public class BambinoController : MonoBehaviour {
     private Collider objectToDestroy;
     private GameObject[] _coins;
     private bool primaMarachella = false;
+    private int numOggettiLasciati=0;
+    private int numTotOggetti=8;
     
     void Start(){
 
@@ -31,6 +33,10 @@ public class BambinoController : MonoBehaviour {
             if(_coins[i] != null)
                 Destroy(_coins[i]);
         }
+    }
+
+    IEnumerator coroutine(){
+        yield return new WaitForSecondsRealtime(15);
     }
 
     void Update(){
@@ -60,6 +66,7 @@ public class BambinoController : MonoBehaviour {
                     if(primaMarachella)
                     {
                         FirstMissionComplete();
+                        primaMarachella=false;
                     }else{
                         MissionComplete();
                     }                 
@@ -97,10 +104,16 @@ public class BambinoController : MonoBehaviour {
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);       
     }
 
-    public void LasciaOggetto(int i){
-        if(inventary[i-1]>0)
+    public void LasciaOggetto(int i){        
+        if(inventary[i-1]>0){
+            numOggettiLasciati+=inventary[i-1];
             inventary[i-1]=0;
+        }            
         Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
+
+        if(numOggettiLasciati==numTotOggetti){
+            StartCoroutine(coroutine());
+        }
     }
 
     public void MissionComplete(){
@@ -163,7 +176,7 @@ public class BambinoController : MonoBehaviour {
             {
                 GameObject x = Instantiate(evilCoinPrefab) as GameObject;
                 Vector3 bimboPosition = this.transform.position;
-                Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-2,bimboPosition.x+2), 1.7f, Random.Range(bimboPosition.z-2,bimboPosition.z+2));
+                Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-1,bimboPosition.x+1), 1.7f, Random.Range(bimboPosition.z-1,bimboPosition.z+1));
                 x.transform.position = spawnPosition;
                 _coins[i] = x;
                 _coins[i].transform.localScale += new Vector3(3f,3f,1f);
