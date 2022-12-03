@@ -111,7 +111,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         tv = GameObject.FindGameObjectsWithTag(tag);
         tv[0].GetComponent<Renderer>().material = newMaterial;
         count ++;
-        // Manda un messaggio anche a AudioManager per azionare l'audio dello spegnimento
         audio.turnOffTV(tag,clipTv);
     }
     public void UpdateDiavoletto(int i) {

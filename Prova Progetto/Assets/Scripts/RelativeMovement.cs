@@ -35,17 +35,16 @@ public class RelativeMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         _soundSource = GetComponent<AudioSource>();
         _step = true;
-        _footStepSoundLength = 0.30f;
+        _footStepSoundLength = 0.50f;
     }
 
-    // Update is called once per frame
     void Update() {
         
         Vector3 movement = Vector3.zero;
         
         float horInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
-        if (_charController.velocity.magnitude > 1f && _step) {
+        if (_charController.velocity.magnitude > 0f && _step) {
             _soundSource.PlayOneShot(footStepSound);
             StartCoroutine(WaitForFootSteps(_footStepSoundLength));
         }
