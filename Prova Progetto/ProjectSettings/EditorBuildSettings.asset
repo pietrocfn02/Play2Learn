@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Storytelling.unity
     guid: 8bb526f814efb6941b85b87d492c881a
+  - enabled: 1
+    path: Assets/Scenes/Storytelling_angioletto.unity
+    guid: 1536608468733054cb31c3663228fa28
   m_configObjects: {}
