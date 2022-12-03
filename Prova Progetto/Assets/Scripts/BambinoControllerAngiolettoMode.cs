@@ -18,12 +18,16 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     [SerializeField] private GameObject goodCoinPrefab;
     [SerializeField] private Material newMaterial;
     [SerializeField] private GameObject ghost;
+    [SerializeField] public AudioClip clipTv;
+    [SerializeField] public AudioClip pemAudio;
+    [SerializeField] public AudioClip collectAudio;
+
     private GameObject[] _coins;
     private GameObject[] tv;
     private Collider objectToDestroy;
     private bool nextMission = false;
     private int count = 0;
-
+    private AudioManager audio = new AudioManager();
     private bool tvComplete = false;
 
     void Start(){
@@ -48,6 +52,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     RaccoltoOggetto(2);
                 }else if (tagInteraction == "Contenitore"){
                     if (inventary[1] >= 12){
+                        audio.reproducePem(pemAudio);
                         spawnCoin(inventary[1]);
                         LasciaOggetto(2);
                         MissionComplete(GameEvent.MISSIONE_PASTELLI);
@@ -62,6 +67,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                         if (count >= 4){
                             spawnCoin(count);
                             count = 0;
+                            audio.stopPem(pemAudio);
+                            TurnOffTV(tagInteraction);
                             MissionComplete(GameEvent.MISSIONE_TELEVISIONI);
                         }
                     }
@@ -73,7 +80,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     else {
                         forgetSomething();
                     }
-                    
                 }else if (tagInteraction == "Tavolo"){
                     forgetSomething();
                     Debug.Log("Sto controllando se dimentico qualcosa oppure no");
@@ -105,6 +111,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         tv = GameObject.FindGameObjectsWithTag(tag);
         tv[0].GetComponent<Renderer>().material = newMaterial;
         count ++;
+        // Manda un messaggio anche a AudioManager per azionare l'audio dello spegnimento
+        audio.turnOffTV(tag,clipTv);
     }
     public void UpdateDiavoletto(int i) {
         diavoletto_score+=i;
@@ -117,6 +125,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     public void RaccoltoOggetto(int i){
+        audio.collect(collectAudio);
         inventary[i-1] += 1;
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();

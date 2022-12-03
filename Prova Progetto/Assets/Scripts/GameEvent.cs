@@ -7,16 +7,14 @@ public static class GameEvent {
 	public const string LANCIA_OGGETTO = "LANCIA_OGGETTO";
 	public const string START_TUTORIAL = "START_TUTORIAL";
 	public const string PRIMA_MARACHELLA = "PRIMA_MARACHELLA";
-	public const string MISSION_COMPLETE = "MISSION_COMPLETE";
-	public const string FIRST_MISSION_COMPLETE = "FIRST_MISSION_COMPLETE";
 	public const string MISSIONE_PASTELLI = "MISSIONE_PASTELLI";
+	public const string MISSION_COMPLETE = "MISSION_COMPLETE";
+	public const string FIRST_MISSION_COMPLETE = "MISSION_COMPLETE";
 	public const string COLLEZZIONA_GCOIN = "COLLEZZIONA_GCOIN";
-
 	public const string MISSIONE_TELEVISIONI = "MISSIONE_TELEVISIONI";
 	public const string MISSIONE_COMPITI = "MISSIONE_COMPITI";
 	public const string FANTASMINO_EVENTO = "FANTASMINO_EVENTO";
 	public const string FORGET = "FORGET";
-
 	
 	// TAGS
 	public const string FANTASMINO_CATTIVO_TAG = "Fantasmino_Cattivo";
@@ -32,13 +30,16 @@ public static class GameEvent {
 	public const string TV_BAGNO_TAG = "TV_Bagno";
 	public const string TV_SALA_GIOCHI_TAG = "TV_Sala_Giochi";
 	public const string TV_CAMERA_LETTO_TAG = "TV_Camera_Letto";
-
+	public const string TV_GENERICA = "TV_";
 	public const string CONTENITORE_TAG = "Contenitore";
-
+	public const string PLAYER = "Player";
+	public const string EVIL_COIN_TAG = "EvilCoin";
+	public const string GOOD_COIN_TAG = "GoodCoin";
+	
+	// INDEX
 	public const int TELECOMANDO_INDEX = 1;
 	public const int PASTELLI_INDEX = 2;
 	public const int BOOKS_INDEX = 3;
 
-	public const string EVIL_COIN_TAG = "EvilCoin";
-	public const string GOOD_COIN_TAG = "GoodCoin";
+	
 }
