@@ -2598,7 +2598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.9, y: 7.6}
+  m_AnchoredPosition: {x: -0.15082729, y: -15.0139065}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &49335469
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ecco quante ne hai fatte giuste
+  m_text: Testo di prova tanto viene sovrascritto...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2655,8 +2655,8 @@ MonoBehaviour:
   m_fontSizeMin: 4.06
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -8155,7 +8155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &219963867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11170,7 +11170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &296122070
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21795,7 +21795,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560907081}
-  m_LocalRotation: {x: 0.022308981, y: 0.67065823, z: -0.020186974, w: 0.74115616}
+  m_LocalRotation: {x: 0.022308983, y: 0.67065823, z: -0.020186977, w: 0.74115616}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -42403,7 +42403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &898617069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55836,7 +55836,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112154135}
-  m_LocalRotation: {x: -0.004628206, y: 0.67094886, z: 0.004187977, w: 0.7414774}
+  m_LocalRotation: {x: -0.0046282066, y: 0.6709489, z: 0.0041879765, w: 0.7414773}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -65616,22 +65616,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3324a6ec28543c8916d53d6fc16b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  domanda: {fileID: 0}
-  risposta1Toggle: {fileID: 0}
-  risposta2Toggle: {fileID: 0}
-  risposta3Toggle: {fileID: 0}
-  risposta4Toggle: {fileID: 0}
-  risposta1: {fileID: 0}
-  risposta2: {fileID: 0}
-  risposta3: {fileID: 0}
-  risposta4: {fileID: 0}
-  nienteCompiti: {fileID: 0}
-  foglioCompiti: {fileID: 0}
-  inizio: {fileID: 0}
-  riepilogo: {fileID: 0}
-  fine: {fileID: 0}
-  riepilogoText: {fileID: 0}
-  bimbo: {fileID: 0}
+  domanda: {fileID: 1321445940}
+  risposta1Toggle: {fileID: 1526548614}
+  risposta2Toggle: {fileID: 1487629721}
+  risposta3Toggle: {fileID: 1641151911}
+  risposta4Toggle: {fileID: 231236311}
+  risposta1: {fileID: 191784825}
+  risposta2: {fileID: 1399195937}
+  risposta3: {fileID: 228245462}
+  risposta4: {fileID: 1247076033}
+  nienteCompiti: {fileID: 296122069}
+  foglioCompiti: {fileID: 1998041607}
+  inizio: {fileID: 1623489007}
+  riepilogo: {fileID: 219963866}
+  fine: {fileID: 898617068}
+  riepilogoText: {fileID: 49335469}
+  fineText: {fileID: 1874187600}
+  bimbo: {fileID: 595711452}
 --- !u!1 &1361647975
 GameObject:
   m_ObjectHideFlags: 0
@@ -73199,7 +73200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.9, y: 7.6}
+  m_AnchoredPosition: {x: 1.9, y: -13.716408}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1555159449
@@ -73222,7 +73223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Niente Compiti
+  m_text: Niente Compiti per domani :)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -77918,6 +77919,7 @@ MonoBehaviour:
   riepilogo: {fileID: 219963866}
   fine: {fileID: 898617068}
   riepilogoText: {fileID: 49335469}
+  fineText: {fileID: 0}
   bimbo: {fileID: 595711452}
 --- !u!1001 &1704300694
 PrefabInstance:
@@ -92817,7 +92819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.9, y: 7.6}
+  m_AnchoredPosition: {x: -0.15082729, y: -14.828548}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874187600
@@ -92840,7 +92842,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fine
+  m_text: "Hai totalizzato X angioletto coins.\nSei stata brava.\nHai fatto i tuoi
+    compiti.\nOra corri da un adulto e chiedigli di cambiare\ni tuoi angioletto coins\ncon
+    un gelato.\nNon potranno dirti di NO\n(Io chiuder\xF2 un occhio sulle tue marachelle)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -92867,15 +92871,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 4.06
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

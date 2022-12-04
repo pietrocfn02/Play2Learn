@@ -51,6 +51,8 @@ public class CompitiConnector : MonoBehaviour
 
     [SerializeField] TMP_Text riepilogoText;
 
+    [SerializeField] TMP_Text fineText; 
+
     [SerializeField] BambinoControllerAngiolettoMode bimbo;
 
 
@@ -186,18 +188,6 @@ public class CompitiConnector : MonoBehaviour
                         }
                     }
 
-                    
-                        if (lastDomandaRendered >= 0 && lastDomandaRendered < compiti.Domande.Length)
-                        {
-                            int rispostaCorretta = compiti.Domande[lastDomandaRendered].RispostaCorretta;
-                            if ((rispostaCorretta == 1 && risposta1Toggle.isOn) || (rispostaCorretta == 2 && risposta2Toggle.isOn) ||
-                            (rispostaCorretta == 3 && risposta3Toggle.isOn) || (rispostaCorretta == 4 && risposta4Toggle.isOn)) {
-                                Debug.Log("esatto :)");
-                                this.risposteCorrette++;
-                            }
-                            
-                        }
-
                         if (lastDomandaRendered < compiti.Domande.Length)
                         {
                             Debug.Log("PREMO Invio "+lastDomandaRendered );
@@ -212,6 +202,16 @@ public class CompitiConnector : MonoBehaviour
 
                          
 
+                        }
+                        if (lastDomandaRendered > 0 && lastDomandaRendered <= compiti.Domande.Length)
+                        {
+                            int rispostaCorretta = compiti.Domande[lastDomandaRendered-1].RispostaCorretta;
+                            if ((rispostaCorretta == 1 && risposta1Toggle.isOn) || (rispostaCorretta == 2 && risposta2Toggle.isOn) ||
+                            (rispostaCorretta == 3 && risposta3Toggle.isOn) || (rispostaCorretta == 4 && risposta4Toggle.isOn)) {
+                                Debug.Log("esatto :)");
+                                this.risposteCorrette++;
+                            }
+                            
                         }
                         if (lastDomandaRendered == compiti.Domande.Length)
                         {
@@ -228,7 +228,17 @@ public class CompitiConnector : MonoBehaviour
                         if (lastDomandaRendered == compiti.Domande.Length + 1)
                         {
                             riepilogo.SetActive(false);
+                            fineText.text = "Hai totalizzato "+bimbo.getAngiolettoScore()+ " angioletto coins\n"+
+                            "Sei stata brava\n"+
+                            "Hai fatto i tuoi compiti\n"+
+                            "Ora corri da un adulto e chiedigli di scambiare\n"+
+                            "i tuoi angioletto coins\n"+
+                            "con un gelato.\n"+
+                            "Non potranno dirti di NO\n"+
+                            "(Io chiuderò un occhio sulle tue marachelle)";
+
                             fine.SetActive(true);
+
                         }
                         else
                         {
