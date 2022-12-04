@@ -129,12 +129,10 @@ public class BambinoController : MonoBehaviour {
     }
 
     public void MissionComplete(){
-        Debug.Log("MISSION COMPLETAAA");
         Messenger.Broadcast(GameEvent.MISSION_COMPLETE);
     }
 
     public void FirstMissionComplete(){
-        Debug.Log("PRIMA MISSION COMPLETAAA");
         Messenger.Broadcast(GameEvent.FIRST_MISSION_COMPLETE);
     }
 

@@ -70,7 +70,9 @@ public class UIController : MonoBehaviour
     }
 
     private void missionComplete(){
+        labelText.text ="";
         labelText.text = UIMessages.END_MARACHELLA;
+        Debug.Log(labelText.text);
         imageText.SetActive(true);
     }
 
