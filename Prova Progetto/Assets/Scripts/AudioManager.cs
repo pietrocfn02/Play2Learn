@@ -35,6 +35,12 @@ public class AudioManager : MonoBehaviour
         audioTv = clip;
         audioSource.PlayOneShot(audioTv);
     }
+    public void releaseObject(AudioClip clip){
+        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER);
+        AudioSource audioSource = type[0].GetComponent<AudioSource>();
+        audioTv = clip;
+        audioSource.PlayOneShot(audioTv);
+    }
     public void stopCollect(AudioClip clip){
         type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER);
         AudioSource audioSource = type[0].GetComponent<AudioSource>();
