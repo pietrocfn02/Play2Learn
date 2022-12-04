@@ -249,10 +249,11 @@ public class CompitiConnector : MonoBehaviour
                         fine.SetActive(true);
 
                     }
-                    else
+                    else if (fine.active)
                     {
+                        Debug.Log("Entro nell'else");
                         Time.timeScale = 1;
-                         SceneManager.LoadScene("Credits");
+                        SceneManager.LoadScene("Credits");
                     }
                     lastDomandaRendered++;
 
