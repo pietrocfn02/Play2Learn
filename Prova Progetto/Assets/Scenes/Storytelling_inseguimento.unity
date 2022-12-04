@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5688429, g: 0.719677, b: 0.91212124, a: 1}
+  m_IndirectSpecularColor: {r: 0.46574414, g: 0.5159839, b: 0.58818847, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -816,11 +816,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3318171192718126303, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
       propertyPath: m_UiScaleMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3318171192718126303, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
       propertyPath: m_ScreenMatchMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318171192718126303, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318171192718126303, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 3318171193433124144, guid: 642d7fc3b9057b7428ba6e78050fcf0c, type: 3}
       propertyPath: m_Enabled
