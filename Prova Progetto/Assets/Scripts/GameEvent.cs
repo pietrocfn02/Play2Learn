@@ -36,8 +36,6 @@ public static class GameEvent {
 	public const string TV_GENERICA = "TV_";
 	public const string CONTENITORE_TAG = "Contenitore";
 	public const string PLAYER = "Player";
-	public const string EVIL_COIN_TAG = "EvilCoin";
-	public const string GOOD_COIN_TAG = "GoodCoin";
 	
 	// INDEX
 	public const int TELECOMANDO_INDEX = 1;
