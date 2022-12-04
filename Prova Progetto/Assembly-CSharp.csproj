@@ -109,7 +109,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\HQ_ResidentialHouse\Scripts\KeyScript.cs" />
-     <Compile Include="Assets\Scripts\CompitiConnector.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\LocalSphereTransitionExample.cs" />
      <Compile Include="Assets\Scripts\UIMessages.cs" />
@@ -150,7 +149,6 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-     <Compile Include="Assets\Scripts\FantasminiArrabbiati.cs" />
      <Compile Include="Assets\Scripts\GhostMovement.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\DemoAnimations\CamAnim.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -159,6 +157,8 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\StoryTelling.cs" />
      <Compile Include="Assets\Scripts\WonderingAI.cs" />
+     <Compile Include="Assets\Scripts\FantasminiArrabbiati.cs" />
+     <Compile Include="Assets\Scripts\CompitiConnector.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\SpacemaskOpaque.shader" />

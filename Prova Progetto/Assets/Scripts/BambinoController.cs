@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
@@ -36,7 +37,8 @@ public class BambinoController : MonoBehaviour {
     }
 
     IEnumerator coroutine(){
-        yield return new WaitForSecondsRealtime(15);
+        yield return new WaitForSecondsRealtime(10);
+        SceneManager.LoadScene(GameEvent.STORYTELLING_INSEGUIMENTO);        
     }
 
     void Update(){

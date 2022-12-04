@@ -29,7 +29,7 @@ public class GameSettings : MonoBehaviour
     
     // Metodo che cambia scena 
     public void ChangeScene(){
-        SceneManager.LoadScene("Storytelling");
+       SceneManager.LoadScene("Storytelling");
     }
 
     // Disattiva i pulsanti "inizia Partita" e "Impostazioni"
@@ -87,7 +87,7 @@ public class GameSettings : MonoBehaviour
 
     void Update(){
         string currentScene = SceneManager.GetActiveScene().name;
-        if (currentScene != "StartGame_Scene"){
+        if (currentScene != GameEvent.START_GAME_SCENE){
             if (speedLevel != null){
                 speedValue = (int) speedSlider.value;
                 speedLevel.text = speedValue.ToString();
