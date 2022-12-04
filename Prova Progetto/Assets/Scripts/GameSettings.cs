@@ -20,8 +20,8 @@ public class GameSettings : MonoBehaviour
     [SerializeField] public TMP_Text resolutionText;
     [SerializeField] public Button _exitGame;
     
-    private int [] heights = {1280, 1920,2048,3840};
-    private int [] widths = {800, 1080,1080,2160};
+    private int [] heights = {1280, 1920,2560,3840};
+    private int [] widths = {800, 1080,1440,2160};
     private int pos = 0;
     private bool gameIsPaused = false;
     private static int speedValue;
@@ -54,7 +54,7 @@ public class GameSettings : MonoBehaviour
 
     public void SetScreenSize(int size){
         if (pos != widths.Length-1){
-            pos += size-1;
+            pos += size;
         }else{
             pos = 0;
         }
