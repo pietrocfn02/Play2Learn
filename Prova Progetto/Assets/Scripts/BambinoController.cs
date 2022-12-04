@@ -23,6 +23,12 @@ public class BambinoController : MonoBehaviour {
     private bool primaMarachella = false;
     private int numOggettiLasciati=0;
     private int numTotOggetti=8;
+
+    private AudioManager audio = new AudioManager();
+    [SerializeField] public AudioClip collectAudio;
+    [SerializeField] public AudioClip collectCoinAudio;
+    [SerializeField] public AudioClip flushAudio;
+    [SerializeField] public AudioClip fridgeAudio;
     
     void Start(){
 
@@ -59,6 +65,7 @@ public class BambinoController : MonoBehaviour {
                 }
                 else if (tagInteraction == GameEvent.WATER_TAG){ 
                     spawnCoin(inventary[GameEvent.TELECOMANDO_INDEX-1]);            
+                    audio.releaseObject(flushAudio);
                     LasciaOggetto(GameEvent.TELECOMANDO_INDEX);
                     MissionComplete();
                     StartCoroutine(corutine());
@@ -72,6 +79,7 @@ public class BambinoController : MonoBehaviour {
                     }else{
                         MissionComplete();
                     }                 
+                    audio.releaseObject(fridgeAudio);
                     LasciaOggetto(GameEvent.PASTELLI_INDEX);
                     StartCoroutine(corutine());
                 }
@@ -86,6 +94,7 @@ public class BambinoController : MonoBehaviour {
     }
 
     public void UpdateDiavoletto(int i) {
+        audio.collect(collectCoinAudio);
         diavoletto_score+=i;
         Messenger.Broadcast(GameEvent.DIAVOLETTO_UPDATE);
     }
@@ -96,6 +105,7 @@ public class BambinoController : MonoBehaviour {
     }
 
     public void RaccoltoOggetto(int i){
+        audio.collect(collectAudio);
         inventary[i-1] += 1;
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();

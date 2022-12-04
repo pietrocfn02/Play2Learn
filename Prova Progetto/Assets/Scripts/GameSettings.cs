@@ -54,7 +54,7 @@ public class GameSettings : MonoBehaviour
 
     public void SetScreenSize(int size){
         if (pos != widths.Length-1){
-            pos += size;
+            pos += size-1;
         }else{
             pos = 0;
         }

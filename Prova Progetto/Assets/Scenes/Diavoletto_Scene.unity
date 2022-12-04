@@ -5993,13 +5993,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1185780295}
     - target: {fileID: 1428192103463151180, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
+      propertyPath: flushAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fe881551f1299340bd3b8fa4143067c, type: 3}
+    - target: {fileID: 1428192103463151180, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
       propertyPath: textWindow
       value: 
       objectReference: {fileID: 1149149870}
     - target: {fileID: 1428192103463151180, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
+      propertyPath: fridgeAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: ac782eb8fcbe4924eb919082930d8f7d, type: 3}
+    - target: {fileID: 1428192103463151180, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
+      propertyPath: collectAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 4bf82e74654e48342b57ca6848c7a57f, type: 3}
+    - target: {fileID: 1428192103463151180, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
       propertyPath: evilCoinPrefab
       value: 
       objectReference: {fileID: 970423622}
+    - target: {fileID: 1428192103463151180, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
+      propertyPath: collectCoinAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: c39082e3edd6fef44bc3dc93c83b3362, type: 3}
     - target: {fileID: 1428192103463151185, guid: a3410d01b52e9f049a7343c3301d97d1, type: 3}
       propertyPath: target
       value: 
@@ -6272,7 +6288,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 082cf6a7611ac4a349e12ee28d71a9ac, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.091
   m_Pitch: 1
@@ -11370,15 +11386,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startGame: {fileID: 0}
   settings: {fileID: 0}
-  settingsPanel: {fileID: 0}
-  audioSlider: {fileID: 0}
-  speedSlider: {fileID: 0}
-  audioLevel: {fileID: 0}
-  speedLevel: {fileID: 0}
+  settingsPanel: {fileID: 582758216}
+  audioSlider: {fileID: 513049363}
+  speedSlider: {fileID: 274122802}
+  audioLevel: {fileID: 1072318923}
+  speedLevel: {fileID: 724204554}
   menuButton: {fileID: 0}
-  nextResolutionButton: {fileID: 0}
-  resolutionText: {fileID: 0}
-  _exitGame: {fileID: 0}
+  nextResolutionButton: {fileID: 996975282}
+  resolutionText: {fileID: 1083480184}
+  _exitGame: {fileID: 875629780}
 --- !u!114 &274122802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11430,9 +11446,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 274122801}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SetSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24467,9 +24483,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 513049362}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SetAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36120,7 +36136,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 875629779}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -45454,7 +45470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 996975281}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
         m_MethodName: NextResolution
         m_Mode: 1
