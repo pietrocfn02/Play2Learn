@@ -47,6 +47,7 @@ public class Credits : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         customizableText.text = "";
 
     }
