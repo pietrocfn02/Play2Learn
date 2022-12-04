@@ -6,6 +6,10 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
+
+using UnityEngine.SceneManagement;
+
+
 [Serializable]
 public class Domanda
 {
@@ -247,7 +251,7 @@ public class CompitiConnector : MonoBehaviour
                     }
                     else
                     {
-                        //Carica Scena "Credits"
+                         SceneManager.LoadScene("Credits");
                     }
                     lastDomandaRendered++;
 
