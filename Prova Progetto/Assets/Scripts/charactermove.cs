@@ -9,6 +9,9 @@ public class charactermove : MonoBehaviour {
 	Transform trans;
 	float jumpforce;
 	bool gr;
+	AudioManager steps;
+	public AudioClip walkClip;
+
 
 	void Start () 
 	{
@@ -46,27 +49,38 @@ public class charactermove : MonoBehaviour {
 			anim.SetFloat ("walk", Input.GetAxisRaw ("Vertical"));
 		if (Input.GetKey (KeyCode.W) && gr == true) {
 			rigid.velocity = trans.forward * 0.625f;
-				if (anim.GetBool ("run") == true)
+			if (anim.GetBool ("run") == true){
 				rigid.velocity = trans.forward * 2f;
 			}
+			steps.walk(walkClip);
+				
+		}
 		if (Input.GetKey (KeyCode.S)&& gr == true) {
 			rigid.velocity = trans.forward * -0.625f;
-				if (anim.GetBool ("run") == true)
+			steps.walk(walkClip);
+			if (anim.GetBool ("run") == true){
 				rigid.velocity = trans.forward * -1.5f;
 			}
+				
+		}
 
 		//ROTATE
 			anim.SetFloat ("turn", Input.GetAxisRaw ("Horizontal"));
-		if (Input.GetKey (KeyCode.A))
-				transform.Rotate (new Vector3 (0f, -90f, 0f) * Time.deltaTime);
-		if (Input.GetKey (KeyCode.D))
-				transform.Rotate (new Vector3 (0f, 90f, 0f) * Time.deltaTime);
+		if (Input.GetKey (KeyCode.A)){
+			transform.Rotate (new Vector3 (0f, -90f, 0f) * Time.deltaTime);
+			steps.walk(walkClip);
+		}
+		if (Input.GetKey (KeyCode.D)){
+			transform.Rotate (new Vector3 (0f, 90f, 0f) * Time.deltaTime);
+			steps.walk(walkClip);
+		}
+				
 
 		//RUN
-			if (Input.GetKey (KeyCode.LeftShift))
-				anim.SetBool ("run", true);
-			else
-				anim.SetBool ("run", false);
+		if (Input.GetKey (KeyCode.LeftShift))
+			anim.SetBool ("run", true);
+		else
+			anim.SetBool ("run", false);
 
 		//STRAFE
 		if (Input.GetKey (KeyCode.E) || Input.GetKey (KeyCode.Q)) {

@@ -13,7 +13,6 @@ public class GameSettings : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] public Slider audioSlider;
     [SerializeField] public Slider speedSlider;
-    [SerializeField] public Toggle tutorialToggle; 
     [SerializeField] public TMP_Text audioLevel;
     [SerializeField] public TMP_Text speedLevel;
     [SerializeField] public Button menuButton;
@@ -30,7 +29,7 @@ public class GameSettings : MonoBehaviour
     
     // Metodo che cambia scena 
     public void ChangeScene(){
-        SceneManager.LoadScene(GameEvent.DIAVOLETTO_SCENE);
+       SceneManager.LoadScene("Storytelling");
     }
 
     // Disattiva i pulsanti "inizia Partita" e "Impostazioni"
@@ -52,18 +51,6 @@ public class GameSettings : MonoBehaviour
         settingsPanel.SetActive(false);
         menuButton.gameObject.SetActive(false);
     }
-
-    // Serve per attivare o disattivare il tutorial 
-    public void Tutorial(){
-        if (tutorialToggle.isOn){
-            // attivare tutorial
-            Debug.Log("##### ATTIVO #####");
-        }else{
-            // disattivare tutorial
-            Debug.Log("##### DISATTIVO #####");
-        }
-    }
-
 
     public void SetScreenSize(int size){
         if (pos != widths.Length-1){

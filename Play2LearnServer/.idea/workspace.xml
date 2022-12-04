@@ -9,23 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5e7d9e6-75bc-4a14-8425-5c47db6bab5a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Play2LearnExercises_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Play2LearnExercises/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Play2LearnExercises/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Play2LearnServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Play2LearnServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_3_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Play2LearnExercises/Play2LearnExercises.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Play2LearnExercises/Play2LearnExercises.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Play2LearnExercises/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Play2LearnExercises/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Play2LearnExercises/src/main/java/com/example/play2learnexercises/api/ExercisesApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Play2LearnExercises/src/main/java/com/example/play2learnexercises/api/ExercisesApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Prova Progetto/Assets/Scripts/CompitiConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Prova Progetto/Assets/Scripts/CompitiConnector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Prova Progetto/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../Prova Progetto/UserSettings/EditorUserSettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="b5e7d9e6-75bc-4a14-8425-5c47db6bab5a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

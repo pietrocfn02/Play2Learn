@@ -7,7 +7,10 @@ public class RelativeMovement : MonoBehaviour
     [SerializeField] private Transform target;
     private static float rotSpeed = 15.0f;
     private static int moveSpeed = 1;
-
+    private AudioSource _soundSource;
+    [SerializeField] private AudioClip footStepSound;
+    private float _footStepSoundLength;
+    private bool _step;
 
     private float jumpSpeed = 6f;
     private float gravity = -9.8f;
@@ -19,26 +22,33 @@ public class RelativeMovement : MonoBehaviour
     private Animator _animator;
     private CharacterController _charController;
     
+    IEnumerator WaitForFootSteps(float stepsLength) {
+        _step = false;
+        yield return new WaitForSeconds(stepsLength);
+        _step = true;
+    }
+    
     void Start()
     {
         _charController = GetComponent<CharacterController>();
         _vertSpeed = minFall;
         _animator = GetComponent<Animator>();
-
+        _soundSource = GetComponent<AudioSource>();
+        _step = true;
+        _footStepSoundLength = 0.50f;
     }
 
-    // Update is called once per frame
     void Update() {
         
         Vector3 movement = Vector3.zero;
         
         float horInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
+        
         if (horInput != 0 || vertInput != 0) {
              _animator.SetFloat("speed", 1f);
             movement.x = horInput * moveSpeed;
             movement.z = vertInput * moveSpeed;
-
             movement = Vector3.ClampMagnitude(movement, moveSpeed);
             Quaternion tmp = target.rotation;
             target.eulerAngles = new Vector3(0, target.eulerAngles.y, 0);
@@ -47,7 +57,6 @@ public class RelativeMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(movement);
             Quaternion direction = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Lerp(transform.rotation,direction, rotSpeed * Time.deltaTime);
-
         } 
 
 
@@ -84,6 +93,10 @@ public class RelativeMovement : MonoBehaviour
                 }
             }
         }    
+        if (_charController.velocity.magnitude > 0f && _step) {
+            _soundSource.PlayOneShot(footStepSound);
+            StartCoroutine(WaitForFootSteps(_footStepSoundLength));
+        }
         movement.y = _vertSpeed;
         movement *= Time.deltaTime;
         _charController.Move(movement);

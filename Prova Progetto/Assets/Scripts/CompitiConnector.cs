@@ -23,12 +23,14 @@ public class Compiti
 
 public class CompitiConnector : MonoBehaviour
 {
+
     private static string url = "http://localhost:8080/dyh";
     private string result = "";
     private Compiti compiti;
     private bool isServerOk = false;
     private bool areCompitiOk = false;
     [SerializeField] TMP_Text domanda;
+    
     [SerializeField] Toggle risposta1Toggle;
     [SerializeField] Toggle risposta2Toggle;
     [SerializeField] Toggle risposta3Toggle;
@@ -48,6 +50,8 @@ public class CompitiConnector : MonoBehaviour
     [SerializeField] GameObject fine;
 
     [SerializeField] TMP_Text riepilogoText;
+
+    [SerializeField] BambinoControllerAngiolettoMode bimbo;
 
 
     int lastDomandaRendered = 0;
@@ -134,7 +138,12 @@ public class CompitiConnector : MonoBehaviour
 
     void Start()
     {
+
+       
+
         StartCoroutine(GetRequest(url));
+            
+        
     }
 
 
@@ -159,6 +168,11 @@ public class CompitiConnector : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Return))
                 {
 
+                    Debug.Log("1: "+risposta1Toggle.isOn);
+                    Debug.Log("2: "+risposta2Toggle.isOn);
+                    Debug.Log("3: "+risposta3Toggle.isOn);
+                    Debug.Log("4: "+risposta4Toggle.isOn);
+
                     if (lastDomandaRendered == 0)
                     {
                         inizio.SetActive(false);
@@ -173,11 +187,15 @@ public class CompitiConnector : MonoBehaviour
                     }
 
                     
-                        if (lastDomandaRendered > 0 && lastDomandaRendered <= compiti.Domande.Length)
+                        if (lastDomandaRendered >= 0 && lastDomandaRendered < compiti.Domande.Length)
                         {
-                            //Check sulle risposte Giuste;
-                            //Per il momento le do tutte giuste poi e' da capire
-                            this.risposteCorrette++;
+                            int rispostaCorretta = compiti.Domande[lastDomandaRendered].RispostaCorretta;
+                            if ((rispostaCorretta == 1 && risposta1Toggle.isOn) || (rispostaCorretta == 2 && risposta2Toggle.isOn) ||
+                            (rispostaCorretta == 3 && risposta3Toggle.isOn) || (rispostaCorretta == 4 && risposta4Toggle.isOn)) {
+                                Debug.Log("esatto :)");
+                                this.risposteCorrette++;
+                            }
+                            
                         }
 
                         if (lastDomandaRendered < compiti.Domande.Length)
@@ -192,11 +210,15 @@ public class CompitiConnector : MonoBehaviour
                             risposta3.text = compiti.Domande[lastDomandaRendered].Risposte[2];
                             risposta4.text = compiti.Domande[lastDomandaRendered].Risposte[3];
 
+                         
+
                         }
                         if (lastDomandaRendered == compiti.Domande.Length)
                         {
                             if (compiti.Domande.Length >0) {
                                 foglioCompiti.SetActive(false);
+                                riepilogoText.text = "Complimenti, hai risposto correttamente a "+risposteCorrette+" domande su "+compiti.Domande.Length+"\n Quindi hai guadagnato "+risposteCorrette*10+" angioletto coins";
+                                bimbo.UpdateAngioletto(risposteCorrette*10);
                                 riepilogo.SetActive(true);
                             }
                             else lastDomandaRendered++;
