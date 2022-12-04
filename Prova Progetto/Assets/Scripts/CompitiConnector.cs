@@ -29,8 +29,11 @@ public class CompitiConnector : MonoBehaviour
     private Compiti compiti;
     private bool isServerOk = false;
     private bool areCompitiOk = false;
-    [SerializeField] TMP_Text domanda;
+
+
     
+    [SerializeField] TMP_Text domanda;
+
     [SerializeField] Toggle risposta1Toggle;
     [SerializeField] Toggle risposta2Toggle;
     [SerializeField] Toggle risposta3Toggle;
@@ -51,12 +54,13 @@ public class CompitiConnector : MonoBehaviour
 
     [SerializeField] TMP_Text riepilogoText;
 
-    [SerializeField] TMP_Text fineText; 
+    [SerializeField] TMP_Text fineText;
 
     [SerializeField] BambinoControllerAngiolettoMode bimbo;
 
 
     int lastDomandaRendered = 0;
+
 
     private int risposteCorrette = 0;
 
@@ -81,7 +85,6 @@ public class CompitiConnector : MonoBehaviour
 
                 compiti = new Compiti();
 
-                // TODO: MOCK DA ELIMINARE
                 compiti.Domande = new Domanda[5];
                 Domanda d1 = new Domanda();
                 d1.TestoDomanda = "Quale regione si trova più a Nord?";
@@ -141,11 +144,11 @@ public class CompitiConnector : MonoBehaviour
     void Start()
     {
 
-       
+
 
         StartCoroutine(GetRequest(url));
-            
-        
+
+
     }
 
 
@@ -170,10 +173,12 @@ public class CompitiConnector : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Return))
                 {
 
-                    Debug.Log("1: "+risposta1Toggle.isOn);
-                    Debug.Log("2: "+risposta2Toggle.isOn);
-                    Debug.Log("3: "+risposta3Toggle.isOn);
-                    Debug.Log("4: "+risposta4Toggle.isOn);
+                    Debug.Log("Called : lastDomandaRendered=" +lastDomandaRendered);
+
+                    Debug.Log("1: " + risposta1Toggle.isOn);
+                    Debug.Log("2: " + risposta2Toggle.isOn);
+                    Debug.Log("3: " + risposta3Toggle.isOn);
+                    Debug.Log("4: " + risposta4Toggle.isOn);
 
                     if (lastDomandaRendered == 0)
                     {
@@ -188,67 +193,67 @@ public class CompitiConnector : MonoBehaviour
                         }
                     }
 
-                        if (lastDomandaRendered < compiti.Domande.Length)
+                    if (lastDomandaRendered < compiti.Domande.Length)
+                    {
+                        Debug.Log("PREMO Invio " + lastDomandaRendered);
+                        
+                        
+                        domanda.text = compiti.Domande[lastDomandaRendered].TestoDomanda;
+                        risposta1.text = compiti.Domande[lastDomandaRendered].Risposte[0];
+                        risposta2.text = compiti.Domande[lastDomandaRendered].Risposte[1];
+                        risposta3.text = compiti.Domande[lastDomandaRendered].Risposte[2];
+                        risposta4.text = compiti.Domande[lastDomandaRendered].Risposte[3];
+
+
+
+                    }
+                    if (lastDomandaRendered > 0 && lastDomandaRendered <= compiti.Domande.Length)
+                    {
+                        int rispostaCorretta = compiti.Domande[lastDomandaRendered - 1].RispostaCorretta;
+                        if ((rispostaCorretta == 1 && risposta1Toggle.isOn) || (rispostaCorretta == 2 && risposta2Toggle.isOn) ||
+                        (rispostaCorretta == 3 && risposta3Toggle.isOn) || (rispostaCorretta == 4 && risposta4Toggle.isOn))
                         {
-                            Debug.Log("PREMO Invio "+lastDomandaRendered );
-                            Debug.Log(compiti.Domande);
-                            Debug.Log(compiti.Domande[lastDomandaRendered]);
-                            Debug.Log(compiti.Domande[lastDomandaRendered].TestoDomanda);
-                            domanda.text = compiti.Domande[lastDomandaRendered].TestoDomanda;
-                            risposta1.text = compiti.Domande[lastDomandaRendered].Risposte[0];
-                            risposta2.text = compiti.Domande[lastDomandaRendered].Risposte[1];
-                            risposta3.text = compiti.Domande[lastDomandaRendered].Risposte[2];
-                            risposta4.text = compiti.Domande[lastDomandaRendered].Risposte[3];
-
-                         
-
+                            Debug.Log("esatto :)");
+                            this.risposteCorrette++;
                         }
-                        if (lastDomandaRendered > 0 && lastDomandaRendered <= compiti.Domande.Length)
+
+                    }
+                    if (lastDomandaRendered == compiti.Domande.Length)
+                    {
+                        if (compiti.Domande.Length > 0)
                         {
-                            int rispostaCorretta = compiti.Domande[lastDomandaRendered-1].RispostaCorretta;
-                            if ((rispostaCorretta == 1 && risposta1Toggle.isOn) || (rispostaCorretta == 2 && risposta2Toggle.isOn) ||
-                            (rispostaCorretta == 3 && risposta3Toggle.isOn) || (rispostaCorretta == 4 && risposta4Toggle.isOn)) {
-                                Debug.Log("esatto :)");
-                                this.risposteCorrette++;
-                            }
-                            
+                            foglioCompiti.SetActive(false);
+                            int angiolettoCoinstoUpdate = risposteCorrette * 10;
+                            riepilogoText.text = "Complimenti, hai risposto correttamente a " + risposteCorrette + " domande su " + compiti.Domande.Length + "\n Quindi hai guadagnato " + angiolettoCoinstoUpdate + " angioletto coins";
+                            Debug.Log("Updatando i coins");
+                            bimbo.UpdateAngioletto(angiolettoCoinstoUpdate);
+                            riepilogo.SetActive(true);
                         }
-                        if (lastDomandaRendered == compiti.Domande.Length)
-                        {
-                            if (compiti.Domande.Length >0) {
-                                foglioCompiti.SetActive(false);
-                                riepilogoText.text = "Complimenti, hai risposto correttamente a "+risposteCorrette+" domande su "+compiti.Domande.Length+"\n Quindi hai guadagnato "+risposteCorrette*10+" angioletto coins";
-                                bimbo.UpdateAngioletto(risposteCorrette*10);
-                                riepilogo.SetActive(true);
-                            }
-                            else lastDomandaRendered++;
-                            
+                    }
+                    if (lastDomandaRendered == compiti.Domande.Length + 1)
+                    {
+                        riepilogo.SetActive(false);
+                        fineText.text = "Hai totalizzato " + bimbo.getAngiolettoScore() + " angioletto coins\n" +
+                        "Sei stata brava\n" +
+                        "Hai fatto i tuoi compiti\n" +
+                        "Ora corri da un adulto e chiedigli di scambiare\n" +
+                        "i tuoi angioletto coins\n" +
+                        "con un gelato.\n" +
+                        "Non potranno dirti di NO\n" +
+                        "(Io chiuderò un occhio sulle tue marachelle)";
 
-                        }
-                        if (lastDomandaRendered == compiti.Domande.Length + 1)
-                        {
-                            riepilogo.SetActive(false);
-                            fineText.text = "Hai totalizzato "+bimbo.getAngiolettoScore()+ " angioletto coins\n"+
-                            "Sei stata brava\n"+
-                            "Hai fatto i tuoi compiti\n"+
-                            "Ora corri da un adulto e chiedigli di scambiare\n"+
-                            "i tuoi angioletto coins\n"+
-                            "con un gelato.\n"+
-                            "Non potranno dirti di NO\n"+
-                            "(Io chiuderò un occhio sulle tue marachelle)";
+                        fine.SetActive(true);
 
-                            fine.SetActive(true);
-
-                        }
-                        else
-                        {
-                            //Carica Scena "Credits"
-                        }
-                        lastDomandaRendered++;
-                    
+                    }
+                    else
+                    {
+                        //Carica Scena "Credits"
+                    }
+                    lastDomandaRendered++;
 
 
-                    
+
+
 
 
 
