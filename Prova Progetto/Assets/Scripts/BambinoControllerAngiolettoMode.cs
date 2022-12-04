@@ -131,13 +131,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     public void RaccoltoOggetto(int i){
-        audio.collect(collectAudio);
         inventary[i-1] += 1;
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Destroy(objectToDestroy.gameObject);
         }
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
+        audio.collect(collectAudio);
     }
 
     public void LasciaOggetto(int i){
