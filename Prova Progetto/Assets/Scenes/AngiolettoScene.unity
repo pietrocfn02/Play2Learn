@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.57863295, g: 0.57995826, b: 0.5175593, a: 1}
+  m_IndirectSpecularColor: {r: 0.5786335, g: 0.57995903, b: 0.5175595, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1663,7 +1663,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24369421}
-  m_LocalRotation: {x: 0.018832855, y: 0.67253, z: -0.017124271, w: 0.739632}
+  m_LocalRotation: {x: 0.01883281, y: 0.6725319, z: -0.01712432, w: 0.7396303}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8348,6 +8348,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &212157045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4489927496589518973, guid: 40a4c8a4fb8a9a24db5657f9b7041292, type: 3}
+  m_PrefabInstance: {fileID: 2082326273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &212157046
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212157045}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3531916162218683621, guid: 40a4c8a4fb8a9a24db5657f9b7041292, type: 3}
 --- !u!1 &212499629 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 0eff36d1a0699d846b15099323d9df7d, type: 3}
@@ -18178,7 +18197,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444983293}
-  m_LocalRotation: {x: 0.018832855, y: 0.67253, z: -0.017124271, w: 0.739632}
+  m_LocalRotation: {x: 0.01883281, y: 0.6725319, z: -0.01712432, w: 0.7396303}
   m_LocalPosition: {x: 19.962034, y: 1.781, z: 13.755444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -19890,6 +19909,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.1, z: 0.35}
   m_Center: {x: 0.079990685, y: 0.0030192262, z: 0}
+--- !u!54 &489748975
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489748973}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &491355424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24560,6 +24595,8 @@ MonoBehaviour:
   clipTv: {fileID: 8300000, guid: 143351afe7fd9e5428116f8f1b95650d, type: 3}
   pemAudio: {fileID: 8300000, guid: 58f9f1bccd663ed418d67a4d033e371e, type: 3}
   collectAudio: {fileID: 8300000, guid: 4bf82e74654e48342b57ca6848c7a57f, type: 3}
+  collectCoinAudio: {fileID: 8300000, guid: c39082e3edd6fef44bc3dc93c83b3362, type: 3}
+  releseAudio: {fileID: 8300000, guid: 45d72a12ac33fd14fb2057fcb61e33c9, type: 3}
 --- !u!82 &595711453
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24572,7 +24609,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -57694,7 +57731,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112154135}
-  m_LocalRotation: {x: -0.004628206, y: 0.67094886, z: 0.004187977, w: 0.7414774}
+  m_LocalRotation: {x: -0.0046282066, y: 0.6709489, z: 0.0041879765, w: 0.7414773}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

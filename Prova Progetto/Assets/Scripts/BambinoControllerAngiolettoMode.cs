@@ -21,6 +21,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     [SerializeField] public AudioClip clipTv;
     [SerializeField] public AudioClip pemAudio;
     [SerializeField] public AudioClip collectAudio;
+    [SerializeField] public AudioClip collectCoinAudio;
+    [SerializeField] public AudioClip releseAudio;
+    
 
     private GameObject[] _coins;
     private GameObject[] tv;
@@ -52,6 +55,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     RaccoltoOggetto(2);
                 }else if (tagInteraction == "Contenitore"){
                     if (inventary[1] >= 12){
+                        audio.releaseObject(releseAudio);
                         audio.reproducePem(pemAudio);
                         spawnCoin(inventary[1]);
                         LasciaOggetto(2);
@@ -113,12 +117,15 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         count ++;
         audio.turnOffTV(tag,clipTv);
     }
+    /* eliminare lo facciamo nel bambino controller
     public void UpdateDiavoletto(int i) {
         diavoletto_score+=i;
         Messenger.Broadcast(GameEvent.DIAVOLETTO_UPDATE);
     }
+    */
 
     public void UpdateAngioletto(int i) {
+        audio.releaseObject(collectCoinAudio);
         angioletto_score+=i;
         Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
     }
