@@ -64,30 +64,38 @@ public class BambinoController : MonoBehaviour {
                     RaccoltoOggetto(GameEvent.BOOKS_INDEX);
                 }
                 else if (tagInteraction == GameEvent.WATER_TAG){ 
-                    spawnCoin(inventary[GameEvent.TELECOMANDO_INDEX-1]);            
-                    audio.releaseObject(flushAudio);
-                    LasciaOggetto(GameEvent.TELECOMANDO_INDEX);
-                    MissionComplete();
-                    StartCoroutine(corutine());
+                    if (inventary[GameEvent.TELECOMANDO_INDEX-1] >0 ){
+                        spawnCoin(inventary[GameEvent.TELECOMANDO_INDEX-1]);            
+                        audio.releaseObject(flushAudio);
+                        LasciaOggetto(GameEvent.TELECOMANDO_INDEX);
+                        MissionComplete();
+                        StartCoroutine(corutine());
+                    }
                 } 
                 else if (tagInteraction == GameEvent.FRIGO_TAG){    
                     spawnCoin(inventary[GameEvent.PASTELLI_INDEX-1]);
                     if(primaMarachella)
                     {
+                        if (inventary[GameEvent.PASTELLI_INDEX-1] >0 ){
                         FirstMissionComplete();
                         primaMarachella=false;
+                        }
                     }else{
-                        MissionComplete();
+                        if (inventary[GameEvent.PASTELLI_INDEX-1] >0 ){
+                            MissionComplete();
+                        }
                     }                 
                     audio.releaseObject(fridgeAudio);
                     LasciaOggetto(GameEvent.PASTELLI_INDEX);
                     StartCoroutine(corutine());
                 }
                 else if (tagInteraction == GameEvent.BRUCIA_TAG){
-                    spawnCoin(inventary[GameEvent.BOOKS_INDEX-1]);
-                    LasciaOggetto(GameEvent.BOOKS_INDEX);
-                    MissionComplete();
-                    StartCoroutine(corutine());
+                    if (inventary[GameEvent.BOOKS_INDEX-1] >0 ){
+                        spawnCoin(inventary[GameEvent.BOOKS_INDEX-1]);
+                        LasciaOggetto(GameEvent.BOOKS_INDEX);
+                        MissionComplete();
+                        StartCoroutine(corutine());
+                    }
                 }  
             }
         }

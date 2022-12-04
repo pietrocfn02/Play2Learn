@@ -251,6 +251,7 @@ public class CompitiConnector : MonoBehaviour
                     }
                     else
                     {
+                        Time.timeScale = 1;
                          SceneManager.LoadScene("Credits");
                     }
                     lastDomandaRendered++;

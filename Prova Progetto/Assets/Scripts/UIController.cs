@@ -7,9 +7,7 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] BambinoController bambinoController;
-    //[SerializeField] private Text angiolettoScoreText;
     [SerializeField] private TMP_Text diavolettoScoreText;
-    //TODO: lista di countText (inventario fisso)
     [SerializeField] private TMP_Text telecomandoCountText;
     [SerializeField] private TMP_Text pastelliCountText;
     [SerializeField] private TMP_Text libriCountText;
@@ -30,7 +28,6 @@ public class UIController : MonoBehaviour
 
     void Awake() {
         Messenger.AddListener(GameEvent.DIAVOLETTO_UPDATE, updateDiavolettoScore);
-        Messenger.AddListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore);
         Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary);
         Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary);
         Messenger.AddListener(GameEvent.START_TUTORIAL, startTutorial);
@@ -62,13 +59,7 @@ public class UIController : MonoBehaviour
         diavolettoScoreText.text = diavoletto_score.ToString();
         labelText.text=UIMessages.EMPTY_MESSAGE;
     }
-
-
-    private void updateAngiolettoScore() {
-        angioletto_score = bambinoController.getAngiolettoScore();
-        //angiolettoScoreText.text = angioletto_score.ToString();
-    }
-
+    
     private void missionComplete(){
         labelText.text ="";
         labelText.text = UIMessages.END_MARACHELLA;
@@ -81,7 +72,6 @@ public class UIController : MonoBehaviour
         imageText.SetActive(true);    
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(labelText.text=="" || labelText.text == UIMessages.EMPTY_MESSAGE)
@@ -95,7 +85,6 @@ public class UIController : MonoBehaviour
 
     void OnDestroy() {
         Messenger.RemoveListener(GameEvent.DIAVOLETTO_UPDATE, updateDiavolettoScore );
-        Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
         Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
         Messenger.RemoveListener(GameEvent.LANCIA_OGGETTO, updateInventary );
         Messenger.RemoveListener(GameEvent.MISSION_COMPLETE, missionComplete);

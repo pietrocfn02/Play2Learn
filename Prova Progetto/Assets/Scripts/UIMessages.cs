@@ -16,5 +16,5 @@ public static class UIMessages {
     public const string FIND_ME_LABEL = "Trovami!";
     public const string RACCOGLI_PASTELLI = "Hai raccolto i pastelli! Ce ne sono altri in giro per casa... Se non sai dove cercare cerca Me!";
     public const string FRIGO_MESSAGE = "Raccogli altri pastelli! Mettili al fresco in frigo!";
-    public const string FINE_PRIMA_MARACHELLA = "Congratulazioni! Hai completato la tua prima marachella! Raccogli le Diavoletto Coins! Ora continua senza di me";
+    public const string FINE_PRIMA_MARACHELLA = "Congratulazioni! Hai completato la marachella! Raccogli le Diavoletto Coins entro 15 secondi!";
 }
