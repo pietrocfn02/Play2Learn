@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5688429, g: 0.719677, b: 0.91212124, a: 1}
+  m_IndirectSpecularColor: {r: 0.5694432, g: 0.72045416, b: 0.912976, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10804,7 +10804,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241007925}
-  m_LocalRotation: {x: 0.023240903, y: -0.6424591, z: 0.019499747, w: 0.7657193}
+  m_LocalRotation: {x: 0.023240907, y: -0.6424591, z: 0.019499747, w: 0.7657193}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24230,7 +24230,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531942203}
-  m_LocalRotation: {x: 0.019732019, y: -0.6406911, z: 0.016474659, w: 0.76736844}
+  m_LocalRotation: {x: 0.019732002, y: -0.64069206, z: 0.016474683, w: 0.7673676}
   m_LocalPosition: {x: 27.502388, y: 1.801, z: 16.887218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -71101,7 +71101,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617858532}
-  m_LocalRotation: {x: 0.019732019, y: -0.6406911, z: 0.016474657, w: 0.7673684}
+  m_LocalRotation: {x: 0.019732, y: -0.640692, z: 0.01647468, w: 0.7673676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -83590,8 +83590,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1940625749}
   - component: {fileID: 1940625748}
+  - component: {fileID: 1940625750}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Audio Ambiente
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83611,7 +83612,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -83707,6 +83708,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1940625750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940625747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638bf9e4647b34fedb917a03c9b8ec1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1940694159
 PrefabInstance:
   m_ObjectHideFlags: 0

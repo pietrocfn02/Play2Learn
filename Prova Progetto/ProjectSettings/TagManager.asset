@@ -26,6 +26,8 @@ TagManager:
   - TV_Bagno
   - Tavolo
   - Fantasmino_Cattivo
+  - Audio_Ambiente
+  - Camino
   layers:
   - Default
   - TransparentFX

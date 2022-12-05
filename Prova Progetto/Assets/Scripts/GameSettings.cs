@@ -25,7 +25,7 @@ public class GameSettings : MonoBehaviour
     private int pos = 0;
     private bool gameIsPaused = false;
     private static int speedValue;
-    private static int audioValue;
+    private static float audioValue;
     
     // Metodo che cambia scena 
     public void ChangeScene(){
@@ -69,15 +69,6 @@ public class GameSettings : MonoBehaviour
     public void ExitGame(){
         Application.Quit();
     }
-
-    public void SetAudio(){
-        // Manda un messaggio broadcast per settare l'audio del gioco
-        //potrebbe non servire mettendo un serialized field dell'audio
-    }
-
-    public void SetSpeed(){
-        // Manda un messaggio broadcast per settare la velocità del player
-    }
     public void SetFullscreen(bool _fullScreen){
         Screen.fullScreen = _fullScreen;
     }
@@ -94,12 +85,13 @@ public class GameSettings : MonoBehaviour
                 RelativeMovement.SetMovementSpeed(speedValue);
             }
             if (audioLevel != null){
-                audioValue = (int) audioSlider.value;
+                audioValue = audioSlider.value;
                 audioLevel.text = audioValue.ToString();
+                AudioManager.setAudio(audioValue);
             }
             if (Input.GetKeyDown(KeyCode.Escape)){
                 speedValue = (int) speedSlider.value;
-                audioValue = (int) audioSlider.value;
+                audioValue = audioSlider.value;
                 speedLevel.text = speedValue.ToString();
                 audioLevel.text = audioValue.ToString();
                 if (gameIsPaused){
@@ -115,8 +107,9 @@ public class GameSettings : MonoBehaviour
                 RelativeMovement.SetMovementSpeed(speedValue);
             }
             if (audioLevel != null){
-                audioValue = (int) audioSlider.value;
+                audioValue = audioSlider.value;
                 audioLevel.text = audioValue.ToString();
+                AudioManager.setAudio(audioValue);
             }
         }
     }
