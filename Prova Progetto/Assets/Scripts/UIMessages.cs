@@ -6,7 +6,6 @@ public static class UIMessages {
 
     // Costanti UI per i messaggi
 
-    
     public const string EMPTY_MESSAGE = "";
     public const string E_MESSAGE = "E";
     public const string START_MESSAGE = "Usa i tasti per muoverti";
@@ -21,4 +20,5 @@ public static class UIMessages {
     public const string RACCOGLI_PASTELLI = "Hai raccolto i pastelli! Ce ne sono altri in giro per casa... Se non sai dove cercare cerca Me!";
     public const string FRIGO_MESSAGE = "Raccogli altri pastelli! Mettili al fresco in frigo!";
     public const string FINE_PRIMA_MARACHELLA = "Congratulazioni! Hai completato la marachella! Raccogli le Diavoletto Coins entro 15 secondi!";
+    public const string ENTER_MESSAGE = "Premi Invio per continuare";
 }

@@ -55,6 +55,7 @@ public class StoryTelling : MonoBehaviour
     [SerializeField] TMP_Text customizableText;
 
     [SerializeField] TMP_Text next;
+    [SerializeField] GameObject enterIcon;
 
     [SerializeField] string scene;
 
@@ -77,7 +78,7 @@ public class StoryTelling : MonoBehaviour
         nextB = false;
         fraseAttuale = 0;
         next.text = Constants.EMPTY;
-
+        enterIcon.SetActive(false);
         
     }
 
@@ -169,6 +170,7 @@ public class StoryTelling : MonoBehaviour
             }
             else {
                 next.text = Constants.NEXT;
+                enterIcon.SetActive(true);
             }
             
         }

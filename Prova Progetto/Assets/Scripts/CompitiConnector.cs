@@ -65,6 +65,9 @@ public class CompitiConnector : MonoBehaviour
 
     [SerializeField] TMP_Text fineText;
 
+    [SerializeField] TMP_Text next;
+    [SerializeField] GameObject enterIcon;
+
 
     // FINE ELEMENTI UI
 
@@ -169,8 +172,8 @@ public class CompitiConnector : MonoBehaviour
     {
         // Mando la chiamata come coroutine
         StartCoroutine(GetRequest(url));
-
-
+        next.text = "";
+        enterIcon.SetActive(false);
     }
 
 
@@ -193,6 +196,8 @@ public class CompitiConnector : MonoBehaviour
             }
             if (areCompitiOk)
             {
+                next.text = "";
+                enterIcon.SetActive(true);
                 // Con "invio" cambio pagina
                 if (Input.GetKeyUp(KeyCode.Return))
                 {
@@ -289,6 +294,8 @@ public class CompitiConnector : MonoBehaviour
 
                 }
             }
+            next.text = "";
+            enterIcon.SetActive(false);
         }
 
 
