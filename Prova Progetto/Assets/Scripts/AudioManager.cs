@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour
         audioTv = clip;
         audioSource.PlayOneShot(audioTv);
     }
-    /*
+    
     public void stopCollect(AudioClip clip){
         type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER);
         AudioSource audioSource = type[0].GetComponent<AudioSource>();
@@ -91,7 +91,7 @@ public class AudioManager : MonoBehaviour
         audioTv = clip;
         audioSource.PlayOneShot(audioTv);
     }
-    */
+    
 
     //Prende la variabile dallo slider in GameSettings
     public static void setAudio(float level){
