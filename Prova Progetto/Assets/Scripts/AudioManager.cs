@@ -20,14 +20,17 @@ public class AudioManager : MonoBehaviour
     
     void Start(){
         //Prendo il componente AudioSource su cui è stato "attaccato" lo script Audio Manager
-        audioAmbiance = GetComponent<AudioSource>();
+        //audioAmbiance = GetComponent<AudioSource>();
         //Parte la clip ambiente, assegnata nell'ispector, della scena corrente 
-        audioAmbiance.Play();
+        //audioAmbiance.Play();
     }
 
     void Update(){
         //Prendo il valore corrente del volume della clip assegnata a AudioSource
-        audioAmbiance.volume = audioLevel;
+        //audioAmbiance.volume = audioLevel;
+        GameObject [] tmp;
+        tmp = GameObject.FindGameObjectsWithTag(GameEvent.TV_CUCINA_TAG);
+        tmp[0].GetComponent<AudioSource>().volume = audioLevel;
     }
 
 
