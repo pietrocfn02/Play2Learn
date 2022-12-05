@@ -6,6 +6,10 @@ using TMPro;
 
 public class UIAngioletto : MonoBehaviour
 {
+
+    // UI Controller della angioletto mode
+
+    
     [SerializeField] BambinoControllerAngiolettoMode bambinoController;
     [SerializeField] private TMP_Text angiolettoScoreText;
     

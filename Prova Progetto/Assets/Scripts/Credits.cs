@@ -56,6 +56,9 @@ public class Credits : MonoBehaviour
     void Update()
     {
 
+        // Scriptino easy che ogni 3 secondi all'incirca cambia frase
+        // Quando finisce torna al menu iniziale
+
         currentWaitTime = currentWaitTime - Time.deltaTime;
         if (currentWaitTime <= 0 && index <= phrases.Length)
         {

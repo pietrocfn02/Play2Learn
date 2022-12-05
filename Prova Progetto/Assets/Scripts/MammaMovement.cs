@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 
 
+
+// Script di comportamento dell'inseguitore nella scena dell'inseguimento
 public class MammaMovement : MonoBehaviour
 {
     // Il percorso che segue il fantasma
@@ -24,25 +26,35 @@ public class MammaMovement : MonoBehaviour
     // Variabili per che servono per fare fluttuare il fantasma
     public float speed = 0.2f;
     public float obstacleRange = 5.0f;
-    private bool _alive;   
 
-
+    // Ogni tot updates l'inseguitore respawna in un nuovo punto completamente casuale
+    // Mi serve sapere quante volte respawna perche dopo tot respawns deve diventare piu forte
     private int respawns = 0;
+
+
+    // Conto quante volte chiamo il metodo Update
+    // Per evitare coroutine gestisco gli eventi dipendenti dal tempo tramite 
+    // Il numero di updates ( Tanto non mi serve essere troppo preciso, sono tutti eventi che hanno bisogno di tempo approssimativo)
     private int updates = 1;
 
+
+    // Mi salvo l'update nel quale il fantasma si e' avvicinato a me
+    // Cosi che io possa controlalre dopo un po di update se sono riuscito a scappare e quindi continuo l'inseguimento
+    // Oppure sono stato preso e quindi finisco la scena
     private int updateTaken = -1;
 
+    // Per il floating 
     Vector3 posOffset = new Vector3 ();
     Vector3 tempPos = new Vector3 ();
-    private bool startMarachella = false;
+    
     void Start(){
       
-        _alive=true;
         posOffset = transform.position;
     }
     void Update()
     {
         
+        // Ogni 100 updates il fantasma accelera di + 10%
         if (updates % 100 == 0) {
             speed= speed + (speed*0.1f);
         }
@@ -50,16 +62,22 @@ public class MammaMovement : MonoBehaviour
         target = player.position;
         target.y = 2.0f;
         if (updates % 2500 == 2499) {
+            // Ogni 2500 update il fantasma respawna in un punto a caso della mappa
             transform.position = new Vector3(Random.Range(8,16), 2.0f, Random.Range(4,24));
             this.respawns ++;
         }
         else {
+
+            // Mi muovo 
             move();
+
+            //Fluttuo
             Float(); 
         }
         
+        // Conto gli updates
         updates++;
-        Debug.Log(updates);
+        
     }
 
 
@@ -70,10 +88,13 @@ public class MammaMovement : MonoBehaviour
         float distancewithTarget = Vector3.Distance(target, this.gameObject.transform.position);
 
         if (updateTaken != -1) {
-            if (updates - updateTaken > 45) {
 
+            // 45 updates e' il limite che ho per scappare
+            if (updates - updateTaken > 45) {
+                
+                // Se al 46esimo update sono ancora vicino ho perso
+                // Altrimenti setto updateTaken a -1 che e' l'equivalente di dire "non sono mai stato preso"
                 if (distancewithTarget < 0.5f) {
-                    Debug.Log("PRESA, STUPIDA BAMBINA!");
                     SceneManager.LoadScene("Storytelling_angioletto");
 
                 }
@@ -83,7 +104,7 @@ public class MammaMovement : MonoBehaviour
             }
         }
 
-        Debug.Log(distancewithTarget);
+        // Questo indica che sono stato preso
         if (distancewithTarget < 0.35f) {
             if (updateTaken == -1) {
                 updateTaken = updates;
@@ -91,8 +112,11 @@ public class MammaMovement : MonoBehaviour
         }
         
         else {
+            // Il power up del fantasma dal terzo respawn in poi
+            // Quando ci si avvicina sotto 1.9 di distanza aumenta di 6 volte la sua velocita' 
+            // Peccato che ci becca quasi sempre prima,
+            // perche' quest'effetto e' molto bello graficamente
             if (distancewithTarget < 1.9f && this.respawns > 2) {
-                Debug.Log("TURBOOOOO");
                 transform.Translate(0, 0, speed*Time.deltaTime*6);
             }
             transform.Translate(0, 0, speed*Time.deltaTime);
@@ -100,6 +124,7 @@ public class MammaMovement : MonoBehaviour
         
     }
 
+    // Fluttuo
     private void Float(){
        
         tempPos = posOffset;
@@ -109,9 +134,6 @@ public class MammaMovement : MonoBehaviour
         transform.position = tempPos;
     }
 
-    public void SetAlive(bool alive){
-        _alive = alive;
-    }
     
     void OnDestroy() {
     }

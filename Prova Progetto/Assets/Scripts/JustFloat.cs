@@ -7,6 +7,8 @@ using TMPro;
 
 public class JustFloat : MonoBehaviour
 {
+
+    // Qualcuno ha detto JustFloat?
  
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 0.5f;

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class CulturaOrbitante : MonoBehaviour {
 
+
+    // Per far orbitare i libri intorno al fantasmino durante l'inseguimento
  
     [SerializeField] private Transform center;
     private Vector3 axis = Vector3.up;

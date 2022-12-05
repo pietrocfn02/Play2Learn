@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class SpawnCoin : MonoBehaviour
 {
+    //TODO Controllare se si puo cancellare
+    // Perche mi sa che non ci serve piu
+
+    
+    //Spawn di oggetti "coin" da prefab passato tramite inspector
+    //A caso nella mappa
+
     // Evil Coin
     [SerializeField] private GameObject evilCoinPrefab;
     private GameObject[] _evilCoins;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TriggersManager : MonoBehaviour
 {
+
+    //Gestione centralizzata dei tag per la collisione coi trigger
     private List<string> tagsList = new List<string>{
                                         GameEvent.FANTASMINO_TAG,
                                         GameEvent.TELECOMANDO_TAG,

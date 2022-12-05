@@ -35,6 +35,7 @@ public class BambinoController : MonoBehaviour {
     }
 
     IEnumerator corutine(){
+        // 15 secondi dopo di che ciao ciao soldini
         yield return new WaitForSecondsRealtime(15);
         for(int i = 0; i<_coins.Length;i++){
             if(_coins[i] != null)
@@ -43,17 +44,25 @@ public class BambinoController : MonoBehaviour {
     }
 
     IEnumerator coroutine(){
+        // Si attiva quando "finisco" le cose nella scena che posso "marachellare"
+        // Dopo 10 secondi carica lo storytelling che introduce la scena dell'inseguimento 
         yield return new WaitForSecondsRealtime(10);
         SceneManager.LoadScene(GameEvent.STORYTELLING_INSEGUIMENTO);        
     }
 
+
+
+    // Nota: Ho messo dei *3 su tutti gli Spawn delle monete per 
     void Update(){
         if (E){
+            // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
+            // tramite il sistama di Broadcasting
             if (Input.GetKeyUp(KeyCode.E)){
                 if (tagInteraction == GameEvent.FANTASMINO_TAG){
                     Messenger.Broadcast(GameEvent.START_TUTORIAL);
                 }
                 else if (tagInteraction == GameEvent.PASTELLI_TAG){
+                    // La prima marachella e' sempre pastelli perche' indotta dal tutorial
                     PrimaMarachella();
                     RaccoltoOggetto(GameEvent.PASTELLI_INDEX);
                 }
@@ -64,20 +73,23 @@ public class BambinoController : MonoBehaviour {
                     RaccoltoOggetto(GameEvent.BOOKS_INDEX);
                 }
                 else if (tagInteraction == GameEvent.WATER_TAG){ 
+                    // Sui tag faccio sempre "-1" perche' i GameEvent sono numerati a partire da 1
                     if (inventary[GameEvent.TELECOMANDO_INDEX-1] >0 ){
-                        spawnCoin(inventary[GameEvent.TELECOMANDO_INDEX-1]);            
+                        spawnCoin(inventary[GameEvent.TELECOMANDO_INDEX-1]*3);            
                         audio.releaseObject(flushAudio);
                         LasciaOggetto(GameEvent.TELECOMANDO_INDEX);
+                        // Facciamo arrivare il messaggio alla UI
                         MissionComplete();
+                        // Facciamo in modo che scompaiano i soldi
                         StartCoroutine(corutine());
                     }
                 } 
                 else if (tagInteraction == GameEvent.FRIGO_TAG){    
-                    spawnCoin(inventary[GameEvent.PASTELLI_INDEX-1]);
+                    spawnCoin(inventary[GameEvent.PASTELLI_INDEX-1]*3);
                     if(primaMarachella)
                     {
                         if (inventary[GameEvent.PASTELLI_INDEX-1] >0 ){
-                        FirstMissionComplete();
+                        MissionComplete();
                         primaMarachella=false;
                         }
                     }else{
@@ -91,7 +103,7 @@ public class BambinoController : MonoBehaviour {
                 }
                 else if (tagInteraction == GameEvent.BRUCIA_TAG){
                     if (inventary[GameEvent.BOOKS_INDEX-1] >0 ){
-                        spawnCoin(inventary[GameEvent.BOOKS_INDEX-1]);
+                        spawnCoin(inventary[GameEvent.BOOKS_INDEX-1]*3);
                         LasciaOggetto(GameEvent.BOOKS_INDEX);
                         MissionComplete();
                         StartCoroutine(corutine());
@@ -105,11 +117,6 @@ public class BambinoController : MonoBehaviour {
         audio.collect(collectCoinAudio);
         diavoletto_score+=i;
         Messenger.Broadcast(GameEvent.DIAVOLETTO_UPDATE);
-    }
-
-    public void UpdateAngioletto(int i) {
-        angioletto_score+=i;
-        Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
     }
 
     public void RaccoltoOggetto(int i){
@@ -140,9 +147,6 @@ public class BambinoController : MonoBehaviour {
         Messenger.Broadcast(GameEvent.MISSION_COMPLETE);
     }
 
-    public void FirstMissionComplete(){
-        Messenger.Broadcast(GameEvent.FIRST_MISSION_COMPLETE);
-    }
 
     public int getOggettoCount(int i){
         return inventary[i];
@@ -165,6 +169,8 @@ public class BambinoController : MonoBehaviour {
             t.gameObject.SetActive(true);
         }
     }
+
+    // Per comunicare l'evento alla UI e aggiornare i testi del tutorial
     public void PrimaMarachella(){
         primaMarachella = true;
         Messenger.Broadcast(GameEvent.PRIMA_MARACHELLA);
@@ -175,11 +181,15 @@ public class BambinoController : MonoBehaviour {
         this.tagInteraction = UIMessages.EMPTY_MESSAGE;
         Transform transform = objectRecived.transform;
         foreach(Transform t in transform){
+            // Dobbiamo "cercare" l'oggetto Canvas con la "E" sopra
             if(t.gameObject.name.Contains("Canvas"))
                 t.gameObject.SetActive(false);
         }
     }
 
+
+    // La size "determina" il numero di numeri casuali (da 1 a 10) la cui somma sara il numero di monete spawnate
+    // Giusto per rendere piu proporzionale il numero di monete spawnate
     public void spawnCoin(int size){
         int[] randomArray = new int[size];
         int randomSum = 0;

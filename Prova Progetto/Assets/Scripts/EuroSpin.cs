@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class EuroSpin : MonoBehaviour
 {
+
+    // Script di rotazione delle monete
+
+    // EURO = SOLDI
+    // SPIN = ROTAZIONE :)
+
+    
     public Space relativeTo = Space.Self;
     public float speed = 1f;
    

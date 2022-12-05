@@ -10,6 +10,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 
+// Oggettino per mappare la risposta dal Server (Testato)
+
 [Serializable]
 public class Domanda
 {
@@ -28,14 +30,17 @@ public class Compiti
 public class CompitiConnector : MonoBehaviour
 {
 
+
+    // URL del Server (Si, l'abbiamo scritto veramente ma restituisce sempre lo stesso JSON, quindi tanto vale mockare tutto)
     private static string url = "http://localhost:8080/dyh";
     private string result = "";
+
     private Compiti compiti;
     private bool isServerOk = false;
     private bool areCompitiOk = false;
 
 
-    
+    // Elementi UI
     [SerializeField] TMP_Text domanda;
 
     [SerializeField] Toggle risposta1Toggle;
@@ -60,18 +65,28 @@ public class CompitiConnector : MonoBehaviour
 
     [SerializeField] TMP_Text fineText;
 
+
+    // FINE ELEMENTI UI
+
+
+    // Mi serve la reference al personaggio per cambiargli il punteggio
     [SerializeField] BambinoControllerAngiolettoMode bimbo;
 
 
+    
+    // Iteratore domande
     int lastDomandaRendered = 0;
 
 
+    // Accumulatore risposte corrette
     private int risposteCorrette = 0;
 
+    // Mi serve solo per attivare tutta la UI quando l'evento viene catturato
     public static bool siamoInModalitaCompiti = false;
 
     IEnumerator GetRequest(string url)
     {
+        // Chiamo il server
         using (UnityWebRequest x = UnityWebRequest.Get(url))
         {
             yield return x.SendWebRequest();
@@ -87,6 +102,11 @@ public class CompitiConnector : MonoBehaviour
             {
                 // Debug.Log("Non hai compiti per lunedì");
 
+
+                // Qui tecnicamente dovrei gestire gli errori del server o i not found
+                // Ma dato che stiamo testando quasi sempre senza server
+                // Mock dell'oggettino con 5 domande casuali
+                // Per testare la UI dei compiti
                 compiti = new Compiti();
 
                 compiti.Domande = new Domanda[5];
@@ -147,9 +167,7 @@ public class CompitiConnector : MonoBehaviour
 
     void Start()
     {
-
-
-
+        // Mando la chiamata come coroutine
         StartCoroutine(GetRequest(url));
 
 
@@ -165,6 +183,7 @@ public class CompitiConnector : MonoBehaviour
             // Lo faccio una sola volta
             if (isServerOk && !areCompitiOk)
             {
+                // Setto attiva la pagina introduttiva
                 areCompitiOk = true;
                 inizio.SetActive(true);
                 foglioCompiti.SetActive(false);
@@ -174,15 +193,9 @@ public class CompitiConnector : MonoBehaviour
             }
             if (areCompitiOk)
             {
+                // Con "invio" cambio pagina
                 if (Input.GetKeyUp(KeyCode.Return))
                 {
-
-                    Debug.Log("Called : lastDomandaRendered=" +lastDomandaRendered);
-
-                    Debug.Log("1: " + risposta1Toggle.isOn);
-                    Debug.Log("2: " + risposta2Toggle.isOn);
-                    Debug.Log("3: " + risposta3Toggle.isOn);
-                    Debug.Log("4: " + risposta4Toggle.isOn);
 
                     if (lastDomandaRendered == 0)
                     {
@@ -199,9 +212,7 @@ public class CompitiConnector : MonoBehaviour
 
                     if (lastDomandaRendered < compiti.Domande.Length)
                     {
-                        Debug.Log("PREMO Invio " + lastDomandaRendered);
-                        
-                        
+                        // Setto la prossima domanda in UI
                         domanda.text = compiti.Domande[lastDomandaRendered].TestoDomanda;
                         risposta1.text = compiti.Domande[lastDomandaRendered].Risposte[0];
                         risposta2.text = compiti.Domande[lastDomandaRendered].Risposte[1];
@@ -213,27 +224,40 @@ public class CompitiConnector : MonoBehaviour
                     }
                     if (lastDomandaRendered > 0 && lastDomandaRendered <= compiti.Domande.Length)
                     {
+                        // Controllo se quella precedente e' stata risposta correttamente
                         int rispostaCorretta = compiti.Domande[lastDomandaRendered - 1].RispostaCorretta;
                         if ((rispostaCorretta == 1 && risposta1Toggle.isOn) || (rispostaCorretta == 2 && risposta2Toggle.isOn) ||
                         (rispostaCorretta == 3 && risposta3Toggle.isOn) || (rispostaCorretta == 4 && risposta4Toggle.isOn))
                         {
-                            Debug.Log("esatto :)");
                             this.risposteCorrette++;
                         }
 
                     }
+                    // Ho finito le "domande", devo mostrare riepilogo se c'erano domande,
+                    // O skippare alla pagina finale se non c'erano compiti per casa
                     if (lastDomandaRendered == compiti.Domande.Length)
                     {
+                        // Caso c'erano compiti
                         if (compiti.Domande.Length > 0)
                         {
                             foglioCompiti.SetActive(false);
                             int angiolettoCoinstoUpdate = risposteCorrette * 10;
-                            riepilogoText.text = "Complimenti, hai risposto correttamente a " + risposteCorrette + " domande su " + compiti.Domande.Length + "\n Quindi hai guadagnato " + angiolettoCoinstoUpdate + " angioletto coins";
-                            Debug.Log("Updatando i coins");
+                            
+                            // Aggiungo questo if perche pareva brutto fare i complimenti anche quando le sbagliavi tutte
+                            if (risposteCorrette == 0) {
+                                riepilogoText.text = "H";
+                            }
+                            else {
+                                riepilogoText.text = "Complimenti, h";
+                            }
+                            // LA H viene aggiunta prima :)
+                            riepilogoText.text = riepilogoText.text+"ai risposto correttamente a " + risposteCorrette + " domande su " + compiti.Domande.Length + "\n Quindi hai guadagnato " + angiolettoCoinstoUpdate + " angioletto coins";
+                            
                             bimbo.UpdateAngioletto(angiolettoCoinstoUpdate);
                             riepilogo.SetActive(true);
                         }
                     }
+                    // Questa e' la pagina di riepilogo
                     if (lastDomandaRendered == compiti.Domande.Length + 1)
                     {
                         riepilogo.SetActive(false);
@@ -251,7 +275,7 @@ public class CompitiConnector : MonoBehaviour
                     }
                     else if (fine.active)
                     {
-                        Debug.Log("Entro nell'else");
+                        // Passo ai credits, che poi mi riportano al menu principale
                         Time.timeScale = 1;
                         SceneManager.LoadScene("Credits");
                     }

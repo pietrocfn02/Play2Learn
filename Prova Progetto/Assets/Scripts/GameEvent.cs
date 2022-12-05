@@ -1,5 +1,7 @@
 public static class GameEvent {
 
+	//Costanti di gioco
+
 	//EVENTS
 	public const string DIAVOLETTO_UPDATE = "DIAVOLETTO_UPDATE";
 	public const string ANGIOLETTO_UPDATE = "ANGIOLETTO_UPDATE";

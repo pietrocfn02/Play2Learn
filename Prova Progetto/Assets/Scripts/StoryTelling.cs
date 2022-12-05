@@ -82,6 +82,12 @@ public class StoryTelling : MonoBehaviour
     }
 
 
+    // Lo script che mi fa apparire testi su una UI scrivendo una lettera alla volta fino a comporre una frase
+    // e aspettando "invio" per andare alla frase successiva.
+
+    // Anche qui, preferito gestire contando le chiamate ad update e il deltaTime piuttosto che fare coroutine
+    // in quanto non le ritengo necessarie
+
     void Update(){
     
         if (scene == Constants.SCENE_CHASING) {
@@ -108,17 +114,18 @@ public class StoryTelling : MonoBehaviour
                 currentWaitTime = waitTime;
             }
             if (nextB) {
-                Debug.Log("Sto aspettando input...");
-                Debug.Log("QUI :) 2");
+                
                 if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.E)){
-                    Debug.Log("PREMO Invio");
+                    
                     next.text = Constants.EMPTY;
                     if (fraseAttuale >= completeText.Length-1) {
                         if (scene == Constants.SCENE_CHASING) {
-                            Debug.Log("QUI :)");
+                            
                             SceneManager.LoadScene(GameEvent.INSEGUIMENTO_SCENE);
                         }
                         else if (scene == Constants.SCENE_ANGIOLETTO) {
+
+                            //TODO Inserire costante in GameEvent
                             SceneManager.LoadScene("AngiolettoScene");
                         }
                         else {
@@ -155,6 +162,8 @@ public class StoryTelling : MonoBehaviour
         }
         else {
             nextB = true;
+            // Questo e' per la scritta "premi invio"
+
             if (fraseAttuale >= completeText.Length-1) {
                 next.text = Constants.NEW_GAME;
             }

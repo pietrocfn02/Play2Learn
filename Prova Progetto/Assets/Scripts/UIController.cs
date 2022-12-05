@@ -6,6 +6,9 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    // Ui controller della diavoletto mode
+
+
     [SerializeField] BambinoController bambinoController;
     [SerializeField] private TMP_Text diavolettoScoreText;
     [SerializeField] private TMP_Text telecomandoCountText;
@@ -14,7 +17,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text labelText;
     [SerializeField] private GameObject imageText;
 
-    int angioletto_score;
     int diavoletto_score;
     ArrayList text_counts = new ArrayList();
 
@@ -32,7 +34,7 @@ public class UIController : MonoBehaviour
         Messenger.AddListener(GameEvent.LANCIA_OGGETTO, updateInventary);
         Messenger.AddListener(GameEvent.START_TUTORIAL, startTutorial);
         Messenger.AddListener(GameEvent.MISSION_COMPLETE, missionComplete);
-        Messenger.AddListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);        
+        Messenger.AddListener(GameEvent.FIRST_MISSION_COMPLETE, missionComplete);        
     }
 
     private void startTutorial(){
@@ -63,17 +65,13 @@ public class UIController : MonoBehaviour
     private void missionComplete(){
         labelText.text ="";
         labelText.text = UIMessages.END_MARACHELLA;
-        Debug.Log(labelText.text);
         imageText.SetActive(true);
     }
 
-    private void firstMissionComplete(){
-        labelText.text = UIMessages.FINE_PRIMA_MARACHELLA;
-        imageText.SetActive(true);    
-    }
 
     void Update()
     {
+        // Tolgo tutto il disegnino quando non ho nessun testo da mostrare
         if(labelText.text=="" || labelText.text == UIMessages.EMPTY_MESSAGE)
         {
             imageText.SetActive(false);
@@ -88,6 +86,6 @@ public class UIController : MonoBehaviour
         Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
         Messenger.RemoveListener(GameEvent.LANCIA_OGGETTO, updateInventary );
         Messenger.RemoveListener(GameEvent.MISSION_COMPLETE, missionComplete);
-        Messenger.RemoveListener(GameEvent.FIRST_MISSION_COMPLETE, firstMissionComplete);
+        Messenger.RemoveListener(GameEvent.FIRST_MISSION_COMPLETE, missionComplete);
     }
 }

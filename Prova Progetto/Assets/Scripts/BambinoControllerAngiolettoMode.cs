@@ -38,7 +38,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     IEnumerator corutine(){
-        yield return new WaitForSecondsRealtime(6);
+        // 15 secondi dopo di che ciao ciao soldini
+        yield return new WaitForSecondsRealtime(15);
         for(int i = 0; i<_coins.Length;i++){
             if(_coins[i] != null)
                 Destroy(_coins[i]);
@@ -48,15 +49,22 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
 
     void Update(){
+        // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
+        // tramite il sistama di Broadcasting
         if (E){
+            // Abbiamo premuto E
+            // Verifichiamo con cosa possiamo interagire
             if (Input.GetKeyUp(KeyCode.E)){
                 E = false;
                 if (tagInteraction == "Pastelli"){
+                    // Il numerino si riferisce alla posizione dell'oggetto nell'inventario
                     RaccoltoOggetto(2);
                 }else if (tagInteraction == "Contenitore"){
                     if (inventary[1] >= 12){
+                        // I pastelli da raccogliere nella missione sono 12
                         audio.releaseObject(releseAudio);
                         audio.reproducePem(pemAudio);
+                        // è tempo di incassare
                         spawnCoin(inventary[1]);
                         LasciaOggetto(2);
                         MissionComplete(GameEvent.MISSIONE_PASTELLI);
@@ -69,7 +77,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     if (inventary[0] >= 1){
                         TurnOffTV(tagInteraction);
                         if (count >= 4){
-                            spawnCoin(count);
+                            // Le TV nella casa sono 4 --- faccio partire le azioni solo quando le ho spente tutte
+                            spawnCoin(count*4);
                             count = 0;
                             audio.stopPem(pemAudio);
                             TurnOffTV(tagInteraction);
@@ -86,22 +95,21 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     }
                 }else if (tagInteraction == "Tavolo"){
                     forgetSomething();
-                    Debug.Log("Sto controllando se dimentico qualcosa oppure no");
                     if (inventary[2] >= 1){
-                        Debug.Log("Non dimentico");
                         doHomework();
                     }else{
-                        Debug.Log("Dimentico");
                         forgetSomething();
                     }
-                    //StartCoroutine(corutine());
                 }else if (tagInteraction == "Books" && inventary[0] < 1){
+                    // Sembra ridondante ma ci vuole
                     forgetSomething();
                 }
             }
         }
     }
 
+    // Per impedire che si facciano delle azioni senza l'equipaggiamento necessario.
+    // Appare un messaggio UI che ci avvisa
     public void forgetSomething(){
         Messenger.Broadcast(GameEvent.FORGET);
     }
@@ -111,19 +119,16 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         CompitiConnector.siamoInModalitaCompiti = true;
         Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
     }
+
+
     public void TurnOffTV(string tag){
         tv = GameObject.FindGameObjectsWithTag(tag);
         tv[0].GetComponent<Renderer>().material = newMaterial;
         count ++;
         audio.turnOffTV(tag,clipTv);
     }
-    /* eliminare lo facciamo nel bambino controller
-    public void UpdateDiavoletto(int i) {
-        diavoletto_score+=i;
-        Messenger.Broadcast(GameEvent.DIAVOLETTO_UPDATE);
-    }
-    */
-
+ 
+    // Update punteggio --- Comunica con la UI
     public void UpdateAngioletto(int i) {
         audio.releaseObject(collectCoinAudio);
         angioletto_score+=i;
@@ -159,6 +164,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         return diavoletto_score;
     }
 
+
+    // Entro in un collider
     public void ActivateE(Collider objectRecived){
         this.E = true;
         this.tagInteraction = objectRecived.tag;
@@ -168,6 +175,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             t.gameObject.SetActive(true);
         }
     }
+
+    // Esco da un collider
     public void DeactivateE(Collider objectRecived){
 
         this.E = false;
@@ -178,6 +187,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         }
     }
 
+
+    // La size "determina" il numero di numeri casuali (da 1 a 10) la cui somma sara il numero di monete spawnate
+    // Giusto per rendere piu proporzionale il numero di monete spawnate
     public void spawnCoin(int size){
         int[] randomArray = new int[size];
         int randomSum = 0;

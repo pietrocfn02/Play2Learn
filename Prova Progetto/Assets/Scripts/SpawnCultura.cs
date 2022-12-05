@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpawnCultura : MonoBehaviour
 {
+
+    // Durante l'inseguimento, ogni tanto, giusto per non farci mancare nulla
+    // Faccio spawnare tonnellate di libri intorno al personaggio
+
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject bimbo;
 
@@ -17,13 +21,11 @@ public class SpawnCultura : MonoBehaviour
     // Update is called once per frame
     async void Update()
     {
-        Debug.Log("CULTURA: "+updates);
         Vector3 bimboPosition = bimbo.transform.position;
         if (updates % 1000 == 927){
             GameObject x = Instantiate(prefab) as GameObject;
             Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-1,bimboPosition.x+1), 1.5f, Random.Range(bimboPosition.z-1,bimboPosition.z+1));
             x.transform.position = spawnPosition;
-            Debug.Log("SPAWN AT :"+ spawnPosition.x + ' '+ spawnPosition.z);
         }
         updates++;    
                 

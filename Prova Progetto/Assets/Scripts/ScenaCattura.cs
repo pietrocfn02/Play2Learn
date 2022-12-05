@@ -7,6 +7,11 @@ using TMPro;
 
 public class ScenaCattura : MonoBehaviour
 {
+
+    // Storytelling che annuncia la angioletto mode
+    // Il fantasmino si avvicina al personaggio "con fare minaccioso"
+
+    // Simile a "Fantasmini arrabbiati" ma leggermente diverso
  
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 1f;
@@ -46,7 +51,6 @@ public class ScenaCattura : MonoBehaviour
             transform.LookAt(tmpTarget);
             
             float distanceWithTarget = Vector3.Distance(target, transform.position);
-            Debug.Log("DWT: "+distanceWithTarget);
             if (distanceWithTarget > 0.55f) {
                 if (distanceWithTarget < 0.75f) {
                     transform.Translate(0, 0, 1f*Time.deltaTime);

@@ -7,6 +7,13 @@ using TMPro;
 
 public class FantasminiArrabbiati : MonoBehaviour
 {
+
+    // USI:
+
+    // Storytelling che annuncia l'inseguimento
+    // Il fantasmino si "stacca" dalla finta UI 2D e va verso la telecamera
+
+    // Solo quando il fantasmino raggiunge il target iniziano a comparire le scritte sulla UI
  
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 1f;
@@ -29,6 +36,7 @@ public class FantasminiArrabbiati : MonoBehaviour
         Move(); 
     }
     
+    // Solito script di fluttuanza
     private void Float(){
         
         tempPos = posOffset;
@@ -41,9 +49,14 @@ public class FantasminiArrabbiati : MonoBehaviour
 
     private void Move() {
         if (!onGoal){
+            // Target e' un punto fisso piazzato di fianco alla telecamera
             transform.LookAt(target);
+
             float distanceWithTarget = Vector3.Distance(target, transform.position);
-            Debug.Log("DWT: "+distanceWithTarget);
+            
+            // per dare un po di dinamicita' quando e' quasi arrivato gli diamo un piccolo sprint
+            // L'idea era quella di imitare la modalita' inseguimento
+            // Ma qui si nota di meno perche' più vicino
             if (distanceWithTarget > 0.05f) {
                 if (distanceWithTarget < 0.45f) {
                     transform.Translate(0, 0, 2f*Time.deltaTime);

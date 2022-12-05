@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SpawnOneTypeCoin : MonoBehaviour
 {
+
+    //TODO Controllare se si puo cancellare
+    // Perche mi sa che non ci serve piu
+
+
+
     // Coin Prefab
     [SerializeField] private GameObject coinPrefab;
     private GameObject[] _coins;

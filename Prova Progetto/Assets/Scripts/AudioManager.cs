@@ -10,6 +10,11 @@ public class AudioManager : MonoBehaviour
     
     private string source;
     GameObject[] type;
+
+
+
+    // Funzioni utili per riprodurre tutti i suoni
+    
     public void turnOffTV(string tvSource, AudioClip clip){
         source = tvSource;
         type =  GameObject.FindGameObjectsWithTag(source);

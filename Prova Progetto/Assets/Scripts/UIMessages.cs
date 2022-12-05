@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class UIMessages {
+
+    // Costanti UI per i messaggi
+
+    
     public const string EMPTY_MESSAGE = "";
     public const string E_MESSAGE = "E";
     public const string START_MESSAGE = "Usa i tasti per muoverti";

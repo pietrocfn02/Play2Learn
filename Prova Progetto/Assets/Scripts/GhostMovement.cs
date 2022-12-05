@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
+// Lo script del tutorial
+// Comportamento base: il fantasmino si muove "iterando" una serie di punti della mappa 
+// "Guidando" il giocatore ai primi collezionabili
+// E quando il giocatore si allontana si ferma e chiede di essere seguito
 
 public class GhostMovement : MonoBehaviour
 {
@@ -126,9 +129,6 @@ public class GhostMovement : MonoBehaviour
                     if(_alive && distance < 1.7)
                     {
                         transform.Translate(0, 0, speed*Time.deltaTime);
-
-                        Ray ray = new Ray(transform.position, transform.forward);
-                        RaycastHit hit;
                         ghostTextWindow.SetActive(false);
                     }
                     else {
@@ -149,9 +149,6 @@ public class GhostMovement : MonoBehaviour
                     if(_alive && distance < 1.5)
                     {
                         transform.Translate(0, 0, speed*Time.deltaTime);
-
-                        Ray ray = new Ray(transform.position, transform.forward);
-                        RaycastHit hit;
                         ghostTextWindow.SetActive(false);
                     }
                     else {
