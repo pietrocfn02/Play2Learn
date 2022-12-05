@@ -125,9 +125,7 @@ public class StoryTelling : MonoBehaviour
                             SceneManager.LoadScene(GameEvent.INSEGUIMENTO_SCENE);
                         }
                         else if (scene == Constants.SCENE_ANGIOLETTO) {
-
-                            //TODO Inserire costante in GameEvent
-                            SceneManager.LoadScene("AngiolettoScene");
+                            SceneManager.LoadScene(GameEvent.ANGIOLETTO_SCENE);
                         }
                         else {
                             SceneManager.LoadScene(GameEvent.DIAVOLETTO_SCENE);

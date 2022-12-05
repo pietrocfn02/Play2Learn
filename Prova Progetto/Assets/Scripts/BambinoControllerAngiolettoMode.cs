@@ -8,9 +8,11 @@ using TMPro;
 
 public class BambinoControllerAngiolettoMode : MonoBehaviour {
     
+    //Controller per azioni della "Angioletto_Scene"
     private int initialSize = 0;
     private int diavoletto_score = 0;
     private int angioletto_score = 0;
+    //Array per l'inventario
     private int[] inventary = {0, 0, 0}; // Telecomando, Pastelli, Foglio
     private bool E = false;
     private CharacterController _charController;
@@ -23,12 +25,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     [SerializeField] public AudioClip collectAudio;
     [SerializeField] public AudioClip collectCoinAudio;
     [SerializeField] public AudioClip releseAudio;
-    
-
     private GameObject[] _coins;
     private GameObject[] tv;
     private Collider objectToDestroy;
-    private bool nextMission = false;
+    //private bool nextMission = false;
     private int count = 0;
     private AudioManager audio = new AudioManager();
     private bool tvComplete = false;
@@ -38,7 +38,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     IEnumerator corutine(){
-        // 15 secondi dopo di che ciao ciao soldini
+        //Aspetta 15 secondi prima che i coin nella scena vengano eliminati
         yield return new WaitForSecondsRealtime(15);
         for(int i = 0; i<_coins.Length;i++){
             if(_coins[i] != null)
@@ -62,19 +62,27 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                 }else if (tagInteraction == "Contenitore"){
                     if (inventary[1] >= 12){
                         // I pastelli da raccogliere nella missione sono 12
+                        // Richiama il metodo di raccolta
                         audio.releaseObject(releseAudio);
+                        //Riproduce la clip inerente alla seconda missione
                         audio.reproducePem(pemAudio);
-                        // è tempo di incassare
+                        //Richiama il metodo che crea le monete nella scena
                         spawnCoin(inventary[1]);
+                        //Richiama il metodo per "inserire" all'interno del contenitore i pastelli raccolti
                         LasciaOggetto(2);
                         MissionComplete(GameEvent.MISSIONE_PASTELLI);
+                        //Elimina dalla scena il fantasma che blocca la porta della prima missione
                         Destroy(ghost);
                     }
+                    //Avvia la coroutine sopra implementata
                     StartCoroutine(corutine());
+                //Ripeto l'azione di raccolta per il telecomando
                 }else if (tagInteraction == "Telecomando"){
                     RaccoltoOggetto(1);
                 }else if (tagInteraction.Contains("TV_")){
+                    //Controllo se il telecomando è stato preso dal player
                     if (inventary[0] >= 1){
+                        //Spengo la TV "tagInteraction"
                         TurnOffTV(tagInteraction);
                         if (count >= 4){
                             // Le TV nella casa sono 4 --- faccio partire le azioni solo quando le ho spente tutte
@@ -86,6 +94,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                         }
                     }
                     StartCoroutine(corutine());
+                    //Controllo se nell'inventario è presente il telecomando per capire
+                    //se avviare o meno la terza, e ultima, missione
                 }else if (tagInteraction == "Books" && inventary[0] >= 1){
                     if(tvComplete) {
                         RaccoltoOggetto(3);    
@@ -95,20 +105,21 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     }
                 }else if (tagInteraction == "Tavolo"){
                     forgetSomething();
+                    //Controllo se il player ha collezionato il libro o meno
                     if (inventary[2] >= 1){
                         doHomework();
                     }else{
                         forgetSomething();
                     }
                 }else if (tagInteraction == "Books" && inventary[0] < 1){
-                    // Sembra ridondante ma ci vuole
+                    //Sembra ridondante ma ci vuole per non accavallare più missioni
                     forgetSomething();
                 }
             }
         }
     }
 
-    // Per impedire che si facciano delle azioni senza l'equipaggiamento necessario.
+    // Per impedire che si facciano delle azioni senza i collezionabili necessari.
     // Appare un messaggio UI che ci avvisa
     public void forgetSomething(){
         Messenger.Broadcast(GameEvent.FORGET);
@@ -120,21 +131,21 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
     }
 
-
+    // Metodo che cambia il materiale della tv su di cui è stato chiamato OnTriggerEnter
     public void TurnOffTV(string tag){
         tv = GameObject.FindGameObjectsWithTag(tag);
         tv[0].GetComponent<Renderer>().material = newMaterial;
         count ++;
         audio.turnOffTV(tag,clipTv);
     }
- 
-    // Update punteggio --- Comunica con la UI
+    // Aggiorna il punteggio e lo comunica alla UI
     public void UpdateAngioletto(int i) {
         audio.releaseObject(collectCoinAudio);
         angioletto_score+=i;
         Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
     }
-
+    // "Raccolgie" l'oggetto, lo comunica alla UI e in fine avvia la clip audio
+    // per fare capire che l'oggetto è stato collezionato
     public void RaccoltoOggetto(int i){
         inventary[i-1] += 1;
         if(objectToDestroy!= null){
@@ -144,7 +155,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
         audio.collect(collectAudio);
     }
-
+    // "Lascia" gli oggetti, lo comunica alla UI e in fine avvia la clip audio
+    // per fare capire che l'oggetto è stato collezionato
     public void LasciaOggetto(int i){
         if(inventary[i-1]>0){
             inventary[i-1]=0;
@@ -214,7 +226,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         }  
         inventary[1] = 0;
     }
-
+    // Manda un messaggio alla UI per indicare la fine della missione
     public void MissionComplete(string missionTag){
         if (GameEvent.MISSIONE_TELEVISIONI == missionTag) {
             this.tvComplete = true;

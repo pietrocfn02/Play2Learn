@@ -6,7 +6,7 @@ public class SpawnCultura : MonoBehaviour
 {
 
     // Durante l'inseguimento, ogni tanto, giusto per non farci mancare nulla
-    // Faccio spawnare tonnellate di libri intorno al personaggio
+    // Faccio spawnare tonnellate di libri intorno al personaggio per bloccargli la strada
 
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject bimbo;

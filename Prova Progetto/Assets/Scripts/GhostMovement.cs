@@ -26,12 +26,14 @@ public class GhostMovement : MonoBehaviour
     public float speed = 0.2f;
     public float obstacleRange = 5.0f;
     private bool _alive;
+    // Il player
     [SerializeField] private GameObject bimbo;
     [SerializeField] private float amplitude = 0.05f;
     [SerializeField] private float frequency = 0.5f;
     
-    // Il fantasma e i vari testi che vengono disattivati e attivati a seconda delle esigenze 
+    // Il fantasma 
     [SerializeField] public GameObject ghostTextWindow;
+    // I vari testi che vengono disattivati e attivati a seconda delle esigenze 
     [SerializeField] private TMP_Text ghostTextMessage;
     [SerializeField] private TMP_Text ghostTextE; 
     [SerializeField] private TMP_Text labelMoves;
@@ -46,11 +48,12 @@ public class GhostMovement : MonoBehaviour
     private bool endFirstMarachella = false;
 
     void Start(){
+        // La strada che deve seguire il fantasmino
         targetsFirstPastelli[0] = new Vector3(25.6f,1.7f,15.8f);
         targetsFirstPastelli[1] = new Vector3(23.63f,1.7f,14.76f);
         targetsFirstPastelli[2] = new Vector3(20.0f,1.7f,14.33f);
         targetsFirstPastelli[3] = new Vector3(23.05f,1.7f,10.34f);
-
+        // La strada che deve seguire il fantasmino per il tutorial
         targetsSecondPastelli[0] = new Vector3(22.6f, 1.7f, 14.0f);
         targetsSecondPastelli[1] = new Vector3(24.95f, 1.7f, 15.47f);
         targetsSecondPastelli[2] = new Vector3(25.67f, 1.7f, 10.7f);          
@@ -93,14 +96,17 @@ public class GhostMovement : MonoBehaviour
     private void move(){
 
         if (reachedFirstPastelli < targetsFirstPastelli.Length){
+            // Guarda la posizione
             transform.LookAt(targetsFirstPastelli[reachedFirstPastelli]);
+            // La distanza del target
             float distanceWithTarget = Vector3.Distance(targetsFirstPastelli[reachedFirstPastelli], this.gameObject.transform.position);
             if (distanceWithTarget < 0.05f) {
                 reachedFirstPastelli++;
             }
             else {
+                // La posizione del bambino
                 float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
-            
+                // Se la distanza tra il bambino e il fantasmino è minore di 1, il fantasmino va verso il raget      
                 if(_alive && distance < 1)
                 {
                     transform.Translate(0, 0, speed*Time.deltaTime);
@@ -111,11 +117,16 @@ public class GhostMovement : MonoBehaviour
 
                 }
                 else {
+                    // Altrimenti il fantasmino si ferma.
+                    // Viene attivato il testo sulla testa di quest'ultimo che in fine guarderà il player per via di "LookAt(player)"
                     ghostTextWindow.SetActive(true);
                     transform.LookAt(player);
                 }
             }            
         } else if (startMarachella) {
+            // Se la prima marachella è iniziata
+            // il fantasmino segue le posizioni di targetsSecondPastelli e in fine di targetFrigo
+            // per finire il tutorial
             labelTutorial.text = UIMessages.RACCOGLI_PASTELLI;
             if(reachedSecondPastelli < targetsSecondPastelli.Length){
                 transform.LookAt(targetsSecondPastelli[reachedSecondPastelli]);
@@ -125,7 +136,6 @@ public class GhostMovement : MonoBehaviour
                 }
                 else {
                     float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
-                
                     if(_alive && distance < 1.7)
                     {
                         transform.Translate(0, 0, speed*Time.deltaTime);
@@ -162,10 +172,13 @@ public class GhostMovement : MonoBehaviour
                 endFirstMarachella=true;
             }
         } else { 
+            // Aziona la finestra del fantasmino per l'inizio del tutorial
             float distance = Vector3.Distance(bimbo.transform.position,this.gameObject.transform.position);
             transform.LookAt(player);
             ghostTextWindow.SetActive(true);
             ghostTextMessage.text = UIMessages.START_TUTORIAL_LABEL;
+            // Se la distanza è minore di 1 scrive "E" per fare capire che è possibile interagire per l'inizio del tutorial
+            // altrimenti rimuove la "E"
             if (distance < 1){
                 ghostTextE.text = UIMessages.E_MESSAGE;
                 if (labelTutorial.text.Contains(UIMessages.START_MESSAGE)){

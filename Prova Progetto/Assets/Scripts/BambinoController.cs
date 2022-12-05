@@ -173,6 +173,7 @@ public class BambinoController : MonoBehaviour {
     // Per comunicare l'evento alla UI e aggiornare i testi del tutorial
     public void PrimaMarachella(){
         primaMarachella = true;
+        // Manda un messaggio broadcast per "avviare" il metodo a cui è associata la costante "PRIMA_MARACHELLA"
         Messenger.Broadcast(GameEvent.PRIMA_MARACHELLA);
     }
 

@@ -24,20 +24,26 @@ public class TriggersManager : MonoBehaviour
     
 
     void OnTriggerEnter(Collider other) {
+        // Gestisce l'attivazione della "E" per interagire con alcuni gli oggetti nella scena
         if(tagsList.Contains(other.tag))
         {
             BroadcastMessage("ActivateE",other);
         }
         else if (other.tag == GameEvent.EVIL_COIN_TAG)
         {
+            // Gestisce l'update dei diavoletto coin mandando un BroadcastMessage con i relativi coin diavoletto
+            // guadagnati e, in fine, distrugge l'oggetto
             BroadcastMessage("UpdateDiavoletto", 10);
             Destroy(other.gameObject);
         }
         else if (other.tag == GameEvent.GOOD_COIN_TAG)
         {
+            // Gestisce l'update degli angioletto coin mandando un BroadcastMessage con i relativi coin angioletto
+            // guadagnati e, in fine, distrugge l'oggetto
             BroadcastMessage("UpdateAngioletto", 10);
             Destroy(other.gameObject);
         }else if (other.tag == GameEvent.FANTASMINO_CATTIVO_TAG){
+            // Manda un Messenger.Broadcast alla UIAngioletto
             Messenger.Broadcast(GameEvent.FANTASMINO_EVENTO);
         }
     }

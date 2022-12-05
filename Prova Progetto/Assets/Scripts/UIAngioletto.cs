@@ -31,44 +31,45 @@ public class UIAngioletto : MonoBehaviour
 
     void Start(){
     }
-
+    // Coroutine per la fine della prima missione in angioletto mode
     IEnumerator pastelliMission(){
-        labelText.text = "";
+        labelText.text = UIMessages.EMPTY_MESSAGE;
         imageText.SetActive(true);
-        countText.text = "0";
-        labelText.text = "COMPLIMENTI HAI FINITO DI RIORDINARE LA STANZA!";
+        countText.text = UIMessages.ZERO;
+        labelText.text = UIMessages.PASTELLI_1;
         yield return new WaitForSecondsRealtime(2);
-        labelText.text = "MAH?!... NON SENTI ANCHE TU DEI RUMORI?";
+        labelText.text = UIMessages.PASTELLI_2;
         yield return new WaitForSecondsRealtime(2);
-        labelText.text = "DEVI AVER LASCIATO LE TV ACCESE!";
+        labelText.text = UIMessages.PASTELLI_3;
         yield return new WaitForSecondsRealtime(2);
-        labelText.text = "FORZA! CERCA UN TELECOMANDO E SPEGNILE TUTTE!";
-        quantityText.text = "1";
+        labelText.text = UIMessages.PASTELLI_4;
+        quantityText.text = UIMessages.ONE;
         inventaryImage.sprite = tvImage;
-        labelMission.text = "Raccogli un telecomando e spegni le TV.";
+        labelMission.text = UIMessages.PASTELLI_5;
         yield return new WaitForSecondsRealtime(2);
         imageText.SetActive(false);
         count = 0;
     }
-
+    // Coroutine per la fine della prima missione in angioletto mode
     IEnumerator tvMission(){
-        labelText.text = "";
+        labelText.text = UIMessages.EMPTY_MESSAGE;
         imageText.SetActive(true);
-        countText.text = "0";
-        labelText.text = "MA CHE BRAVA, HAI SPENTO TUTTO!";
+        countText.text = UIMessages.ZERO;
+        labelText.text = UIMessages.TV_1;
         yield return new WaitForSecondsRealtime(2);
-        labelText.text = "ADESSO MANCA SOLTANTO UNA COSA DA FARE...";
+        labelText.text = UIMessages.TV_2;
         yield return new WaitForSecondsRealtime(2);
-        labelText.text = "E BENE SI... ORA E' ARRIVATO IL MOMENTO DI FARE I COMPITI!!!";
+        labelText.text = UIMessages.TV_3;
         yield return new WaitForSecondsRealtime(2);
-        labelText.text = "ANDIAMO! CERCA IN CASA UN QUADERNO E POI VAI SULLA SCRIVANIA!";
-        quantityText.text = "1";
+        labelText.text = UIMessages.TV_4;
+        quantityText.text = UIMessages.ONE;
         inventaryImage.sprite = bookImage;
-        labelMission.text = "Prendi un quaderno e fai i compiti";
+        labelMission.text = UIMessages.TV_5;
         yield return new WaitForSecondsRealtime(2);
         imageText.SetActive(false);
         count = 0;
     }
+    // Coroutine per la chiusura dei messaggi temporanei
     IEnumerator closeMessage(string s){
         labelText.text = s;
         imageText.SetActive(true);
@@ -77,6 +78,7 @@ public class UIAngioletto : MonoBehaviour
 
     }
 
+    // ADD LISTENER
     void Awake() {
         Messenger.AddListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore);
         Messenger.AddListener(GameEvent.RACCOLTA_UPDATE, updateInventary);
@@ -86,38 +88,35 @@ public class UIAngioletto : MonoBehaviour
         Messenger.AddListener(GameEvent.MISSIONE_COMPITI, doHomework);
         Messenger.AddListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
         Messenger.AddListener(GameEvent.FORGET, forgetText);
-        //Messenger.AddListener(GameEvent.MISSIONE_COMPITI,end);
     }
 
     // attiva il canvas dei compiti e disattiva gli altri 
-    /*
-    public void end(){
-        passa alla scena dei conti monetine
-    }
-    */
     public void forgetText(){
-        StartCoroutine(closeMessage("NON STARAI DIMENTICANDO QUALCOSA??"));
+        StartCoroutine(closeMessage(UIMessages.FORGET));
     }
+    // Spawn del foglio per i compiti
     public void doHomework(){
         homeworkImage.SetActive(true);
     }    
-
+    // Spawn del messaggio ... nella UI del fantasma che blocca la porta nella prima missioe
     public void youShallNotPass(){
-        StartCoroutine(closeMessage("TU...DA QUI...NON PUOI...PASSARE!"));
+        StartCoroutine(closeMessage(UIMessages.YOU_SHELL_NOT_PASS));
 
     }
+    // Start della coroutine per l'inizio della seconda missione
     public void completeTelevisioni(){
         StartCoroutine(tvMission());
     }
-
+    // Aggiorna l'inventario (UI)
     private void updateInventary(){
         count++;
         countText.text = count.ToString();
         if(count == 12){
             imageText.SetActive(true);
-            labelText.text="Hai raccolto tutti i pastelli! Ora rimettili a posto nel cestino in mezzo alla stanza!";
+            labelText.text = UIMessages.END_FIRST_GOOD_ACTION;
         }
     }
+    // Start della coroutine per l'inizio della missione finale
     private void completePastelli(){
         StartCoroutine(pastelliMission());
     }
@@ -128,7 +127,7 @@ public class UIAngioletto : MonoBehaviour
     }
 
     void Update(){}
-
+    // REMOVE LISTENER
     void OnDestroy() {
         Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
         Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
@@ -138,6 +137,5 @@ public class UIAngioletto : MonoBehaviour
         Messenger.RemoveListener(GameEvent.MISSIONE_COMPITI, doHomework);
         Messenger.RemoveListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
         Messenger.RemoveListener(GameEvent.FORGET, forgetText);
-        //Messenger.RemoveListener(GameEvent.MISSIONE_COMPITI,end);
     }
 }
