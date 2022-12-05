@@ -103,7 +103,6 @@
      <Compile Include="Assets\Brick Project Studio\Apartment Kit\Scripts &amp; Animation\OvenOpen\OvenFlip.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\Brick Project Studio\SE Basic Assets\Scripts and Animations\Windows\opencloseWindow.cs" />
-     <Compile Include="Assets\3DTOYS\rotatecamera.cs" />
      <Compile Include="Assets\WorldSpaceTransitions\fading\scripts\FadingTransition.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
@@ -155,7 +154,6 @@
      <Compile Include="Assets\WorldSpaceTransitions\common\ReadOnlyAttribute.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
      <Compile Include="Assets\Scripts\StoryTelling.cs" />
-     <Compile Include="Assets\Scripts\WonderingAI.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\SpacemaskOpaque.shader" />
@@ -189,20 +187,16 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingDissolveGlowInd.shader" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\materials\NewSurfaceShader.shader" />
-     <None Include="Assets\3DTOYS\readme.txt" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingTransparent.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-     <None Include="Assets\HQ_ResidentialHouse\Readme.txt" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\CGIncludes\standard_shadow_CS.cginc" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\SpacemaskTransparent.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\WorldSpaceTransitions\fading_std\shaders\FadingDissolve.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-     <None Include="Assets\Brick Project Studio\Apartment Kit\Scenes\Message For You Please Read Me.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-     <None Include="Assets\Dice_6\Documentation\Readmy.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
