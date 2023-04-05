@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/InseguimentoScene.unity
     guid: 04a35316b96e9d14faaabcdf2f2e9d8e
   - enabled: 1
-    path: Assets/Scenes/AngiolettoScene.unity
+    path: Assets/Scenes/FirstScene.unity
     guid: 033511981ad79784184968cea2119e08
   - enabled: 1
     path: Assets/Scenes/Storytelling.unity
