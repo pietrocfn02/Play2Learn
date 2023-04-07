@@ -14,7 +14,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private int angioletto_score = 0;
     //Array per l'inventario
     private int[] inventary = {0, 0, 0}; // Telecomando, Pastelli, Foglio
-    private bool E = false;
+    private bool interact = false;
     private CharacterController _charController;
     private string tagInteraction = "";
     [SerializeField] private GameObject goodCoinPrefab;
@@ -33,9 +33,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private AudioManager audio = new AudioManager();
     private bool tvComplete = false;
 
-    void Start(){
-        
-    }
+    void Start(){}
 
     IEnumerator corutine(){
         //Aspetta 15 secondi prima che i coin nella scena vengano eliminati
@@ -51,11 +49,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     void Update(){
         // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
         // tramite il sistama di Broadcasting
-        if (E){
+
+        /*if (interact){
             // Abbiamo premuto E
             // Verifichiamo con cosa possiamo interagire
             if (Input.GetKeyUp(KeyCode.E)){
-                E = false;
+                interact = false;
                 if (tagInteraction == "Pastelli"){
                     // Il numerino si riferisce alla posizione dell'oggetto nell'inventario
                     RaccoltoOggetto(2);
@@ -116,7 +115,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     forgetSomething();
                 }
             }
-        }
+        }*/
+        Debug.Log("Premi [TAB] per iniziare!!");
+        if(Input.GetKeyUp(KeyCode.Tab))
+            Messenger.Broadcast(GameEvent.START_TUTORIAL);
+
     }
 
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
@@ -180,12 +183,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     // Entro in un collider
     public void ActivateE(Collider objectRecived)
     {
-        this.E = true;
+        this.interact = true;
         this.tagInteraction = objectRecived.tag;
         this.objectToDestroy = objectRecived;
         Transform transform = objectRecived.transform;
         // Gowing here...
-        Debug.Log("Entro in " + objectRecived.tag);
+        // Debug.Log("Entro in " + objectRecived.tag);
         Outline outline = objectRecived.GetComponent<Outline>();
         if (outline)
         {
@@ -204,11 +207,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     public void DeactivateE(Collider objectRecived)
     {
 
-        this.E = false;
+        this.interact = false;
         this.tagInteraction = "";
         Transform transform = objectRecived.transform;
         // Not glowing here...
-        Debug.Log("Esco da " + objectRecived.tag);
+        // Debug.Log("Esco da " + objectRecived.tag);
         Outline outline = objectRecived.GetComponent<Outline>();
         if (outline)
         {
@@ -216,7 +219,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         }
         else
         {
-            Debug.Log("In " + objectRecived.tag + "non è presente il componente 'Outline' ");
+            Debug.Log("In " + objectRecived.tag + " non è presente il componente 'Outline' ");
         }
     }
 
@@ -253,6 +256,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             this.tvComplete = true;
         }
             Messenger.Broadcast(missionTag);
-        
     }
+
+    
 }

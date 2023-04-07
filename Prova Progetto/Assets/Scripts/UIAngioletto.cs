@@ -129,7 +129,7 @@ public class UIAngioletto : MonoBehaviour
     void Update(){}
     // REMOVE LISTENER
     void OnDestroy() {
-        Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore );
+        Messenger.RemoveListener(GameEvent.ANGIOLETTO_UPDATE, updateAngiolettoScore);
         Messenger.RemoveListener(GameEvent.RACCOLTA_UPDATE, updateInventary );
         Messenger.RemoveListener(GameEvent.LANCIA_OGGETTO, updateInventary );
         Messenger.RemoveListener(GameEvent.MISSIONE_PASTELLI, completePastelli);

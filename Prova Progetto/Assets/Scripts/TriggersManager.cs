@@ -45,7 +45,7 @@ public class TriggersManager : MonoBehaviour
             // guadagnati e, in fine, distrugge l'oggetto
             BroadcastMessage("UpdateAngioletto", 10);
             Destroy(other.gameObject);
-        }else if (other.tag == GameEvent.FANTASMINO_CATTIVO_TAG){
+        }else if (other.tag == "Door"){
             // Manda un Messenger.Broadcast alla UIAngioletto
             Messenger.Broadcast(GameEvent.DOOR_EVENT);
         }
