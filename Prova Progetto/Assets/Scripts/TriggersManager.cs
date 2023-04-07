@@ -7,19 +7,21 @@ public class TriggersManager : MonoBehaviour
 
     //Gestione centralizzata dei tag per la collisione coi trigger
     private List<string> tagsList = new List<string>{
-                                        GameEvent.FANTASMINO_TAG,
+                                        GameEvent.FANTASMINO_TAG,   // Eliminare
                                         GameEvent.TELECOMANDO_TAG,
-                                        GameEvent.PASTELLI_TAG,
-                                        GameEvent.BOOKS_TAG,
-                                        GameEvent.WATER_TAG,
-                                        GameEvent.BRUCIA_TAG,
-                                        GameEvent.FRIGO_TAG,
-                                        GameEvent.CONTENITORE_TAG,
+                                        GameEvent.PASTELLI_TAG,     // Eliminare
+                                        GameEvent.BOOKS_TAG,        
+                                        GameEvent.WATER_TAG,    
+                                        GameEvent.BRUCIA_TAG,       // Eliminare
+                                        GameEvent.FRIGO_TAG,        // Eliminare
+                                        GameEvent.CONTENITORE_TAG,  // Eliminare
                                         GameEvent.TV_BAGNO_TAG,
                                         GameEvent.TV_CAMERA_LETTO_TAG,
                                         GameEvent.TV_SALA_GIOCHI_TAG,
                                         GameEvent.TV_CUCINA_TAG,
-                                        GameEvent.TABLE_TAG
+                                        GameEvent.TABLE_TAG,        // Eliminare
+                                        GameEvent.TMP_TAG,
+                                        "Door"
                                         };
     
 
@@ -27,6 +29,7 @@ public class TriggersManager : MonoBehaviour
         // Gestisce l'attivazione della "E" per interagire con alcuni gli oggetti nella scena
         if(tagsList.Contains(other.tag))
         {
+            Debug.Log("Entro in " + other.tag);
             BroadcastMessage("ActivateE",other);
         }
         else if (other.tag == GameEvent.EVIL_COIN_TAG)
@@ -44,14 +47,17 @@ public class TriggersManager : MonoBehaviour
             Destroy(other.gameObject);
         }else if (other.tag == GameEvent.FANTASMINO_CATTIVO_TAG){
             // Manda un Messenger.Broadcast alla UIAngioletto
-            Messenger.Broadcast(GameEvent.FANTASMINO_EVENTO);
+            Messenger.Broadcast(GameEvent.DOOR_EVENT);
         }
     }
     
 
 
     void OnTriggerExit(Collider other) {
-        if(tagsList.Contains(other.tag))
+        if (tagsList.Contains(other.tag))
+        {
+            Debug.Log("Esco da " + other.tag);
             BroadcastMessage("DeactivateE",other);
+        }
     }
 }

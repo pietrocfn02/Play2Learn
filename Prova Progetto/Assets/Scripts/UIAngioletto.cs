@@ -86,7 +86,7 @@ public class UIAngioletto : MonoBehaviour
         Messenger.AddListener(GameEvent.MISSIONE_PASTELLI, completePastelli);
         Messenger.AddListener(GameEvent.MISSIONE_TELEVISIONI, completeTelevisioni);
         Messenger.AddListener(GameEvent.MISSIONE_COMPITI, doHomework);
-        Messenger.AddListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
+        Messenger.AddListener(GameEvent.DOOR_EVENT, youShallNotPass);
         Messenger.AddListener(GameEvent.FORGET, forgetText);
     }
 
@@ -100,8 +100,8 @@ public class UIAngioletto : MonoBehaviour
     }    
     // Spawn del messaggio ... nella UI del fantasma che blocca la porta nella prima missioe
     public void youShallNotPass(){
-        StartCoroutine(closeMessage(UIMessages.YOU_SHELL_NOT_PASS));
-
+        //StartCoroutine(closeMessage(UIMessages.YOU_SHELL_NOT_PASS));
+        Debug.Log("You shell not pass !!!");
     }
     // Start della coroutine per l'inizio della seconda missione
     public void completeTelevisioni(){
@@ -135,7 +135,7 @@ public class UIAngioletto : MonoBehaviour
         Messenger.RemoveListener(GameEvent.MISSIONE_PASTELLI, completePastelli);
         Messenger.RemoveListener(GameEvent.MISSIONE_TELEVISIONI, completeTelevisioni);
         Messenger.RemoveListener(GameEvent.MISSIONE_COMPITI, doHomework);
-        Messenger.RemoveListener(GameEvent.FANTASMINO_EVENTO, youShallNotPass);
+        Messenger.RemoveListener(GameEvent.DOOR_EVENT, youShallNotPass);
         Messenger.RemoveListener(GameEvent.FORGET, forgetText);
     }
 }

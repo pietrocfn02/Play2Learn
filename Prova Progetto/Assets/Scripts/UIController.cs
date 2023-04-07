@@ -59,7 +59,7 @@ public class UIController : MonoBehaviour
     private void updateDiavolettoScore() {
         diavoletto_score = bambinoController.getDiavolettoScore();
         diavolettoScoreText.text = diavoletto_score.ToString();
-        labelText.text=UIMessages.EMPTY_MESSAGE;
+        labelText.text = UIMessages.EMPTY_MESSAGE;
     }
     
     private void missionComplete(){

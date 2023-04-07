@@ -28,6 +28,7 @@ TagManager:
   - Fantasmino_Cattivo
   - Audio_Ambiente
   - Camino
+  - Tmp
   layers:
   - Default
   - TransparentFX

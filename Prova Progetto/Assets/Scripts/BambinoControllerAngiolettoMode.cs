@@ -178,24 +178,45 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
 
     // Entro in un collider
-    public void ActivateE(Collider objectRecived){
+    public void ActivateE(Collider objectRecived)
+    {
         this.E = true;
         this.tagInteraction = objectRecived.tag;
         this.objectToDestroy = objectRecived;
         Transform transform = objectRecived.transform;
-        foreach(Transform t in transform){
-            t.gameObject.SetActive(true);
+        // Gowing here...
+        Debug.Log("Entro in " + objectRecived.tag);
+        Outline outline = objectRecived.GetComponent<Outline>();
+        if (outline)
+        {
+            //var outline = objectRecived.AddComponent<Outline>();
+            outline.OutlineColor = Color.yellow;
+            outline.OutlineWidth = 5f;
         }
+        else
+        {
+            Debug.Log("In " + objectRecived.tag + "non è presente il componente 'Outline' ");
+        }
+
     }
 
     // Esco da un collider
-    public void DeactivateE(Collider objectRecived){
+    public void DeactivateE(Collider objectRecived)
+    {
 
         this.E = false;
         this.tagInteraction = "";
         Transform transform = objectRecived.transform;
-        foreach(Transform t in transform){
-            t.gameObject.SetActive(false);
+        // Not glowing here...
+        Debug.Log("Esco da " + objectRecived.tag);
+        Outline outline = objectRecived.GetComponent<Outline>();
+        if (outline)
+        {
+            outline.OutlineWidth = 0f;
+        }
+        else
+        {
+            Debug.Log("In " + objectRecived.tag + "non è presente il componente 'Outline' ");
         }
     }
 
