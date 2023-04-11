@@ -29,7 +29,7 @@ public class TriggersManager : MonoBehaviour
         // Gestisce l'attivazione della "E" per interagire con alcuni gli oggetti nella scena
         if(tagsList.Contains(other.tag))
         {
-            Debug.Log("Entro in " + other.tag);
+            //Debug.Log("Entro in " + other.tag);
             BroadcastMessage("ActivateE",other);
         }
         else if (other.tag == GameEvent.EVIL_COIN_TAG)
@@ -56,7 +56,7 @@ public class TriggersManager : MonoBehaviour
     void OnTriggerExit(Collider other) {
         if (tagsList.Contains(other.tag))
         {
-            Debug.Log("Esco da " + other.tag);
+            //Debug.Log("Esco da " + other.tag);
             BroadcastMessage("DeactivateE",other);
         }
     }

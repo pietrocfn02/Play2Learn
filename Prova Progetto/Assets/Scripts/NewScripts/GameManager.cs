@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool W_TAP;
-    private bool A_TAP;
-    private bool S_TAP;
-    private bool D_TAP;
-
+    // Coroutines...
+    //
     IEnumerator TutorialMovement()
     {
         //Messenger.Broadcast("MISSION_ON");
@@ -17,34 +14,26 @@ public class GameManager : MonoBehaviour
         Debug.Log("Iniziamo a vedere come muoversi.");
         yield return new WaitForSeconds(2);
         Debug.Log("Per prima cosa usa i comandi ( W,A,S,D, [SPACE] ) per muoverti e saltare.");
-        yield return new WaitForSeconds(10);
-        Time.timeScale = 0;
         yield return new WaitForSeconds(5);
         Debug.Log("Vai verso l'oggetto illuminato e collezionalo.");
-        Time.timeScale = 1;
+        yield return new WaitForSeconds(2);
+        
+        
     }
     //Vado verso l'oggetto illuminato, entra nel trigger e avvio la spiegazione dei collezionabili
-    IEnumerator TutorialCollectibles()
+    /*IEnumerator TutorialCollectibles()
     {
 
-    }
+    }*/
 
-    void Start()
-    {
-    }
+    // Variables...
+    //
+    
+    // Indica quale missione è attiva, in modo che il player può svolgere solo una missione per volta
+    bool[] isActive = false; 
 
-    void Update()
-    {
-        
-    }
-
-    // Se premo sul pulsante della scena iniziale tramite broadcast mi permette di 
-    // ricevere un segnale che indica l'inizio del gioco
-    private void StartGame()
-    {
-        
-    }
-    // Permette di iniziare il tutorial
+    
+  
     private void StartTutorial()
     {
         StartCoroutine(TutorialMovement());
@@ -52,13 +41,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        //Messenger.AddListener(GameEvent.START_GAME, StartGame);
-        Messenger.AddListener(GameEvent.START_TUTORIAL, StartTutorial);
+        Messenger.AddListener(GameEvent.START_TUTORIAL, StartTutorial); // Richiama il metodo che permette di iniziare il tutorial
     }
 
     void OnDestroy()
     {
-        //Messenger.RemoveListener(GameEvent.START_GAME, StartGame);
         Messenger.RemoveListener(GameEvent.START_TUTORIAL, StartTutorial);
     }
 }

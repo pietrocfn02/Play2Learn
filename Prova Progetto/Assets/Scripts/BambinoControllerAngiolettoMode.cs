@@ -12,19 +12,30 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private int initialSize = 0;
     private int diavoletto_score = 0;
     private int angioletto_score = 0;
+
     //Array per l'inventario
-    private int[] inventary = {0, 0, 0}; // Telecomando, Pastelli, Foglio
+    private int[] inventary = {0, 0}; // Matita, Sparrow
+    
+    // Bool che permette di interagire
     private bool interact = false;
+    
+    // Controller
     private CharacterController _charController;
+    //Tag dell' oggetto colpito
     private string tagInteraction = "";
+    // Prefab
     [SerializeField] private GameObject goodCoinPrefab;
+    // Material per spegnere la tv
     [SerializeField] private Material newMaterial;
-    [SerializeField] private GameObject ghost;
+
+    // Audio...
+    //
     [SerializeField] public AudioClip clipTv;
     [SerializeField] public AudioClip pemAudio;
     [SerializeField] public AudioClip collectAudio;
     [SerializeField] public AudioClip collectCoinAudio;
     [SerializeField] public AudioClip releseAudio;
+    
     private GameObject[] _coins;
     private GameObject[] tv;
     private Collider objectToDestroy;
@@ -33,6 +44,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private AudioManager audio = new AudioManager();
     private bool tvComplete = false;
 
+    // Add...
+    bool tab = false;
     void Start(){}
 
     IEnumerator corutine(){
@@ -45,10 +58,24 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         _coins = new GameObject [initialSize];
     }
 
-
+    
     void Update(){
+        // Interagisce con le classi degli oggetti di cui siamo entrati a contatto
+        //
+        //
+
         // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
         // tramite il sistama di Broadcasting
+        
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            Messenger.Broadcast(GameEvent.START_TUTORIAL);
+            tab = true;
+        }
+        if (tagInteraction == "Door" && tab)
+        {
+            Debug.Log("Non puoi uscire da qui qunado il tutorial è avviato! Torna dietro!!");
+        }
 
         /*if (interact){
             // Abbiamo premuto E
@@ -116,9 +143,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                 }
             }
         }*/
-        Debug.Log("Premi [TAB] per iniziare!!");
-        if(Input.GetKeyUp(KeyCode.Tab))
-            Messenger.Broadcast(GameEvent.START_TUTORIAL);
+
+
 
     }
 
@@ -188,17 +214,15 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         this.objectToDestroy = objectRecived;
         Transform transform = objectRecived.transform;
         // Gowing here...
-        // Debug.Log("Entro in " + objectRecived.tag);
         Outline outline = objectRecived.GetComponent<Outline>();
         if (outline)
         {
-            //var outline = objectRecived.AddComponent<Outline>();
             outline.OutlineColor = Color.yellow;
             outline.OutlineWidth = 5f;
         }
         else
         {
-            Debug.Log("In " + objectRecived.tag + "non è presente il componente 'Outline' ");
+            //Debug.Log("In " + objectRecived.tag + " non è presente lo script 'Outline' in questo oggetto");
         }
 
     }
@@ -211,7 +235,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         this.tagInteraction = "";
         Transform transform = objectRecived.transform;
         // Not glowing here...
-        // Debug.Log("Esco da " + objectRecived.tag);
         Outline outline = objectRecived.GetComponent<Outline>();
         if (outline)
         {
@@ -219,13 +242,15 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         }
         else
         {
-            Debug.Log("In " + objectRecived.tag + " non è presente il componente 'Outline' ");
+            //Debug.Log("In " + objectRecived.tag + " non è presente lo script 'Outline' in questo oggetto");
         }
     }
 
 
     // La size "determina" il numero di numeri casuali (da 1 a 10) la cui somma sara il numero di monete spawnate
     // Giusto per rendere piu proporzionale il numero di monete spawnate
+    // 
+    // Mantenere o Eliminare lo spawn dei coin ?
     public void spawnCoin(int size){
         int[] randomArray = new int[size];
         int randomSum = 0;
