@@ -14,7 +14,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private int angioletto_score = 0;
 
     //Array per l'inventario
-    private int[] inventary = {0, 0}; // Matita, Sparrow
+    private int[] inventary = {0,0,0}; // Matita, Sparrow, Telecomando, ... (Da aggiungere quando colleziono)
     
     // Bool che permette di interagire
     private bool interact = false;
@@ -29,7 +29,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     [SerializeField] private Material newMaterial;
 
     // Audio...
-    //
+    // Spostare
     [SerializeField] public AudioClip clipTv;
     [SerializeField] public AudioClip pemAudio;
     [SerializeField] public AudioClip collectAudio;
@@ -46,8 +46,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
     // Add...
     bool tab = false;
-    void Start(){}
+    bool talking = false;
+    bool interactableObj = false;
 
+    void Start(){}
+    // Lista di visitati e non...
     IEnumerator corutine(){
         //Aspetta 15 secondi prima che i coin nella scena vengano eliminati
         yield return new WaitForSecondsRealtime(15);
@@ -58,7 +61,50 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         _coins = new GameObject [initialSize];
     }
 
-    
+    IEnumerator TutorialMovementCollections()
+    {
+        talking = true;
+        Debug.Log("Benvenuto nel tutorial...");
+        yield return new WaitForSecondsRealtime(2);
+        Debug.Log("Iniziamo a vedere come muoversi.");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Per prima cosa usa i comandi ( W,A,S,D, [SPACE] ) per muoverti e saltare.");
+        yield return new WaitForSeconds(5);
+        Debug.Log("Vai verso [oggetto illuminato].");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Quando vedrai un oggetto illuminarsi significa che potrai interagire con esso!");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Prova a premere E e collezionarlo!");
+        yield return new WaitForSeconds(2);
+        talking = false;
+    }
+
+    IEnumerator TutorialMission()
+    {
+        talking = true;
+        Debug.Log("Bene !!!");
+        yield return new WaitForSecondsRealtime(2);
+        Debug.Log("Adesso puoi usare i pastelli per completare la prima missione...");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Dirigiti verso il tavolo per fare i compiti.");
+        yield return new WaitForSeconds(2);
+        talking = false;
+    }
+
+    IEnumerator TutorialInteractable1()
+    {
+        talking = true;
+        Debug.Log("Fantastico !!!");
+        yield return new WaitForSecondsRealtime(2);
+        Debug.Log("Non ho mai visto nessuno fare i compiti così!!!");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Voglio complimentarmi con te...");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Dirigiti dove vedi il punto interrogativo (?)");
+        yield return new WaitForSeconds(2);
+        talking = false;
+    }
+
     void Update(){
         // Interagisce con le classi degli oggetti di cui siamo entrati a contatto
         //
@@ -66,98 +112,66 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
         // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
         // tramite il sistama di Broadcasting
+
+        Tutorial();
         
-        if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            Messenger.Broadcast(GameEvent.START_TUTORIAL);
-            tab = true;
-        }
-        if (tagInteraction == "Door" && tab)
-        {
-            Debug.Log("Non puoi uscire da qui qunado il tutorial è avviato! Torna dietro!!");
-        }
-
-        /*if (interact){
-            // Abbiamo premuto E
-            // Verifichiamo con cosa possiamo interagire
-            if (Input.GetKeyUp(KeyCode.E)){
-                interact = false;
-                if (tagInteraction == "Pastelli"){
-                    // Il numerino si riferisce alla posizione dell'oggetto nell'inventario
-                    RaccoltoOggetto(2);
-                }else if (tagInteraction == "Contenitore"){
-                    if (inventary[1] >= 12){
-                        // I pastelli da raccogliere nella missione sono 12
-                        // Richiama il metodo di raccolta
-                        audio.releaseObject(releseAudio);
-                        //Riproduce la clip inerente alla seconda missione
-                        audio.reproducePem(pemAudio);
-                        //Richiama il metodo che crea le monete nella scena
-                        spawnCoin(inventary[1]);
-                        //Richiama il metodo per "inserire" all'interno del contenitore i pastelli raccolti
-                        LasciaOggetto(2);
-                        MissionComplete(GameEvent.MISSIONE_PASTELLI);
-                        //Elimina dalla scena il fantasma che blocca la porta della prima missione
-                        Destroy(ghost);
-                    }
-                    //Avvia la coroutine sopra implementata
-                    StartCoroutine(corutine());
-                //Ripeto l'azione di raccolta per il telecomando
-                }else if (tagInteraction == "Telecomando"){
-                    RaccoltoOggetto(1);
-                }else if (tagInteraction.Contains("TV_")){
-                    //Controllo se il telecomando è stato preso dal player
-                    if (inventary[0] >= 1){
-                        //Spengo la TV "tagInteraction"
-                        TurnOffTV(tagInteraction);
-                        if (count >= 4){
-                            // Le TV nella casa sono 4 --- faccio partire le azioni solo quando le ho spente tutte
-                            spawnCoin(count*4);
-                            count = 0;
-                            audio.stopPem(pemAudio);
-                            TurnOffTV(tagInteraction);
-                            MissionComplete(GameEvent.MISSIONE_TELEVISIONI);
-                        }
-                    }
-                    StartCoroutine(corutine());
-                    //Controllo se nell'inventario è presente il telecomando per capire
-                    //se avviare o meno la terza, e ultima, missione
-                }else if (tagInteraction == "Books" && inventary[0] >= 1){
-                    if(tvComplete) {
-                        RaccoltoOggetto(3);    
-                    }
-                    else {
-                        forgetSomething();
-                    }
-                }else if (tagInteraction == "Tavolo"){
-                    forgetSomething();
-                    //Controllo se il player ha collezionato il libro o meno
-                    if (inventary[2] >= 1){
-                        doHomework();
-                    }else{
-                        forgetSomething();
-                    }
-                }else if (tagInteraction == "Books" && inventary[0] < 1){
-                    //Sembra ridondante ma ci vuole per non accavallare più missioni
-                    forgetSomething();
-                }
-            }
-        }*/
-
-
-
     }
 
+    public void Tutorial()
+    {
+        //Debug.Log("Premi [TAB] per iniziare il tutorial...");
+        if (Input.GetKeyUp(KeyCode.Tab) && !tab)
+        {
+            tab = true;
+
+            // Avvia le prime frasi
+            Debug.Log("Premo [TAB]");
+            //StartCoroutine(TutorialMovementCollections());
+        }
+        if (interact && !talking)
+        {
+            // Abbiamo premuto E
+            // Verifichiamo con cosa possiamo interagire
+            if (Input.GetKeyUp(KeyCode.E) && tab)
+            {
+                interact = false;
+                if (tagInteraction == "Pastelli") 
+                { 
+                    RaccoltoOggetto(0);
+                    //StartCoroutine(TutorialMission());
+                    Debug.Log("Raccolgo pastelli");
+                }else if (!talking && inventary[0] >= 1)
+                {
+                    if (tagInteraction == "Tavolo")
+                        doHomework();
+                }
+                else {
+                    forgetSomething();
+                }
+                if (interactableObj && inventary[0] <= 0)
+                {
+                    StartCoroutine(TutorialInteractable1());
+
+                }
+            }
+        }
+
+    }
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
     // Appare un messaggio UI che ci avvisa
     public void forgetSomething(){
-        Messenger.Broadcast(GameEvent.FORGET);
+        Debug.Log("Dimentichi qualcosa!?");
+        //Messenger.Broadcast(GameEvent.FORGET);
     }
     public void doHomework(){
         // Fermo il tempo per evitare che la bambina scappi mentre fa i compiti :)
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         CompitiConnector.siamoInModalitaCompiti = true;
-        Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
+        //Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
+        Debug.Log("Sto facendo i compiti..." + inventary[0]);
+        interactableObj = true;
+        LasciaOggetto(0);
+        Debug.Log("Ho finito i compiti" + inventary[0]);
     }
 
     // Metodo che cambia il materiale della tv su di cui è stato chiamato OnTriggerEnter
@@ -176,21 +190,22 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     // "Raccolgie" l'oggetto, lo comunica alla UI e in fine avvia la clip audio
     // per fare capire che l'oggetto è stato collezionato
     public void RaccoltoOggetto(int i){
-        inventary[i-1] += 1;
+        inventary[i] += 1;
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Destroy(objectToDestroy.gameObject);
         }
-        Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
-        audio.collect(collectAudio);
+        Debug.Log("Colleziono " + tagInteraction);
+        //Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
+        //audio.collect(collectAudio);
     }
     // "Lascia" gli oggetti, lo comunica alla UI e in fine avvia la clip audio
     // per fare capire che l'oggetto è stato collezionato
     public void LasciaOggetto(int i){
-        if(inventary[i-1]>0){
-            inventary[i-1]=0;
+        if(inventary[i]>0){
+            inventary[i]=0;
         }
-        Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
+        //Messenger.Broadcast(GameEvent.LANCIA_OGGETTO);
     }
 
     public int getOggettoCount(int i){
@@ -275,13 +290,15 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         }  
         inventary[1] = 0;
     }
+
+
     // Manda un messaggio alla UI per indicare la fine della missione
-    public void MissionComplete(string missionTag){
+    /*public void MissionComplete(string missionTag){
         if (GameEvent.MISSIONE_TELEVISIONI == missionTag) {
             this.tvComplete = true;
         }
             Messenger.Broadcast(missionTag);
     }
 
-    
+    */
 }

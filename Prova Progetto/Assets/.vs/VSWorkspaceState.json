@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Scripts"
+    "\\Scripts",
+    "\\Scripts\\NewScripts",
+    "\\Scripts\\UsefullScripts"
   ],
-  "SelectedNode": "\\Scripts\\BambinoControllerAngiolettoMode.cs",
+  "SelectedNode": "\\Scripts\\RelativeMovement.cs",
   "PreviewInSolutionExplorer": false
 }
