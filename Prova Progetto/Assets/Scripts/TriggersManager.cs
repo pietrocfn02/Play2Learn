@@ -7,21 +7,18 @@ public class TriggersManager : MonoBehaviour
 
     //Gestione centralizzata dei tag per la collisione coi trigger
     private List<string> tagsList = new List<string>{
-                                        GameEvent.FANTASMINO_TAG,   // Eliminare
                                         GameEvent.TELECOMANDO_TAG,
-                                        GameEvent.PASTELLI_TAG,     // Eliminare
+                                        GameEvent.PASTELLI_TAG,     
                                         GameEvent.BOOKS_TAG,        
-                                        GameEvent.WATER_TAG,    
-                                        GameEvent.BRUCIA_TAG,       // Eliminare
-                                        GameEvent.FRIGO_TAG,        // Eliminare
-                                        GameEvent.CONTENITORE_TAG,  // Eliminare
+                                        GameEvent.WATER_TAG,  
                                         GameEvent.TV_BAGNO_TAG,
                                         GameEvent.TV_CAMERA_LETTO_TAG,
                                         GameEvent.TV_SALA_GIOCHI_TAG,
                                         GameEvent.TV_CUCINA_TAG,
-                                        GameEvent.TABLE_TAG,        // Eliminare
+                                        GameEvent.TABLE_TAG,        
                                         GameEvent.TMP_TAG,
-                                        "Door"
+                                        GameEvent.MARK_TAG,
+                                        GameEvent.INTERACTIVE_TAG
                                         };
     
 

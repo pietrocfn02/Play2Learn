@@ -8,12 +8,13 @@ using TMPro;
 
 public class BambinoControllerAngiolettoMode : MonoBehaviour {
     
-    //Controller per azioni della "Angioletto_Scene"
+    // Variables... 
+
+    // Controller per azioni della "Angioletto_Scene"
     private int initialSize = 0;
-    private int diavoletto_score = 0;
     private int angioletto_score = 0;
 
-    //Array per l'inventario
+    // Array per l'inventario
     private int[] inventary = {0,0,0}; // Matita, Sparrow, Telecomando, ... (Da aggiungere quando colleziono)
     
     // Bool che permette di interagire
@@ -35,22 +36,61 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     [SerializeField] public AudioClip collectAudio;
     [SerializeField] public AudioClip collectCoinAudio;
     [SerializeField] public AudioClip releseAudio;
-    
+    // I coin
+    //
     private GameObject[] _coins;
+    // Le TV
+    //
     private GameObject[] tv;
+
+    // Collider dell'oggetto da distruggere
+    //
     private Collider objectToDestroy;
-    //private bool nextMission = false;
+    // Indica le TV spente
+    //
     private int count = 0;
+    // gestisce l'audio (Da spostare ?)
+    //
     private AudioManager audio = new AudioManager();
+    // indica il completamento della missione delle Tv
+    //
     private bool tvComplete = false;
 
+    
     // Add...
+
+    // -----> Gestiscono le missioni
+    // Prefabs per gli interagibili
+    //
+    [SerializeField] private GameObject[] prefabs; // La posizione 0 è occupata dalla bandiera
+
+    // Indica lo stato delle missioni per fare in modo che non si accavvallino
+    //
+    private bool[] missionComplete = new bool[14];
+    //Indica le missioni in corso
+    //
+    private bool[] missionActive = new bool[14];
+    // Indica le missioni 
+    //
+    private string[] mission = { };
+    // Indica il tutorial
+    //
+    //<-----
+    
+
     bool tab = false;
+    //Indica se c'è qualche scena in cui si sta parlando
+    //
     bool talking = false;
+    // indica se c'è un oggetto interagibile
+    //
     bool interactableObj = false;
 
+    private bool homeworkDone = false;
+
+    // Methods...
     void Start(){}
-    // Lista di visitati e non...
+
     IEnumerator corutine(){
         //Aspetta 15 secondi prima che i coin nella scena vengano eliminati
         yield return new WaitForSecondsRealtime(15);
@@ -61,6 +101,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         _coins = new GameObject [initialSize];
     }
 
+    // Broadcast nella classe UI
+    //
     IEnumerator TutorialMovementCollections()
     {
         talking = true;
@@ -69,7 +111,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         Debug.Log("Iniziamo a vedere come muoversi.");
         yield return new WaitForSeconds(2);
         Debug.Log("Per prima cosa usa i comandi ( W,A,S,D, [SPACE] ) per muoverti e saltare.");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         Debug.Log("Vai verso [oggetto illuminato].");
         yield return new WaitForSeconds(2);
         Debug.Log("Quando vedrai un oggetto illuminarsi significa che potrai interagire con esso!");
@@ -79,6 +121,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         talking = false;
     }
 
+    // Broadcast nella classe UI
+    //
     IEnumerator TutorialMission()
     {
         talking = true;
@@ -91,6 +135,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         talking = false;
     }
 
+    // Broadcast nella classe UI
+    //
     IEnumerator TutorialInteractable1()
     {
         talking = true;
@@ -100,11 +146,53 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         yield return new WaitForSeconds(2);
         Debug.Log("Voglio complimentarmi con te...");
         yield return new WaitForSeconds(2);
-        Debug.Log("Dirigiti dove vedi il punto interrogativo (?)");
+        Debug.Log("Ora che hai finito vai dove vedi il punto interrogativo (?)");
+        yield return new WaitForSeconds(2);
+        interactableObj = false;
+        talking = false;
+    }
+
+    // Broadcast nella classe UI
+    //
+    IEnumerator TutorialInteractable2()
+    {
+        talking = true;
+        // Trasformare l'interagibile nel modello 3D inerente
+        Debug.Log("Questo è uno degli interagibili della mappa...");
+        yield return new WaitForSecondsRealtime(2);
+        Debug.Log("Ogni volta che completi una missione, sbloccherai un interagibile.");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Come ultimo compito, prova ad avvicinarti e premere E...");
         yield return new WaitForSeconds(2);
         talking = false;
     }
 
+    // Broadcast nella classe UI
+    //
+    IEnumerator EndTutorial()
+    {
+        
+        talking = true;
+        Debug.Log("Ottimo !!!");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Quello che hai appena visto è la storia della bandiera italiana.");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Come puoi vedere il simbolo al di sotto la bandiera è cambiato...");
+        yield return new WaitForSecondsRealtime(2);
+        Debug.Log("Ricorda...");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Ogni interagibile ha una storia personale...");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Divertiti a scoprire tutti gli interagibili della mappa...");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Ogni volta che vorrai, potrai avere a che fare con loro.");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Dovrai soltanto avvicinarti ai propi simboli fluttuanti !!!");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Complimenti hai completato il tutorial !!!");
+        yield return new WaitForSeconds(2);
+        talking = false;
+    }
     void Update(){
         // Interagisce con le classi degli oggetti di cui siamo entrati a contatto
         //
@@ -112,18 +200,45 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
         // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
         // tramite il sistama di Broadcasting
-
-        Tutorial();
         
+            Tutorial();
+        
+    }
+
+    public void missionControl(int mission)
+    {
+        if (missionActive[mission])
+        {
+
+        }
+    }
+
+    // Setta una data missione su completa
+    public void missionDone(int mission)
+    {
+        if (!missionComplete[mission])
+        {
+            if (missionActive[mission])
+            {
+                missionActive[mission] = false;
+                missionComplete[mission] = true;
+            }
+            else
+            {
+                Debug.Log("La missione non è attiva");
+            }
+        }
+        else
+        {
+            Debug.Log("La missione non è completa");
+        }
     }
 
     public void Tutorial()
     {
-        //Debug.Log("Premi [TAB] per iniziare il tutorial...");
         if (Input.GetKeyUp(KeyCode.Tab) && !tab)
         {
             tab = true;
-
             // Avvia le prime frasi
             Debug.Log("Premo [TAB]");
             //StartCoroutine(TutorialMovementCollections());
@@ -135,32 +250,61 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.E) && tab)
             {
                 interact = false;
-                if (tagInteraction == "Pastelli") 
+                if (tagInteraction == GameEvent.PASTELLI_TAG) 
                 { 
                     RaccoltoOggetto(0);
                     //StartCoroutine(TutorialMission());
                     Debug.Log("Raccolgo pastelli");
-                }else if (!talking && inventary[0] >= 1)
+                }
+                else if (tagInteraction == GameEvent.TABLE_TAG) 
                 {
-                    if (tagInteraction == "Tavolo")
+                    if (!talking && inventary[0] >= 1)
+                    {
                         doHomework();
-                }
-                else {
-                    forgetSomething();
-                }
-                if (interactableObj && inventary[0] <= 0)
-                {
-                    StartCoroutine(TutorialInteractable1());
 
+                    }
+                    else
+                        notNow();
                 }
+                else if (tagInteraction == GameEvent.INTERACTIVE_TAG && inventary[0] <= 0 && interactableObj)
+                {
+                    //StartCoroutine(TutorialInteractable1());
+                    Debug.Log("Question Mark");
+                    interactableObj = false;
+                    homeworkDone = true; // Va settata su true quando finiamo la missione dei compiti (Broadcast???)
+                }
+                // Errore
+                else if (!talking && tagInteraction == GameEvent.INTERACTIVE_TAG && homeworkDone)
+                {
+
+                    //StartCoroutine(TutorialInteractable2());
+                    Debug.Log("Quasi finito tutroial");
+                    if (!talking)
+                    {
+                        Debug.Log("UI spiegazione");
+                        // Parte la UI per la spiegazione 
+                    }
+                    else
+                    {
+                        notNow();
+                    }
+                }
+                else
+                {
+                    notNow();
+                }
+            }
+            else
+            {
+                //Debug.Log("Per iniziare il tutorial devi premere [TAB]");
             }
         }
 
     }
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
     // Appare un messaggio UI che ci avvisa
-    public void forgetSomething(){
-        Debug.Log("Dimentichi qualcosa!?");
+    public void notNow(){
+        Debug.Log("Adesso non puoi !!");
         //Messenger.Broadcast(GameEvent.FORGET);
     }
     public void doHomework(){
@@ -169,24 +313,24 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         CompitiConnector.siamoInModalitaCompiti = true;
         //Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
         Debug.Log("Sto facendo i compiti..." + inventary[0]);
-        interactableObj = true;
         LasciaOggetto(0);
+        interactableObj = true;
         Debug.Log("Ho finito i compiti" + inventary[0]);
     }
 
     // Metodo che cambia il materiale della tv su di cui è stato chiamato OnTriggerEnter
     public void TurnOffTV(string tag){
-        tv = GameObject.FindGameObjectsWithTag(tag);
+       /* tv = GameObject.FindGameObjectsWithTag(tag);
         tv[0].GetComponent<Renderer>().material = newMaterial;
         count ++;
-        audio.turnOffTV(tag,clipTv);
-    }
+        GetComponent<AudioSource>().turnOffTV(tag,clipTv);
+    */}
     // Aggiorna il punteggio e lo comunica alla UI
     public void UpdateAngioletto(int i) {
-        audio.releaseObject(collectCoinAudio);
+      /*  GetComponent<AudioSource>().releaseObject(collectCoinAudio);
         angioletto_score+=i;
         Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
-    }
+    */}
     // "Raccolgie" l'oggetto, lo comunica alla UI e in fine avvia la clip audio
     // per fare capire che l'oggetto è stato collezionato
     public void RaccoltoOggetto(int i){
@@ -195,7 +339,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Destroy(objectToDestroy.gameObject);
         }
-        Debug.Log("Colleziono " + tagInteraction);
         //Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
         //audio.collect(collectAudio);
     }
@@ -216,9 +359,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         return angioletto_score;
     }
 
-    public int getDiavolettoScore() {
+    /*public int getDiavolettoScore() {
         return diavoletto_score;
-    }
+    }*/
 
 
     // Entro in un collider
@@ -235,12 +378,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             outline.OutlineColor = Color.yellow;
             outline.OutlineWidth = 5f;
         }
-        else
-        {
-            //Debug.Log("In " + objectRecived.tag + " non è presente lo script 'Outline' in questo oggetto");
-        }
 
+        
+
+        
     }
+
 
     // Esco da un collider
     public void DeactivateE(Collider objectRecived)
@@ -255,10 +398,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         {
             outline.OutlineWidth = 0f;
         }
-        else
-        {
-            //Debug.Log("In " + objectRecived.tag + " non è presente lo script 'Outline' in questo oggetto");
-        }
+        Transform markChild = transform.Find(GameEvent.MARK_TAG);
+        
+        
     }
 
 
@@ -301,4 +443,4 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     */
-}
+    }

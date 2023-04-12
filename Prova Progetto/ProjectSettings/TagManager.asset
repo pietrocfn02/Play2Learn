@@ -14,8 +14,6 @@ TagManager:
   - Door
   - Water
   - Casa
-  - labelE
-  - Contenitore
   - TV
   - TV_Cucina
   - TV_Sala_Giochi
@@ -25,6 +23,8 @@ TagManager:
   - Audio_Ambiente
   - Camino
   - Tmp
+  - Interattivo
+  - Mark
   layers:
   - Default
   - TransparentFX
