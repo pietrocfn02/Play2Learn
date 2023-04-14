@@ -25,6 +25,7 @@ TagManager:
   - Tmp
   - Interattivo
   - Mark
+  - Words
   layers:
   - Default
   - TransparentFX

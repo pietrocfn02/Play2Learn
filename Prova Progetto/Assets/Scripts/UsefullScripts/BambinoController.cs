@@ -54,7 +54,8 @@ public class BambinoController : MonoBehaviour {
 
     // Nota: Ho messo dei *3 su tutti gli Spawn delle monete per 
     void Update(){
-        if (E){
+        /*if (E){
+            
             // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
             // tramite il sistama di Broadcasting
             if (Input.GetKeyUp(KeyCode.E)){
@@ -111,6 +112,7 @@ public class BambinoController : MonoBehaviour {
                 }  
             }
         }
+            */
     }
 
     public void UpdateDiavoletto(int i) {

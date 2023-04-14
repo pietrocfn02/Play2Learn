@@ -15,7 +15,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     private int angioletto_score = 0;
 
     // Array per l'inventario
-    private int[] inventary = {0,0,0}; // Matita, Sparrow, Telecomando, ... (Da aggiungere quando colleziono)
+    private int[] inventary = {0,0,0}; // Parola, Sparrow, Telecomando, ... (Da aggiungere quando colleziono)
     
     // Bool che permette di interagire
     private bool interact = false;
@@ -128,9 +128,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         talking = true;
         Debug.Log("Bene !!!");
         yield return new WaitForSecondsRealtime(2);
-        Debug.Log("Adesso puoi usare i pastelli per completare la prima missione...");
+        Debug.Log("Adesso trova tutte le parole e portale al tavolo per ricostruire la frase...");
         yield return new WaitForSeconds(2);
-        Debug.Log("Dirigiti verso il tavolo per fare i compiti.");
+        Debug.Log("In seguito vai verso il tavolo per completare la prima missione...");
+        // Vedemmo uno stormo di uccelli che migrava verso terre lontane
         yield return new WaitForSeconds(2);
         talking = false;
     }
@@ -141,12 +142,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     {
         talking = true;
         Debug.Log("Fantastico !!!");
-        yield return new WaitForSecondsRealtime(2);
-        Debug.Log("Non ho mai visto nessuno fare i compiti così!!!");
         yield return new WaitForSeconds(2);
         Debug.Log("Voglio complimentarmi con te...");
         yield return new WaitForSeconds(2);
-        Debug.Log("Ora che hai finito vai dove vedi il punto interrogativo (?)");
+        Debug.Log("Ora che hai finito vai verso il punto interrogativo (?)");
         yield return new WaitForSeconds(2);
         interactableObj = false;
         talking = false;
@@ -194,27 +193,66 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         talking = false;
     }
     void Update(){
-        // Interagisce con le classi degli oggetti di cui siamo entrati a contatto
-        //
-        //
-
-        // Attiviamo il "listener" sulla E solo quando abbiamo ricevuto un "onTriggerEnter"
-        // tramite il sistama di Broadcasting
-        
             Tutorial();
-        
     }
 
-    public void missionControl(int mission)
+    // Setta una missione su "Attivo"
+    public void SetActive(int mission)
     {
-        if (missionActive[mission])
+        if (!missionComplete[mission])
         {
-
+            if (!missionActive[mission])
+            {
+                missionActive[mission] = true;            }
+            else
+            {
+                Debug.Log("Missione già attiva");
+            }
+        }
+        else
+        {
+            Debug.Log("Missione già eseguita");
         }
     }
 
-    // Setta una data missione su completa
-    public void missionDone(int mission)
+    // Imposta su attivo il componente che stiamo cercando. Inoltre setta l'outline su un valore
+    // Potrei mettere qui il controllo sul tipo (se interagibile o se una missione) N.D.A.
+    // Riceve come parametri il tag del oggetto padre (tagFather) e un valore, float, dell'outline (value)
+    public void SetOutline(string tagFather, float value)
+    {
+
+        GameObject toModify = GameObject.FindWithTag(tagFather);
+        Outline outline = toModify.GetComponent<Outline>();
+        if (outline)
+        {
+            outline.OutlineColor = Color.yellow;
+            outline.OutlineWidth = value;
+            Transform tmpChild = toModify.GetComponent<Transform>().GetChild(0);
+            tmpChild.gameObject.SetActive(true);
+            Outline outlineChild = tmpChild.GetComponent<Outline>();
+            outlineChild.OutlineColor = Color.yellow;
+            outlineChild.OutlineWidth = value;
+        }
+        else
+        {
+            Debug.Log("Non ha l'outline");
+        }
+        
+    }
+    // Elimina il "!" -- viene usato alla fine di una missione --
+    public void RemoveMark(string tagFather)
+    {
+        GameObject toModify = GameObject.FindWithTag(tagFather);
+        Transform tmpChild = toModify.GetComponent<Transform>().GetChild(0);
+        if (tmpChild)
+        {
+            Destroy(tmpChild.gameObject);
+            Debug.Log("KABOOOOOOOM." + tmpChild.tag + " è stato distrutto");
+        }
+    }
+
+    // Setta una missione su "Completa"
+    public void SetComplete(int mission)
     {
         if (!missionComplete[mission])
         {
@@ -234,34 +272,64 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         }
     }
 
+
+    // Fa spawnare gli oggetti relativi alle missioni
+    public void SpawnMission(string tagMission)
+    {
+        GameObject mission = GameObject.Find(tagMission);
+        Transform tmpChild = mission.GetComponent<Transform>().GetChild(0);
+        SetActive(0);
+        tmpChild.gameObject.SetActive(true);
+    }
+
+
+    
+    // Controlla la lista delle missioni finite e assegna ad ogni interagibile il propio simbolo
+    // ES. bandiera alla bandiera 
+    public void SetInteraction()
+    {
+
+    }
+    // Inizia il tutorial
+    //
     public void Tutorial()
     {
-        if (Input.GetKeyUp(KeyCode.Tab) && !tab)
+        if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
         {
-            tab = true;
             // Avvia le prime frasi
+            SpawnMission("TutorialRoom");
+            
             Debug.Log("Premo [TAB]");
             //StartCoroutine(TutorialMovementCollections());
         }
         if (interact && !talking)
         {
-            // Abbiamo premuto E
-            // Verifichiamo con cosa possiamo interagire
-            if (Input.GetKeyUp(KeyCode.E) && tab)
+            if (Input.GetKeyUp(KeyCode.E) && missionActive[0])
             {
                 interact = false;
-                if (tagInteraction == GameEvent.PASTELLI_TAG) 
+                //WORDS_TAG
+                if (tagInteraction == GameEvent.MARK_TAG) 
                 { 
                     RaccoltoOggetto(0);
                     //StartCoroutine(TutorialMission());
-                    Debug.Log("Raccolgo pastelli");
+                    if (inventary[0] >=  10)
+                    {
+                        SetOutline(GameEvent.TABLE_TAG, 5);
+                    }
+                
                 }
                 else if (tagInteraction == GameEvent.TABLE_TAG) 
                 {
-                    if (!talking && inventary[0] >= 1)
+                    if (!talking && inventary[0] >= 10)
                     {
-                        doHomework();
-
+                        RemoveMark(GameEvent.TABLE_TAG);
+                        Messenger.Broadcast(GameEvent.FIRST_UI_MISSION);
+                        Debug.Log("Compongo la frase " + inventary[0]);
+                        LasciaOggetto(0);
+                        // Fare partire una coroutine per formare la scritta
+                        interactableObj = true;
+                        Debug.Log("Ho finito i compiti " + inventary[0]);
+                        SetOutline(GameEvent.INTERACTIVE_TAG, 5);
                     }
                     else
                         notNow();
@@ -269,20 +337,22 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                 else if (tagInteraction == GameEvent.INTERACTIVE_TAG && inventary[0] <= 0 && interactableObj)
                 {
                     //StartCoroutine(TutorialInteractable1());
+                    //SetInterac(fatherTag);
                     Debug.Log("Question Mark");
-                    interactableObj = false;
+                    interactableObj = false; // Rende l'oggetto "istruttivo" interagibile
                     homeworkDone = true; // Va settata su true quando finiamo la missione dei compiti (Broadcast???)
                 }
-                // Errore
                 else if (!talking && tagInteraction == GameEvent.INTERACTIVE_TAG && homeworkDone)
                 {
 
                     //StartCoroutine(TutorialInteractable2());
+                    /* Controllare quando entra nel trigger e bloccare il gioco per la spiegazione?*/
                     Debug.Log("Quasi finito tutroial");
                     if (!talking)
                     {
                         Debug.Log("UI spiegazione");
-                        // Parte la UI per la spiegazione 
+                        // Parte la UI per la spiegazione del oggetto sbloccato
+                        SetComplete(0);
                     }
                     else
                     {
@@ -294,10 +364,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
                     notNow();
                 }
             }
-            else
-            {
-                //Debug.Log("Per iniziare il tutorial devi premere [TAB]");
-            }
         }
 
     }
@@ -307,7 +373,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         Debug.Log("Adesso non puoi !!");
         //Messenger.Broadcast(GameEvent.FORGET);
     }
-    public void doHomework(){
+    /*public void doHomework(){
         // Fermo il tempo per evitare che la bambina scappi mentre fa i compiti :)
         //Time.timeScale = 0;
         CompitiConnector.siamoInModalitaCompiti = true;
@@ -316,7 +382,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         LasciaOggetto(0);
         interactableObj = true;
         Debug.Log("Ho finito i compiti" + inventary[0]);
-    }
+    }*/
 
     // Metodo che cambia il materiale della tv su di cui è stato chiamato OnTriggerEnter
     public void TurnOffTV(string tag){

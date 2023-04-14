@@ -8,7 +8,7 @@ public class TriggersManager : MonoBehaviour
     //Gestione centralizzata dei tag per la collisione coi trigger
     private List<string> tagsList = new List<string>{
                                         GameEvent.TELECOMANDO_TAG,
-                                        GameEvent.PASTELLI_TAG,     
+                                        GameEvent.WORDS_TAG,     
                                         GameEvent.BOOKS_TAG,        
                                         GameEvent.WATER_TAG,  
                                         GameEvent.TV_BAGNO_TAG,
@@ -18,7 +18,8 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.TABLE_TAG,        
                                         GameEvent.TMP_TAG,
                                         GameEvent.MARK_TAG,
-                                        GameEvent.INTERACTIVE_TAG
+                                        GameEvent.INTERACTIVE_TAG,
+                                        GameEvent.WORD_TAG
                                         };
     
 
