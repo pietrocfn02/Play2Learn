@@ -6,7 +6,8 @@ using TMPro;
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/BambinoController")]
 
-public class BambinoControllerAngiolettoMode : MonoBehaviour {
+public class BambinoControllerAngiolettoMode : MonoBehaviour 
+{
     
     // Variables... 
 
@@ -66,15 +67,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
 
     // Indica lo stato delle missioni per fare in modo che non si accavvallino
     //
-    private bool[] missionComplete = new bool[14];
+    private bool[] missionComplete = new bool[5];
     //Indica le missioni in corso
     //
-    private bool[] missionActive = new bool[14];
-    // Indica le missioni 
-    //
-    private string[] mission = { };
-    // Indica il tutorial
-    //
+    private bool[] missionActive = new bool[5];
+    
+    private bool[] interaction = new bool[5];
     //<-----
     
 
@@ -84,9 +82,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     bool talking = false;
     // indica se c'è un oggetto interagibile
     //
-    bool interactableObj = false;
+    bool explanationDone = false;
 
-    private bool homeworkDone = false;
+    private bool missionDone = false;
 
     // Methods...
     void Start(){}
@@ -101,97 +99,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         _coins = new GameObject [initialSize];
     }
 
-    // Broadcast nella classe UI
-    //
-    IEnumerator TutorialMovementCollections()
-    {
-        talking = true;
-        Debug.Log("Benvenuto nel tutorial...");
-        yield return new WaitForSecondsRealtime(2);
-        Debug.Log("Iniziamo a vedere come muoversi.");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Per prima cosa usa i comandi ( W,A,S,D, [SPACE] ) per muoverti e saltare.");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Vai verso [oggetto illuminato].");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Quando vedrai un oggetto illuminarsi significa che potrai interagire con esso!");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Prova a premere E e collezionarlo!");
-        yield return new WaitForSeconds(2);
-        talking = false;
-    }
-
-    // Broadcast nella classe UI
-    //
-    IEnumerator TutorialMission()
-    {
-        talking = true;
-        Debug.Log("Bene !!!");
-        yield return new WaitForSecondsRealtime(2);
-        Debug.Log("Adesso trova tutte le parole e portale al tavolo per ricostruire la frase...");
-        yield return new WaitForSeconds(2);
-        Debug.Log("In seguito vai verso il tavolo per completare la prima missione...");
-        // Vedemmo uno stormo di uccelli che migrava verso terre lontane
-        yield return new WaitForSeconds(2);
-        talking = false;
-    }
-
-    // Broadcast nella classe UI
-    //
-    IEnumerator TutorialInteractable1()
-    {
-        talking = true;
-        Debug.Log("Fantastico !!!");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Voglio complimentarmi con te...");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Ora che hai finito vai verso il punto interrogativo (?)");
-        yield return new WaitForSeconds(2);
-        interactableObj = false;
-        talking = false;
-    }
-
-    // Broadcast nella classe UI
-    //
-    IEnumerator TutorialInteractable2()
-    {
-        talking = true;
-        // Trasformare l'interagibile nel modello 3D inerente
-        Debug.Log("Questo è uno degli interagibili della mappa...");
-        yield return new WaitForSecondsRealtime(2);
-        Debug.Log("Ogni volta che completi una missione, sbloccherai un interagibile.");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Come ultimo compito, prova ad avvicinarti e premere E...");
-        yield return new WaitForSeconds(2);
-        talking = false;
-    }
-
-    // Broadcast nella classe UI
-    //
-    IEnumerator EndTutorial()
-    {
-        
-        talking = true;
-        Debug.Log("Ottimo !!!");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Quello che hai appena visto è la storia della bandiera italiana.");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Come puoi vedere il simbolo al di sotto la bandiera è cambiato...");
-        yield return new WaitForSecondsRealtime(2);
-        Debug.Log("Ricorda...");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Ogni interagibile ha una storia personale...");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Divertiti a scoprire tutti gli interagibili della mappa...");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Ogni volta che vorrai, potrai avere a che fare con loro.");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Dovrai soltanto avvicinarti ai propi simboli fluttuanti !!!");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Complimenti hai completato il tutorial !!!");
-        yield return new WaitForSeconds(2);
-        talking = false;
-    }
     void Update(){
             Tutorial();
     }
@@ -203,15 +110,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         {
             if (!missionActive[mission])
             {
-                missionActive[mission] = true;            }
-            else
-            {
-                Debug.Log("Missione già attiva");
+                missionActive[mission] = true;            
             }
-        }
-        else
-        {
-            Debug.Log("Missione già eseguita");
         }
     }
 
@@ -283,12 +183,23 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
 
-    
-    // Controlla la lista delle missioni finite e assegna ad ogni interagibile il propio simbolo
-    // ES. bandiera alla bandiera 
-    public void SetInteraction()
-    {
-
+    // In base al numero specificato riproduce la UI relativa all'interagibile
+    public void ReproduceExplanation(int interactable){
+        if (!interaction[interactable])
+        {
+            interaction[interactable] = true;
+            //Messenger.Broadcast(RiproduciExplanation, interactable);
+            
+            Debug.Log("Interazione (false) " + tagInteraction);
+            // Spawn dell'interagibile piccolo
+            RemoveMark("Flag");
+            GameObject mission = GameObject.FindWithTag(tagInteraction);
+            Instantiate(prefabs[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Interazione (true) " + tagInteraction);
+        }
     }
     // Inizia il tutorial
     //
@@ -296,76 +207,53 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     {
         if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
         {
-            // Avvia le prime frasi
-            SpawnMission("TutorialRoom");
-            
-            Debug.Log("Premo [TAB]");
-            //StartCoroutine(TutorialMovementCollections());
+            Debug.Log("Spiegazione movimenti");
+            SpawnMission("Flag");
         }
         if (interact && !talking)
         {
-            if (Input.GetKeyUp(KeyCode.E) && missionActive[0])
+            if (Input.GetKeyUp(KeyCode.E))
             {
                 interact = false;
-                //WORDS_TAG
-                if (tagInteraction == GameEvent.MARK_TAG) 
-                { 
+                if (tagInteraction == "Flag" )
+                {   
+                    
+                    ReproduceExplanation(0); // Riproduce la spiegazione
+                    //Mandare un broadcast per dire che spawna la missione
+                    //Quindi è finita la spiegazione nella UI
+                    SpawnMission("TutorialRoom");
+                    Debug.Log(tagInteraction);
+                }
+                else if (tagInteraction == GameEvent.MARK_TAG)
+                {
                     RaccoltoOggetto(0);
-                    //StartCoroutine(TutorialMission());
-                    if (inventary[0] >=  10)
+                    if (inventary[0] >= 10)
                     {
-                        SetOutline(GameEvent.TABLE_TAG, 5);
+                        SpawnMission("Table");
+                        Debug.Log("Vai verso il tavolo e interagisci");
                     }
-                
                 }
-                else if (tagInteraction == GameEvent.TABLE_TAG) 
+                else if (tagInteraction == GameEvent.TABLE_TAG && !missionComplete[0] && missionActive[0])
                 {
-                    if (!talking && inventary[0] >= 10)
+                    if(inventary[0] >= 10)
                     {
-                        RemoveMark(GameEvent.TABLE_TAG);
-                        Messenger.Broadcast(GameEvent.FIRST_UI_MISSION);
-                        Debug.Log("Compongo la frase " + inventary[0]);
                         LasciaOggetto(0);
-                        // Fare partire una coroutine per formare la scritta
-                        interactableObj = true;
-                        Debug.Log("Ho finito i compiti " + inventary[0]);
-                        SetOutline(GameEvent.INTERACTIVE_TAG, 5);
-                    }
-                    else
-                        notNow();
-                }
-                else if (tagInteraction == GameEvent.INTERACTIVE_TAG && inventary[0] <= 0 && interactableObj)
-                {
-                    //StartCoroutine(TutorialInteractable1());
-                    //SetInterac(fatherTag);
-                    Debug.Log("Question Mark");
-                    interactableObj = false; // Rende l'oggetto "istruttivo" interagibile
-                    homeworkDone = true; // Va settata su true quando finiamo la missione dei compiti (Broadcast???)
-                }
-                else if (!talking && tagInteraction == GameEvent.INTERACTIVE_TAG && homeworkDone)
-                {
-
-                    //StartCoroutine(TutorialInteractable2());
-                    /* Controllare quando entra nel trigger e bloccare il gioco per la spiegazione?*/
-                    Debug.Log("Quasi finito tutroial");
-                    if (!talking)
-                    {
-                        Debug.Log("UI spiegazione");
-                        // Parte la UI per la spiegazione del oggetto sbloccato
-                        SetComplete(0);
+                        RemoveMark(GameEvent.TABLE_TAG);
+                        Debug.Log("Inizio Missione");
+                        missionComplete[0] = true;
                     }
                     else
                     {
-                        notNow();
+                        Debug.Log("Devi raccogliere tutto");
                     }
-                }
-                else
-                {
-                    notNow();
                 }
             }
+            if (missionComplete[0] && missionActive[0])
+            {
+                Debug.Log("Missione completata !!");
+                missionActive[0] = false;
+            }
         }
-
     }
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
     // Appare un messaggio UI che ci avvisa
@@ -373,17 +261,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
         Debug.Log("Adesso non puoi !!");
         //Messenger.Broadcast(GameEvent.FORGET);
     }
-    /*public void doHomework(){
-        // Fermo il tempo per evitare che la bambina scappi mentre fa i compiti :)
-        //Time.timeScale = 0;
-        CompitiConnector.siamoInModalitaCompiti = true;
-        //Messenger.Broadcast(GameEvent.MISSIONE_COMPITI);
-        Debug.Log("Sto facendo i compiti..." + inventary[0]);
-        LasciaOggetto(0);
-        interactableObj = true;
-        Debug.Log("Ho finito i compiti" + inventary[0]);
-    }*/
-
     // Metodo che cambia il materiale della tv su di cui è stato chiamato OnTriggerEnter
     public void TurnOffTV(string tag){
        /* tv = GameObject.FindGameObjectsWithTag(tag);
@@ -444,10 +321,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             outline.OutlineColor = Color.yellow;
             outline.OutlineWidth = 5f;
         }
-
-        
-
-        
     }
 
 
@@ -482,7 +355,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
             randomSum+= randomArray[i];
         }
         _coins = new GameObject[randomSum];
-         for(int i=0; i<_coins.Length; i++)
+        for(int i=0; i<_coins.Length; i++)
         {
             if(_coins[i] == null)
             {
@@ -509,4 +382,5 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour {
     }
 
     */
-    }
+}
+

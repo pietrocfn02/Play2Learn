@@ -23,9 +23,10 @@ TagManager:
   - Audio_Ambiente
   - Camino
   - Tmp
-  - Interattivo
   - Mark
   - Words
+  - Sentence
+  - Flag
   layers:
   - Default
   - TransparentFX

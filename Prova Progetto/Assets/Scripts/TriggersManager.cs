@@ -15,11 +15,11 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.TV_CAMERA_LETTO_TAG,
                                         GameEvent.TV_SALA_GIOCHI_TAG,
                                         GameEvent.TV_CUCINA_TAG,
-                                        GameEvent.TABLE_TAG,        
-                                        GameEvent.TMP_TAG,
+                                        GameEvent.TABLE_TAG,
                                         GameEvent.MARK_TAG,
                                         GameEvent.INTERACTIVE_TAG,
-                                        GameEvent.WORD_TAG
+                                        GameEvent.WORD_TAG,
+                                        "Flag"
                                         };
     
 

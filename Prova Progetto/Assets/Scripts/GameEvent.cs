@@ -44,7 +44,6 @@ public static class GameEvent {
 	public const string WORD_TAG = "Words";
 
 	// Added...
-	public const string TMP_TAG = "Tmp";
 	public const string START_GAME = "START_GAME";
 
 	// INDEX
