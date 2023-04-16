@@ -222,7 +222,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     //Mandare un broadcast per dire che spawna la missione
                     //Quindi è finita la spiegazione nella UI
                     SpawnMission("TutorialRoom");
-                    Debug.Log(tagInteraction);
                 }
                 else if (tagInteraction == GameEvent.MARK_TAG)
                 {
