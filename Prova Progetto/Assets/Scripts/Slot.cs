@@ -7,7 +7,7 @@ public class Slot : MonoBehaviour, IDropHandler
 {
     private Vector3 firstPos;
     private bool done = false;
-    Vector3 firstPos;
+    private int correctDrop = 0;
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
@@ -19,19 +19,17 @@ public class Slot : MonoBehaviour, IDropHandler
                 if (eventData.pointerEnter.GetComponent<TMP_Text>())
                 {
                     eventData.pointerEnter.GetComponent<TMP_Text>().text = "";
+                    Destroy(eventData.pointerDrag.GetComponent<DragDrop>());
                 }
+                    Messenger.Broadcast("MissionTutorialDone");
             }
             else
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-                Debug.Log(firstPos);
             }
             
         }
+        
     }
 
-    void OnMouseDown()
-    {
-        firstPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }
 }

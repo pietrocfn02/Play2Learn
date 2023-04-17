@@ -84,7 +84,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     //
     bool explanationDone = false;
 
-    private bool missionDone = false;
+    private int missionDone = 0;
 
     // Methods...
     void Start(){}
@@ -239,6 +239,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         LasciaOggetto(0);
                         RemoveMark(GameEvent.TABLE_TAG);
                         Debug.Log("Inizio Missione");
+                        GameObject mission = GameObject.FindWithTag("Tutorial");
+                        
                         missionComplete[0] = true;
                     }
                     else
@@ -371,6 +373,23 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         inventary[1] = 0;
     }
 
+    public void MissionTutorialDone()
+    {
+        ++missionDone;
+        Debug.Log(missionDone);
+        if (missionDone >= 10)
+            Debug.Log("Tutorial Finito");
+    }
+
+    void Awake()
+    {
+        Messenger.AddListener("MissionTutorialDone", MissionTutorialDone);
+    }
+
+    void OnDestroy()
+    {
+        Messenger.RemoveListener("MissionTutorialDone", MissionTutorialDone);
+    }
 
     // Manda un messaggio alla UI per indicare la fine della missione
     /*public void MissionComplete(string missionTag){
