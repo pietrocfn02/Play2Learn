@@ -17,8 +17,8 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.TV_CUCINA_TAG,
                                         GameEvent.TABLE_TAG,
                                         GameEvent.MARK_TAG,
-                                        GameEvent.INTERACTIVE_TAG,
-                                        GameEvent.WORD_TAG,
+                                        GameEvent.SENTENCE_TAG,
+                                        GameEvent.WORDS_TAG,
                                         "Flag"
                                         };
     

@@ -24,7 +24,6 @@ public static class GameEvent {
 	public const string FANTASMINO_CATTIVO_TAG = "Fantasmino_Cattivo";// Eliminare
 	public const string FANTASMINO_TAG = "Fantasmino";// Eliminare
 	public const string TELECOMANDO_TAG = "Telecomando";
-	public const string WORDS_TAG = "Parola";
 	public const string BOOKS_TAG = "Books";
 	public const string TABLE_TAG = "Tavolo";
 	public const string WATER_TAG = "Water";
@@ -39,9 +38,9 @@ public static class GameEvent {
 	public const string TV_GENERICA = "TV_";
 	public const string PLAYER = "Player";
 	public const string AUDIO_AMBIENTE_TAG = "Audio_Ambiete";
-	public const string INTERACTIVE_TAG = "Interattivo";
+	public const string SENTENCE_TAG = "Sentance";
 	public const string MARK_TAG = "Mark";
-	public const string WORD_TAG = "Words";
+	public const string WORDS_TAG = "Words";
 
 	// Added...
 	public const string START_GAME = "START_GAME";
