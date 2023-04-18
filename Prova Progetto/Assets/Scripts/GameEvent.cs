@@ -17,7 +17,6 @@ public static class GameEvent {
 	public const string MISSIONE_COMPITI = "MISSIONE_COMPITI";// Eliminare
 	public const string DOOR_EVENT = "DOOR_EVENT";// Eliminare
 	public const string FORGET = "FORGET";
-	// Add
 	public const string FIRST_UI_MISSION = "FIRST_UI_MISSION";
 
 	// TAGS
@@ -25,7 +24,7 @@ public static class GameEvent {
 	public const string FANTASMINO_TAG = "Fantasmino";// Eliminare
 	public const string TELECOMANDO_TAG = "Telecomando";
 	public const string BOOKS_TAG = "Books";
-	public const string TABLE_TAG = "Tavolo";
+	public const string TABLE_TAG = "Table";
 	public const string WATER_TAG = "Water";
 	public const string BRUCIA_TAG = "Brucia";// Eliminare
 	public const string FRIGO_TAG = "Frigo";// Eliminare
@@ -40,7 +39,9 @@ public static class GameEvent {
 	public const string AUDIO_AMBIENTE_TAG = "Audio_Ambiete";
 	public const string SENTENCE_TAG = "Sentance";
 	public const string MARK_TAG = "Mark";
-	public const string WORDS_TAG = "Words";
+	public const string FLAG_TAG = "Flag";
+	public const string TUTORIAL_ROOM = "TutorialRoom";
+	public const string EASEL_TAG = "Easel";
 
 	// Added...
 	public const string START_GAME = "START_GAME";

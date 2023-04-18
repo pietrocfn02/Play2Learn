@@ -28,6 +28,8 @@ TagManager:
   - Sentence
   - Flag
   - Tutorial
+  - Easel
+  - Table
   layers:
   - Default
   - TransparentFX

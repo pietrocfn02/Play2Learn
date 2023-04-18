@@ -63,18 +63,22 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     // -----> Gestiscono le missioni
     // Prefabs per gli interagibili
     //
-    [SerializeField] private GameObject[] prefabs; // La posizione 0 è occupata dalla bandiera
+    [SerializeField] private GameObject[] prefabsMission; // La posizione 0 è occupata dalla bandiera
 
     // Indica lo stato delle missioni per fare in modo che non si accavvallino
     //
-    private bool[] missionComplete = new bool[5];
+    private bool[] missionComplete = new bool[3];
     //Indica le missioni in corso
     //
-    private bool[] missionActive = new bool[5];
+    private bool[] missionActive = new bool[3];
     
-    private bool[] interaction = new bool[5];
+    private bool[] interaction = new bool[3];
+
+    [SerializeField] private GameObject[] italianPrefabs = new GameObject[2];
+    [SerializeField] private GameObject[] artPrefabs = new GameObject[3];
+    //[SerializeField] private GameObject[] mathPrefabs = new GameObject[3];
     //<-----
-    
+
 
     bool tab = false;
     //Indica se c'è qualche scena in cui si sta parlando
@@ -88,16 +92,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     // Methods...
     void Start(){}
-
-    IEnumerator corutine(){
-        //Aspetta 15 secondi prima che i coin nella scena vengano eliminati
-        yield return new WaitForSecondsRealtime(15);
-        for(int i = 0; i<_coins.Length;i++){
-            if(_coins[i] != null)
-                Destroy(_coins[i]);
-        }
-        _coins = new GameObject [initialSize];
-    }
 
     void Update(){
             Tutorial();
@@ -174,17 +168,25 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
 
     // Fa spawnare gli oggetti relativi alle missioni
-    public void SpawnMission(string tagMission)
+    public void SpawnMark(string tagMission)
     {
-        GameObject mission = GameObject.Find(tagMission);
-        Transform tmpChild = mission.GetComponent<Transform>().GetChild(0);
-        SetActive(0);
-        tmpChild.gameObject.SetActive(true);
+        GameObject parent = GameObject.Find(tagMission);
+        foreach(Transform child in parent.transform)
+        {
+            if(child.tag == GameEvent.MARK_TAG)
+            {
+                SetActive(0);
+                child.gameObject.SetActive(true);
+            }
+        }
+        //Transform tmpChild = mission.GetComponent<Transform>().GetChild(0);
     }
 
 
     // In base al numero specificato riproduce la UI relativa all'interagibile
+    // Cambiare in base al tag ricevuto
     public void ReproduceExplanation(int interactable){
+        
         if (!interaction[interactable])
         {
             interaction[interactable] = true;
@@ -192,9 +194,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             
             Debug.Log("Interazione (false) " + tagInteraction);
             // Spawn dell'interagibile piccolo
-            RemoveMark("Flag");
+            RemoveMark(GameEvent.FLAG_TAG);
             GameObject mission = GameObject.FindWithTag(tagInteraction);
-            Instantiate(prefabs[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
+            Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
         }
         else
         {
@@ -208,27 +210,27 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
         {
             Debug.Log("Spiegazione movimenti");
-            SpawnMission("Flag");
+            SpawnMark(GameEvent.FLAG_TAG);
         }
         if (interact && !talking)
         {
             if (Input.GetKeyUp(KeyCode.E))
             {
                 interact = false;
-                if (tagInteraction == "Flag" )
+                if (tagInteraction == GameEvent.FLAG_TAG)
                 {   
                     
                     ReproduceExplanation(0); // Riproduce la spiegazione
                     //Mandare un broadcast per dire che spawna la missione
                     //Quindi è finita la spiegazione nella UI
-                    SpawnMission("TutorialRoom");
+                    SpawnMark(GameEvent.TUTORIAL_ROOM);
                 }
                 else if (tagInteraction == GameEvent.MARK_TAG)
                 {
                     RaccoltoOggetto(0);
                     if (inventary[0] >= 10)
                     {
-                        SpawnMission("Table");
+                        SpawnMark(GameEvent.TABLE_TAG);
                         Debug.Log("Vai verso il tavolo e interagisci");
                     }
                 }
@@ -239,9 +241,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         LasciaOggetto(0);
                         RemoveMark(GameEvent.TABLE_TAG);
                         Debug.Log("Inizio Missione");
-                        GameObject mission = GameObject.FindWithTag("Tutorial");
+                        Messenger.Broadcast(GameEvent.FIRST_UI_MISSION);
                         
-                        missionComplete[0] = true;
                     }
                     else
                     {
@@ -253,8 +254,20 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             {
                 Debug.Log("Missione completata !!");
                 missionActive[0] = false;
+                // Attivare gli altri interagibili relativi alle missioni di italiano
+                // Attivare gli interagibili relativi alle altre missioni
             }
         }
+    }
+    
+    public void Art()
+    {
+
+    }
+
+    public void Math()
+    {
+
     }
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
     // Appare un messaggio UI che ci avvisa
@@ -378,7 +391,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         ++missionDone;
         Debug.Log(missionDone);
         if (missionDone >= 10)
+        {
+            Time.timeScale = 1;
+            SetComplete(0);
+            GameObject mission = GameObject.FindWithTag("Tutorial");
+            Destroy(mission);
             Debug.Log("Tutorial Finito");
+        }
     }
 
     void Awake()

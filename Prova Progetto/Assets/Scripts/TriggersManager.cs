@@ -6,9 +6,9 @@ public class TriggersManager : MonoBehaviour
 {
 
     //Gestione centralizzata dei tag per la collisione coi trigger
-    private List<string> tagsList = new List<string>{
-                                        GameEvent.TELECOMANDO_TAG,
-                                        GameEvent.WORDS_TAG,     
+    private List<string> tagsList = new List<string>
+    {
+                                        GameEvent.TELECOMANDO_TAG,    
                                         GameEvent.BOOKS_TAG,        
                                         GameEvent.WATER_TAG,  
                                         GameEvent.TV_BAGNO_TAG,
@@ -17,10 +17,9 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.TV_CUCINA_TAG,
                                         GameEvent.TABLE_TAG,
                                         GameEvent.MARK_TAG,
-                                        GameEvent.SENTENCE_TAG,
-                                        GameEvent.WORDS_TAG,
-                                        "Flag"
-                                        };
+                                        GameEvent.EASEL_TAG,
+                                        GameEvent.FLAG_TAG
+    };
     
 
     void OnTriggerEnter(Collider other) {
