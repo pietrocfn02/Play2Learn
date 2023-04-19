@@ -205,37 +205,40 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     // Cambiare in base al tag ricevuto
     
     public void SpawnInteraction(){
-        RemoveMark();
         GameObject mission = GameObject.FindWithTag(tagInteraction);
-        switch (tagInteraction)
+        if (mission != null)
         {
-            case GameEvent.FLAG_TAG:
-                if (!interaction[0])
-                {
-                    interaction[0] = true;
-                    Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
-                }
-                else
-                {
-                    Debug.Log("Già attivo. Riproduco...");
-                }
-                break;
+            switch (tagInteraction)
+            {
+                case GameEvent.FLAG_TAG:
+                    if (!interaction[0])
+                    {
+                        interaction[0] = true;
+                        Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
+                    }
+                    else
+                    {
+                        Debug.Log("Già attivo. Riproduco...");
+                    }
+                    break;
             
-            case GameEvent.EASEL_TAG:
-                if (!interaction[1])
-                {
-                    interaction[1] = true;
-                    Instantiate(prefabsMission[1], new Vector3(27.6f,1.7f,12.3f), Quaternion.Euler(0f, 0f, 90f));
+                case GameEvent.EASEL_TAG:
+                    if (!interaction[1])
+                    {
+                        interaction[1] = true;
+                        Instantiate(prefabsMission[1], new Vector3(27.2f,1.7f,15.2f), Quaternion.Euler(0f, 0f, 45f));
                     
-                }
-                else
-                {
-                    Debug.Log("Già attivo. Riproduco...");
-                }
-                break;
+                    }
+                    else
+                    {
+                        Debug.Log("Già attivo. Riproduco...");
+                    }
+                    break;
 
-            default:
-                break;
+            
+                default:
+                    break;
+            }
         }
     }
     
@@ -313,9 +316,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     {
         if (ActiveControl())
         {
-            string[] artTags = {"Corinthian", "Ionic", "VitruvianMan", "Comics"};
+            string[] artTags = {"Corinthian", "Ionic", "VitruvianMan", "Comics" };
             if (interact && !talking)
             {
+                Debug.Log("Sono muto e posso interagire");
                 if (Input.GetKeyUp(KeyCode.E))
                 {
                     RemoveMark();
@@ -323,6 +327,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     SpawnInteraction();
                     for(int i=0; i<artTags.Length; ++i)
                     {
+                        Debug.Log(artTags[i]);
                         SpawnMark(artTags[i]);
                     }
                 }
