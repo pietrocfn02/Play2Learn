@@ -15,6 +15,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private int initialSize = 0;
     private int angioletto_score = 0;
 
+    
     // Array per l'inventario
     private int[] inventary = {0,0,0}; // Parola, Sparrow, Telecomando, ... (Da aggiungere quando colleziono)
     
@@ -94,7 +95,14 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     void Start(){}
 
     void Update(){
-            Tutorial();
+        //Tutorial();
+        //if (interact)
+        //{
+            //if (Input.GetKeyUp(KeyCode.E))
+            //{
+               Art();
+            //}
+        //}
     }
 
     // Setta una missione su "Attivo"
@@ -134,14 +142,15 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         
     }
     // Elimina il "!" -- viene usato alla fine di una missione --
-    public void RemoveMark(string tagFather)
+    public void RemoveMark()
     {
-        GameObject toModify = GameObject.FindWithTag(tagFather);
-        Transform tmpChild = toModify.GetComponent<Transform>().GetChild(0);
-        if (tmpChild)
+        GameObject parent = GameObject.Find(tagInteraction);
+        foreach (Transform child in parent.transform)
         {
-            Destroy(tmpChild.gameObject);
-            Debug.Log("KABOOOOOOOM." + tmpChild.tag + " è stato distrutto");
+            if (child.tag == GameEvent.MARK_TAG)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 
@@ -168,9 +177,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
 
     // Fa spawnare gli oggetti relativi alle missioni
-    public void SpawnMark(string tagMission)
+    public void SpawnMark(string tagFather)
     {
-        GameObject parent = GameObject.Find(tagMission);
+        GameObject parent = GameObject.Find(tagFather);
         foreach(Transform child in parent.transform)
         {
             if(child.tag == GameEvent.MARK_TAG)
@@ -179,32 +188,71 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 child.gameObject.SetActive(true);
             }
         }
-        //Transform tmpChild = mission.GetComponent<Transform>().GetChild(0);
     }
 
-
+    private void SpawnTutorialMission()
+    {
+        GameObject parent = GameObject.Find("TutorialRoom");
+        Transform child = parent.GetComponent<Transform>().GetChild(0);
+        Debug.Log(child);
+        if (child)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
+    
     // In base al numero specificato riproduce la UI relativa all'interagibile
     // Cambiare in base al tag ricevuto
-    public void ReproduceExplanation(int interactable){
-        
-        if (!interaction[interactable])
+    
+    public void SpawnInteraction(){
+        RemoveMark();
+        GameObject mission = GameObject.FindWithTag(tagInteraction);
+        switch (tagInteraction)
         {
-            interaction[interactable] = true;
-            //Messenger.Broadcast(RiproduciExplanation, interactable);
+            case GameEvent.FLAG_TAG:
+                if (!interaction[0])
+                {
+                    interaction[0] = true;
+                    Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
+                }
+                else
+                {
+                    Debug.Log("Già attivo. Riproduco...");
+                }
+                break;
             
-            Debug.Log("Interazione (false) " + tagInteraction);
-            // Spawn dell'interagibile piccolo
-            RemoveMark(GameEvent.FLAG_TAG);
-            GameObject mission = GameObject.FindWithTag(tagInteraction);
-            Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
-        }
-        else
-        {
-            Debug.Log("Interazione (true) " + tagInteraction);
+            case GameEvent.EASEL_TAG:
+                if (!interaction[1])
+                {
+                    interaction[1] = true;
+                    Instantiate(prefabsMission[1], new Vector3(27.6f,1.7f,12.3f), Quaternion.Euler(0f, 0f, 90f));
+                    
+                }
+                else
+                {
+                    Debug.Log("Già attivo. Riproduco...");
+                }
+                break;
+
+            default:
+                break;
         }
     }
-    // Inizia il tutorial
-    //
+    
+    // Controlla se c'è qualche missione attiva
+    // Se c'è anche solo una missione attiva return false
+    // true altrimenti
+    private bool ActiveControl()
+    {
+        for(int i=0; i<missionActive.Length; ++i)
+        {
+            if (missionActive[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     public void Tutorial()
     {
         if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
@@ -220,10 +268,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 if (tagInteraction == GameEvent.FLAG_TAG)
                 {   
                     
-                    ReproduceExplanation(0); // Riproduce la spiegazione
+                    SpawnInteraction(); // Riproduce la spiegazione
                     //Mandare un broadcast per dire che spawna la missione
                     //Quindi è finita la spiegazione nella UI
-                    SpawnMark(GameEvent.TUTORIAL_ROOM);
+                    SpawnTutorialMission();
                 }
                 else if (tagInteraction == GameEvent.MARK_TAG)
                 {
@@ -239,7 +287,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     if(inventary[0] >= 10)
                     {
                         LasciaOggetto(0);
-                        RemoveMark(GameEvent.TABLE_TAG);
+                        RemoveMark();
                         Debug.Log("Inizio Missione");
                         Messenger.Broadcast(GameEvent.FIRST_UI_MISSION);
                         
@@ -255,6 +303,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 Debug.Log("Missione completata !!");
                 missionActive[0] = false;
                 // Attivare gli altri interagibili relativi alle missioni di italiano
+                //SpawnAll(materia);
                 // Attivare gli interagibili relativi alle altre missioni
             }
         }
@@ -262,7 +311,24 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     
     public void Art()
     {
+        if (ActiveControl())
+        {
+            string[] artTags = {"Corinthian", "Ionic", "VitruvianMan" };
+            if (interact && !talking)
+            {
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    RemoveMark();
+                    Debug.Log("Parlo di arte");
+                    SpawnInteraction();
+                    for(int i=0; i<artTags.Length; ++i)
+                    {
+                        SpawnMark(artTags[i]);
+                    }
+                }
+            }
 
+        }
     }
 
     public void Math()

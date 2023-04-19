@@ -22,7 +22,6 @@ public class UIMission : MonoBehaviour
     {
         Time.timeScale = 0;
         firstMission.gameObject.SetActive(true);
-        
     }
 
     void onDestroy()

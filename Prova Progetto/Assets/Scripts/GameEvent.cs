@@ -42,6 +42,7 @@ public static class GameEvent {
 	public const string FLAG_TAG = "Flag";
 	public const string TUTORIAL_ROOM = "TutorialRoom";
 	public const string EASEL_TAG = "Easel";
+	public const string TUTORIAL_TAG = "Tutorial";
 
 	// Added...
 	public const string START_GAME = "START_GAME";

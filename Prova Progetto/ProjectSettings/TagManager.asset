@@ -7,8 +7,6 @@ TagManager:
   - Glass
   - Telecomando
   - Pastelli
-  - Books
-  - Bunny
   - EvilCoin
   - GoodCoin
   - Door
@@ -19,7 +17,6 @@ TagManager:
   - TV_Sala_Giochi
   - TV_Camera_Letto
   - TV_Bagno
-  - Tavolo
   - Audio_Ambiente
   - Camino
   - Tmp
@@ -30,6 +27,10 @@ TagManager:
   - Tutorial
   - Easel
   - Table
+  - Columns
+  - Corinthian
+  - Ionic
+  - VitruvianMan
   layers:
   - Default
   - TransparentFX
