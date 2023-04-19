@@ -313,7 +313,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     {
         if (ActiveControl())
         {
-            string[] artTags = {"Corinthian", "Ionic", "VitruvianMan" };
+            string[] artTags = {"Corinthian", "Ionic", "VitruvianMan", "Comics"};
             if (interact && !talking)
             {
                 if (Input.GetKeyUp(KeyCode.E))
