@@ -43,7 +43,13 @@ public static class GameEvent {
 	public const string TUTORIAL_ROOM = "TutorialRoom";
 	public const string EASEL_TAG = "Easel";
 	public const string TUTORIAL_TAG = "Tutorial";
-
+	public const string VITRUVIAN_TAG = "Vitruvian";
+	public const string COLUMN_CORINTHIAN_TAG = "ColumnCorinthian";
+	public const string COLUMN_IONIC_TAG = "ColumnIonic";
+	public const string TOPOLINO_TAG = "Topolino";
+	public const string ONEPIECE_TAG = "Onepiece";
+	public const string SNOOPY_TAG = "Snoopy";
+	public const string SUPERMAN_TAG = "Superman";
 	// Added...
 	public const string START_GAME = "START_GAME";
 

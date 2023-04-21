@@ -180,12 +180,19 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void SpawnMark(string tagFather)
     {
         GameObject parent = GameObject.Find(tagFather);
-        foreach(Transform child in parent.transform)
+        
+        if (parent)
         {
-            if(child.tag == GameEvent.MARK_TAG)
+            foreach(Transform child in parent.transform)
             {
-                SetActive(0);
-                child.gameObject.SetActive(true);
+                if (child)
+                {
+                    if(child.tag == GameEvent.MARK_TAG)
+                    {
+                        SetActive(0);
+                        child.gameObject.SetActive(true);
+                    }
+                }
             }
         }
     }
@@ -317,9 +324,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         if (ActiveControl())
         {
             string[] artTags = {"Corinthian", "Ionic", "VitruvianMan", "Comics" };
+            string[] signTag = {"Vitruvian", "ColumnCorinthian", "ColumnIonic", "Topolino", "Onepiece", "Snoopy", "Superman" };
             if (interact && !talking)
             {
-                Debug.Log("Sono muto e posso interagire");
                 if (Input.GetKeyUp(KeyCode.E))
                 {
                     RemoveMark();
@@ -327,14 +334,19 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     SpawnInteraction();
                     for(int i=0; i<artTags.Length; ++i)
                     {
-                        Debug.Log(artTags[i]);
-                        SpawnMark(artTags[i]);
+                        SpawnMark(artTags[i]);                       
+                    }
+                    Debug.Log(tagInteraction);
+                    // Diventa verde se il nome inserito è corretto
+                    for(int i=0; i<signTag.Length; ++i)
+                    {
+                        SetOutline(GameObject.FindWithTag(signTag[i]), 3f,Color.green);
                     }
                 }
             }
-
         }
     }
+
 
     public void Math()
     {
@@ -387,10 +399,16 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         return angioletto_score;
     }
 
-    /*public int getDiavolettoScore() {
-        return diavoletto_score;
-    }*/
 
+    public void SetOutline(GameObject objectRecived, float power, Color color)
+    {
+        Outline outline = objectRecived.GetComponent<Outline>();
+        if (outline)
+        {
+            outline.OutlineColor = color;
+            outline.OutlineWidth = power;
+        }
+    }
 
     // Entro in un collider
     public void ActivateE(Collider objectRecived)
@@ -398,14 +416,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         this.interact = true;
         this.tagInteraction = objectRecived.tag;
         this.objectToDestroy = objectRecived;
-        Transform transform = objectRecived.transform;
-        // Gowing here...
-        Outline outline = objectRecived.GetComponent<Outline>();
-        if (outline)
-        {
-            outline.OutlineColor = Color.yellow;
-            outline.OutlineWidth = 5f;
-        }
+        SetOutline(objectRecived.gameObject, 4, Color.yellow);
     }
 
 
@@ -415,16 +426,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
         this.interact = false;
         this.tagInteraction = "";
-        Transform transform = objectRecived.transform;
-        // Not glowing here...
-        Outline outline = objectRecived.GetComponent<Outline>();
-        if (outline)
-        {
-            outline.OutlineWidth = 0f;
-        }
-        Transform markChild = transform.Find(GameEvent.MARK_TAG);
-        
-        
+        SetOutline(objectRecived.gameObject, 0, Color.yellow);
     }
 
 
@@ -481,14 +483,5 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         Messenger.RemoveListener("MissionTutorialDone", MissionTutorialDone);
     }
 
-    // Manda un messaggio alla UI per indicare la fine della missione
-    /*public void MissionComplete(string missionTag){
-        if (GameEvent.MISSIONE_TELEVISIONI == missionTag) {
-            this.tvComplete = true;
-        }
-            Messenger.Broadcast(missionTag);
-    }
-
-    */
 }
 
