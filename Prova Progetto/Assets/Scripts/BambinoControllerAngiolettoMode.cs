@@ -81,7 +81,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     //<-----
 
 
-    bool tab = false;
+    bool interactTmp = false;
     //Indica se c'è qualche scena in cui si sta parlando
     //
     bool talking = false;
@@ -323,24 +323,63 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     {
         if (ActiveControl())
         {
-            string[] artTags = {"Corinthian", "Ionic", "VitruvianMan", "Comics" };
-            string[] signTag = {"Vitruvian", "ColumnCorinthian", "ColumnIonic", "Topolino", "Onepiece", "Snoopy", "Superman" };
+            string[] signTag = {GameEvent.VITRUVIAN_TAG, 
+                                GameEvent.COLUMN_CORINTHIAN_TAG,
+                                GameEvent.COLUMN_IONIC_TAG,
+                                GameEvent.TOPOLINO_TAG,
+                                GameEvent.ONEPIECE_TAG,
+                                GameEvent.SNOOPY_TAG,
+                                GameEvent.SUPERMAN_TAG
+                                };
+
             if (interact && !talking)
             {
-                if (Input.GetKeyUp(KeyCode.E))
+                if (Input.GetKeyUp(KeyCode.E) && !interactTmp)
                 {
                     RemoveMark();
                     Debug.Log("Parlo di arte");
                     SpawnInteraction();
-                    for(int i=0; i<artTags.Length; ++i)
-                    {
-                        SpawnMark(artTags[i]);                       
-                    }
-                    Debug.Log(tagInteraction);
-                    // Diventa verde se il nome inserito è corretto
+                    Debug.Log("Spiegazione missione");
                     for(int i=0; i<signTag.Length; ++i)
                     {
-                        SetOutline(GameObject.FindWithTag(signTag[i]), 3f,Color.green);
+                        SetOutline(GameObject.FindWithTag(signTag[i]), 3f,Color.red);
+                    }
+                    interactTmp = true;
+                }else if (Input.GetKeyUp(KeyCode.E) && interactTmp){
+
+                switch(tagInteraction)
+                    {
+                        case GameEvent.VITRUVIAN_TAG:
+                            Time.timeScale = 0;
+                            Messenger.Broadcast(GameEvent.VITRUVIAN_TAG);
+                            break;
+                        case GameEvent.COLUMN_CORINTHIAN_TAG:
+                            Time.timeScale = 0;
+                            Messenger.Broadcast(GameEvent.COLUMN_CORINTHIAN_TAG);
+                            break;
+                        case GameEvent.COLUMN_IONIC_TAG:
+                            Time.timeScale = 0;
+                            Messenger.Broadcast(GameEvent.COLUMN_IONIC_TAG);
+                            break;
+                        case GameEvent.TOPOLINO_TAG:
+                            Time.timeScale = 0;
+                            Messenger.Broadcast(GameEvent.TOPOLINO_TAG);
+                            break;
+                        case GameEvent.ONEPIECE_TAG:
+                            Time.timeScale = 0;
+                            Messenger.Broadcast(GameEvent.ONEPIECE_TAG);
+                            break;
+                        case GameEvent.SNOOPY_TAG:
+                            Time.timeScale = 0;
+                            Messenger.Broadcast(GameEvent.SNOOPY_TAG);
+                            break;
+                        case GameEvent.SUPERMAN_TAG:
+                            Time.timeScale = 0;
+                            Messenger.Broadcast(GameEvent.SUPERMAN_TAG);
+                            break;
+                        
+                        default:
+                            break;    
                     }
                 }
             }
