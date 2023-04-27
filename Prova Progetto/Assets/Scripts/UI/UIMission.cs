@@ -4,56 +4,69 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Cinemachine;
 
 public class UIMission : MonoBehaviour
 {
     [SerializeField] private Canvas italianMission;
     [SerializeField] private Canvas artMission;
+    [SerializeField] private TMP_Text artText;
     [SerializeField] private GameObject[] artPrefabs;
+    [SerializeField] private CinemachineVirtualCamera[] cameras;
+    [SerializeField] private Camera mainCamera;
     private string tag = "";
     private bool mission = false;
+    private int cont = 0;
+    private int contDone = 0;
     void Start()
     {
     }
 
     void Update()
     {
-        if (!mission)
             ArtMission();
     }
 
     public void ItalianMission()
     {
-        Time.timeScale = 0;
+        RelativeMovement.SetInMission(false);
         italianMission.gameObject.SetActive(true);
     }
 
     IEnumerator timer(){
-        yield return new WaitForSecondsRealtime(10);
+        Debug.Log("Aspetto...");
+        yield return new WaitForSecondsRealtime(5);
+        mission = false;
+        
     }
+
     public void ArtMission()
     {
-        Debug.Log(tag);
+
         switch(tag)
         {
             case GameEvent.VITRUVIAN_TAG:
+                
                 break;
             case GameEvent.COLUMN_CORINTHIAN_TAG:
-                GameObject tmp = GameObject.Find("CorinthianCamera");
-                GameObject[] mainCamera = GameObject.FindGameObjectsWithTag("MainCamera");
-                for(int i=0;i<mainCamera.Length;++i){
-                    mainCamera[i].SetActive(false);
+                // Movimento camera
+                if (cont <= 0)
+                {
+                    mainCamera.gameObject.SetActive(false);
+                    cameras[1].gameObject.SetActive(true);
+                    RelativeMovement.SetInMission(true);
+                    StartCoroutine(timer());
+                    artMission.gameObject.SetActive(true);
+                    ++cont;
+                    ++contDone;
                 }
-                artMission.gameObject.SetActive(true);
-                
-                StartCoroutine(timer());
-
-                mission = true;
-                for(int i=0;i<mainCamera.Length;++i){
-                    mainCamera[i].SetActive(true);
+                ArtSettings.SetText(artText.text.ToUpper());
+                string tmp = artText.text.ToUpper();
+                //Debug.Log(tmp);
+                if(tmp == "COLONNA CORINZIA")
+                {
+                    Debug.Log("Corretto");
                 }
-                artMission.gameObject.SetActive(false);
-                Time.timeScale = 1;
                 break;
             case GameEvent.COLUMN_IONIC_TAG:
                 Debug.Log(tag);
@@ -71,11 +84,10 @@ public class UIMission : MonoBehaviour
                 Debug.Log(tag);
                 break;
             default:
-                mission = false;
                 break;    
         }
     }
-    
+  
 
     private void SetVitruvian()
     {

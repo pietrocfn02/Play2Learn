@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\UI",
     "\\UsefullScripts"
   ],
-  "SelectedNode": "\\BambinoControllerAngiolettoMode.cs.meta",
+  "SelectedNode": "\\UI\\UIAngioletto.cs",
   "PreviewInSolutionExplorer": false
 }

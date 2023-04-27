@@ -342,7 +342,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     Debug.Log("Spiegazione missione");
                     for(int i=0; i<signTag.Length; ++i)
                     {
-                        SetOutline(GameObject.FindWithTag(signTag[i]), 3f,Color.red);
+                        SetOutline(GameObject.FindWithTag(signTag[i]), 3f,Color.yellow);
                     }
                     interactTmp = true;
                 }else if (Input.GetKeyUp(KeyCode.E) && interactTmp){
@@ -350,31 +350,24 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 switch(tagInteraction)
                     {
                         case GameEvent.VITRUVIAN_TAG:
-                            Time.timeScale = 0;
                             Messenger.Broadcast(GameEvent.VITRUVIAN_TAG);
                             break;
                         case GameEvent.COLUMN_CORINTHIAN_TAG:
-                            Time.timeScale = 0;
                             Messenger.Broadcast(GameEvent.COLUMN_CORINTHIAN_TAG);
                             break;
                         case GameEvent.COLUMN_IONIC_TAG:
-                            Time.timeScale = 0;
                             Messenger.Broadcast(GameEvent.COLUMN_IONIC_TAG);
                             break;
                         case GameEvent.TOPOLINO_TAG:
-                            Time.timeScale = 0;
                             Messenger.Broadcast(GameEvent.TOPOLINO_TAG);
                             break;
                         case GameEvent.ONEPIECE_TAG:
-                            Time.timeScale = 0;
                             Messenger.Broadcast(GameEvent.ONEPIECE_TAG);
                             break;
                         case GameEvent.SNOOPY_TAG:
-                            Time.timeScale = 0;
                             Messenger.Broadcast(GameEvent.SNOOPY_TAG);
                             break;
                         case GameEvent.SUPERMAN_TAG:
-                            Time.timeScale = 0;
                             Messenger.Broadcast(GameEvent.SUPERMAN_TAG);
                             break;
                         
@@ -504,7 +497,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         Debug.Log(missionDone);
         if (missionDone >= 10)
         {
-            Time.timeScale = 1;
+            RelativeMovement.SetInMission(false);
             SetComplete(0);
             GameObject mission = GameObject.FindWithTag("Tutorial");
             Destroy(mission);
