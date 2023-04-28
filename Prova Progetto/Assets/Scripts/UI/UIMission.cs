@@ -14,12 +14,14 @@ public class UIMission : MonoBehaviour
     [SerializeField] private GameObject[] artPrefabs;
     [SerializeField] private CinemachineVirtualCamera[] cameras;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private TMP_Text questionTest;
     private string tag = "";
     private bool mission = false;
     private int cont = 0;
     private int contDone = 0;
     void Start()
     {
+        questionTest.text = "";
     }
 
     void Update()
@@ -39,50 +41,73 @@ public class UIMission : MonoBehaviour
         mission = false;
         
     }
-
+    private void SetCamera(string tag, int camera)
+    {
+        if (cont <= 0)
+        {
+            mainCamera.gameObject.SetActive(false);
+            cameras[camera].gameObject.SetActive(true);
+            RelativeMovement.SetInMission(true);
+            StartCoroutine(timer());
+            artMission.gameObject.SetActive(true);
+            ++cont;
+            ++contDone; // contatore per le missioni complete
+            questionTest.text = Questions.GetRandomQuestion(tag);
+        }
+        ArtSettings.SetText(artText.text.ToUpper());
+    }
+    private void SpawnMiniature(int prefab)
+    {
+        Vector3[] positions = { new Vector3(22.4f,1.81f,12.37f), 
+                                new Vector3(22.945f,1.81f,14.93f),
+                                new Vector3(25.32f,1.74f,13.3f), 
+                                new Vector3(27.4f,1.94f,13.28f), 
+                                new Vector3(27.4f,1.922f,12.7f), 
+                                new Vector3(27.4f,1.922f,12.25f), 
+                                new Vector3(27.4f,1.922f,11.61f) 
+                              };
+        Instantiate(artPrefabs[0],positions[prefab], Quaternion.identity);
+    }
     public void ArtMission()
     {
 
         switch(tag)
         {
             case GameEvent.VITRUVIAN_TAG:
-                
+                SetCamera(GameEvent.VITRUVIAN_TAG, 0);
+                SpawnMiniature(3);
                 break;
             case GameEvent.COLUMN_CORINTHIAN_TAG:
                 // Movimento camera
-                if (cont <= 0)
-                {
-                    mainCamera.gameObject.SetActive(false);
-                    cameras[1].gameObject.SetActive(true);
-                    RelativeMovement.SetInMission(true);
-                    StartCoroutine(timer());
-                    artMission.gameObject.SetActive(true);
-                    ++cont;
-                    ++contDone;
-                }
-                ArtSettings.SetText(artText.text.ToUpper());
+                SetCamera(GameEvent.COLUMN_CORINTHIAN_TAG, 1);
+                
                 string tmp = artText.text.ToUpper();
-                //Debug.Log(tmp);
                 if(tmp == "COLONNA CORINZIA")
                 {
                     Debug.Log("Corretto");
                 }
                 break;
+
             case GameEvent.COLUMN_IONIC_TAG:
-                Debug.Log(tag);
+                SetCamera(GameEvent.COLUMN_IONIC_TAG, 2);
                 break;
+
             case GameEvent.TOPOLINO_TAG:
-                Debug.Log(tag);
+                SetCamera(GameEvent.TOPOLINO_TAG, 3);
                 break;
+
             case GameEvent.ONEPIECE_TAG:
-                Debug.Log(tag);
+                SetCamera(GameEvent.ONEPIECE_TAG, 4);
                 break;
+
             case GameEvent.SNOOPY_TAG:
-                Debug.Log(tag);
+                SetCamera(GameEvent.SNOOPY_TAG, 5);
                 break;
+
             case GameEvent.SUPERMAN_TAG:
-                Debug.Log(tag);
+                SetCamera(GameEvent.SUPERMAN_TAG, 6);
                 break;
+
             default:
                 break;    
         }
