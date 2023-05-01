@@ -23,7 +23,6 @@ TagManager:
   - Tutorial
   - Easel
   - Table
-  - Columns
   - Corinthian
   - Ionic
   - VitruvianMan
@@ -35,6 +34,13 @@ TagManager:
   - Vitruvian
   - ColumnCorinthian
   - ColumnIonic
+  - VitruvianText
+  - IonicText
+  - CorinthianText
+  - TopolinoText
+  - OnePieceText
+  - SnoopyText
+  - SuperManText
   layers:
   - Default
   - TransparentFX

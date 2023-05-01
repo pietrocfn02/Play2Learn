@@ -13,12 +13,14 @@ public class UIMission : MonoBehaviour
     [SerializeField] private TMP_Text artText;
     [SerializeField] private GameObject[] artPrefabs;
     [SerializeField] private CinemachineVirtualCamera[] cameras;
+    [SerializeField] private TMP_Text[] missionText;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private TMP_Text questionTest;
     private string tag = "";
     private bool mission = false;
     private int cont = 0;
     private int contDone = 0;
+    private bool spawned = false;
     void Start()
     {
         questionTest.text = "";
@@ -53,20 +55,27 @@ public class UIMission : MonoBehaviour
             ++cont;
             ++contDone; // contatore per le missioni complete
             questionTest.text = Questions.GetRandomQuestion(tag);
+            spawned = false;
         }
+        missionText[camera].gameObject.SetActive(true);
         ArtSettings.SetText(artText.text.ToUpper());
     }
     private void SpawnMiniature(int prefab)
     {
-        Vector3[] positions = { new Vector3(22.4f,1.81f,12.37f), 
-                                new Vector3(22.945f,1.81f,14.93f),
-                                new Vector3(25.32f,1.74f,13.3f), 
-                                new Vector3(27.4f,1.94f,13.28f), 
-                                new Vector3(27.4f,1.922f,12.7f), 
-                                new Vector3(27.4f,1.922f,12.25f), 
-                                new Vector3(27.4f,1.922f,11.61f) 
-                              };
-        Instantiate(artPrefabs[0],positions[prefab], Quaternion.identity);
+        if (!spawned){
+            Vector3[] positions = { new Vector3(22.49f,1.76f,12.4f), 
+                                    new Vector3(0.15f,0.1f,0.25f),
+                                    new Vector3(25.3f,1.74f,13.38f), 
+                                    new Vector3(27.4f,1.94f,13.28f), 
+                                    new Vector3(27.4f,1.922f,12.7f), 
+                                    new Vector3(27.4f,1.922f,12.25f), 
+                                    new Vector3(27.4f,1.922f,11.61f) 
+                                };
+            
+            GameObject newArtPrefab = Instantiate(artPrefabs[prefab],positions[prefab], Quaternion.identity);
+            newArtPrefab.AddComponent<RotateWithMouse>();
+            spawned = true;
+        }
     }
     public void ArtMission()
     {
@@ -75,39 +84,33 @@ public class UIMission : MonoBehaviour
         {
             case GameEvent.VITRUVIAN_TAG:
                 SetCamera(GameEvent.VITRUVIAN_TAG, 0);
-                SpawnMiniature(3);
+                SpawnMiniature(0);
                 break;
             case GameEvent.COLUMN_CORINTHIAN_TAG:
                 // Movimento camera
                 SetCamera(GameEvent.COLUMN_CORINTHIAN_TAG, 1);
-                
-                string tmp = artText.text.ToUpper();
-                if(tmp == "COLONNA CORINZIA")
-                {
-                    Debug.Log("Corretto");
-                }
+                SpawnMiniature(1);
                 break;
-
             case GameEvent.COLUMN_IONIC_TAG:
                 SetCamera(GameEvent.COLUMN_IONIC_TAG, 2);
+                SpawnMiniature(2);
                 break;
-
             case GameEvent.TOPOLINO_TAG:
                 SetCamera(GameEvent.TOPOLINO_TAG, 3);
+                SpawnMiniature(3);
                 break;
-
             case GameEvent.ONEPIECE_TAG:
                 SetCamera(GameEvent.ONEPIECE_TAG, 4);
+                SpawnMiniature(4);
                 break;
-
             case GameEvent.SNOOPY_TAG:
                 SetCamera(GameEvent.SNOOPY_TAG, 5);
+                SpawnMiniature(5);
                 break;
-
             case GameEvent.SUPERMAN_TAG:
                 SetCamera(GameEvent.SUPERMAN_TAG, 6);
+                SpawnMiniature(6);
                 break;
-
             default:
                 break;    
         }

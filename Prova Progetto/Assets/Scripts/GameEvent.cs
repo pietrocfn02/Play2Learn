@@ -50,8 +50,16 @@ public static class GameEvent {
 	public const string ONEPIECE_TAG = "Onepiece";
 	public const string SNOOPY_TAG = "Snoopy";
 	public const string SUPERMAN_TAG = "Superman";
-	// Added...
-	public const string START_GAME = "START_GAME";
+
+	public const string VITRUVIAN_TEXT_TAG = "VitruvianText";
+	public const string COLUMN_CORINTHIAN_TEXT_TAG = "CorinthianText";
+	public const string COLUMN_IONIC_TEXT_TAG = "IonicText";
+	public const string TOPOLINO_TEXT_TAG = "TopolinoText";
+	public const string ONEPIECE_TEXT_TAG = "OnepieceText";
+	public const string SNOOPY_TEXT_TAG = "SnoopyText";
+	public const string SUPERMAN_TEXT_TAG = "SupermanText";
+	
+	public const string START_TEXT_GAME = "START_GAME";
 
 	// INDEX
 	public const int TELECOMANDO_INDEX = 1;// Eliminare

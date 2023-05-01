@@ -342,7 +342,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     Debug.Log("Spiegazione missione");
                     for(int i=0; i<signTag.Length; ++i)
                     {
-                        SetOutline(GameObject.FindWithTag(signTag[i]), 3f,Color.yellow);
+                        SetOutline(GameObject.FindWithTag(signTag[i]), 2f,Color.yellow);
                     }
                     interactTmp = true;
                 }else if (Input.GetKeyUp(KeyCode.E) && interactTmp){
