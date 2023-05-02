@@ -16,11 +16,13 @@ public class UIMission : MonoBehaviour
     [SerializeField] private TMP_Text[] missionText;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private TMP_Text questionTest;
+    
+    private bool isActive = false;
     private string tag = "";
     private bool mission = false;
-    private int cont = 0;
     private int contDone = 0;
     private bool spawned = false;
+
     void Start()
     {
         questionTest.text = "";
@@ -43,22 +45,29 @@ public class UIMission : MonoBehaviour
         mission = false;
         
     }
-    private void SetCamera(string tag, int camera)
+    private void ActiveArtCameras(string tag, int camera)
     {
-        if (cont <= 0)
+        if (!isActive) // && !mission[i] e la missione i non è completa
         {
             mainCamera.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(true);
             RelativeMovement.SetInMission(true);
             StartCoroutine(timer());
             artMission.gameObject.SetActive(true);
-            ++cont;
+            isActive = true;
             ++contDone; // contatore per le missioni complete
             questionTest.text = Questions.GetRandomQuestion(tag);
             spawned = false;
         }
-        missionText[camera].gameObject.SetActive(true);
-        ArtSettings.SetText(artText.text.ToUpper());
+    }
+
+    private void DeactivateCameras(/*string tag,*/ int camera)
+    {
+        mainCamera.gameObject.SetActive(true);
+        cameras[camera].gameObject.SetActive(false);
+        RelativeMovement.SetInMission(false);
+        StartCoroutine(timer());
+        artMission.gameObject.SetActive(false);
     }
     private void SpawnMiniature(int prefab)
     {
@@ -77,39 +86,56 @@ public class UIMission : MonoBehaviour
             spawned = true;
         }
     }
+    // Variabili di prova 
+    private string[] correctAnswers = {    "UOMO VITRUVIANO",
+                                                "COLONNA CORINZIA",
+                                                "COLONNA IONICA",
+                                                "TOPOLINO",
+                                                "ONE PIECE",
+                                                "SNOOPY",
+                                                "SUPER MAN"
+                                           };
+    // 
+    private void DoMission(string tag, int i)
+    {
+        ActiveArtCameras(tag, i);
+        missionText[i].gameObject.SetActive(true);
+        ArtSettings.SetText(artText.text.ToUpper());
+        SpawnMiniature(i);
+
+        if(Input.GetKeyUp(KeyCode.Tab))
+        {
+            if (artText.text == correctAnswers[i])
+                Debug.Log("Risposta corretta");
+            //DeactivateCameras(i);
+        }
+    }
     public void ArtMission()
     {
 
         switch(tag)
         {
             case GameEvent.VITRUVIAN_TAG:
-                SetCamera(GameEvent.VITRUVIAN_TAG, 0);
-                SpawnMiniature(0);
+                DoMission(GameEvent.VITRUVIAN_TAG, 0);
                 break;
             case GameEvent.COLUMN_CORINTHIAN_TAG:
                 // Movimento camera
-                SetCamera(GameEvent.COLUMN_CORINTHIAN_TAG, 1);
-                SpawnMiniature(1);
+                DoMission(GameEvent.COLUMN_CORINTHIAN_TAG, 1);
                 break;
             case GameEvent.COLUMN_IONIC_TAG:
-                SetCamera(GameEvent.COLUMN_IONIC_TAG, 2);
-                SpawnMiniature(2);
+                DoMission(GameEvent.COLUMN_IONIC_TAG, 2);
                 break;
             case GameEvent.TOPOLINO_TAG:
-                SetCamera(GameEvent.TOPOLINO_TAG, 3);
-                SpawnMiniature(3);
+                DoMission(GameEvent.TOPOLINO_TAG, 3);
                 break;
             case GameEvent.ONEPIECE_TAG:
-                SetCamera(GameEvent.ONEPIECE_TAG, 4);
-                SpawnMiniature(4);
+                DoMission(GameEvent.ONEPIECE_TAG, 4);
                 break;
             case GameEvent.SNOOPY_TAG:
-                SetCamera(GameEvent.SNOOPY_TAG, 5);
-                SpawnMiniature(5);
+                DoMission(GameEvent.SNOOPY_TAG, 5);
                 break;
             case GameEvent.SUPERMAN_TAG:
-                SetCamera(GameEvent.SUPERMAN_TAG, 6);
-                SpawnMiniature(6);
+                DoMission(GameEvent.SUPERMAN_TAG, 6);
                 break;
             default:
                 break;    
