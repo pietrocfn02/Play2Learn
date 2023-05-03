@@ -6,18 +6,20 @@ using TMPro;
 
 public class ArtSettings : MonoBehaviour
 {
-    private static TMP_Text tmpText;
-    private static int cont = 0; 
+    private static TMP_Text panelText;
+    private static string toModify;
     void Start()
     {
-        tmpText = this.GetComponent<TMP_Text>();
+        panelText = GetComponent<TMP_Text>();
     }
-    public static void SetText(string textEdit)
+
+    void Update()
     {
-        if(cont < 1)
-            Debug.Log(tmpText.name);
-        tmpText.text = textEdit;
-        cont++;
+        panelText.text = toModify;
+        if (panelText.text == "TOPOLINO")
+        {
+            Debug.Log("CORRETTO");
+        }
     }
 
 }

@@ -1797,7 +1797,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24369421}
-  m_LocalRotation: {x: 0.06755762, y: -0.79393303, z: 0.08976236, w: 0.59753585}
+  m_LocalRotation: {x: 0.06759952, y: -0.79365396, z: 0.08973082, w: 0.5979064}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6189,7 +6189,6 @@ GameObject:
   - component: {fileID: 146213422}
   - component: {fileID: 146213424}
   - component: {fileID: 146213423}
-  - component: {fileID: 146213425}
   m_Layer: 5
   m_Name: SuperManText
   m_TagString: SuperManText
@@ -6237,7 +6236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: DIGITA TESTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -6314,18 +6313,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146213421}
   m_CullTransparentMesh: 1
---- !u!114 &146213425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 146213421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047c6203a724d3489a923398176afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &150638545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7959,9 +7946,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210731605}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0.000000014901161, w: 0.7071068}
   m_LocalPosition: {x: 27.304422, y: 1.781, z: 14.65429}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.10000002, y: 0.1, z: 0.10000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 560907083}
@@ -7978,7 +7965,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210731605}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -15938,7 +15925,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444983293}
-  m_LocalRotation: {x: 0.11124201, y: -0.13887376, z: 0.015701119, w: 0.98391706}
+  m_LocalRotation: {x: 0.111249335, y: -0.13841446, z: 0.015649188, w: 0.9839818}
   m_LocalPosition: {x: 27.304422, y: 1.781, z: 14.65429}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16039,7 +16026,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444983293}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -16972,7 +16959,6 @@ GameObject:
   - component: {fileID: 464406008}
   - component: {fileID: 464406010}
   - component: {fileID: 464406009}
-  - component: {fileID: 464406011}
   m_Layer: 5
   m_Name: IonicText
   m_TagString: IonicText
@@ -17020,7 +17006,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: DIGITA TESTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -17097,18 +17083,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464406007}
   m_CullTransparentMesh: 1
---- !u!114 &464406011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464406007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047c6203a724d3489a923398176afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &469805326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20058,7 +20032,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560907081}
-  m_LocalRotation: {x: 0.07008098, y: -0.7950701, z: 0.0936245, w: 0.5951358}
+  m_LocalRotation: {x: 0.07008098, y: -0.79507005, z: 0.09362451, w: 0.5951358}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24405,7 +24379,6 @@ GameObject:
   - component: {fileID: 697422251}
   - component: {fileID: 697422253}
   - component: {fileID: 697422252}
-  - component: {fileID: 697422254}
   m_Layer: 5
   m_Name: OnePieceText
   m_TagString: OnePieceText
@@ -24453,7 +24426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: DIGITA TESTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -24530,18 +24503,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697422250}
   m_CullTransparentMesh: 1
---- !u!114 &697422254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697422250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047c6203a724d3489a923398176afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &698212797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37607,7 +37568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter text...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -38087,7 +38048,6 @@ GameObject:
   - component: {fileID: 911429456}
   - component: {fileID: 911429458}
   - component: {fileID: 911429457}
-  - component: {fileID: 911429459}
   m_Layer: 5
   m_Name: CorinthianText
   m_TagString: CorinthianText
@@ -38135,7 +38095,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: DIGITA TESTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -38212,18 +38172,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911429455}
   m_CullTransparentMesh: 1
---- !u!114 &911429459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911429455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047c6203a724d3489a923398176afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &912953503
 GameObject:
   m_ObjectHideFlags: 0
@@ -49882,7 +49830,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112154135}
-  m_LocalRotation: {x: 0.048416447, y: -0.7979463, z: 0.06468183, w: 0.5972887}
+  m_LocalRotation: {x: 0.048416458, y: -0.79794633, z: 0.06468185, w: 0.5972888}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -52649,7 +52597,6 @@ GameObject:
   - component: {fileID: 1185004743}
   - component: {fileID: 1185004745}
   - component: {fileID: 1185004744}
-  - component: {fileID: 1185004746}
   m_Layer: 5
   m_Name: SnoopyText
   m_TagString: SnoopyText
@@ -52697,7 +52644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: DIGITA TESTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -52774,18 +52721,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185004742}
   m_CullTransparentMesh: 1
---- !u!114 &1185004746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185004742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047c6203a724d3489a923398176afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1187219856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56498,7 +56433,6 @@ GameObject:
   - component: {fileID: 1297478456}
   - component: {fileID: 1297478458}
   - component: {fileID: 1297478457}
-  - component: {fileID: 1297478459}
   m_Layer: 5
   m_Name: TopolinoText
   m_TagString: TopolinoText
@@ -56514,7 +56448,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297478455}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56546,7 +56480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
+  m_text: 'DIGITA TESTO
 
 '
   m_isRightToLeft: 0
@@ -56625,18 +56559,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297478455}
   m_CullTransparentMesh: 1
---- !u!114 &1297478459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297478455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047c6203a724d3489a923398176afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1301185253 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3541727699116977086, guid: 1e89deb38eb6df54ba95ac3e2a143579, type: 3}
@@ -58684,8 +58606,16 @@ MonoBehaviour:
   - {fileID: 697422252}
   - {fileID: 1185004744}
   - {fileID: 146213423}
-  mainCamera: {fileID: 210731611}
+  mainCamera: {fileID: 210731607}
   questionTest: {fileID: 532270900}
+  panelText:
+  - {fileID: 2098519090}
+  - {fileID: 911429457}
+  - {fileID: 464406009}
+  - {fileID: 1297478457}
+  - {fileID: 697422252}
+  - {fileID: 1185004744}
+  - {fileID: 146213423}
 --- !u!1 &1366592416
 GameObject:
   m_ObjectHideFlags: 0
@@ -68779,7 +68709,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1360670082}
+        m_TargetAssemblyTypeName: UIMission, Assembly-CSharp
+        m_MethodName: SetMission
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -68797,19 +68739,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 911429459}
-        m_TargetAssemblyTypeName: ArtSettings, Assembly-CSharp
-        m_MethodName: SetText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -89422,7 +89352,6 @@ GameObject:
   - component: {fileID: 2098519089}
   - component: {fileID: 2098519091}
   - component: {fileID: 2098519090}
-  - component: {fileID: 2098519092}
   m_Layer: 5
   m_Name: VitruvianTex
   m_TagString: VitruvianText
@@ -89470,7 +89399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: DIGITA TESTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
   m_sharedMaterial: {fileID: -8702829104483248097, guid: cc31653304cc143b0aa940dd0fd9bcbc, type: 2}
@@ -89547,18 +89476,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098519088}
   m_CullTransparentMesh: 1
---- !u!114 &2098519092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098519088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4047c6203a724d3489a923398176afda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2101679825
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,14 +14,16 @@ public class UIMission : MonoBehaviour
     [SerializeField] private GameObject[] artPrefabs;
     [SerializeField] private CinemachineVirtualCamera[] cameras;
     [SerializeField] private TMP_Text[] missionText;
-    [SerializeField] private Camera mainCamera;
+    [SerializeField] private CinemachineFreeLook mainCamera;
     [SerializeField] private TMP_Text questionTest;
-    
+    [SerializeField] private TMP_Text[] panelText;
+
     private bool isActive = false;
     private string tag = "";
     private bool mission = false;
     private int contDone = 0;
     private bool spawned = false;
+    private string artTmp = "";
 
     void Start()
     {
@@ -40,7 +42,6 @@ public class UIMission : MonoBehaviour
     }
 
     IEnumerator timer(){
-        Debug.Log("Aspetto...");
         yield return new WaitForSecondsRealtime(5);
         mission = false;
         
@@ -52,22 +53,23 @@ public class UIMission : MonoBehaviour
             mainCamera.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(true);
             RelativeMovement.SetInMission(true);
-            StartCoroutine(timer());
             artMission.gameObject.SetActive(true);
             isActive = true;
-            ++contDone; // contatore per le missioni complete
             questionTest.text = Questions.GetRandomQuestion(tag);
             spawned = false;
         }
     }
 
-    private void DeactivateCameras(/*string tag,*/ int camera)
+    private void DeactivateArtCameras(/*string tag,*/ int camera)
     {
-        mainCamera.gameObject.SetActive(true);
-        cameras[camera].gameObject.SetActive(false);
-        RelativeMovement.SetInMission(false);
-        StartCoroutine(timer());
-        artMission.gameObject.SetActive(false);
+        if (isActive)
+        {
+            artMission.gameObject.SetActive(false);
+            cameras[camera].gameObject.SetActive(false);
+            mainCamera.gameObject.SetActive(true);
+            RelativeMovement.SetInMission(false);
+            isActive = false;
+        }
     }
     private void SpawnMiniature(int prefab)
     {
@@ -86,28 +88,45 @@ public class UIMission : MonoBehaviour
             spawned = true;
         }
     }
-    // Variabili di prova 
+    // Prova 
     private string[] correctAnswers = {    "UOMO VITRUVIANO",
-                                                "COLONNA CORINZIA",
-                                                "COLONNA IONICA",
-                                                "TOPOLINO",
-                                                "ONE PIECE",
-                                                "SNOOPY",
-                                                "SUPER MAN"
-                                           };
+                                            "COLONNA CORINZIA",
+                                            "COLONNA IONICA",
+                                            "TOPOLINO",
+                                            "ONE PIECE",
+                                            "SNOOPY",
+                                            "SUPER MAN"
+                                        };
+
+    private string tmp;
+    public void SetMission()
+    {
+        tmp = artText.text.ToUpper();
+    }
     // 
     private void DoMission(string tag, int i)
     {
-        ActiveArtCameras(tag, i);
-        missionText[i].gameObject.SetActive(true);
-        ArtSettings.SetText(artText.text.ToUpper());
-        SpawnMiniature(i);
-
-        if(Input.GetKeyUp(KeyCode.Tab))
+        if (correctAnswers[i] != "")
         {
-            if (artText.text == correctAnswers[i])
-                Debug.Log("Risposta corretta");
-            //DeactivateCameras(i);
+            ActiveArtCameras(tag, i);
+            SpawnMiniature(i);
+            missionText[i].gameObject.SetActive(true);
+            panelText[i].text = artText.text.ToUpper();
+            if (Input.GetKeyUp(KeyCode.Return))
+            {
+                if (tmp.Contains(correctAnswers[i]) && tmp.Length-1 == correctAnswers[i].Length)
+                {
+                    Debug.Log("NOME CORRETTO");
+                    DeactivateArtCameras(i);
+                    correctAnswers[i] = "";
+                    ++contDone;
+                }
+            }
+            else if (Input.GetKeyUp(KeyCode.Return))
+            {
+                DeactivateArtCameras(i);
+                artText.text = "";
+            }
         }
     }
     public void ArtMission()
@@ -119,14 +138,13 @@ public class UIMission : MonoBehaviour
                 DoMission(GameEvent.VITRUVIAN_TAG, 0);
                 break;
             case GameEvent.COLUMN_CORINTHIAN_TAG:
-                // Movimento camera
                 DoMission(GameEvent.COLUMN_CORINTHIAN_TAG, 1);
                 break;
             case GameEvent.COLUMN_IONIC_TAG:
                 DoMission(GameEvent.COLUMN_IONIC_TAG, 2);
                 break;
             case GameEvent.TOPOLINO_TAG:
-                DoMission(GameEvent.TOPOLINO_TAG, 3);
+                DoMission(GameEvent.COLUMN_IONIC_TAG, 3);
                 break;
             case GameEvent.ONEPIECE_TAG:
                 DoMission(GameEvent.ONEPIECE_TAG, 4);
@@ -139,6 +157,10 @@ public class UIMission : MonoBehaviour
                 break;
             default:
                 break;    
+        }
+        if(contDone >= 7)
+        {
+            Debug.Log("PEPE PEPEPEPE");
         }
     }
   
