@@ -24,7 +24,7 @@ public class UIMission : MonoBehaviour
     private int contDone = 0;
     private bool spawned = false;
     private string artTmp = "";
-
+    private GameObject newArtPrefab;
     void Start()
     {
         questionTest.text = "";
@@ -83,7 +83,7 @@ public class UIMission : MonoBehaviour
                                     new Vector3(27.4f,1.922f,11.61f) 
                                 };
             
-            GameObject newArtPrefab = Instantiate(artPrefabs[prefab],positions[prefab], Quaternion.identity);
+            newArtPrefab = Instantiate(artPrefabs[prefab],positions[prefab], Quaternion.identity);
             newArtPrefab.AddComponent<RotateWithMouse>();
             spawned = true;
         }
@@ -116,16 +116,14 @@ public class UIMission : MonoBehaviour
             {
                 if (tmp.Contains(correctAnswers[i]) && tmp.Length-1 == correctAnswers[i].Length)
                 {
-                    Debug.Log("NOME CORRETTO");
                     DeactivateArtCameras(i);
                     correctAnswers[i] = "";
+                    //Debug.Log(newArtPrefab.GetComponent<RotateWithMouse>());
+                    if (i >= 3 || i <= 6)
+                        newArtPrefab.transform.eulerAngles = new Vector3(90f,-90f,0f);
+                    Destroy((newArtPrefab.GetComponent<BoxCollider>()));
                     ++contDone;
                 }
-            }
-            else if (Input.GetKeyUp(KeyCode.Return))
-            {
-                DeactivateArtCameras(i);
-                artText.text = "";
             }
         }
     }
@@ -144,7 +142,7 @@ public class UIMission : MonoBehaviour
                 DoMission(GameEvent.COLUMN_IONIC_TAG, 2);
                 break;
             case GameEvent.TOPOLINO_TAG:
-                DoMission(GameEvent.COLUMN_IONIC_TAG, 3);
+                DoMission(GameEvent.TOPOLINO_TAG, 3);
                 break;
             case GameEvent.ONEPIECE_TAG:
                 DoMission(GameEvent.ONEPIECE_TAG, 4);
@@ -160,7 +158,7 @@ public class UIMission : MonoBehaviour
         }
         if(contDone >= 7)
         {
-            Debug.Log("PEPE PEPEPEPE");
+            Messenger.Broadcast("MissionArtDone");
         }
     }
   

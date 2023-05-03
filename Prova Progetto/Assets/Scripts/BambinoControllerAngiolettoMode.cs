@@ -504,15 +504,22 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             Debug.Log("Tutorial Finito");
         }
     }
+    
+    public void MissionArtDone()
+    {
+        Debug.Log("Missione Arte Completa");
+    }
 
     void Awake()
     {
         Messenger.AddListener("MissionTutorialDone", MissionTutorialDone);
+        Messenger.AddListener("MissionArtDone", MissionArtDone);
     }
 
     void OnDestroy()
     {
         Messenger.RemoveListener("MissionTutorialDone", MissionTutorialDone);
+        Messenger.RemoveListener("MissionArtDone", MissionArtDone);
     }
 
 }

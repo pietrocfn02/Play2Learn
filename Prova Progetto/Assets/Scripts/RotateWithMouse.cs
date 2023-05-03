@@ -5,7 +5,7 @@ using Cinemachine;
 public class RotateWithMouse : MonoBehaviour
 {
     private Vector3 mousePos;
-    private float rotationSpeed = 10f;
+    private float rotationSpeed = 4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +19,5 @@ public class RotateWithMouse : MonoBehaviour
         float rotY = Input.GetAxis("Mouse Y") * rotationSpeed;
         this.transform.Rotate(Vector3.down, rotX);
         this.transform.Rotate(Vector3.right, rotY);
-        Debug.Log(this);
     }
 }
