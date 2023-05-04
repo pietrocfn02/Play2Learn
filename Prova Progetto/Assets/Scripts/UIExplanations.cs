@@ -111,7 +111,7 @@ public class UIExplanations : MonoBehaviour
     public void MissionComplete()
     {
         messagesCanvas.gameObject.SetActive(false);
-        
+        StartCoroutine(VictoryAnimation());
     }
 
     void Awake()
