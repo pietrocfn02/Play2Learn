@@ -81,6 +81,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public static bool talking = false;
 
     private int missionDone = 0;
+    private bool spawnedControl = false;
 
     // Methods...
     void Start(){}
@@ -181,7 +182,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 {
                     if(child.tag == GameEvent.MARK_TAG)
                     {
-                        SetActive(0);
                         child.gameObject.SetActive(true);
                     }
                 }
@@ -257,29 +257,30 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
     public void Tutorial()
     {
-
+        
         if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
         {
             RelativeMovement.SetInMission(true);
-            Messenger.Broadcast("FirstExplanation");
             SpawnMark(GameEvent.FLAG_TAG);
-            Messenger.Broadcast("SecondExplanation");
-            
-            
+            Messenger.Broadcast("MarkExplanation");
+            SetActive(0);
         }
-        if (interact)
+
+        if (interact && missionActive[0])
         {
             if (Input.GetKeyUp(KeyCode.E))
             {
                 interact = false;
-                if (tagInteraction == GameEvent.FLAG_TAG)
+                if (tagInteraction == GameEvent.FLAG_TAG && !spawnedControl)
                 {   
-                    
+                    RelativeMovement.SetInMission(true);
                     SpawnInteraction(); // Riproduce la spiegazione
                     //Mandare un broadcast per dire che spawna la missione
                     //Quindi è finita la spiegazione nella UI
                     RemoveMark();
                     SpawnTutorialMission();
+                    Messenger.Broadcast("PrefabExplanation");
+                    spawnedControl = true;
                 }
                 else if (tagInteraction == GameEvent.MARK_TAG)
                 {
@@ -287,7 +288,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     if (inventary[0] >= 10)
                     {
                         SpawnMark(GameEvent.TABLE_TAG);
-                        Debug.Log("Vai verso il tavolo e interagisci");
+                        Messenger.Broadcast("TableInteraction");
                     }
                 }
                 else if (tagInteraction == GameEvent.TABLE_TAG && !missionComplete[0] && missionActive[0])
@@ -302,13 +303,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Devi raccogliere tutto");
+                        Messenger.Broadcast("ErrorInteraction");
                     }
                 }
             }
             if (missionComplete[0] && missionActive[0])
             {
-                Debug.Log("Missione completata !!");
+                Messenger.Broadcast("MissionComplete");
                 missionActive[0] = false;
                 // Attivare gli altri interagibili relativi alle missioni di italiano
                 //SpawnAll(materia);
