@@ -25,6 +25,7 @@ public class UIMission : MonoBehaviour
     private bool spawned = false;
     private string artTmp = "";
     private GameObject newArtPrefab;
+
     void Start()
     {
         questionTest.text = "";
@@ -74,21 +75,20 @@ public class UIMission : MonoBehaviour
     private void SpawnMiniature(int prefab)
     {
         if (!spawned){
-            Vector3[] positions = { new Vector3(22.49f,1.76f,12.4f), 
+            Vector3[] positions = { new Vector3(22.49f,1.75f,12.4f), 
                                     new Vector3(0.15f,0.1f,0.25f),
-                                    new Vector3(25.3f,1.74f,13.38f), 
-                                    new Vector3(27.4f,1.94f,13.28f), 
-                                    new Vector3(27.4f,1.922f,12.7f), 
-                                    new Vector3(27.4f,1.922f,12.25f), 
-                                    new Vector3(27.4f,1.922f,11.61f) 
+                                    new Vector3(25.3f,1.7f,13.38f), 
+                                    new Vector3(27.4f,1.725f,13.28f), 
+                                    new Vector3(27.4f,1.725f,12.7f), 
+                                    new Vector3(27.4f,1.725f,12.25f), 
+                                    new Vector3(27.4f,1.275f,11.61f) 
                                 };
             
             newArtPrefab = Instantiate(artPrefabs[prefab],positions[prefab], Quaternion.identity);
-            newArtPrefab.AddComponent<RotateWithMouse>();
             spawned = true;
         }
     }
-    // Prova 
+
     private string[] correctAnswers = {    "UOMO VITRUVIANO",
                                             "COLONNA CORINZIA",
                                             "COLONNA IONICA",
@@ -98,12 +98,12 @@ public class UIMission : MonoBehaviour
                                             "SUPER MAN"
                                         };
 
-    private string tmp;
+    
     public void SetMission()
     {
-        tmp = artText.text.ToUpper();
+        artTmp = artText.text.ToUpper();
     }
-    // 
+
     private void DoMission(string tag, int i)
     {
         if (correctAnswers[i] != "")
@@ -114,14 +114,15 @@ public class UIMission : MonoBehaviour
             panelText[i].text = artText.text.ToUpper();
             if (Input.GetKeyUp(KeyCode.Return))
             {
-                if (tmp.Contains(correctAnswers[i]) && tmp.Length-1 == correctAnswers[i].Length)
+                if (artTmp.Contains(correctAnswers[i]) && artTmp.Length-1 == correctAnswers[i].Length)
                 {
                     DeactivateArtCameras(i);
                     correctAnswers[i] = "";
-                    //Debug.Log(newArtPrefab.GetComponent<RotateWithMouse>());
+                    Destroy(newArtPrefab.GetComponent<BoxCollider>());
                     if (i >= 3 || i <= 6)
-                        newArtPrefab.transform.eulerAngles = new Vector3(90f,-90f,0f);
-                    Destroy((newArtPrefab.GetComponent<BoxCollider>()));
+                        newArtPrefab.transform.eulerAngles = new Vector3(90f, -90f, 0f);
+                    else
+                        newArtPrefab.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                     ++contDone;
                 }
             }

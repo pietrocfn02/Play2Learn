@@ -17,7 +17,7 @@ public class RotateWithMouse : MonoBehaviour
     {
         float rotX = Input.GetAxis("Mouse X") * rotationSpeed;
         float rotY = Input.GetAxis("Mouse Y") * rotationSpeed;
-        this.transform.Rotate(Vector3.down, rotX);
-        this.transform.Rotate(Vector3.right, rotY);
+        this.transform.Rotate(Vector3.down, rotY);
+        this.transform.Rotate(Vector3.right, rotX);
     }
 }

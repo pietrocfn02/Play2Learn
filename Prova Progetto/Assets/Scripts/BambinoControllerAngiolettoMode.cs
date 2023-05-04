@@ -58,8 +58,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     //
     private bool tvComplete = false;
 
-    
-    // Add...
 
     // -----> Gestiscono le missioni
     // Prefabs per gli interagibili
@@ -74,20 +72,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool[] missionActive = new bool[3];
     
     private bool[] interaction = new bool[3];
-
-    [SerializeField] private GameObject[] italianPrefabs = new GameObject[2];
-    [SerializeField] private GameObject[] artPrefabs = new GameObject[3];
-    //[SerializeField] private GameObject[] mathPrefabs = new GameObject[3];
     //<-----
 
 
-    bool interactTmp = false;
+    private bool interactTmp = false;
     //Indica se c'è qualche scena in cui si sta parlando
     //
-    bool talking = false;
-    // indica se c'è un oggetto interagibile
-    //
-    bool explanationDone = false;
+    private static bool talking = false;
 
     private int missionDone = 0;
 
@@ -100,7 +91,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         //{
             //if (Input.GetKeyUp(KeyCode.E))
             //{
-               Art();
+               //Art();
+                
             //}
         //}
     }
@@ -382,7 +374,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     public void Math()
     {
+        if (ActiveControl())
+        {
 
+        }
     }
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
     // Appare un messaggio UI che ci avvisa
@@ -507,7 +502,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     
     public void MissionArtDone()
     {
+        SetComplete(1);
         Debug.Log("Missione Arte Completa");
+        Debug.Log("Cerca in giro per la mappa gli interagibili relativi all'arte");
     }
 
     void Awake()

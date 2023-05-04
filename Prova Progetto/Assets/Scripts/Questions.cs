@@ -6,7 +6,7 @@ using TMPro;
 
 public class Questions
 {
-    private static string[] vitruvianQuestion = {  "Qual'è il disegno che rappresenta l'unione simbolica tra arte e scienza?",
+    private static string[] vitruvianQuestion = {   "Qual'è il disegno che rappresenta l'unione simbolica tra arte e scienza?",
                                                     "In questo disegno sono preseti due strutture geometriche: -il quadrato che rappresenta la Terra; - il cerchio che rappresenta l'Universo. Mi sapresti dire i lsuo nome?",
                                                     "Questo è uno dei disegni più famosi di Leonardo da Vinci. Esso indica una sintesi sugli studi del corpo umano. Ricordi come si chiama?",
                                                     "Quale famoso disegno rappresenta un uomo con due braccia e due gambe racchiuso in un quadrato e un cerchio?"
@@ -32,15 +32,15 @@ public class Questions
                                                     "Questo fumetto è stato finalista di molti concorsi, tra cui il premio Osamu Tezuka che va dal 2000 al 2002 (tre anni consecutivi). Sai scrivermi il suo nome?",
                                                     "Come si chiama il fumetto la cui prima sigla di apertura della serie animata, We Are!, è stata premiata come miglior sigla nel 2000?"
                                                 };
-    private static string[] snoopyQuestion = {      "",
-                                                    "",
-                                                    "",
-                                                    ""
+    private static string[] snoopyQuestion = {      "Curiosità_Snoopy_1",
+                                                    "Curiosità_Snoopy_2",
+                                                    "Curiosità_Snoopy_3",
+                                                    "Curiosità_Snoopy_4"
                                                 };
-    private static string[] super_manQuestion = {   "",
-                                                    "",
-                                                    "",
-                                                    ""
+    private static string[] super_manQuestion = {   "Curiosità_Superman_1",
+                                                    "Curiosità_Superman_2",
+                                                    "Curiosità_Superman_3",
+                                                    "Curiosità_Superman_4"
                                                 };
 
     // Inserendo il tag, restituisce la domanda relativa a quest'ultimo
