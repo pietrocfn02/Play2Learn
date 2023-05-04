@@ -78,7 +78,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool interactTmp = false;
     //Indica se c'è qualche scena in cui si sta parlando
     //
-    private static bool talking = false;
+    public static bool talking = false;
 
     private int missionDone = 0;
 
@@ -86,7 +86,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     void Start(){}
 
     void Update(){
-        //Tutorial();
+        Tutorial();
         //if (interact)
         //{
             //if (Input.GetKeyUp(KeyCode.E))
@@ -257,12 +257,17 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
     public void Tutorial()
     {
+
         if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
         {
-            Debug.Log("Spiegazione movimenti");
+            RelativeMovement.SetInMission(true);
+            Messenger.Broadcast("FirstExplanation");
             SpawnMark(GameEvent.FLAG_TAG);
+            Messenger.Broadcast("SecondExplanation");
+            
+            
         }
-        if (interact && !talking)
+        if (interact)
         {
             if (Input.GetKeyUp(KeyCode.E))
             {
@@ -273,6 +278,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     SpawnInteraction(); // Riproduce la spiegazione
                     //Mandare un broadcast per dire che spawna la missione
                     //Quindi è finita la spiegazione nella UI
+                    RemoveMark();
                     SpawnTutorialMission();
                 }
                 else if (tagInteraction == GameEvent.MARK_TAG)
@@ -324,7 +330,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 GameEvent.SUPERMAN_TAG
                                 };
 
-            if (interact && !talking)
+            if (interact)
             {
                 if (Input.GetKeyUp(KeyCode.E) && !interactTmp)
                 {
