@@ -87,7 +87,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     void Start(){}
 
     void Update(){
-        //Tutorial();
+        Tutorial();
         if (interact)
         {
             if (Input.GetKeyUp(KeyCode.E))
@@ -97,9 +97,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     case GameEvent.EASEL_TAG:
                         Art();
                         break;
-                    case "Triangle":
+                    case GameEvent.TRIANGLE_TAG:
                         Math();
-                    case default:
+                        break;
+                    default:
                         break;
                 }
             }
@@ -215,13 +216,16 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         GameObject mission = GameObject.FindWithTag(tagInteraction);
         if (mission != null)
         {
+
+            GameObject newInstance;
             switch (tagInteraction)
             {
                 case GameEvent.FLAG_TAG:
                     if (!interaction[0])
                     {
                         interaction[0] = true;
-                        Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
+                        newInstance = Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
+                        Destroy(newInstance.GetComponent<BoxCollider>());
                     }
                     else
                     {
@@ -233,8 +237,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     if (!interaction[1])
                     {
                         interaction[1] = true;
-                        Instantiate(prefabsMission[1], new Vector3(27.2f,1.7f,15.2f), Quaternion.Euler(0f, 0f, 45f));
-                    
+                        newInstance = Instantiate(prefabsMission[1], new Vector3(27.2f,1.7f,15.2f), Quaternion.Euler(0f, 0f, 45f));
+                        Destroy(newInstance.GetComponent<BoxCollider>());
                     }
                     else
                     {
@@ -242,7 +246,18 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     }
                     break;
 
-            
+                case GameEvent.TRIANGLE_TAG:
+                    if (!interaction[2])
+                    {
+                        interaction[2] = true;
+                        newInstance = Instantiate(prefabsMission[2], new Vector3(20.3f, 1.7f, 20.46f), Quaternion.Euler(90f, 90f, 0f));
+                        Destroy(newInstance.GetComponent<BoxCollider>());
+                    }
+                    else
+                    {
+                        Debug.Log("Già attivo. Riproduco...");
+                    }
+                    break;
                 default:
                     break;
             }
@@ -347,6 +362,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     RemoveMark();
                     SpawnInteraction();
                     Messenger.Broadcast("ArtMission");
+                    interact = false;
                     for(int i=0; i<signTag.Length; ++i)
                     {
                         SetOutline(GameObject.FindWithTag(signTag[i]), 2f,Color.yellow);
@@ -391,7 +407,16 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     {
         if (ActiveControl())
         {
-
+            if (interact)
+            {
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    SetActive(2);
+                    RemoveMark();
+                    SpawnInteraction();
+                    Debug.Log("Inizio missione matematica");
+                }
+            }
         }
     }
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
@@ -458,6 +483,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         this.interact = true;
         this.tagInteraction = objectRecived.tag;
         this.objectToDestroy = objectRecived;
+        //Debug.Log(objectRecived.name);
         SetOutline(objectRecived.gameObject, 4, Color.yellow);
     }
 

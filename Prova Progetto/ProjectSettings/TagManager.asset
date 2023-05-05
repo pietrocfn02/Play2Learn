@@ -41,6 +41,7 @@ TagManager:
   - OnePieceText
   - SnoopyText
   - SuperManText
+  - Triangle
   layers:
   - Default
   - TransparentFX
