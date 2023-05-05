@@ -38,10 +38,15 @@ public class UIMission : MonoBehaviour
 
     public void ItalianMission()
     {
-        RelativeMovement.SetInMission(false);
+        RelativeMovement.SetInMission(true);
         italianMission.gameObject.SetActive(true);
     }
-
+    public void EndItalian()
+    {
+        RelativeMovement.SetInMission(false);
+        italianMission.gameObject.SetActive(false);
+        Messenger.Broadcast("MissionComplete");
+    }
     IEnumerator timer(){
         yield return new WaitForSecondsRealtime(5);
         mission = false;
@@ -61,7 +66,7 @@ public class UIMission : MonoBehaviour
         }
     }
 
-    private void DeactivateArtCameras(/*string tag,*/ int camera)
+    private void DeactivateArtCameras(int camera)
     {
         if (isActive)
         {
@@ -195,6 +200,7 @@ public class UIMission : MonoBehaviour
     void onDestroy()
     {
         Messenger.RemoveListener(GameEvent.FIRST_UI_MISSION, ItalianMission);
+        Messenger.RemoveListener("EndItalian", EndItalian);
         Messenger.RemoveListener(GameEvent.VITRUVIAN_TAG, SetVitruvian);
         Messenger.RemoveListener(GameEvent.COLUMN_CORINTHIAN_TAG, SetCorinthian);
         Messenger.RemoveListener(GameEvent.COLUMN_IONIC_TAG, SetIonic);
@@ -207,6 +213,7 @@ public class UIMission : MonoBehaviour
     void Awake()
     {
         Messenger.AddListener(GameEvent.FIRST_UI_MISSION, ItalianMission);
+        Messenger.AddListener("EndItalian", EndItalian);
         Messenger.AddListener(GameEvent.VITRUVIAN_TAG, SetVitruvian);
         Messenger.AddListener(GameEvent.COLUMN_CORINTHIAN_TAG, SetCorinthian);
         Messenger.AddListener(GameEvent.COLUMN_IONIC_TAG, SetIonic);

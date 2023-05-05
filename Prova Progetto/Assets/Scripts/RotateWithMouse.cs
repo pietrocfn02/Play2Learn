@@ -15,9 +15,9 @@ public class RotateWithMouse : MonoBehaviour
     // Update is called once per frame
     void OnMouseDrag()
     {
-        float rotX = Input.GetAxis("Mouse X") * rotationSpeed;
-        float rotY = Input.GetAxis("Mouse Y") * rotationSpeed;
-        this.transform.Rotate(Vector3.down, rotY);
-        this.transform.Rotate(Vector3.right, rotX);
+        float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+        float rotY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+        this.transform.Rotate(rotX, rotY,0f);
+        //this.transform.Rotate(Vector3.right, rotX);
     }
 }

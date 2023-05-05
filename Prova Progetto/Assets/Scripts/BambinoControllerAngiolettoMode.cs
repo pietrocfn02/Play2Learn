@@ -87,15 +87,23 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     void Start(){}
 
     void Update(){
-        Tutorial();
-        //if (interact)
-        //{
-            //if (Input.GetKeyUp(KeyCode.E))
-            //{
-               //Art();
-                
-            //}
-        //}
+        //Tutorial();
+        if (interact)
+        {
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                switch (tagInteraction)
+                {
+                    case GameEvent.EASEL_TAG:
+                        Art();
+                        break;
+                    case "Triangle":
+                        Math();
+                    case default:
+                        break;
+                }
+            }
+        }
     }
 
     // Setta una missione su "Attivo"
@@ -173,7 +181,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void SpawnMark(string tagFather)
     {
         GameObject parent = GameObject.Find(tagFather);
-        
+        Debug.Log(parent);
         if (parent)
         {
             foreach(Transform child in parent.transform)
@@ -297,7 +305,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         LasciaOggetto(0);
                         RemoveMark();
-                        Debug.Log("Inizio Missione");
                         Messenger.Broadcast(GameEvent.FIRST_UI_MISSION);
                         
                     }
@@ -309,9 +316,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             }
             if (missionComplete[0] && missionActive[0])
             {
-                Messenger.Broadcast("MissionComplete");
+                RelativeMovement.SetInMission(true);
+                Messenger.Broadcast("EndTutorial");
                 missionActive[0] = false;
                 // Attivare gli altri interagibili relativi alle missioni di italiano
+                Messenger.Broadcast("MissionComplete");
                 //SpawnAll(materia);
                 // Attivare gli interagibili relativi alle altre missioni
             }
@@ -336,9 +345,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.E) && !interactTmp)
                 {
                     RemoveMark();
-                    Debug.Log("Parlo di arte");
                     SpawnInteraction();
-                    Debug.Log("Spiegazione missione");
+                    Messenger.Broadcast("ArtMission");
                     for(int i=0; i<signTag.Length; ++i)
                     {
                         SetOutline(GameObject.FindWithTag(signTag[i]), 2f,Color.yellow);
@@ -496,14 +504,15 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void MissionTutorialDone()
     {
         ++missionDone;
-        Debug.Log(missionDone);
         if (missionDone >= 10)
         {
-            RelativeMovement.SetInMission(false);
             SetComplete(0);
             GameObject mission = GameObject.FindWithTag("Tutorial");
-            Destroy(mission);
-            Debug.Log("Tutorial Finito");
+            Destroy(mission.GetComponent<Outline>());
+            Messenger.Broadcast("EndItalian");
+            SpawnMark(GameEvent.EASEL_TAG);
+            //SpawnMark(GameEvent.EASEL_TAG);
+            Debug.Log("Spawn");
         }
     }
     

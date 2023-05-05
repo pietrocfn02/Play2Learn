@@ -19,6 +19,8 @@ public class UIExplanations : MonoBehaviour
 
     private IEnumerator MarkWords()
     {
+
+        messagesCanvas.gameObject.SetActive(true);
         BambinoControllerAngiolettoMode.talking = true;
         textMission.text = "GUARDA, ALLA TUA DESTRA E' APPARSO QUALCOSA...";
         yield return new WaitForSeconds(2);
@@ -34,12 +36,15 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(2);
         textMission.text = "USA I TASTI (W,A,S,D, [SPACE]) PER MUOVERTI E SALTARE E ARRIVA DI FRONTE IL PUNTO ESCLAMATIVO -!-";
         yield return new WaitForSeconds(2);
+        messagesCanvas.gameObject.SetActive(false);
         BambinoControllerAngiolettoMode.talking = false;
         RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator PrefabMissionWords()
     {
+
+        messagesCanvas.gameObject.SetActive(true);
         BambinoControllerAngiolettoMode.talking = true;
         textMission.text = "UNA VOLTA PREMUTO -E- COMPARIRANNO DEI SIMBOLI SOTTO L'OGGETTO INTERAGIBILE.";
         yield return new WaitForSeconds(2);
@@ -53,18 +58,32 @@ public class UIExplanations : MonoBehaviour
         textMission.text = "UNA VOLTA FINITA LA MISSIONE TI VERRANNO SBLOCCATI ALTRI OGGETTI IN GIRO PER LA MAPPA CHE HANNO QUALCOSA DA RACCONTARE,";
         yield return new WaitForSeconds(2);
         textMission.text = "BASTERA' SOLTANTO AVVICINARTI E PREMERE -E-";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
+        messagesCanvas.gameObject.SetActive(false);
         BambinoControllerAngiolettoMode.talking = false;
         RelativeMovement.SetInMission(false);
     }
 
+    private IEnumerator EndTutorialWord()
+    {
+        messagesCanvas.gameObject.SetActive(true);
+        BambinoControllerAngiolettoMode.talking = true;
+        textMission.text = "BENE!!! HAI COMPLETATO CORRETTAMENTE IL TUTORIAL!";
+        yield return new WaitForSeconds(2);
+        textMission.text = "ADESSO NON TI RIMANE CHE GIROVAGARE PER CASA E IMPARARE.";
+        yield return new WaitForSeconds(2);
+        BambinoControllerAngiolettoMode.talking = false;
+        messagesCanvas.gameObject.SetActive(false);
+        RelativeMovement.SetInMission(false);
+    }
     private IEnumerator VictoryAnimation()
     {
         victoryCanvas.gameObject.SetActive(true);
         //victory.SetBool("victory",true);
-        yield return new WaitForSeconds(5);// Tempo animazione
+        yield return new WaitForSeconds(5);
         //victory.SetBool("victory",true);
-        victoryCanvas.gameObject.SetActive(true);
+        victoryCanvas.gameObject.SetActive(false);
+        messagesCanvas.gameObject.SetActive(false);
         RelativeMovement.SetInMission(false);
     }
 
@@ -75,6 +94,26 @@ public class UIExplanations : MonoBehaviour
         tutorialCameras[camera].gameObject.SetActive(false);
 
     }
+
+    private IEnumerator ArtMissionWord()
+    {
+        messagesCanvas.gameObject.SetActive(true);
+        BambinoControllerAngiolettoMode.talking = true;
+        textMission.text = "IN GIRO PER LA STANZA TROVERAI ALCUNE OPERE...";
+        mainCamera.gameObject.SetActive(false);
+        tutorialCameras[2].gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        tutorialCameras[2].gameObject.SetActive(false);
+        tutorialCameras[3].gameObject.SetActive(true);
+        //yield return new WaitForSeconds(2);
+        textMission.text = "AVVICINANDOTI POTRAI VEDERE CHE IL CARTELLINO DEL NOME E' VUOTO";
+        yield return new WaitForSeconds(2);
+        textMission.text = "INTERAGISCI E SCRIVI SUL CARTELLINO IL NOME CORRETTO DI TUTTE OPERE PER COMPLETARE LA MISSIONE";
+        BambinoControllerAngiolettoMode.talking = false;
+        messagesCanvas.gameObject.SetActive(false);
+        RelativeMovement.SetInMission(false);
+    }
+
     // Creare un cam Manager
     void Start()
     {
@@ -103,6 +142,17 @@ public class UIExplanations : MonoBehaviour
         textMission.text = "BENE ADESSO CHE HAI TUTTE LE PAROLE VAI AL TAVOLO E FAI I COMPITI";
     }
 
+    private void EndTutorial()
+    {
+        StartCoroutine(EndTutorialWord());
+    }
+
+    private void ArtMission()
+    {
+        StartCoroutine(ArtMissionWord());
+        StartCoroutine(ReturnToMainCamera(3));
+    }
+
     public void ErrorInteraction()
     {
         textMission.text = "NON STARAI DIMENTICANDO QUALCOSA !?";
@@ -119,6 +169,8 @@ public class UIExplanations : MonoBehaviour
         Messenger.AddListener("PrefabExplanation", PrefabExplanation);
         Messenger.AddListener("MarkExplanation", MarkExplanation);
         Messenger.AddListener("TableInteraction", TableInteraction);
+        Messenger.AddListener("EndTutorial", EndTutorial);
+        Messenger.AddListener("ArtMission", ArtMission);
         Messenger.AddListener("ErrorInteraction", ErrorInteraction);
         Messenger.AddListener("MissionComplete", MissionComplete);
     }
@@ -128,6 +180,8 @@ public class UIExplanations : MonoBehaviour
         Messenger.RemoveListener("PrefabExplanation", PrefabExplanation);
         Messenger.RemoveListener("MarkExplanation", MarkExplanation);
         Messenger.RemoveListener("TableInteraction", TableInteraction);
+        Messenger.RemoveListener("EndTutorial", EndTutorial);
+        Messenger.RemoveListener("ArtMission", ArtMission);
         Messenger.RemoveListener("ErrorInteraction", ErrorInteraction);
         Messenger.RemoveListener("MissionComplete", MissionComplete);
     }
