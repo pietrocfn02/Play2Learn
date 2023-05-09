@@ -42,6 +42,7 @@ TagManager:
   - SnoopyText
   - SuperManText
   - Triangle
+  - Clipboard
   layers:
   - Default
   - TransparentFX

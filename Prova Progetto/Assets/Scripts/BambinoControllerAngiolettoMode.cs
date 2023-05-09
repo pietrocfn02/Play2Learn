@@ -75,7 +75,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     //<-----
 
 
-    private bool interactTmp = false;
+    private int missionType = 0;
     //Indica se c'è qualche scena in cui si sta parlando
     //
     public static bool talking = false;
@@ -87,23 +87,39 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     void Start(){}
 
     void Update(){
-        Tutorial();
-        if (interact)
+        //Tutorial();
+        missionComplete[0] = true;
+        if (interact && missionComplete[0])
         {
-            if (Input.GetKeyUp(KeyCode.E))
+            switch (tagInteraction)
             {
-                switch (tagInteraction)
-                {
-                    case GameEvent.EASEL_TAG:
-                        Art();
-                        break;
-                    case GameEvent.TRIANGLE_TAG:
-                        Math();
-                        break;
-                    default:
-                        break;
-                }
+                case GameEvent.EASEL_TAG:
+                    missionType = 1;
+                    break;
+                case GameEvent.TRIANGLE_TAG:
+                    missionType = 2;
+                    break;
+                default:
+                    break;
             }
+            StartMission(missionType);
+        }
+    }
+
+
+    private void StartMission(int missionInt)
+    {
+        
+        switch (missionInt)
+        {
+            case 1:
+                Art();
+                break;
+            case 2:
+                Math();
+                break;
+            default:
+                break;
         }
     }
 
@@ -182,7 +198,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void SpawnMark(string tagFather)
     {
         GameObject parent = GameObject.Find(tagFather);
-        Debug.Log(parent);
         if (parent)
         {
             foreach(Transform child in parent.transform)
@@ -209,9 +224,18 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         }
     }
     
-    // In base al numero specificato riproduce la UI relativa all'interagibile
-    // Cambiare in base al tag ricevuto
-    
+    // In base alla missione ricevuta come intero, vede se ci sono altre missioni attive 
+    public bool InMission(int inMission)
+    {
+        for (int i=0; i<missionActive.Length; ++i)
+        {
+            if(missionActive[i] && inMission != i)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public void SpawnInteraction(){
         GameObject mission = GameObject.FindWithTag(tagInteraction);
         if (mission != null)
@@ -264,20 +288,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         }
     }
     
-    // Controlla se c'è qualche missione attiva
-    // Se c'è anche solo una missione attiva return false
-    // true altrimenti
-    private bool ActiveControl()
-    {
-        for(int i=0; i<missionActive.Length; ++i)
-        {
-            if (missionActive[i])
-            {
-                return false;
-            }
-        }
-        return true;
-    }
     public void Tutorial()
     {
         
@@ -344,32 +354,32 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     
     public void Art()
     {
-        if (ActiveControl())
+        if (!InMission(1))
         {
             string[] signTag = {GameEvent.VITRUVIAN_TAG, 
-                                GameEvent.COLUMN_CORINTHIAN_TAG,
-                                GameEvent.COLUMN_IONIC_TAG,
-                                GameEvent.TOPOLINO_TAG,
-                                GameEvent.ONEPIECE_TAG,
-                                GameEvent.SNOOPY_TAG,
-                                GameEvent.SUPERMAN_TAG
-                                };
+                                    GameEvent.COLUMN_CORINTHIAN_TAG,
+                                    GameEvent.COLUMN_IONIC_TAG,
+                                    GameEvent.TOPOLINO_TAG,
+                                    GameEvent.ONEPIECE_TAG,
+                                    GameEvent.SNOOPY_TAG,
+                                    GameEvent.SUPERMAN_TAG
+                                    };
 
             if (interact)
             {
-                if (Input.GetKeyUp(KeyCode.E) && !interactTmp)
+                if (Input.GetKeyUp(KeyCode.E) && !missionActive[1])
                 {
                     RemoveMark();
                     SpawnInteraction();
                     Messenger.Broadcast("ArtMission");
+                    SetActive(1);
                     interact = false;
                     for(int i=0; i<signTag.Length; ++i)
                     {
                         SetOutline(GameObject.FindWithTag(signTag[i]), 2f,Color.yellow);
                     }
-                    interactTmp = true;
-                }else if (Input.GetKeyUp(KeyCode.E) && interactTmp){
-
+                }
+            if (Input.GetKeyUp(KeyCode.E) && missionActive[1]){
                 switch(tagInteraction)
                     {
                         case GameEvent.VITRUVIAN_TAG:
@@ -400,23 +410,39 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            Debug.Log("Stai svolgendo già una missione. Concludi la missione già iniziata prima di passare alla prossima.");
+        }
+        
     }
 
 
     public void Math()
     {
-        if (ActiveControl())
+        if (!InMission(2))
         {
             if (interact)
             {
-                if (Input.GetKeyUp(KeyCode.E))
+                if (Input.GetKeyUp(KeyCode.E) && !missionActive[2])
                 {
                     SetActive(2);
                     RemoveMark();
                     SpawnInteraction();
                     Debug.Log("Inizio missione matematica");
                 }
+                if (Input.GetKeyUp(KeyCode.E) && missionActive[2])
+                {
+                    if (tagInteraction == GameEvent.CLIPBOARD_TAG)
+                    {
+                        Debug.Log("CLIPBOARD");
+                    }
+                }
             }
+        }
+        else
+        {
+            Debug.Log("Stai svolgendo già una missione. Concludi la missione già iniziata prima di passare alla prossima.");
         }
     }
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
@@ -483,7 +509,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         this.interact = true;
         this.tagInteraction = objectRecived.tag;
         this.objectToDestroy = objectRecived;
-        //Debug.Log(objectRecived.name);
         SetOutline(objectRecived.gameObject, 4, Color.yellow);
     }
 
@@ -547,6 +572,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         SetComplete(1);
         Debug.Log("Missione Arte Completa");
         Debug.Log("Cerca in giro per la mappa gli interagibili relativi all'arte");
+        missionType = 0;
     }
 
     void Awake()

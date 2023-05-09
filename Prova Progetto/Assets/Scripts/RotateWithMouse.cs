@@ -5,7 +5,7 @@ using Cinemachine;
 public class RotateWithMouse : MonoBehaviour
 {
     private Vector3 mousePos;
-    private float rotationSpeed = 4f;
+    private float rotationSpeed = 8f;
     // Start is called before the first frame update
     void Start()
     {

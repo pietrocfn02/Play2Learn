@@ -36,9 +36,7 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(2);
         textMission.text = "USA I TASTI (W,A,S,D, [SPACE]) PER MUOVERTI E SALTARE E ARRIVA DI FRONTE IL PUNTO ESCLAMATIVO -!-";
         yield return new WaitForSeconds(2);
-        messagesCanvas.gameObject.SetActive(false);
         BambinoControllerAngiolettoMode.talking = false;
-        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator PrefabMissionWords()
@@ -59,9 +57,7 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(2);
         textMission.text = "BASTERA' SOLTANTO AVVICINARTI E PREMERE -E-";
         yield return new WaitForSeconds(5);
-        messagesCanvas.gameObject.SetActive(false);
         BambinoControllerAngiolettoMode.talking = false;
-        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator EndTutorialWord()
@@ -73,8 +69,6 @@ public class UIExplanations : MonoBehaviour
         textMission.text = "ADESSO NON TI RIMANE CHE GIROVAGARE PER CASA E IMPARARE.";
         yield return new WaitForSeconds(2);
         BambinoControllerAngiolettoMode.talking = false;
-        messagesCanvas.gameObject.SetActive(false);
-        RelativeMovement.SetInMission(false);
     }
     private IEnumerator VictoryAnimation()
     {
@@ -83,8 +77,6 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(5);
         //victory.SetBool("victory",true);
         victoryCanvas.gameObject.SetActive(false);
-        messagesCanvas.gameObject.SetActive(false);
-        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator ReturnToMainCamera(int camera)
@@ -92,7 +84,8 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(10);
         mainCamera.gameObject.SetActive(true);
         tutorialCameras[camera].gameObject.SetActive(false);
-
+        messagesCanvas.gameObject.SetActive(false);
+        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator ArtMissionWord()
@@ -103,15 +96,13 @@ public class UIExplanations : MonoBehaviour
         mainCamera.gameObject.SetActive(false);
         tutorialCameras[2].gameObject.SetActive(true);
         yield return new WaitForSeconds(2);
+        textMission.text = "AVVICINANDOTI POTRAI VEDERE CHE IL CARTELLINO DEL NOME E' VUOTO";
         tutorialCameras[2].gameObject.SetActive(false);
         tutorialCameras[3].gameObject.SetActive(true);
-        //yield return new WaitForSeconds(2);
-        textMission.text = "AVVICINANDOTI POTRAI VEDERE CHE IL CARTELLINO DEL NOME E' VUOTO";
         yield return new WaitForSeconds(2);
         textMission.text = "INTERAGISCI E SCRIVI SUL CARTELLINO IL NOME CORRETTO DI TUTTE OPERE PER COMPLETARE LA MISSIONE";
+        //yield return new WaitForSeconds(2);
         BambinoControllerAngiolettoMode.talking = false;
-        messagesCanvas.gameObject.SetActive(false);
-        RelativeMovement.SetInMission(false);
     }
 
     // Creare un cam Manager

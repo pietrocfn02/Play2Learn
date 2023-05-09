@@ -26,7 +26,8 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.ONEPIECE_TAG,
                                         GameEvent.SNOOPY_TAG,
                                         GameEvent.SUPERMAN_TAG,
-                                        GameEvent.TRIANGLE_TAG
+                                        GameEvent.TRIANGLE_TAG,
+                                        GameEvent.CLIPBOARD_TAG
     };
     
 

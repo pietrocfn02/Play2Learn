@@ -51,7 +51,7 @@ public static class GameEvent {
 	public const string ONEPIECE_TAG = "Onepiece";
 	public const string SNOOPY_TAG = "Snoopy";
 	public const string SUPERMAN_TAG = "Superman";
-
+	public const string CLIPBOARD_TAG = "Clipboard";
 	public const string VITRUVIAN_TEXT_TAG = "VitruvianText";
 	public const string COLUMN_CORINTHIAN_TEXT_TAG = "CorinthianText";
 	public const string COLUMN_IONIC_TEXT_TAG = "IonicText";

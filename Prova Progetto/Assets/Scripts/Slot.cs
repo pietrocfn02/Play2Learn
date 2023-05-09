@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour, IDropHandler
     private Vector3 firstPos;
     private bool done = false;
     private int correctDrop = 0;
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
@@ -21,11 +22,15 @@ public class Slot : MonoBehaviour, IDropHandler
                     eventData.pointerEnter.GetComponent<TMP_Text>().text = "";
                     Destroy(eventData.pointerDrag.GetComponent<DragDrop>());
                 }
-                    Messenger.Broadcast("MissionTutorialDone");
+                Messenger.Broadcast("MissionTutorialDone");
+                Transform data = eventData.pointerDrag.GetComponent<Transform>().GetChild(1);
+                data.GetComponent<TMP_Text>().color = Color.green;
             }
             else
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+                Transform data = eventData.pointerDrag.GetComponent<Transform>().GetChild(1);
+                data.GetComponent<TMP_Text>().color = Color.red;
             }
             
         }

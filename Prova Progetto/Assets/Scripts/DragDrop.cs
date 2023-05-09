@@ -25,7 +25,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
-        //Debug.Log(eventData.pointerDrag.GetComponent<Transform>().name);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
