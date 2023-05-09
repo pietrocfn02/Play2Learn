@@ -43,6 +43,7 @@ TagManager:
   - SuperManText
   - Triangle
   - Clipboard
+  - Cone
   layers:
   - Default
   - TransparentFX

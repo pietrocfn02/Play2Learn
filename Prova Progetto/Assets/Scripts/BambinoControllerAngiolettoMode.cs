@@ -82,7 +82,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     private int missionDone = 0;
     private bool spawnedControl = false;
-
+    private int contInteraction = 0
     // Methods...
     void Start(){}
 
@@ -198,6 +198,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void SpawnMark(string tagFather)
     {
         GameObject parent = GameObject.Find(tagFather);
+        Debug.Log(parent);
         if (parent)
         {
             foreach(Transform child in parent.transform)
@@ -379,8 +380,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         SetOutline(GameObject.FindWithTag(signTag[i]), 2f,Color.yellow);
                     }
                 }
-            if (Input.GetKeyUp(KeyCode.E) && missionActive[1]){
-                switch(tagInteraction)
+                if (Input.GetKeyUp(KeyCode.E) && missionActive[1]){
+                    switch(tagInteraction)
                     {
                         case GameEvent.VITRUVIAN_TAG:
                             Messenger.Broadcast(GameEvent.VITRUVIAN_TAG);
@@ -430,12 +431,30 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     RemoveMark();
                     SpawnInteraction();
                     Debug.Log("Inizio missione matematica");
+                    SpawnMark("Clipboard");
                 }
                 if (Input.GetKeyUp(KeyCode.E) && missionActive[2])
                 {
                     if (tagInteraction == GameEvent.CLIPBOARD_TAG)
                     {
-                        Debug.Log("CLIPBOARD");
+                        ++contInteraction;
+                        if (contInteraction <= 1)
+                        {
+                            inventary[1] = 1;
+                            SpawnMark("ConeContainer");
+                            Debug.Log("Spiegazione posizionamento coni");
+                            // Devo eliminare lo sphere collider in modo che, una volta finita la missione non si può più interagire con 
+                        }
+                    }
+                    if (inventary[1] >= 1) // Controllo che i coni sono stati presi
+                    {
+                        // Controllo se viene
+                    }
+                    else if (inventary[2] >= 4 && inventary[1] <= 0) // Controllo che i coni siano stati presi
+                    {
+                        // Controllo che la seconda posizione dell'inventario è diminuita rispetto alla precedente
+                        // In modo da capire se tutti i coni sono stati posizionati
+
                     }
                 }
             }
