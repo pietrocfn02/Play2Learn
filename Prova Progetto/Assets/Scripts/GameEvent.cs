@@ -35,7 +35,7 @@ public static class GameEvent {
 	public const string EVIL_COIN_TAG = "EvilCoin";// Eliminare
 	public const string GOOD_COIN_TAG = "GoodCoin";// Eliminare
 	public const string TV_GENERICA = "TV_";
-	public const string PLAYER = "Player";
+	public const string PLAYER_TAG = "Player";
 	public const string AUDIO_AMBIENTE_TAG = "Audio_Ambiete";
 	public const string SENTENCE_TAG = "Sentance";
 	public const string MARK_TAG = "Mark";
@@ -59,6 +59,8 @@ public static class GameEvent {
 	public const string ONEPIECE_TEXT_TAG = "OnepieceText";
 	public const string SNOOPY_TEXT_TAG = "SnoopyText";
 	public const string SUPERMAN_TEXT_TAG = "SupermanText";
+	public const string CONE_TAG = "Cone";
+	public const string ARROW_TAG = "Arrow";
 	
 	public const string START_TEXT_GAME = "START_GAME";
 

@@ -66,7 +66,7 @@ public class AudioManager : MonoBehaviour
     }
     //Metodo che riproduce la clip della collezione
     public void collect(AudioClip clip){
-        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER);
+        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER_TAG);
         AudioSource audioSource = type[0].GetComponent<AudioSource>();
         audioSource.volume = audioLevel;
         audioTv = clip;
@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
     }
     //Metodo che riproduce il rilascio dei pastelli all'interno del contenitore
     public void releaseObject(AudioClip clip){
-        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER);
+        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER_TAG);
         AudioSource audioSource = type[0].GetComponent<AudioSource>();
         audioSource.volume = audioLevel;
         audioTv = clip;
@@ -82,13 +82,13 @@ public class AudioManager : MonoBehaviour
     }
     
     public void stopCollect(AudioClip clip){
-        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER);
+        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER_TAG);
         AudioSource audioSource = type[0].GetComponent<AudioSource>();
         audioSource.volume = audioLevel;
         audioSource.Stop();
     }
     public void walk(AudioClip clip){
-        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER);
+        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER_TAG);
         AudioSource audioSource = type[0].GetComponent<AudioSource>();
         audioSource.volume = audioLevel;
         audioTv = clip;

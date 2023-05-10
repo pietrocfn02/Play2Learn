@@ -23,7 +23,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool interact = false;
     
     // Controller
-    private CharacterController _charController;
+    private GameObject player;
     //Tag dell' oggetto colpito
     private string tagInteraction = "";
     // Prefab
@@ -72,8 +72,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool[] missionActive = new bool[3];
     
     private bool[] interaction = new bool[3];
-    //<-----
 
+    private Vector3[] cornerPosition = {    new Vector3(19.93f, 1.7f, 19.062f),
+                                            new Vector3(18.077f, 1.7f, 19.062f), 
+                                            new Vector3(18.077f, 1.7f, 21.924f), 
+                                            new Vector3(19.924f, 1.7f, 21.924f)
+                                       };
+    //<-----
 
     private int missionType = 0;
     //Indica se c'è qualche scena in cui si sta parlando
@@ -84,7 +89,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool spawnedControl = false;
     private int contInteraction = 0;
     // Methods...
-    void Start(){}
+    void Start(){
+
+        player = GameObject.FindWithTag(GameEvent.PLAYER_TAG);
+    }
 
     void Update(){
         //Tutorial();
@@ -198,7 +206,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void SpawnMark(string tagFather)
     {
         GameObject parent = GameObject.Find(tagFather);
-        Debug.Log(parent);
         if (parent)
         {
             foreach(Transform child in parent.transform)
@@ -423,38 +430,52 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     {
         if (!InMission(2))
         {
+            GameObject[] newInstance = new GameObject[cornerPosition.Length];
             if (interact)
             {
-                if (Input.GetKeyUp(KeyCode.E) && !missionActive[2])
+                if (Input.GetKeyUp(KeyCode.E))
                 {
-                    SetActive(2);
-                    RemoveMark();
-                    SpawnInteraction();
-                    Debug.Log("Inizio missione matematica");
-                    SpawnMark("Clipboard");
-                }
-                if (Input.GetKeyUp(KeyCode.E) && missionActive[2])
-                {
-                    if (tagInteraction == GameEvent.CLIPBOARD_TAG)
+                    if (tagInteraction == GameEvent.TRIANGLE_TAG && !missionActive[2])
                     {
-                        ++contInteraction;
-                        if (contInteraction <= 1)
+                        SetActive(2);
+                        RemoveMark();
+                        SpawnInteraction();
+                        Debug.Log("Inizio missione matematica");
+                        SpawnMark("Clipboard");
+                    }
+                    else if (missionActive[2])
+                    {
+                        if (tagInteraction == GameEvent.CLIPBOARD_TAG)
                         {
-                            inventary[1] = 1;
-                            SpawnMark("ConeContainer");
-                            Debug.Log("Spiegazione posizionamento coni");
-                            // Devo eliminare lo sphere collider in modo che, una volta finita la missione non si può più interagire con 
+                            if (contInteraction <= 1)
+                            {
+                                // Serve per la spiegazione
+                                ++contInteraction;
+                                inventary[1] = 1;
+                                RemoveMark();
+                                SpawnMark("ConeContainer");
+                                Debug.Log("Vai a prendere i coni per segnare gli angoli"); // Spiegazione
+                                Destroy(GameObject.FindWithTag(GameEvent.CLIPBOARD_TAG).GetComponent<SphereCollider>());
+                                SetOutline(GameObject.FindWithTag(GameEvent.CLIPBOARD_TAG), 0f, Color.yellow);
+                            }
                         }
-                    }
-                    if (inventary[1] >= 1) // Controllo che i coni sono stati presi
-                    {
-                        // Controllo se viene
-                    }
-                    else if (inventary[2] >= 4 && inventary[1] <= 0) // Controllo che i coni siano stati presi
-                    {
-                        // Controllo che la seconda posizione dell'inventario è diminuita rispetto alla precedente
-                        // In modo da capire se tutti i coni sono stati posizionati
-
+                        else if (tagInteraction == GameEvent.CONE_TAG && inventary[2] <= 0 && inventary[1] >= 1)
+                        {
+                            RaccoltoOggetto(2);
+                            // Spawn della prima freccia per la posizione -- Non funziona -->
+                            for(int i=0; i<cornerPosition.Length; ++i)
+                            {
+                                newInstance[i] = Instantiate(prefabsMission[4], cornerPosition[i], Quaternion.identity);
+                                newInstance[i].AddComponent<SphereCollider>().isTrigger = true;
+                                newInstance[i].tag = GameEvent.ARROW_TAG+i;
+                                Debug.Log("Tag: " + newInstance[i].tag);  
+                            }
+                        }
+                        else if (tagInteraction == GameEvent.ARROW_TAG && cornerPosition.Length >= 1)
+                        {
+                            Destroy(newInstance[2]);
+                        }
+                        // <--
                     }
                 }
             }

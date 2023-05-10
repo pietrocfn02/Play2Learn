@@ -27,7 +27,9 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.SNOOPY_TAG,
                                         GameEvent.SUPERMAN_TAG,
                                         GameEvent.TRIANGLE_TAG,
-                                        GameEvent.CLIPBOARD_TAG
+                                        GameEvent.CLIPBOARD_TAG,
+                                        GameEvent.CONE_TAG,
+                                        GameEvent.ARROW_TAG
     };
     
 
@@ -35,7 +37,7 @@ public class TriggersManager : MonoBehaviour
         // Gestisce l'attivazione della "E" per interagire con alcuni gli oggetti nella scena
         if(tagsList.Contains(other.tag))
         {
-            //Debug.Log("Entro in " + other.tag);
+            Debug.Log("Entro in " + other.tag);
             BroadcastMessage("ActivateE",other);
         }
         else if (other.tag == GameEvent.EVIL_COIN_TAG)
