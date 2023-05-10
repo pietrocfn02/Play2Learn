@@ -82,7 +82,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     private int missionDone = 0;
     private bool spawnedControl = false;
-    private int contInteraction = 0
+    private int contInteraction = 0;
     // Methods...
     void Start(){}
 
