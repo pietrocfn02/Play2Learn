@@ -44,7 +44,11 @@ TagManager:
   - Triangle
   - Clipboard
   - Cone
-  - Arrow
+  - Arrow0
+  - Arrow1
+  - Arrow2
+  - Arrow3
+  - Tape
   layers:
   - Default
   - TransparentFX

@@ -104,7 +104,10 @@ public class UIExplanations : MonoBehaviour
         //yield return new WaitForSeconds(2);
         BambinoControllerAngiolettoMode.talking = false;
     }
-
+    private IEnumerator Timer(int timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+    }
     // Creare un cam Manager
     void Start()
     {
@@ -130,7 +133,10 @@ public class UIExplanations : MonoBehaviour
 
     private void TableInteraction()
     {
+        messagesCanvas.gameObject.SetActive(true);
         textMission.text = "BENE ADESSO CHE HAI TUTTE LE PAROLE VAI AL TAVOLO E FAI I COMPITI";
+        StartCoroutine(Timer(2));
+        messagesCanvas.gameObject.SetActive(false);
     }
 
     private void EndTutorial()

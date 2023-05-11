@@ -62,6 +62,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     // -----> Gestiscono le missioni
     // Prefabs per gli interagibili
     //
+    [SerializeField] private TMP_Text[] projectText;
     [SerializeField] private GameObject[] prefabsMission; // La posizione 0 è occupata dalla bandiera
 
     // Indica lo stato delle missioni per fare in modo che non si accavvallino
@@ -73,11 +74,14 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     
     private bool[] interaction = new bool[3];
 
-    private Vector3[] cornerPosition = {    new Vector3(19.93f, 1.7f, 19.062f),
-                                            new Vector3(18.077f, 1.7f, 19.062f), 
-                                            new Vector3(18.077f, 1.7f, 21.924f), 
-                                            new Vector3(19.924f, 1.7f, 21.924f)
-                                       };
+    private List<Vector3> cornerPosition = new List<Vector3> {    
+                                                                new Vector3(19.93f, 1.7f, 19.062f),
+                                                                new Vector3(18.077f, 1.7f, 19.062f), 
+                                                                new Vector3(18.077f, 1.7f, 21.924f), 
+                                                                new Vector3(19.924f, 1.7f, 21.924f)
+                                                             };
+    private GameObject[] newInstance;
+    private bool exitCond = false;
     //<-----
 
     private int missionType = 0;
@@ -88,10 +92,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private int missionDone = 0;
     private bool spawnedControl = false;
     private int contInteraction = 0;
+    private bool[] pushInteraction = new bool[4];
     // Methods...
     void Start(){
 
         player = GameObject.FindWithTag(GameEvent.PLAYER_TAG);
+        newInstance = new GameObject[cornerPosition.Count];
     }
 
     void Update(){
@@ -429,8 +435,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void Math()
     {
         if (!InMission(2))
-        {
-            GameObject[] newInstance = new GameObject[cornerPosition.Length];
+        {   
             if (interact)
             {
                 if (Input.GetKeyUp(KeyCode.E))
@@ -462,20 +467,50 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         else if (tagInteraction == GameEvent.CONE_TAG && inventary[2] <= 0 && inventary[1] >= 1)
                         {
                             RaccoltoOggetto(2);
-                            // Spawn della prima freccia per la posizione -- Non funziona -->
-                            for(int i=0; i<cornerPosition.Length; ++i)
+                            for(int i=0; i<cornerPosition.Count; ++i)
                             {
                                 newInstance[i] = Instantiate(prefabsMission[4], cornerPosition[i], Quaternion.identity);
                                 newInstance[i].AddComponent<SphereCollider>().isTrigger = true;
-                                newInstance[i].tag = GameEvent.ARROW_TAG+i;
-                                Debug.Log("Tag: " + newInstance[i].tag);  
+                                newInstance[i].tag = GameEvent.ARROW_GENERIC+i;
+                            }
+                            inventary[2] = 4;
+                            Debug.Log(inventary[2]);
+                        }
+                        else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[2] >= 1)
+                        {
+                            string[] splitted = tagInteraction.Split(GameEvent.ARROW_GENERIC);
+                            int pos = int.Parse(splitted[1]);
+                            
+                            if (!pushInteraction[pos]) 
+                            {
+                                Destroy(newInstance[pos]);
+                                GameObject cornerCone = Instantiate(prefabsMission[3], cornerPosition[pos], Quaternion.Euler(-90f,0f,0f));
+                                cornerCone.transform.position = new Vector3(cornerCone.transform.position.x, 1.5f, cornerCone.transform.position.z);
+                                --inventary[2];
+                                pushInteraction[pos] = true;
+                                if (pos <= 1)
+                                {
+                                    projectText[pos].text = ")";
+                                    projectText[pos].color = Color.green;
+                                }
+                                else
+                                {
+                                    projectText[pos].text = "(";
+                                    projectText[pos].color = Color.green;
+                                }
+                            }
+                            if (inventary[2] <= 0)
+                            {
+                                Debug.Log("Ora che hai delimitato gli angoli della stanza, mettila in sicurezza con il nastro");
+                                exitCond = true;
+                                Debug.Log(GameObject.FindWithTag(GameEvent.TAPE_TAG).GetComponent<SphereCollider>());//GameObject.FindWithTag(GameEvent.TAPE_TAG).GetComponent<SphereCollider>().gameObject;
+                                
                             }
                         }
-                        else if (tagInteraction == GameEvent.ARROW_TAG && cornerPosition.Length >= 1)
+                        else if (tagInteraction == GameEvent.TAPE_TAG && exitCond)
                         {
-                            Destroy(newInstance[2]);
+                            Debug.Log(tagInteraction);
                         }
-                        // <--
                     }
                 }
             }
@@ -628,4 +663,3 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
 
 }
-

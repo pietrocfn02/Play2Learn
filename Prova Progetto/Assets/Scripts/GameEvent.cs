@@ -60,7 +60,13 @@ public static class GameEvent {
 	public const string SNOOPY_TEXT_TAG = "SnoopyText";
 	public const string SUPERMAN_TEXT_TAG = "SupermanText";
 	public const string CONE_TAG = "Cone";
-	public const string ARROW_TAG = "Arrow";
+	public const string ARROW_GENERIC = "Arrow";
+	public const string ARROW0_TAG = "Arrow0";
+	public const string ARROW1_TAG = "Arrow1";
+	public const string ARROW2_TAG = "Arrow2";
+	public const string ARROW3_TAG = "Arrow3";
+	public const string TAPE_TAG = "Tape";
+
 	
 	public const string START_TEXT_GAME = "START_GAME";
 
