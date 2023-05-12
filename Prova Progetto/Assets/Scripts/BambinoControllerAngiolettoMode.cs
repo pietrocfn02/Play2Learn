@@ -524,12 +524,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 int pos = int.Parse(splitted[1]);
                                 Vector3 startPosition = cornerPosition[pos];
                                 Vector3 handPosition = GameObject.Find("HandPoint").GetComponent<Transform>().position;
-                                //Vector3 finalPosition = (startPosition + handPosition)/2;
+                                float distance = Vector3.Distance(startPosition, handPosition);
                                 switch (pos)
                                 {
                                     case 1:
                                         GameObject tape = Instantiate(prefabsMission[5], startPosition, Quaternion.identity);
-                                        tape.transform.localScale = new Vector3(0.2f, 0.03f, 0.3f);
+                                        tape.transform.localScale = new Vector3(distance, tape.transform.localScale.y, tape.transform.localScale.z);
                                         if (tagInteraction == (GameEvent.ARROW_GENERIC + 0))
                                         {
                                             Debug.Log("Sono in 0");
