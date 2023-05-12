@@ -17,7 +17,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     
     // Array per l'inventario
-    private int[] inventary = {0,0,0}; // Parola, Sparrow, Telecomando, ... (Da aggiungere quando colleziono)
+    private int[] inventary = {0,0,0,0}; // Parola, Clipboard, Coni, Tape, ... (Da aggiungere quando colleziono)
     
     // Bool che permette di interagire
     private bool interact = false;
@@ -75,10 +75,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool[] interaction = new bool[3];
 
     private List<Vector3> cornerPosition = new List<Vector3> {    
-                                                                new Vector3(19.93f, 1.7f, 19.062f),
-                                                                new Vector3(18.077f, 1.7f, 19.062f), 
-                                                                new Vector3(18.077f, 1.7f, 21.924f), 
-                                                                new Vector3(19.924f, 1.7f, 21.924f)
+                                                                new Vector3(19.93f, 1.556f, 19.062f),
+                                                                new Vector3(18.077f, 1.556f, 19.062f), 
+                                                                new Vector3(18.077f, 1.556f, 21.924f), 
+                                                                new Vector3(19.924f, 1.556f, 21.924f)
                                                              };
     private GameObject[] newInstance;
     private bool exitCond = false;
@@ -92,6 +92,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private int missionDone = 0;
     private bool spawnedControl = false;
     private int contInteraction = 0;
+    private int contPaper = 0;
+    private Vector3 endTapePosition;
     private bool[] pushInteraction = new bool[4];
     // Methods...
     void Start(){
@@ -117,9 +119,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     break;
             }
             StartMission(missionType);
+
         }
     }
-
 
     private void StartMission(int missionInt)
     {
@@ -470,6 +472,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             for(int i=0; i<cornerPosition.Count; ++i)
                             {
                                 newInstance[i] = Instantiate(prefabsMission[4], cornerPosition[i], Quaternion.identity);
+                                newInstance[i].transform.position = new Vector3(newInstance[i].transform.position.x, 1.7f, newInstance[i].transform.position.z);
                                 newInstance[i].AddComponent<SphereCollider>().isTrigger = true;
                                 newInstance[i].tag = GameEvent.ARROW_GENERIC+i;
                             }
@@ -486,6 +489,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 Destroy(newInstance[pos]);
                                 GameObject cornerCone = Instantiate(prefabsMission[3], cornerPosition[pos], Quaternion.Euler(-90f,0f,0f));
                                 cornerCone.transform.position = new Vector3(cornerCone.transform.position.x, 1.5f, cornerCone.transform.position.z);
+                                cornerCone.tag = GameEvent.ARROW_GENERIC + pos;
                                 --inventary[2];
                                 pushInteraction[pos] = true;
                                 if (pos <= 1)
@@ -502,14 +506,46 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             if (inventary[2] <= 0)
                             {
                                 Debug.Log("Ora che hai delimitato gli angoli della stanza, mettila in sicurezza con il nastro");
-                                exitCond = true;
-                                Debug.Log(GameObject.FindWithTag(GameEvent.TAPE_TAG).GetComponent<SphereCollider>());//GameObject.FindWithTag(GameEvent.TAPE_TAG).GetComponent<SphereCollider>().gameObject;
-                                
+                                exitCond = true; 
                             }
                         }
-                        else if (tagInteraction == GameEvent.TAPE_TAG && exitCond)
+                        else if(exitCond)
                         {
-                            Debug.Log(tagInteraction);
+                            
+                            if (tagInteraction == GameEvent.TAPE_TAG)
+                            {
+                                inventary[3] = 1;
+                                Destroy(GameObject.FindWithTag(GameEvent.TAPE_TAG));
+                            }
+                            else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[3] >= 1 && contPaper <= 4)
+                            {
+                                Debug.Log("Sono dentro l'if del line renderer");
+                                string[] splitted = tagInteraction.Split(GameEvent.ARROW_GENERIC);
+                                int pos = int.Parse(splitted[1]);
+                                Vector3 startPosition = cornerPosition[pos];
+                                Vector3 handPosition = GameObject.Find("HandPoint").GetComponent<Transform>().position;
+                                //Vector3 finalPosition = (startPosition + handPosition)/2;
+                                switch (pos)
+                                {
+                                    case 1:
+                                        GameObject tape = Instantiate(prefabsMission[5], startPosition, Quaternion.identity);
+                                        tape.transform.localScale = new Vector3(0.2f, 0.03f, 0.3f);
+                                        if (tagInteraction == (GameEvent.ARROW_GENERIC + 0))
+                                        {
+                                            Debug.Log("Sono in 0");
+                                            ++contPaper;
+                                        }
+                                        else if (tagInteraction == (GameEvent.ARROW_GENERIC + 2))
+                                        {
+                                            Debug.Log("Sono in 2");
+                                            ++contPaper;
+                                        }
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
                         }
                     }
                 }
@@ -644,10 +680,14 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     
     public void MissionArtDone()
     {
-        SetComplete(1);
-        Debug.Log("Missione Arte Completa");
-        Debug.Log("Cerca in giro per la mappa gli interagibili relativi all'arte");
-        missionType = 0;
+        if (InMission(1))
+        {
+            Debug.Log(missionActive[1]);
+            Debug.Log("Missione Arte Completa");
+            Debug.Log("Cerca in giro per la mappa gli interagibili relativi all'arte");
+            SetComplete(1);
+            missionType = 0;
+        }
     }
 
     void Awake()
