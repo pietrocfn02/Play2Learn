@@ -95,6 +95,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private int contPaper = 0;
     private Vector3 endTapePosition;
     private bool[] pushInteraction = new bool[4];
+    private bool canInstantiate = true;
+    private Vector3 startPosition;
+    private GameObject tape1;
     // Methods...
     void Start(){
 
@@ -519,31 +522,39 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             }
                             else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[3] >= 1 && contPaper <= 4)
                             {
-                                Debug.Log("Sono dentro l'if del line renderer");
+                                Debug.Log("Sono in: " + tagInteraction);
                                 string[] splitted = tagInteraction.Split(GameEvent.ARROW_GENERIC);
                                 int pos = int.Parse(splitted[1]);
-                                Vector3 startPosition = cornerPosition[pos];
-                                Vector3 handPosition = GameObject.Find("HandPoint").GetComponent<Transform>().position;
-                                float distance = Vector3.Distance(startPosition, handPosition);
-                                switch (pos)
+                                TapeMovement.SetTapeMove(true);
+                                if(canInstantiate)
                                 {
-                                    case 1:
-                                        GameObject tape = Instantiate(prefabsMission[5], startPosition, Quaternion.identity);
-                                        tape.transform.localScale = new Vector3(distance, tape.transform.localScale.y, tape.transform.localScale.z);
-                                        if (tagInteraction == (GameEvent.ARROW_GENERIC + 0))
-                                        {
-                                            Debug.Log("Sono in 0");
-                                            ++contPaper;
-                                        }
-                                        else if (tagInteraction == (GameEvent.ARROW_GENERIC + 2))
-                                        {
-                                            Debug.Log("Sono in 2");
-                                            ++contPaper;
-                                        }
-                                        break;
-
-                                    default:
-                                        break;
+                                    TapeMovement.SetTapeMove(true);
+                                    TapeMovement.SetStartPosition(cornerPosition[pos]);
+                                    startPosition = cornerPosition[pos];
+                                    tape1 = Instantiate(prefabsMission[5], startPosition, Quaternion.identity);
+                                    canInstantiate = false;
+                                }
+                                if (tagInteraction == GameEvent.ARROW0_TAG)
+                                {
+                                    Debug.Log("Sono in 0");
+                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
+                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true;
+                                }
+                                else if (tagInteraction == GameEvent.ARROW2_TAG)
+                                {
+                                    Debug.Log("Sono in 2");
+                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
+                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true; 
                                 }
                             }
                         }
