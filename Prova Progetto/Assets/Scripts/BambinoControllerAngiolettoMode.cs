@@ -98,6 +98,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool canInstantiate = true;
     private Vector3 startPosition;
     private GameObject tape1;
+    private int startPositionInt;
     // Methods...
     void Start(){
 
@@ -519,43 +520,95 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             {
                                 inventary[3] = 1;
                                 Destroy(GameObject.FindWithTag(GameEvent.TAPE_TAG));
+                                // Prendo il nastro
                             }
                             else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[3] >= 1 && contPaper <= 4)
                             {
-                                Debug.Log("Sono in: " + tagInteraction);
                                 string[] splitted = tagInteraction.Split(GameEvent.ARROW_GENERIC);
                                 int pos = int.Parse(splitted[1]);
-                                TapeMovement.SetTapeMove(true);
                                 if(canInstantiate)
                                 {
+                                    // Spawn del nastro
                                     TapeMovement.SetTapeMove(true);
                                     TapeMovement.SetStartPosition(cornerPosition[pos]);
                                     startPosition = cornerPosition[pos];
+                                    startPositionInt = pos;
                                     tape1 = Instantiate(prefabsMission[5], startPosition, Quaternion.identity);
                                     canInstantiate = false;
                                 }
-                                if (tagInteraction == GameEvent.ARROW0_TAG)
+                                
+                                if (pos == (startPositionInt + 1))
                                 {
-                                    Debug.Log("Sono in 0");
-                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
-                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
+                                    if (pos != 4)
+                                    {
+                                        if(pos%2 != 0)
+                                        {
+                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
+                                            TapeMovement.SetTapeMove(false);
+                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
+                                            tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
+                                            Destroy(tape1);
+                                            ++contPaper;
+                                        }
+                                        else
+                                        {
+                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
+                                            TapeMovement.SetTapeMove(false);
+                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
+                                            tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                            Destroy(tape1);
+                                            ++contPaper;
+                                        }
+                                        
+                                    }
+                                    else 
+                                    {
+                                        TapeMovement.SetFinalPosition(cornerPosition[3]);
+                                        TapeMovement.SetTapeMove(false);
+                                        GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
+                                        tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                        Destroy(tape1);
+                                        ++contPaper;
+                                    }
+                                    canInstantiate = true;
+                                }else if(pos == (startPositionInt - 1))
+                                {
+                                    if (pos != -1)
+                                    {
+                                        if(pos%2 == 0)
+                                        {
+                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
+                                            TapeMovement.SetTapeMove(false);
+                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
+                                            tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
+                                            Destroy(tape1);
+                                            ++contPaper;
+                                        }
+                                        else
+                                        {
+                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
+                                            TapeMovement.SetTapeMove(false);
+                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
+                                            tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                            Destroy(tape1);
+                                            ++contPaper;
+                                        }
+                                    }
+                                    else 
+                                    {
+                                        TapeMovement.SetFinalPosition(cornerPosition[3]);
+                                        TapeMovement.SetTapeMove(false);
+                                        GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
+                                        tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                        Destroy(tape1);
+                                        ++contPaper;
+                                    }
                                     canInstantiate = true;
                                 }
-                                else if (tagInteraction == GameEvent.ARROW2_TAG)
-                                {
-                                    Debug.Log("Sono in 2");
-                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
-                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true; 
-                                }
+                            }
+                            else if (contPaper >= 4)
+                            {
+                                Debug.Log("Fine perimetro");
                             }
                         }
                     }

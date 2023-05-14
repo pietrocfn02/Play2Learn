@@ -38,11 +38,9 @@ public class TapeMovement : MonoBehaviour
     public static void SetFinalPosition(Vector3 position)
     {
         finalPosition = position;
-        Debug.Log(finalPosition);
     }
     public static void SetTapeMove(bool state)
     {
         move = state;
-        Debug.Log(move);
     }
 }
