@@ -97,8 +97,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private bool[] pushInteraction = new bool[4];
     private bool canInstantiate = true;
     private Vector3 startPosition;
-    private GameObject tape1;
     private int startPositionInt;
+    private GameObject tape1;
+    private bool[] arch = new bool[4]; // (0-1, 1-0), (1-2, 2-1), (2-3, 3-2), (3-0, 0-3)
     // Methods...
     void Start(){
 
@@ -522,7 +523,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 Destroy(GameObject.FindWithTag(GameEvent.TAPE_TAG));
                                 // Prendo il nastro
                             }
-                            else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[3] >= 1 && contPaper <= 4)
+                            else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[3] >= 1 && contPaper < 4)
                             {
                                 string[] splitted = tagInteraction.Split(GameEvent.ARROW_GENERIC);
                                 int pos = int.Parse(splitted[1]);
@@ -537,79 +538,125 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     canInstantiate = false;
                                 }
                                 
-                                if (pos == (startPositionInt + 1))
+                                if((startPositionInt == 0 && pos == 1) && (!arch[0]))
                                 {
-                                    if (pos != 4)
-                                    {
-                                        if(pos%2 != 0)
-                                        {
-                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
-                                            TapeMovement.SetTapeMove(false);
-                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
-                                            tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
-                                            Destroy(tape1);
-                                            ++contPaper;
-                                        }
-                                        else
-                                        {
-                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
-                                            TapeMovement.SetTapeMove(false);
-                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
-                                            tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                            Destroy(tape1);
-                                            ++contPaper;
-                                        }
-                                        
-                                    }
-                                    else 
-                                    {
-                                        TapeMovement.SetFinalPosition(cornerPosition[3]);
-                                        TapeMovement.SetTapeMove(false);
-                                        GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
-                                        tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                        Destroy(tape1);
-                                        ++contPaper;
-                                    }
+                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,180f));
+                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
                                     canInstantiate = true;
-                                }else if(pos == (startPositionInt - 1))
-                                {
-                                    if (pos != -1)
-                                    {
-                                        if(pos%2 == 0)
-                                        {
-                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
-                                            TapeMovement.SetTapeMove(false);
-                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
-                                            tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
-                                            Destroy(tape1);
-                                            ++contPaper;
-                                        }
-                                        else
-                                        {
-                                            TapeMovement.SetFinalPosition(cornerPosition[pos]);
-                                            TapeMovement.SetTapeMove(false);
-                                            GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
-                                            tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                            Destroy(tape1);
-                                            ++contPaper;
-                                        }
-                                    }
-                                    else 
-                                    {
-                                        TapeMovement.SetFinalPosition(cornerPosition[3]);
-                                        TapeMovement.SetTapeMove(false);
-                                        GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
-                                        tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                        Destroy(tape1);
-                                        ++contPaper;
-                                    }
-                                    canInstantiate = true;
+                                    arch[0] = true;
+                                    projectText[4].text = "1.85 m.";
+                                    projectText[8].text = "-----------";
+                                    projectText[8].color = Color.green;
+                                    
                                 }
+                                else if((startPositionInt == 1 && pos == 0) && (!arch[0]))
+                                {
+                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
+                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true;
+                                    arch[0] = true;
+                                    projectText[4].text = "1.85 m.";
+                                    projectText[8].text = "-----------";
+                                    projectText[8].color = Color.green;
+                                }
+                                else if((startPositionInt == 1 && pos == 2) && (!arch[1]))
+                                {
+                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,-90f,0f));
+                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true;
+                                    arch[1] = true;
+                                    projectText[5].text = "2.9 m.";
+                                    projectText[9].text = "-------------";
+                                    projectText[9].color = Color.green;
+                                }
+                                else if((startPositionInt == 2 && pos == 1) && (!arch[1]))
+                                {
+                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,-90f,180f));
+                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true; 
+                                    arch[1] = true;
+                                    projectText[5].text = "2.9 m.";
+                                    projectText[9].text = "-------------";
+                                    projectText[9].color = Color.green;
+                                    
+                                }
+                                else if((startPositionInt == 2 && pos == 3) && (!arch[2]))
+                                {
+                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,0f,0f));
+                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true;
+                                    arch[2] = true;
+                                    projectText[6].text = "1.85 m.";
+                                    projectText[10].text = "-----------";
+                                    projectText[10].color = Color.green;
+                                }
+                                else if((startPositionInt == 3 && pos == 2) && (!arch[2]))
+                                {
+                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,0f,180f));
+                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true;
+                                    arch[2] = true;
+                                    projectText[6].text = "1.85 m.";
+                                    projectText[10].text = "-----------";
+                                    projectText[10].color = Color.green;
+                                }
+                                else if((startPositionInt == 3 && pos == 0) && (!arch[3]))
+                                {
+                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,180f));
+                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true; 
+                                    arch[3] = true;
+                                    projectText[7].text = "2.9 m.";
+                                    projectText[11].text = "-------------";
+                                    projectText[11].color = Color.green;
+                                }
+                                else if((startPositionInt == 0 && pos == 3) && (!arch[3]))
+                                {
+                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
+                                    TapeMovement.SetTapeMove(false);
+                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
+                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
+                                    Destroy(tape1);
+                                    ++contPaper;
+                                    canInstantiate = true;
+                                    arch[3] = true; 
+                                    projectText[7].text = "2.9 m.";
+                                    projectText[11].text = "-------------";
+                                    projectText[11].color = Color.green;
+                                }  
                             }
-                            else if (contPaper >= 4)
-                            {
-                                Debug.Log("Fine perimetro");
-                            }
+                        }
+                        else if (contPaper >= 4)
+                        {
+                            Debug.Log("Fine taping");
                         }
                     }
                 }
