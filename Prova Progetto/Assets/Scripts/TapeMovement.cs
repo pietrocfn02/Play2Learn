@@ -6,6 +6,7 @@ public class TapeMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject player;
+    private GameObject tapePosition;
     private static Vector3 startPosition;
     private static Vector3 finalPosition;
     private LineRenderer line;
@@ -14,7 +15,7 @@ public class TapeMovement : MonoBehaviour
     {
         player = GameObject.FindWithTag(GameEvent.PLAYER_TAG);
         line = player.GetComponent<LineRenderer>();
-        
+        tapePosition = GameObject.Find("TapePosition");
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class TapeMovement : MonoBehaviour
     {
         if (move){
             line.SetPosition(0,startPosition);
-            line.SetPosition(1,player.transform.position);
+            line.SetPosition(1,tapePosition.transform.position);
         }
         else
         {

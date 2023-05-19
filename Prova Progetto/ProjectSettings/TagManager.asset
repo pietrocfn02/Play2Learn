@@ -49,6 +49,7 @@ TagManager:
   - Arrow2
   - Arrow3
   - Tape
+  - Calc
   layers:
   - Default
   - TransparentFX

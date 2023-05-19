@@ -66,6 +66,7 @@ public static class GameEvent {
 	public const string ARROW2_TAG = "Arrow2";
 	public const string ARROW3_TAG = "Arrow3";
 	public const string TAPE_TAG = "Tape";
+	public const string CALC_TAG = "Calc";
 
 	
 	public const string START_TEXT_GAME = "START_GAME";

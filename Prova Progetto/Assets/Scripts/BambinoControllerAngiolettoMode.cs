@@ -637,6 +637,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     projectText[7].text = "2.9 m.";
                                     projectText[11].text = "-------------";
                                     projectText[11].color = Color.green;
+                                    Debug.Log("Sono in 3-0");
                                 }
                                 else if((startPositionInt == 0 && pos == 3) && (!arch[3]))
                                 {
@@ -651,12 +652,18 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     projectText[7].text = "2.9 m.";
                                     projectText[11].text = "-------------";
                                     projectText[11].color = Color.green;
-                                }  
+                                    Debug.Log("Sono in 0-3");
+                                }
                             }
                         }
-                        else if (contPaper >= 4)
+                        if (contPaper >= 4)
                         {
-                            Debug.Log("Fine taping");
+                            Debug.Log("Bene! Ora vai a prendere la calcolatrice e poi vai al progetto per misurare l'area e il perimetro della stanza. " +
+                                      "Puoi scrivere il risultato sul progetto e premere invio per competare");
+                            if (tagInteraction == GameEvent.CALC_TAG)
+                            {
+
+                            }
                         }
                     }
                 }
