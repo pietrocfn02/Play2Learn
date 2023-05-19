@@ -215,10 +215,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
 
 
-    // Fa spawnare gli oggetti relativi alle missioni
-    public void SpawnMark(string tagFather)
+    // Fa spawnare gli oggetti per interagire con gli oggetti delle missioni
+    public void SpawnMark(string fatherName)
     {
-        GameObject parent = GameObject.Find(tagFather);
+        GameObject parent = GameObject.Find(fatherName);
+        Debug.Log(parent);
         if (parent)
         {
             foreach(Transform child in parent.transform)
@@ -511,7 +512,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             if (inventary[2] <= 0)
                             {
                                 Debug.Log("Ora che hai delimitato gli angoli della stanza, mettila in sicurezza con il nastro");
-                                exitCond = true; 
+                                exitCond = true;
+                                SpawnMark(GameEvent.TAPE_TAG);
                             }
                         }
                         else if(exitCond)
@@ -660,9 +662,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         {
                             Debug.Log("Bene! Ora vai a prendere la calcolatrice e poi vai al progetto per misurare l'area e il perimetro della stanza. " +
                                       "Puoi scrivere il risultato sul progetto e premere invio per competare");
+                            SpawnMark(GameEvent.CALC_TAG);
                             if (tagInteraction == GameEvent.CALC_TAG)
                             {
-
+                                Debug.Log(tagInteraction);
                             }
                         }
                     }

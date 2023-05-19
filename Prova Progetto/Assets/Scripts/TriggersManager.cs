@@ -33,7 +33,8 @@ public class TriggersManager : MonoBehaviour
                                         GameEvent.ARROW1_TAG,
                                         GameEvent.ARROW2_TAG,
                                         GameEvent.ARROW3_TAG,
-                                        GameEvent.TAPE_TAG
+                                        GameEvent.TAPE_TAG,
+                                        GameEvent.CALC_TAG
     };
     
 

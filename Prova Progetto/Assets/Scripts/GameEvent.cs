@@ -66,7 +66,29 @@ public static class GameEvent {
 	public const string ARROW2_TAG = "Arrow2";
 	public const string ARROW3_TAG = "Arrow3";
 	public const string TAPE_TAG = "Tape";
-	public const string CALC_TAG = "Calc";
+	public const string CALC_TAG = "Calculator";
+
+	// Calculator name
+	public const string ZERRO_NAME = "0";
+	public const string ONE_NAME = "1";
+	public const string TWO_NAME = "2";
+	public const string THREE_NAME = "3";
+	public const string FOUR_NAME = "4";
+	public const string FIVE_NAME = "5";
+	public const string SIX_NAME = "6";
+	public const string SEVEN_NAME= "7";
+	public const string EIGHT_NAME = "8";
+	public const string NINE_NAME = "9";
+	public const string DOT_NAME = "DOT";
+	public const string EQUALS_NAME = "=";
+	public const string PLUS_NAME = "+";
+	public const string MINUS_NAME = "-";
+	public const string MOLTIPLI_NAME = "X";
+	public const string DIVIDE_NAME = "/";
+	public const string DEL_NAME = "AC";
+	public const string CANC_NAME = "C";
+	public const string PERC_NAME = "%";
+	public const string RQ_NAME = "RQ";
 
 	
 	public const string START_TEXT_GAME = "START_GAME";
