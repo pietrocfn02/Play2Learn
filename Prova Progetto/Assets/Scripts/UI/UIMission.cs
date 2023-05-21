@@ -197,17 +197,11 @@ public class UIMission : MonoBehaviour
     {
         tag = GameEvent.SUPERMAN_TAG;
     }
-    void onDestroy()
+
+    private void UIMathMission()
     {
-        Messenger.RemoveListener(GameEvent.FIRST_UI_MISSION, ItalianMission);
-        Messenger.RemoveListener("EndItalian", EndItalian);
-        Messenger.RemoveListener(GameEvent.VITRUVIAN_TAG, SetVitruvian);
-        Messenger.RemoveListener(GameEvent.COLUMN_CORINTHIAN_TAG, SetCorinthian);
-        Messenger.RemoveListener(GameEvent.COLUMN_IONIC_TAG, SetIonic);
-        Messenger.RemoveListener(GameEvent.TOPOLINO_TAG, SetTopolino);
-        Messenger.RemoveListener(GameEvent.ONEPIECE_TAG, SetOnePiece);
-        Messenger.RemoveListener(GameEvent.SNOOPY_TAG, SetSnoopy);
-        Messenger.RemoveListener(GameEvent.SUPERMAN_TAG, SetSuperMan);
+        mainCamera.gameObject.SetActive(false);
+        cameras[7].gameObject.SetActive(true);
     }
 
     void Awake()
@@ -221,5 +215,20 @@ public class UIMission : MonoBehaviour
         Messenger.AddListener(GameEvent.ONEPIECE_TAG, SetOnePiece);
         Messenger.AddListener(GameEvent.SNOOPY_TAG, SetSnoopy);
         Messenger.AddListener(GameEvent.SUPERMAN_TAG, SetSuperMan);
+        Messenger.AddListener("UIMathMission", UIMathMission);
+    }
+
+    void onDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.FIRST_UI_MISSION, ItalianMission);
+        Messenger.RemoveListener("EndItalian", EndItalian);
+        Messenger.RemoveListener(GameEvent.VITRUVIAN_TAG, SetVitruvian);
+        Messenger.RemoveListener(GameEvent.COLUMN_CORINTHIAN_TAG, SetCorinthian);
+        Messenger.RemoveListener(GameEvent.COLUMN_IONIC_TAG, SetIonic);
+        Messenger.RemoveListener(GameEvent.TOPOLINO_TAG, SetTopolino);
+        Messenger.RemoveListener(GameEvent.ONEPIECE_TAG, SetOnePiece);
+        Messenger.RemoveListener(GameEvent.SNOOPY_TAG, SetSnoopy);
+        Messenger.RemoveListener(GameEvent.SUPERMAN_TAG, SetSuperMan);
+        Messenger.RemoveListener("UIMathMission", UIMathMission);
     }
 }

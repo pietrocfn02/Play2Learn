@@ -17,7 +17,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     
     // Array per l'inventario
-    private int[] inventary = {0,0,0,0}; // Parola, Clipboard, Coni, Tape, ... (Da aggiungere quando colleziono)
+    private int[] inventary = {0,0,0,0,0}; // Parola, Clipboard, Coni, Tape, Calcolatrice,... (Da aggiungere quando colleziono)
     
     // Bool che permette di interagire
     private bool interact = false;
@@ -63,7 +63,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     // Prefabs per gli interagibili
     //
     [SerializeField] private TMP_Text[] projectText;
-    [SerializeField] private GameObject[] prefabsMission; // La posizione 0 è occupata dalla bandiera
+    [SerializeField] private GameObject[] prefabsMission;
 
     // Indica lo stato delle missioni per fare in modo che non si accavvallino
     //
@@ -193,6 +193,20 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         }
     }
 
+    // Disattiva il "!" 
+    public void DeactivateMark()
+    {
+        GameObject parent = GameObject.Find(tagInteraction);
+        foreach (Transform child in parent.transform)
+        {
+            if (child.tag == GameEvent.MARK_TAG)
+            {
+               child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+
     // Setta una missione su "Completa"
     public void SetComplete(int mission)
     {
@@ -219,7 +233,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void SpawnMark(string fatherName)
     {
         GameObject parent = GameObject.Find(fatherName);
-        Debug.Log(parent);
         if (parent)
         {
             foreach(Transform child in parent.transform)
@@ -297,6 +310,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         interaction[2] = true;
                         newInstance = Instantiate(prefabsMission[2], new Vector3(20.3f, 1.7f, 20.46f), Quaternion.Euler(90f, 90f, 0f));
+                        Destroy(newInstance.GetComponent<CalculatorEvent>());
                         Destroy(newInstance.GetComponent<BoxCollider>());
                     }
                     else
@@ -453,22 +467,23 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         SetActive(2);
                         RemoveMark();
                         SpawnInteraction();
-                        Debug.Log("Inizio missione matematica");
+                        //Messenger.Broadcast("MathMission");
                         SpawnMark("Clipboard");
+                        //RelativeMovement.SetInMission(true);
                     }
                     else if (missionActive[2])
                     {
-                        if (tagInteraction == GameEvent.CLIPBOARD_TAG)
+                        if (tagInteraction == GameEvent.CLIPBOARD_TAG && !exitCond && inventary[1] <= 0)
                         {
                             if (contInteraction <= 1)
                             {
                                 // Serve per la spiegazione
                                 ++contInteraction;
                                 inventary[1] = 1;
-                                RemoveMark();
+                                DeactivateMark();
                                 SpawnMark("ConeContainer");
-                                Debug.Log("Vai a prendere i coni per segnare gli angoli"); // Spiegazione
-                                Destroy(GameObject.FindWithTag(GameEvent.CLIPBOARD_TAG).GetComponent<SphereCollider>());
+                                // RelativeMovement.SetInMission(true);
+                                // Messenger.Broadcast("MathMission2");
                                 SetOutline(GameObject.FindWithTag(GameEvent.CLIPBOARD_TAG), 0f, Color.yellow);
                             }
                         }
@@ -483,7 +498,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 newInstance[i].tag = GameEvent.ARROW_GENERIC+i;
                             }
                             inventary[2] = 4;
-                            Debug.Log(inventary[2]);
+                            // Messenger.Broadcast("MathMission3");
                         }
                         else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[2] >= 1)
                         {
@@ -511,7 +526,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             }
                             if (inventary[2] <= 0)
                             {
-                                Debug.Log("Ora che hai delimitato gli angoli della stanza, mettila in sicurezza con il nastro");
+                                
+                                // RelativeMovement.SetInMission(true);
+                                // Messenger.Broadcast("MathMission4");
                                 exitCond = true;
                                 SpawnMark(GameEvent.TAPE_TAG);
                             }
@@ -523,7 +540,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             {
                                 inventary[3] = 1;
                                 Destroy(GameObject.FindWithTag(GameEvent.TAPE_TAG));
-                                // Prendo il nastro
+                                // Messenger.Broadcast("MathMission5");
                             }
                             else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[3] >= 1 && contPaper < 4)
                             {
@@ -657,15 +674,26 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     Debug.Log("Sono in 0-3");
                                 }
                             }
-                        }
-                        if (contPaper >= 4)
-                        {
-                            Debug.Log("Bene! Ora vai a prendere la calcolatrice e poi vai al progetto per misurare l'area e il perimetro della stanza. " +
-                                      "Puoi scrivere il risultato sul progetto e premere invio per competare");
-                            SpawnMark(GameEvent.CALC_TAG);
-                            if (tagInteraction == GameEvent.CALC_TAG)
+                            if (contPaper >= 4 && inventary[3] >= 1)
                             {
-                                Debug.Log(tagInteraction);
+                                // Messenger.Broadcast("MathMission6");
+                                // RelativeMovement.SetInMission(true);
+                                SpawnMark(GameEvent.CALC_TAG);
+                                inventary[3] = 0;
+                            }
+                            else if (tagInteraction == GameEvent.CALC_TAG && inventary[4] <= 0)
+                            {
+                                RaccoltoOggetto(4);
+                                // Messenger.Broadcast("MathMission7");
+                                // SpawnMark(GameEvent.CLIPBOARD_TAG);
+                            }
+                            else if (tagInteraction == GameEvent.CLIPBOARD_TAG && inventary[4] >= 1)
+                            {
+                                RemoveMark();
+                                RelativeMovement.SetInMission(true);
+                                Messenger.Broadcast("UIMathMission");
+                                Instantiate(prefabsMission[2], new Vector3(18.665f,1.613f,21.048f), Quaternion.Euler(-66.7f,0f,0f));
+                                player.gameObject.SetActive(false);
                             }
                         }
                     }
