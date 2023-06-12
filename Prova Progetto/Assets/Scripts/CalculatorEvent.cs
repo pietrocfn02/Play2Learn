@@ -16,7 +16,6 @@ public class CalculatorEvent : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
-        Debug.Log(camera.name);
     }
 
     void Update()
@@ -30,9 +29,11 @@ public class CalculatorEvent : MonoBehaviour
         {
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
-            if (Physics.Raycast(ray,out hit, 100, mask))
+            Debug.Log("Premo sx");
+            if (Physics.Raycast(ray,out hit))
             {
+                // Cambiare la posizione dello spawn della calcolatrice 
+                // Mettere una UI con il progetto al posto della clipboard
                 Debug.Log(hit.transform.name);
                 Debug.Log("hit something");
             }
