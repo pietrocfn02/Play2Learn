@@ -116,6 +116,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             {
                 case GameEvent.EASEL_TAG:
                     missionType = 1;
+                    Debug.Log("Arte");
                     break;
                 case GameEvent.TRIANGLE_TAG:
                     missionType = 2;
@@ -214,7 +215,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         {
             if (missionActive[mission])
             {
-                missionActive[mission] = false;
+                for (int i=0 ;i<missionActive.Length; ++i)
+                {
+                    missionActive[i] = false;
+                }
                 missionComplete[mission] = true;
             }
             else
@@ -787,30 +791,30 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     // Giusto per rendere piu proporzionale il numero di monete spawnate
     // 
     // Mantenere o Eliminare lo spawn dei coin ?
-    public void spawnCoin(int size){
-        int[] randomArray = new int[size];
-        int randomSum = 0;
-        for (int i=0 ; i < randomArray.Length; i++) {
-            randomArray[i] = Random.Range(0,11);
-            randomSum+= randomArray[i];
-        }
-        _coins = new GameObject[randomSum];
-        for(int i=0; i<_coins.Length; i++)
-        {
-            if(_coins[i] == null)
-            {
-                GameObject x = Instantiate(goodCoinPrefab) as GameObject;
-                Vector3 bimboPosition = this.transform.position;
-                Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-2,bimboPosition.x+2), 1.75f, Random.Range(bimboPosition.z-2,bimboPosition.z+2));
-                x.transform.position = spawnPosition;
-                _coins[i] = x;
-                _coins[i].transform.localScale += new Vector3(3f,3f,1f);
-                float angle = Random.Range (0, 360f);
-                _coins[i].transform.Rotate(0, angle, 0);
-            }
-        }  
-        inventary[1] = 0;
-    }
+    // public void spawnCoin(int size){
+    //     int[] randomArray = new int[size];
+    //     int randomSum = 0;
+    //     for (int i=0 ; i < randomArray.Length; i++) {
+    //         randomArray[i] = Random.Range(0,11);
+    //         randomSum+= randomArray[i];
+    //     }
+    //     _coins = new GameObject[randomSum];
+    //     for(int i=0; i<_coins.Length; i++)
+    //     {
+    //         if(_coins[i] == null)
+    //         {
+    //             GameObject x = Instantiate(goodCoinPrefab) as GameObject;
+    //             Vector3 bimboPosition = this.transform.position;
+    //             Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-2,bimboPosition.x+2), 1.75f, Random.Range(bimboPosition.z-2,bimboPosition.z+2));
+    //             x.transform.position = spawnPosition;
+    //             _coins[i] = x;
+    //             _coins[i].transform.localScale += new Vector3(3f,3f,1f);
+    //             float angle = Random.Range (0, 360f);
+    //             _coins[i].transform.Rotate(0, angle, 0);
+    //         }
+    //     }  
+    //     inventary[1] = 0;
+    // }
 
     public void MissionTutorialDone()
     {

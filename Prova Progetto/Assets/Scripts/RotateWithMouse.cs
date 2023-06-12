@@ -6,16 +6,13 @@ public class RotateWithMouse : MonoBehaviour
 {
     
     private float rotationSpeed = 150f;
-    void Start()
-    {
-        
-    }
-
+    
     void OnMouseDrag()
     {
-        float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-        float rotY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
-        this.transform.Rotate(rotY, rotX,0f);
-        //this.transform.Rotate(Vector3.right, rotX);
+        float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime * Mathf.Deg2Rad;
+        float rotY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime * Mathf.Deg2Rad;
+       
+        transform.RotateAround(Vector3.up, -rotX);
+        // transform.RotateAround(Vector3.right, rotY);
     }
 }

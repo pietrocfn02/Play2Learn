@@ -5,28 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/StartGame_Scene.unity
-    guid: 4a6fff799fb284ebbae4310c0087a638
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 2977b18242691384ababeb19da23f660
-  - enabled: 1
-    path: Assets/Scenes/Storytelling_inseguimento.unity
-    guid: 59583e7e92a6afd4a8d4ed5caa4ef0c0
-  - enabled: 1
-    path: Assets/Scenes/InseguimentoScene.unity
-    guid: 04a35316b96e9d14faaabcdf2f2e9d8e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 033511981ad79784184968cea2119e08
   - enabled: 1
     path: Assets/Scenes/Storytelling.unity
     guid: 8bb526f814efb6941b85b87d492c881a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Storytelling_angioletto.unity
-    guid: 1536608468733054cb31c3663228fa28
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 756f1d4530610884bb8d2141a12cce99
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
