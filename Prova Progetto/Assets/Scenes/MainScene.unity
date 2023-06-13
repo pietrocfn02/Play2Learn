@@ -1880,7 +1880,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24369421}
-  m_LocalRotation: {x: 0.11029082, y: 0.00046439646, z: -0.000051533054, w: 0.9938993}
+  m_LocalRotation: {x: 0.110290565, y: 0.0021812182, z: -0.00024204505, w: 0.99389696}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17048,7 +17048,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444983293}
-  m_LocalRotation: {x: 0.110290825, y: 0.0004643966, z: -0.000051533072, w: 0.9938993}
+  m_LocalRotation: {x: 0.110290565, y: 0.0021812182, z: -0.000242045, w: 0.99389696}
   m_LocalPosition: {x: 21.94005, y: 1.781, z: 19.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17154,9 +17154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3827c1141b1b2414bb17df06b9d20873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 0
+  perimeterText: {fileID: 1686158078}
+  areaText: {fileID: 911295567}
 --- !u!1 &448201608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 0eff36d1a0699d846b15099323d9df7d, type: 3}
@@ -21108,7 +21107,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560907081}
-  m_LocalRotation: {x: 0.11489555, y: -0.00004784203, z: 0.0000055334813, w: 0.99337757}
+  m_LocalRotation: {x: 0.11489555, y: -0.000047850575, z: 0.0000055344703, w: 0.99337757}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39713,7 +39712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &911295566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39754,7 +39753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "m\xB2."
+  m_text: CALCOLA L'AREA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee02bba89b4996a458c92cfe4e4ff50d, type: 2}
   m_sharedMaterial: {fileID: 427824435518824475, guid: ee02bba89b4996a458c92cfe4e4ff50d, type: 2}
@@ -39781,11 +39780,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.015
+  m_fontSize: 0.009
   m_fontSizeBase: 0.028
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.015
+  m_fontSizeMin: 0.009
   m_fontSizeMax: 0.03
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -52450,7 +52449,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112154135}
-  m_LocalRotation: {x: 0.07873533, y: -0.000048011458, z: 0.0000037919697, w: 0.99689555}
+  m_LocalRotation: {x: 0.07873533, y: -0.000048020032, z: 0.000003792647, w: 0.99689555}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72530,7 +72529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: m.
+  m_text: CALCOLA IL PERIMETRO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee02bba89b4996a458c92cfe4e4ff50d, type: 2}
   m_sharedMaterial: {fileID: 427824435518824475, guid: ee02bba89b4996a458c92cfe4e4ff50d, type: 2}
@@ -72557,11 +72556,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.015
+  m_fontSize: 0.009
   m_fontSizeBase: 0.028
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 0.015
+  m_fontSizeMin: 0.009
   m_fontSizeMax: 0.03
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -72570,7 +72569,7 @@ MonoBehaviour:
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
-  m_lineSpacingMax: -28.23
+  m_lineSpacingMax: -29.88
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1

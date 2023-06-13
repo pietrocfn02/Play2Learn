@@ -314,7 +314,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         interaction[2] = true;
                         newInstance = Instantiate(prefabsMission[2], new Vector3(20.3f, 1.7f, 20.46f), Quaternion.Euler(90f, 90f, 0f));
-                        Destroy(newInstance.GetComponent<CalculatorEvent>());
+                        Destroy(newInstance.GetComponent<MathMission>());
                         Destroy(newInstance.GetComponent<BoxCollider>());
                     }
                     else
@@ -844,16 +844,28 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         }
     }
 
+    public void MathMissionDone()
+    {
+        Debug.Log("Sono done");
+        RelativeMovement.SetInMission(false);
+        player.gameObject.SetActive(true);
+        SetComplete(2);
+        missionType = 0;
+        Destroy(GameObject.Find("MissionCalculator"));
+        Messenger.Broadcast("MathCamDone");
+    }
     void Awake()
     {
         Messenger.AddListener("MissionTutorialDone", MissionTutorialDone);
         Messenger.AddListener("MissionArtDone", MissionArtDone);
+        Messenger.AddListener("MathMissionDone", MathMissionDone);
     }
 
     void OnDestroy()
     {
         Messenger.RemoveListener("MissionTutorialDone", MissionTutorialDone);
         Messenger.RemoveListener("MissionArtDone", MissionArtDone);
+        Messenger.RemoveListener("MathMissionDone", MathMissionDone);
     }
 
 }

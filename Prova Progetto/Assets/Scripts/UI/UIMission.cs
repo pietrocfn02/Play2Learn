@@ -205,6 +205,12 @@ public class UIMission : MonoBehaviour
         cameras[7].gameObject.SetActive(true);
     }
 
+    private void MathCamDone()
+    {
+        cameras[7].gameObject.SetActive(false);
+        mainCamera.gameObject.SetActive(true);
+    }
+
     void Awake()
     {
         Messenger.AddListener(GameEvent.FIRST_UI_MISSION, ItalianMission);
@@ -217,6 +223,7 @@ public class UIMission : MonoBehaviour
         Messenger.AddListener(GameEvent.SNOOPY_TAG, SetSnoopy);
         Messenger.AddListener(GameEvent.SUPERMAN_TAG, SetSuperMan);
         Messenger.AddListener("UIMathMission", UIMathMission);
+        Messenger.AddListener("MathCamDone", MathCamDone);
     }
 
     void onDestroy()
@@ -231,5 +238,6 @@ public class UIMission : MonoBehaviour
         Messenger.RemoveListener(GameEvent.SNOOPY_TAG, SetSnoopy);
         Messenger.RemoveListener(GameEvent.SUPERMAN_TAG, SetSuperMan);
         Messenger.RemoveListener("UIMathMission", UIMathMission);
+        Messenger.RemoveListener("MathCamDone", MathCamDone);
     }
 }

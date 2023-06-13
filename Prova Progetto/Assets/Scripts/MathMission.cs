@@ -5,16 +5,18 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Cinemachine;
-public class CalculatorEvent : MonoBehaviour
+
+public class MathMission : MonoBehaviour
 {
-    //[SerializeField] private GameObject calculator;
+    [SerializeField] private TMP_Text perimeterText;
+    [SerializeField] private TMP_Text areaText;
     private TMP_Text valueText;
     private List<int> num = new List<int>();
     private string operation = ""; 
     private float total = 0f;
     private Camera camera;
-    public LayerMask mask;
     private GameObject calculator;
+
     void Start()
     {
         camera = Camera.main;
@@ -127,7 +129,7 @@ public class CalculatorEvent : MonoBehaviour
                 break;
             case "X":
                 total = 1;
-                for(int i=1; i<num.Count;++i)
+                for(int i=0; i<num.Count;++i)
                 {
                     total *= num[i];
                     Debug.Log(num[i]);
@@ -137,7 +139,22 @@ public class CalculatorEvent : MonoBehaviour
             default:
                 break;
         }
+        if (total == 10 && !areaText.gameObject.activeSelf)
+        {
+            perimeterText.color = Color.green; 
+            perimeterText.text = "10 m.";
+            areaText.gameObject.SetActive(true);
+        }
+        else if (total == 6 && areaText.gameObject.activeSelf)
+        {
+            areaText.color = Color.green; 
+            areaText.text = "6 m².";
+            Debug.Log("Sto per mandare il done");
+            Messenger.Broadcast("MathMissionDone");
+        }
         total = 0;
         num.Clear();
     }
+
+
 }
