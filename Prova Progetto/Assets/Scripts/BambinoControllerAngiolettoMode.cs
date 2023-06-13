@@ -571,7 +571,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true;
                                     arch[0] = true;
-                                    projectText[4].text = "1.85 m.";
+                                    projectText[4].text = "2 m.";
                                     projectText[8].text = "-----------";
                                     projectText[8].color = Color.green;
                                     
@@ -586,7 +586,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true;
                                     arch[0] = true;
-                                    projectText[4].text = "1.85 m.";
+                                    projectText[4].text = "2 m.";
                                     projectText[8].text = "-----------";
                                     projectText[8].color = Color.green;
                                 }
@@ -600,7 +600,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true;
                                     arch[1] = true;
-                                    projectText[5].text = "2.9 m.";
+                                    projectText[5].text = "3 m.";
                                     projectText[9].text = "-------------";
                                     projectText[9].color = Color.green;
                                 }
@@ -614,7 +614,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true; 
                                     arch[1] = true;
-                                    projectText[5].text = "2.9 m.";
+                                    projectText[5].text = "3 m.";
                                     projectText[9].text = "-------------";
                                     projectText[9].color = Color.green;
                                     
@@ -629,7 +629,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true;
                                     arch[2] = true;
-                                    projectText[6].text = "1.85 m.";
+                                    projectText[6].text = "2 m.";
                                     projectText[10].text = "-----------";
                                     projectText[10].color = Color.green;
                                 }
@@ -643,7 +643,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true;
                                     arch[2] = true;
-                                    projectText[6].text = "1.85 m.";
+                                    projectText[6].text = "2 m.";
                                     projectText[10].text = "-----------";
                                     projectText[10].color = Color.green;
                                 }
@@ -657,10 +657,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true; 
                                     arch[3] = true;
-                                    projectText[7].text = "2.9 m.";
+                                    projectText[7].text = "3 m.";
                                     projectText[11].text = "-------------";
                                     projectText[11].color = Color.green;
-                                    Debug.Log("Sono in 3-0");
+                                    
                                 }
                                 else if((startPositionInt == 0 && pos == 3) && (!arch[3]))
                                 {
@@ -672,10 +672,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                     ++contPaper;
                                     canInstantiate = true;
                                     arch[3] = true; 
-                                    projectText[7].text = "2.9 m.";
+                                    projectText[7].text = "3 m.";
                                     projectText[11].text = "-------------";
                                     projectText[11].color = Color.green;
-                                    Debug.Log("Sono in 0-3");
+                                    
                                 }
                             }
                             if (contPaper >= 4 && inventary[3] >= 1)
@@ -696,7 +696,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 RemoveMark();
                                 RelativeMovement.SetInMission(true);
                                 Messenger.Broadcast("UIMathMission");
-                                Instantiate(prefabsMission[2], new Vector3(18.665f,1.613f,21.048f), Quaternion.Euler(-66.7f,0f,0f));
+                                GameObject tmp = Instantiate(prefabsMission[7], new Vector3(18.537f,1.613f,20.863f), Quaternion.Euler(-66.7f,-19.982f,0f));
+                                tmp.transform.name = "MissionCalculator";
                                 player.gameObject.SetActive(false);
                             }
                         }

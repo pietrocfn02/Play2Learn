@@ -75,6 +75,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: CalculatorComplete Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5832405174089374860, guid: 9fa2364471d316740bb9dfa42cd8b3ad, type: 3}
+    - target: {fileID: 7684736289862307873, guid: 9fa2364471d316740bb9dfa42cd8b3ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0252
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892141281644932155, guid: 9fa2364471d316740bb9dfa42cd8b3ad, type: 3}
+      propertyPath: m_Name
+      value: calculatorText
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa2364471d316740bb9dfa42cd8b3ad, type: 3}
+--- !u!1 &2585061257638319962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7586136155208127831, guid: 9fa2364471d316740bb9dfa42cd8b3ad, type: 3}
+  m_PrefabInstance: {fileID: 5375227743745442317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8214301220192144792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585061257638319962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.43, y: 0.2, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
