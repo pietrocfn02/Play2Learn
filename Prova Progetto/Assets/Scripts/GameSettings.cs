@@ -108,7 +108,7 @@ public class GameSettings : MonoBehaviour
                 AudioManager.setAudio(audioValue);
             }
             //Controllo se è stato premuto "esc" sulla tastiera
-            if (Input.GetKeyDown(KeyCode.Escape)){
+            /*if (Input.GetKeyDown(KeyCode.Escape)){
                 //Assegno i valori della velocita e dell'audio sia al giocatore che alla UI
                 speedValue = (int) speedSlider.value;
                 audioValue = audioSlider.value;
@@ -122,7 +122,7 @@ public class GameSettings : MonoBehaviour
                     //Richiamo il metodo PauseGame per mettere in pausa il gioco
                     PauseGame();
                 }
-            }
+            }*/
         }else{
             //Ripeto tutte le cose sopra citate per la scena iniziale, 
             //con la differenza che in quest'ultima non deve essere premuto "esc" per entrare nel menu delle impostazioni

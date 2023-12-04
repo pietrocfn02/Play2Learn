@@ -41,6 +41,7 @@ public class RelativeMovement : MonoBehaviour
     public static void SetInMission(bool state)
     {
         inMission = state;
+        Debug.Log(state);
         if (state)
         {
             moveSpeed = 0;

@@ -108,8 +108,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
 
     void Update(){
+        // Modificare questi due per attivare il tutorial --> 
         //Tutorial();
         missionComplete[0] = true;
+        // <--
+
         if (interact && missionComplete[0])
         {
             switch (tagInteraction)
@@ -120,6 +123,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     break;
                 case GameEvent.TRIANGLE_TAG:
                     missionType = 2;
+                    Debug.Log("Matematica");
                     break;
                 default:
                     break;
@@ -138,6 +142,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 Art();
                 break;
             case 2:
+
                 Math();
                 break;
             default:
@@ -270,12 +275,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         {
             if(missionActive[i] && inMission != i)
             {
+                Debug.Log("Sono nella missione " + i);
                 return true;
             }
         }
         return false;
     }
-    public void SpawnInteraction(){
+    public void SpawnExplenation(){
         GameObject mission = GameObject.FindWithTag(tagInteraction);
         if (mission != null)
         {
@@ -337,6 +343,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             SpawnMark(GameEvent.FLAG_TAG);
             Messenger.Broadcast("MarkExplanation");
             SetActive(0);
+
         }
 
         if (interact && missionActive[0])
@@ -347,7 +354,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 if (tagInteraction == GameEvent.FLAG_TAG && !spawnedControl)
                 {   
                     RelativeMovement.SetInMission(true);
-                    SpawnInteraction(); // Riproduce la spiegazione
+                    SpawnExplenation(); // Riproduce la spiegazione
                     //Mandare un broadcast per dire che spawna la missione
                     //Quindi è finita la spiegazione nella UI
                     RemoveMark();
@@ -410,7 +417,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.E) && !missionActive[1])
                 {
                     RemoveMark();
-                    SpawnInteraction();
+                    SpawnExplenation();
                     Messenger.Broadcast("ArtMission");
                     SetActive(1);
                     interact = false;
@@ -462,15 +469,19 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     {
         if (!InMission(2))
         {   
+            Debug.Log("La missione non è attiva");
             if (interact)
             {
+                Debug.Log("Interact");
                 if (Input.GetKeyUp(KeyCode.E))
                 {
+                    Debug.Log("Premo E");
                     if (tagInteraction == GameEvent.TRIANGLE_TAG && !missionActive[2])
                     {
+                        Debug.Log("Inizio");
                         SetActive(2);
                         RemoveMark();
-                        SpawnInteraction();
+                        SpawnExplenation();
                         //Messenger.Broadcast("MathMission");
                         SpawnMark("Clipboard");
                         //RelativeMovement.SetInMission(true);
@@ -787,36 +798,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         SetOutline(objectRecived.gameObject, 0, Color.yellow);
     }
 
-
-    // La size "determina" il numero di numeri casuali (da 1 a 10) la cui somma sara il numero di monete spawnate
-    // Giusto per rendere piu proporzionale il numero di monete spawnate
-    // 
-    // Mantenere o Eliminare lo spawn dei coin ?
-    // public void spawnCoin(int size){
-    //     int[] randomArray = new int[size];
-    //     int randomSum = 0;
-    //     for (int i=0 ; i < randomArray.Length; i++) {
-    //         randomArray[i] = Random.Range(0,11);
-    //         randomSum+= randomArray[i];
-    //     }
-    //     _coins = new GameObject[randomSum];
-    //     for(int i=0; i<_coins.Length; i++)
-    //     {
-    //         if(_coins[i] == null)
-    //         {
-    //             GameObject x = Instantiate(goodCoinPrefab) as GameObject;
-    //             Vector3 bimboPosition = this.transform.position;
-    //             Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-2,bimboPosition.x+2), 1.75f, Random.Range(bimboPosition.z-2,bimboPosition.z+2));
-    //             x.transform.position = spawnPosition;
-    //             _coins[i] = x;
-    //             _coins[i].transform.localScale += new Vector3(3f,3f,1f);
-    //             float angle = Random.Range (0, 360f);
-    //             _coins[i].transform.Rotate(0, angle, 0);
-    //         }
-    //     }  
-    //     inventary[1] = 0;
-    // }
-
     public void MissionTutorialDone()
     {
         ++missionDone;
@@ -834,10 +815,13 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     
     public void MissionArtDone()
     {
-        if (InMission(1))
+        Debug.Log("Missione Arte Completa");
+        missionActive[1] = false;
+        missionComplete[1] = true;
+        //Messenger.Broadcast("MissionComplete");
+        if (!InMission(1))
         {
             Debug.Log(missionActive[1]);
-            Debug.Log("Missione Arte Completa");
             Debug.Log("Cerca in giro per la mappa gli interagibili relativi all'arte");
             SetComplete(1);
             missionType = 0;
@@ -853,6 +837,10 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         missionType = 0;
         Destroy(GameObject.Find("MissionCalculator"));
         Messenger.Broadcast("MathCamDone");
+
+        //Debug.Log("Missione matematica Completa");
+        //missionActive[1] = false;
+        //missionComplete[1] = true;
     }
     void Awake()
     {

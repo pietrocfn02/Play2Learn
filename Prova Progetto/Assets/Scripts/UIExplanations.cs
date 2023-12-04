@@ -39,6 +39,7 @@ public class UIExplanations : MonoBehaviour
         textMission.text = "USA I TASTI (W,A,S,D, [SPACE]) PER MUOVERTI E SALTARE E ARRIVA DI FRONTE IL PUNTO ESCLAMATIVO -!-";
         yield return new WaitForSeconds(2);
         BambinoControllerAngiolettoMode.talking = false;
+        RelativeMovement.SetInMission(false);
         
     }
 
@@ -61,6 +62,7 @@ public class UIExplanations : MonoBehaviour
         textMission.text = "BASTERA' SOLTANTO AVVICINARTI E PREMERE -E-";
         yield return new WaitForSeconds(5);
         BambinoControllerAngiolettoMode.talking = false;
+        RelativeMovement.SetInMission(false);
         
     }
 
@@ -74,6 +76,7 @@ public class UIExplanations : MonoBehaviour
         textMission.text = "ADESSO NON TI RIMANE CHE GIROVAGARE PER CASA E IMPARARE.";
         yield return new WaitForSeconds(2);
         BambinoControllerAngiolettoMode.talking = false;
+        RelativeMovement.SetInMission(false);
         
     }
     private IEnumerator VictoryAnimation()
@@ -109,8 +112,8 @@ public class UIExplanations : MonoBehaviour
         explanationCameras[3].gameObject.SetActive(true);
         yield return new WaitForSeconds(2);
         textMission.text = "INTERAGISCI E SCRIVI SUL CARTELLINO IL NOME CORRETTO DI TUTTE OPERE PER COMPLETARE LA MISSIONE";
+        RelativeMovement.SetInMission(false);
         
-        BambinoControllerAngiolettoMode.talking = false;
     }
     private IEnumerator Timer(int timeToWait)
     {
@@ -130,7 +133,7 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(2);
         textMission.text = "LO TROVI POGIATO SULLE PEDANE DI LEGNO.";
         BambinoControllerAngiolettoMode.talking = false;
-        
+        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator MathMissionWord2()
@@ -159,7 +162,7 @@ public class UIExplanations : MonoBehaviour
         activeMission.gameObject.SetActive(true);
         activeMissionText.text = "PRENDI I CONI.";
         BambinoControllerAngiolettoMode.talking = false;
-        
+        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator MathMissionWord4()
@@ -172,7 +175,7 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(4);
         messagesContainer.gameObject.SetActive(false);
         BambinoControllerAngiolettoMode.talking = false;
-        
+        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator MathMissionWord3()
@@ -193,7 +196,7 @@ public class UIExplanations : MonoBehaviour
         activeMission.gameObject.SetActive(true);
         activeMissionText.text = "PRENDI IL NASTRO";
         BambinoControllerAngiolettoMode.talking = true;
-        
+        RelativeMovement.SetInMission(false);
     }
     
     private IEnumerator MathMissionWord6()
@@ -212,7 +215,7 @@ public class UIExplanations : MonoBehaviour
         activeMission.gameObject.SetActive(true);
         activeMissionText.text = "PRENDI LA CALCOLATRICE";
         BambinoControllerAngiolettoMode.talking = true;
-        
+        RelativeMovement.SetInMission(false);
     }
 
     private IEnumerator MathMissionWord7()
@@ -225,7 +228,7 @@ public class UIExplanations : MonoBehaviour
         yield return new WaitForSeconds(4);
         messagesContainer.gameObject.SetActive(false);
         BambinoControllerAngiolettoMode.talking = false;
-        
+        RelativeMovement.SetInMission(false);
     }
 
     void Start()

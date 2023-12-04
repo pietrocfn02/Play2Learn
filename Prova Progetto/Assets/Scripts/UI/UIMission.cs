@@ -98,7 +98,7 @@ public class UIMission : MonoBehaviour
         }
     }
 
-    private string[] correctAnswers = {    "UOMO VITRUVIANO",
+    private string[] correctAnswers = {     "UOMO VITRUVIANO",
                                             "COLONNA CORINZIA",
                                             "COLONNA IONICA",
                                             "TOPOLINO",
@@ -165,6 +165,7 @@ public class UIMission : MonoBehaviour
         }
         if(contDone >= 7)
         {
+            Debug.Log("Missione finita");
             Messenger.Broadcast("MissionArtDone");
         }
     }

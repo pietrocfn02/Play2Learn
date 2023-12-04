@@ -151,6 +151,7 @@ public class MathMission : MonoBehaviour
             areaText.text = "6 m².";
             Debug.Log("Sto per mandare il done");
             Messenger.Broadcast("MathMissionDone");
+            Messenger.Broadcast("MissionComplete");
         }
         total = 0;
         num.Clear();
