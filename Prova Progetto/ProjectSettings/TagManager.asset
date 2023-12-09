@@ -50,6 +50,8 @@ TagManager:
   - Arrow3
   - Tape
   - Calculator
+  - Guernica
+  - Collectable
   layers:
   - Default
   - TransparentFX

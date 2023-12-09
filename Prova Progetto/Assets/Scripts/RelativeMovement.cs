@@ -21,7 +21,7 @@ public class RelativeMovement : MonoBehaviour
 
     private Animator _animator;
     private CharacterController _charController;
-    private static bool inMission = false;
+    private static bool moveState = false;
     IEnumerator WaitForFootSteps(float stepsLength) {
         _step = false;
         yield return new WaitForSeconds(stepsLength);
@@ -38,10 +38,9 @@ public class RelativeMovement : MonoBehaviour
         _footStepSoundLength = 0.50f;
     }
 
-    public static void SetInMission(bool state)
+    public static void StopMovement(bool state)
     {
-        inMission = state;
-        Debug.Log(state);
+        moveState = state;
         if (state)
         {
             moveSpeed = 0;
@@ -52,13 +51,17 @@ public class RelativeMovement : MonoBehaviour
         }
     }
 
+    public static bool GetMoveState()
+    {
+        return moveState;
+    }
     void Update() {
         
         Vector3 movement = Vector3.zero;
         
         float horInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
-        if (!inMission)
+        if (!moveState)
         {
             if (horInput != 0 || vertInput != 0) {
                  _animator.SetFloat("speed", 1f);

@@ -38,12 +38,12 @@ public class UIMission : MonoBehaviour
 
     public void ItalianMission()
     {
-        RelativeMovement.SetInMission(true);
+        RelativeMovement.StopMovement(true);
         italianMission.gameObject.SetActive(true);
     }
     public void EndItalian()
     {
-        RelativeMovement.SetInMission(false);
+        RelativeMovement.StopMovement(false);
         italianMission.gameObject.SetActive(false);
         Messenger.Broadcast("MissionComplete");
     }
@@ -58,7 +58,7 @@ public class UIMission : MonoBehaviour
         {
             mainCamera.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(true);
-            RelativeMovement.SetInMission(true);
+            RelativeMovement.StopMovement(true);
             artMission.gameObject.SetActive(true);
             isActive = true;
             questionTest.text = Questions.GetRandomQuestion(tag);
@@ -73,7 +73,7 @@ public class UIMission : MonoBehaviour
             artMission.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(false);
             mainCamera.gameObject.SetActive(true);
-            RelativeMovement.SetInMission(false);
+            RelativeMovement.StopMovement(false);
             isActive = false;
         }
     }
@@ -86,14 +86,15 @@ public class UIMission : MonoBehaviour
                                     new Vector3(27.4f,1.73f,13.28f), 
                                     new Vector3(27.4f,1.73f,12.7f), 
                                     new Vector3(27.4f,1.73f,12.25f), 
-                                    new Vector3(27.4f,1.23f,11.61f) 
+                                    new Vector3(27.4f,1.73f,11.61f) 
                                 };
             
             newArtPrefab = Instantiate(artPrefabs[prefab],positions[prefab], Quaternion.identity);
             if (prefab >= 3)
-                newArtPrefab.transform.eulerAngles = new Vector3(90f, 0f, 0f);
+                newArtPrefab.transform.eulerAngles = new Vector3(90f, -90f, 0f);
             else
                 newArtPrefab.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            newArtPrefab.name = newArtPrefab.name.Replace("(Clone)","");
             spawned = true;
         }
     }
@@ -121,14 +122,26 @@ public class UIMission : MonoBehaviour
             SpawnMiniature(i);
             missionText[i].gameObject.SetActive(true);
             panelText[i].text = artText.text.ToUpper();
+            panelText[i].transform.parent.parent.GetComponent<BoxCollider>().isTrigger = false;
+            panelText[i].transform.parent.parent.GetComponent<BoxCollider>().size = new Vector3(0.02f,-0.07f,-0.005f);
+            panelText[i].transform.parent.parent.GetComponent<BoxCollider>().center = new Vector3(0.218f,0.03f,0f);
             if (Input.GetKeyUp(KeyCode.Return))
             {
                 if (artTmp.Contains(correctAnswers[i]) && artTmp.Length-1 == correctAnswers[i].Length)
                 {
                     DeactivateArtCameras(i);
                     correctAnswers[i] = "";
-                    Destroy(newArtPrefab.GetComponent<BoxCollider>());
-                    
+                    if (i >= 3)
+                    {
+                        newArtPrefab.transform.eulerAngles = new Vector3(90f, -90f, 0f);
+                        newArtPrefab.GetComponent<BoxCollider>().isTrigger = true;  
+                        newArtPrefab.GetComponent<BoxCollider>().size = new Vector3(0.4f,0.35f,0.7f);
+                        newArtPrefab.GetComponent<BoxCollider>().center = new Vector3(0f,0.12f,0f);
+                    }
+                    else
+                        newArtPrefab.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+                    newArtPrefab.GetComponent<BoxCollider>().isTrigger = true;
+                    Destroy(newArtPrefab.GetComponent<RotateWithMouse>());
                     ++contDone;
                 }
             }
@@ -165,7 +178,6 @@ public class UIMission : MonoBehaviour
         }
         if(contDone >= 7)
         {
-            Debug.Log("Missione finita");
             Messenger.Broadcast("MissionArtDone");
         }
     }

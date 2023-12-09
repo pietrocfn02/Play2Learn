@@ -99,11 +99,15 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private Vector3 startPosition;
     private int startPositionInt;
     private GameObject tape1;
-    private bool[] arch = new bool[4]; // (0-1, 1-0), (1-2, 2-1), (2-3, 3-2), (3-0, 0-3)
+    private bool[] arch = new bool[4];
+    private GameObject _camera;
     // Methods...
-    void Start(){
-
+    void Start()
+    {
         player = GameObject.FindWithTag(GameEvent.PLAYER_TAG);
+        _camera = GameObject.Find("Camera");
+        var mathMission = _camera.GetComponent<MathMission>();
+        mathMission.enabled = false;
         newInstance = new GameObject[cornerPosition.Count];
     }
 
@@ -112,18 +116,28 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         //Tutorial();
         missionComplete[0] = true;
         // <--
-
+        
         if (interact && missionComplete[0])
         {
             switch (tagInteraction)
             {
                 case GameEvent.EASEL_TAG:
                     missionType = 1;
-                    Debug.Log("Arte");
                     break;
                 case GameEvent.TRIANGLE_TAG:
                     missionType = 2;
-                    Debug.Log("Matematica");
+                    break;
+                case GameEvent.COLLECTABLE_TAG:
+                    if (interact)
+                    {
+                        if (Input.GetKeyUp(KeyCode.E))
+                        {
+                            if (objectToDestroy != null)
+                            {
+                                BroadcastMessage("AddToCollection", objectToDestroy);
+                            }
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -142,7 +156,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 Art();
                 break;
             case 2:
-
                 Math();
                 break;
             default:
@@ -339,7 +352,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         
         if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
         {
-            RelativeMovement.SetInMission(true);
+            RelativeMovement.StopMovement(true);
             SpawnMark(GameEvent.FLAG_TAG);
             Messenger.Broadcast("MarkExplanation");
             SetActive(0);
@@ -353,7 +366,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 interact = false;
                 if (tagInteraction == GameEvent.FLAG_TAG && !spawnedControl)
                 {   
-                    RelativeMovement.SetInMission(true);
+                    RelativeMovement.StopMovement(true);
                     SpawnExplenation(); // Riproduce la spiegazione
                     //Mandare un broadcast per dire che spawna la missione
                     //Quindi è finita la spiegazione nella UI
@@ -388,7 +401,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             }
             if (missionComplete[0] && missionActive[0])
             {
-                RelativeMovement.SetInMission(true);
+                RelativeMovement.StopMovement(true);
                 Messenger.Broadcast("EndTutorial");
                 missionActive[0] = false;
                 // Attivare gli altri interagibili relativi alle missioni di italiano
@@ -464,18 +477,30 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         
     }
 
+    private void CreateTape(int corner,Vector3 startPosition, float eulerX, float eulerY, 
+                            float eulerZ, float tapeX, int archInt, int project1, int project2, string mt, string line)
+    {
+        TapeMovement.SetFinalPosition(cornerPosition[corner]);
+        TapeMovement.SetTapeMove(false);
+        GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(eulerX,eulerY,eulerZ));
+        tape2.transform.localScale = new Vector3(tapeX,0.03f,0.03f);
+        Destroy(tape1);
+        ++contPaper;
+        canInstantiate = true;
+        arch[archInt] = true;
+        projectText[project1].text = mt;
+        projectText[project2].text = line;
+        projectText[project2].color = Color.green;
+    }
 
     public void Math()
     {
         if (!InMission(2))
         {   
-            Debug.Log("La missione non è attiva");
             if (interact)
             {
-                Debug.Log("Interact");
                 if (Input.GetKeyUp(KeyCode.E))
                 {
-                    Debug.Log("Premo E");
                     if (tagInteraction == GameEvent.TRIANGLE_TAG && !missionActive[2])
                     {
                         Debug.Log("Inizio");
@@ -484,7 +509,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         SpawnExplenation();
                         //Messenger.Broadcast("MathMission");
                         SpawnMark("Clipboard");
-                        //RelativeMovement.SetInMission(true);
+                        //RelativeMovement.StopMovement(true);
                     }
                     else if (missionActive[2])
                     {
@@ -497,8 +522,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 inventary[1] = 1;
                                 DeactivateMark();
                                 SpawnMark("ConeContainer");
-                                // RelativeMovement.SetInMission(true);
-                                // Messenger.Broadcast("MathMission2");
+                                RelativeMovement.StopMovement(true);
+                                Messenger.Broadcast("MathMission2");
                                 SetOutline(GameObject.FindWithTag(GameEvent.CLIPBOARD_TAG), 0f, Color.yellow);
                             }
                         }
@@ -513,7 +538,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 newInstance[i].tag = GameEvent.ARROW_GENERIC+i;
                             }
                             inventary[2] = 4;
-                            // Messenger.Broadcast("MathMission3");
+                            Messenger.Broadcast("MathMission3");
                         }
                         else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[2] >= 1)
                         {
@@ -541,9 +566,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             }
                             if (inventary[2] <= 0)
                             {
-                                
-                                // RelativeMovement.SetInMission(true);
-                                // Messenger.Broadcast("MathMission4");
+                                RelativeMovement.StopMovement(true);
+                                Messenger.Broadcast("MathMission4");
                                 exitCond = true;
                                 SpawnMark(GameEvent.TAPE_TAG);
                             }
@@ -555,7 +579,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                             {
                                 inventary[3] = 1;
                                 Destroy(GameObject.FindWithTag(GameEvent.TAPE_TAG));
-                                // Messenger.Broadcast("MathMission5");
+                                Messenger.Broadcast("MathMission5");
                             }
                             else if (tagInteraction.Contains(GameEvent.ARROW_GENERIC) && inventary[3] >= 1 && contPaper < 4)
                             {
@@ -563,7 +587,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 int pos = int.Parse(splitted[1]);
                                 if(canInstantiate)
                                 {
-                                    // Spawn del nastro
                                     TapeMovement.SetTapeMove(true);
                                     TapeMovement.SetStartPosition(cornerPosition[pos]);
                                     startPosition = cornerPosition[pos];
@@ -574,142 +597,61 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                 
                                 if((startPositionInt == 0 && pos == 1) && (!arch[0]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,180f));
-                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true;
-                                    arch[0] = true;
-                                    projectText[4].text = "2 m.";
-                                    projectText[8].text = "-----------";
-                                    projectText[8].color = Color.green;
-                                    
+                                    CreateTape(0,startPosition,141f,0f,180f,1.85f,0,4,8,"2 m.","-----------");
                                 }
                                 else if((startPositionInt == 1 && pos == 0) && (!arch[0]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,0f,0f));
-                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true;
-                                    arch[0] = true;
-                                    projectText[4].text = "2 m.";
-                                    projectText[8].text = "-----------";
-                                    projectText[8].color = Color.green;
+                                    CreateTape(0,startPosition,141f,0f,0f,1.85f,0,4,8,"2 m.","-----------");
                                 }
                                 else if((startPositionInt == 1 && pos == 2) && (!arch[1]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,-90f,0f));
-                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true;
-                                    arch[1] = true;
-                                    projectText[5].text = "3 m.";
-                                    projectText[9].text = "-------------";
-                                    projectText[9].color = Color.green;
+                                    CreateTape(2,startPosition,219f,-90f,0f,2.9f,1,5,9,"3 m.","-------------");
                                 }
                                 else if((startPositionInt == 2 && pos == 1) && (!arch[1]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,-90f,180f));
-                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true; 
-                                    arch[1] = true;
-                                    projectText[5].text = "3 m.";
-                                    projectText[9].text = "-------------";
-                                    projectText[9].color = Color.green;
-                                    
+                                    CreateTape(2,startPosition,219f,-90f,180f,2.9f,1,5,9,"3 m.","-------------");
                                 }
                                 else if((startPositionInt == 2 && pos == 3) && (!arch[2]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,0f,0f));
-                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true;
-                                    arch[2] = true;
-                                    projectText[6].text = "2 m.";
-                                    projectText[10].text = "-----------";
-                                    projectText[10].color = Color.green;
+                                    CreateTape(0,startPosition,219f,0f,0f,1.85f,2,6,10,"2 m.","-----------");
                                 }
                                 else if((startPositionInt == 3 && pos == 2) && (!arch[2]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[0]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(219f,0f,180f));
-                                    tape2.transform.localScale = new Vector3(1.85f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true;
-                                    arch[2] = true;
-                                    projectText[6].text = "2 m.";
-                                    projectText[10].text = "-----------";
-                                    projectText[10].color = Color.green;
+                                    CreateTape(0,startPosition,219f,0f,180f,1.85f,2,6,10,"2 m.","-----------");
                                 }
                                 else if((startPositionInt == 3 && pos == 0) && (!arch[3]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,180f));
-                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true; 
-                                    arch[3] = true;
-                                    projectText[7].text = "3 m.";
-                                    projectText[11].text = "-------------";
-                                    projectText[11].color = Color.green;
-                                    
+                                    CreateTape(2,startPosition,141f,-90f,180f,2.9f,3,7,11,"3 m.","-------------");
                                 }
                                 else if((startPositionInt == 0 && pos == 3) && (!arch[3]))
                                 {
-                                    TapeMovement.SetFinalPosition(cornerPosition[2]);
-                                    TapeMovement.SetTapeMove(false);
-                                    GameObject tape2 = Instantiate(prefabsMission[5], startPosition, Quaternion.Euler(141f,-90f,0f));
-                                    tape2.transform.localScale = new Vector3(2.9f,0.03f,0.03f);
-                                    Destroy(tape1);
-                                    ++contPaper;
-                                    canInstantiate = true;
-                                    arch[3] = true; 
-                                    projectText[7].text = "3 m.";
-                                    projectText[11].text = "-------------";
-                                    projectText[11].color = Color.green;
-                                    
+                                    CreateTape(2,startPosition,141f,-90f,0f,2.9f,3,7,11,"3 m.","-------------");
                                 }
                             }
                             if (contPaper >= 4 && inventary[3] >= 1)
                             {
-                                // Messenger.Broadcast("MathMission6");
-                                // RelativeMovement.SetInMission(true);
+                                Messenger.Broadcast("MathMission6");
+                                RelativeMovement.StopMovement(true);
                                 SpawnMark(GameEvent.CALC_TAG);
                                 inventary[3] = 0;
                             }
                             else if (tagInteraction == GameEvent.CALC_TAG && inventary[4] <= 0)
                             {
                                 RaccoltoOggetto(4);
-                                // Messenger.Broadcast("MathMission7");
-                                // SpawnMark(GameEvent.CLIPBOARD_TAG);
+                                Messenger.Broadcast("MathMission7");
+                                SpawnMark(GameEvent.CLIPBOARD_TAG);
                             }
                             else if (tagInteraction == GameEvent.CLIPBOARD_TAG && inventary[4] >= 1)
                             {
-                                RemoveMark();
-                                RelativeMovement.SetInMission(true);
+                                RemoveMark();                        
+                                var mathMission = _camera.GetComponent<MathMission>();
+                                mathMission.enabled = true;
+                                RelativeMovement.StopMovement(true);
                                 Messenger.Broadcast("UIMathMission");
                                 GameObject tmp = Instantiate(prefabsMission[7], new Vector3(18.537f,1.613f,20.863f), Quaternion.Euler(-66.7f,-19.982f,0f));
                                 tmp.transform.name = "MissionCalculator";
                                 player.gameObject.SetActive(false);
+
                             }
                         }
                     }
@@ -830,17 +772,16 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     public void MathMissionDone()
     {
-        Debug.Log("Sono done");
-        RelativeMovement.SetInMission(false);
+        RelativeMovement.StopMovement(false);
         player.gameObject.SetActive(true);
         SetComplete(2);
         missionType = 0;
         Destroy(GameObject.Find("MissionCalculator"));
         Messenger.Broadcast("MathCamDone");
-
-        //Debug.Log("Missione matematica Completa");
-        //missionActive[1] = false;
-        //missionComplete[1] = true;
+        missionActive[1] = false;
+        missionComplete[1] = true;
+        var mathMission = _camera.GetComponent<MathMission>();
+        mathMission.enabled = false;
     }
     void Awake()
     {

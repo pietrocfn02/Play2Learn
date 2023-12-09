@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f1d9c858b22b46148986f9634c2f0ebe, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Collectable
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f1d9c858b22b46148986f9634c2f0ebe, type: 3}
       propertyPath: m_RootOrder

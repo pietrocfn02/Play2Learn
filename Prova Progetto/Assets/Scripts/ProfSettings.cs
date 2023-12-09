@@ -31,12 +31,12 @@ public class ProfSettings : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.E) && !editing)
             {
                 editing = true;
-                RelativeMovement.SetInMission(true);
+                RelativeMovement.StopMovement(true);
             }
             else if (Input.GetKeyUp(KeyCode.E) && editing)
             {
                 editing = false;
-                RelativeMovement.SetInMission(false);
+                RelativeMovement.StopMovement(false);
             }
 
             if (tagInteraction == GameEvent.EASEL_TAG && editing)

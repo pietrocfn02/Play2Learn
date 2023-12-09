@@ -68,6 +68,7 @@ public static class GameEvent {
 	public const string TAPE_TAG = "Tape";
 	public const string CALC_TAG = "Calculator";
 
+	public const string COLLECTABLE_TAG = "Collectable";
 	// Calculator name
 	public const string ZERRO_NAME = "0";
 	public const string ONE_NAME = "1";
