@@ -33,7 +33,7 @@ public class UIMission : MonoBehaviour
 
     void Update()
     {
-            ArtMission();
+        ArtMission();
     }
 
     public void ItalianMission()
@@ -117,9 +117,9 @@ public class UIMission : MonoBehaviour
 
     private void DoMission(string tag, int i)
     {
-        RelativeMovement.StopMovement(true);
         if (correctAnswers[i] != "")
         {
+            RelativeMovement.StopMovement(true);
             ActiveArtCameras(tag, i);
             SpawnMiniature(i);
             missionText[i].gameObject.SetActive(true);
@@ -141,12 +141,12 @@ public class UIMission : MonoBehaviour
                         newArtPrefab.GetComponent<BoxCollider>().center = new Vector3(0f,0.12f,0f);
                     }
                     else
-                        newArtPrefab.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+                        newArtPrefab.transform.eulerAngles = new Vector3(0f, 90f, 0f);
                     newArtPrefab.GetComponent<BoxCollider>().isTrigger = true;
                     Destroy(newArtPrefab.GetComponent<RotateWithMouse>());
                     ++contDone;
+                    RelativeMovement.StopMovement(false);
                 }
-                RelativeMovement.StopMovement(false);
             }
         }
     }

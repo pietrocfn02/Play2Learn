@@ -317,8 +317,9 @@ public class UIExplanations : MonoBehaviour
 
     public void MissionComplete()
     {
-        messagesContainer.gameObject.SetActive(false);
-        StartCoroutine(VictoryAnimation());
+        // Migliorare... lagga l'immagine
+        // messagesContainer.gameObject.SetActive(false);
+        // StartCoroutine(VictoryAnimation());
     }
 
     void Awake()
