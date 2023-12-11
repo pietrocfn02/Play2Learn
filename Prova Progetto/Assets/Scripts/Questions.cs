@@ -6,41 +6,41 @@ using TMPro;
 
 public class Questions
 {
-    private static string[] vitruvianQuestion = {   "Qual'è il disegno che rappresenta l'unione simbolica tra arte e scienza?",
+    private static string[] sign1Question = {   "Qual'ï¿½ il disegno che rappresenta l'unione simbolica tra arte e scienza?",
                                                     "In questo disegno sono preseti due strutture geometriche: -il quadrato che rappresenta la Terra; - il cerchio che rappresenta l'Universo. Mi sapresti dire i lsuo nome?",
-                                                    "Questo è uno dei disegni più famosi di Leonardo da Vinci. Esso indica una sintesi sugli studi del corpo umano. Ricordi come si chiama?",
+                                                    "Questo ï¿½ uno dei disegni piï¿½ famosi di Leonardo da Vinci. Esso indica una sintesi sugli studi del corpo umano. Ricordi come si chiama?",
                                                     "Quale famoso disegno rappresenta un uomo con due braccia e due gambe racchiuso in un quadrato e un cerchio?"
                                                 };
 
-    private static string[] corinthianQuestion = {  "Quale tipo di colonna è caratterizzata da un capitello con decorazioni a volute e foglie di acanto?",
-                                                    "La base attica semplificata di questa colonna è composta da plinto, toro, scozia, toro. Mi sapresti dire il suo nome?",
+    private static string[] sign2Question = {  "Quale tipo di colonna ï¿½ caratterizzata da un capitello con decorazioni a volute e foglie di acanto?",
+                                                    "La base attica semplificata di questa colonna ï¿½ composta da plinto, toro, scozia, toro. Mi sapresti dire il suo nome?",
                                                     "Quale tipo di colonna, usata alla fine del V secolo a.C., ha un capitello composto da un giro semplice o doppio di foglie d'acanto?",
                                                     "Mi sapresti dire il nome della colonna il cui fusto (difronte a te) che presenta venti scanalature a spigolo vivo?"
                                                 };
-    private static string[] ionicQuestion = {       "Mi sapresti indicare il dipo di colonna che non poggia sullo stilobate, ma direttamente su una base formata da due elementi ovvero il toro, di forma convessa e la scozia, di forma concava?",
-                                                    "L'ordine di cui fa parte questo tipo di colonna rielabora motivi orientali. Qual'è il nome della colonna appartenete al secondo dei tre ordini classici?",
-                                                    "Qual'è il nome della colonna che presenta come fusto un tipo più snello e con 24 scalanature separate da distelli?",
+    private static string[] sign3Question = {       "Mi sapresti indicare il dipo di colonna che non poggia sullo stilobate, ma direttamente su una base formata da due elementi ovvero il toro, di forma convessa e la scozia, di forma concava?",
+                                                    "L'ordine di cui fa parte questo tipo di colonna rielabora motivi orientali. Qual'ï¿½ il nome della colonna appartenete al secondo dei tre ordini classici?",
+                                                    "Qual'ï¿½ il nome della colonna che presenta come fusto un tipo piï¿½ snello e con 24 scalanature separate da distelli?",
                                                     "Questa colonna ha il problema di mostrarse le due facce principali con delle volute, mentre sui lati ha un pulvino. Puoi scrivere il nome di questo tipo di colonna? "
                                             };
-    private static string[] topolinoQuestion = {    "Il fumetto che vedi difronte a te è conosciuto in molti paesi, non che negli StatiUniti, il suo paese di origine, come -Mickey Mouse-. Con che nome è conosciuto in Italia?",
-                                                    "Come si chiama il fumetto il cui personaggio ha delle orecchie definite come << una delle più grandi icone del 20simo e del 21esimo secolo >>?",
-                                                    "Qual'è il fumetto il cui personaggio venno creato da Walt Disney e Ub Iwerks nel gennaio del 1928?",
+    private static string[] sign4Question = {    "Il fumetto che vedi difronte a te ï¿½ conosciuto in molti paesi, non che negli StatiUniti, il suo paese di origine, come -Mickey Mouse-. Con che nome ï¿½ conosciuto in Italia?",
+                                                    "Come si chiama il fumetto il cui personaggio ha delle orecchie definite come << una delle piï¿½ grandi icone del 20simo e del 21esimo secolo >>?",
+                                                    "Qual'ï¿½ il fumetto il cui personaggio venno creato da Walt Disney e Ub Iwerks nel gennaio del 1928?",
                                                     "Come si chiama il fumetto, difronte a te, che ha come protagonnista un topo che vanta di aver posato con quasi tutti i presidenti degli Stati Uniti?"
                                                 };
-    private static string[] one_pieceQuestion = {   "Qual'è il nome del fumetto disegnato da Eiichiro Oda, iniziato nel luglio del 1997 e che continua da oltre 25 anni?",
-                                                    "Il fumetto che hai davanti, con oltre 516 milioni di copie, è il fumetto, del suo genere, ad aver venduto di più al mondo. Sai dirmi come si chiama?",
-                                                    "Questo fumetto è stato finalista di molti concorsi, tra cui il premio Osamu Tezuka che va dal 2000 al 2002 (tre anni consecutivi). Sai scrivermi il suo nome?",
-                                                    "Come si chiama il fumetto la cui prima sigla di apertura della serie animata, We Are!, è stata premiata come miglior sigla nel 2000?"
+    private static string[] sign5Question = {   "Qual'ï¿½ il nome del fumetto disegnato da Eiichiro Oda, iniziato nel luglio del 1997 e che continua da oltre 25 anni?",
+                                                    "Il fumetto che hai davanti, con oltre 516 milioni di copie, ï¿½ il fumetto, del suo genere, ad aver venduto di piï¿½ al mondo. Sai dirmi come si chiama?",
+                                                    "Questo fumetto ï¿½ stato finalista di molti concorsi, tra cui il premio Osamu Tezuka che va dal 2000 al 2002 (tre anni consecutivi). Sai scrivermi il suo nome?",
+                                                    "Come si chiama il fumetto la cui prima sigla di apertura della serie animata, We Are!, ï¿½ stata premiata come miglior sigla nel 2000?"
                                                 };
-    private static string[] snoopyQuestion = {      "Curiosità_Snoopy_1",
-                                                    "Curiosità_Snoopy_2",
-                                                    "Curiosità_Snoopy_3",
-                                                    "Curiosità_Snoopy_4"
+    private static string[] sign6Question = {      "Curiositï¿½_Snoopy_1",
+                                                    "Curiositï¿½_Snoopy_2",
+                                                    "Curiositï¿½_Snoopy_3",
+                                                    "Curiositï¿½_Snoopy_4"
                                                 };
-    private static string[] super_manQuestion = {   "Curiosità_Superman_1",
-                                                    "Curiosità_Superman_2",
-                                                    "Curiosità_Superman_3",
-                                                    "Curiosità_Superman_4"
+    private static string[] sign7Question = {   "Curiositï¿½_Superman_1",
+                                                    "Curiositï¿½_Superman_2",
+                                                    "Curiositï¿½_Superman_3",
+                                                    "Curiositï¿½_Superman_4"
                                                 };
 
     // Inserendo il tag, restituisce la domanda relativa a quest'ultimo
@@ -50,33 +50,33 @@ public class Questions
         int random = 0;
         switch (questionType) 
         {
-            case GameEvent.VITRUVIAN_TAG:
+            case GameEvent.SIGN1_TAG:
                 random = Random.Range(0, 4);
-                returnQuestion = vitruvianQuestion[random];
+                returnQuestion = sign1Question[random];
                 break;
-            case GameEvent.COLUMN_CORINTHIAN_TAG:
+            case GameEvent.SIGN2_TAG:
                 random = Random.Range(0, 4);
-                returnQuestion = corinthianQuestion[random];
+                returnQuestion = sign2Question[random];
                 break;
-            case GameEvent.COLUMN_IONIC_TAG:
+            case GameEvent.SIGN3_TAG:
                 random = Random.Range(0, 4);
-                returnQuestion = ionicQuestion[random];
+                returnQuestion = sign3Question[random];
                 break;
-            case GameEvent.TOPOLINO_TAG:
+            case GameEvent.SIGN4_TAG:
                 random = Random.Range(0, 4);
-                returnQuestion = topolinoQuestion[random];
+                returnQuestion = sign4Question[random];
                 break;
-            case GameEvent.ONEPIECE_TAG:
+            case GameEvent.SIGN5_TAG:
                 random = Random.Range(0, 4);
-                returnQuestion = one_pieceQuestion[random];
+                returnQuestion = sign5Question[random];
                 break;
-            case GameEvent.SNOOPY_TAG:
+            case GameEvent.SIGN6_TAG:
                 random = Random.Range(0, 4);
-                returnQuestion = snoopyQuestion[random];
+                returnQuestion = sign6Question[random];
                 break;
-            case GameEvent.SUPERMAN_TAG:
+            case GameEvent.SIGN7_TAG:
                 random = Random.Range(0, 4);
-                returnQuestion = super_manQuestion[random];
+                returnQuestion = sign7Question[random];
                 break;
             
             default: 

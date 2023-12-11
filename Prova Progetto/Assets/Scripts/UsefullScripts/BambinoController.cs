@@ -194,26 +194,6 @@ public class BambinoController : MonoBehaviour {
     // La size "determina" il numero di numeri casuali (da 1 a 10) la cui somma sara il numero di monete spawnate
     // Giusto per rendere piu proporzionale il numero di monete spawnate
     public void spawnCoin(int size){
-        int[] randomArray = new int[size];
-        int randomSum = 0;
-        for (int i=0 ; i < randomArray.Length; i++) {
-            randomArray[i] = Random.Range(0,11);
-            randomSum+= randomArray[i];
-        }
-        _coins = new GameObject[randomSum];
-        for(int i=0; i<_coins.Length; i++)
-        {
-            if(_coins[i] == null)
-            {
-                GameObject x = Instantiate(evilCoinPrefab) as GameObject;
-                Vector3 bimboPosition = this.transform.position;
-                Vector3 spawnPosition = new Vector3(Random.Range(bimboPosition.x-1,bimboPosition.x+1), 1.7f, Random.Range(bimboPosition.z-1,bimboPosition.z+1));
-                x.transform.position = spawnPosition;
-                _coins[i] = x;
-                _coins[i].transform.localScale += new Vector3(3f,3f,1f);
-                float angle = Random.Range (0, 360f);
-                _coins[i].transform.Rotate(0, angle, 0);
-            }
-        }  
+         
     }
 }

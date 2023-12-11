@@ -38,12 +38,12 @@ public class UIMission : MonoBehaviour
 
     public void ItalianMission()
     {
-        RelativeMovement.StopMovement(true);
+        // RelativeMovement.StopMovement(true);
         italianMission.gameObject.SetActive(true);
     }
     public void EndItalian()
     {
-        RelativeMovement.StopMovement(false);
+        // RelativeMovement.StopMovement(false);
         italianMission.gameObject.SetActive(false);
         Messenger.Broadcast("MissionComplete");
     }
@@ -58,7 +58,7 @@ public class UIMission : MonoBehaviour
         {
             mainCamera.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(true);
-            RelativeMovement.StopMovement(true);
+            // RelativeMovement.StopMovement(true);
             artMission.gameObject.SetActive(true);
             isActive = true;
             questionTest.text = Questions.GetRandomQuestion(tag);
@@ -73,7 +73,7 @@ public class UIMission : MonoBehaviour
             artMission.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(false);
             mainCamera.gameObject.SetActive(true);
-            RelativeMovement.StopMovement(false);
+            // RelativeMovement.StopMovement(false);
             isActive = false;
         }
     }
@@ -99,6 +99,7 @@ public class UIMission : MonoBehaviour
         }
     }
 
+    // Prendere le risposte corrette dal database --> 
     private string[] correctAnswers = {     "UOMO VITRUVIANO",
                                             "COLONNA CORINZIA",
                                             "COLONNA IONICA",
@@ -108,7 +109,7 @@ public class UIMission : MonoBehaviour
                                             "SUPER MAN"
                                         };
 
-    
+    // <--
     public void SetMission()
     {
         artTmp = artText.text.ToUpper();
@@ -116,6 +117,7 @@ public class UIMission : MonoBehaviour
 
     private void DoMission(string tag, int i)
     {
+        RelativeMovement.StopMovement(true);
         if (correctAnswers[i] != "")
         {
             ActiveArtCameras(tag, i);
@@ -144,34 +146,34 @@ public class UIMission : MonoBehaviour
                     Destroy(newArtPrefab.GetComponent<RotateWithMouse>());
                     ++contDone;
                 }
+                RelativeMovement.StopMovement(false);
             }
         }
     }
     public void ArtMission()
     {
-
         switch(tag)
         {
-            case GameEvent.VITRUVIAN_TAG:
-                DoMission(GameEvent.VITRUVIAN_TAG, 0);
+            case GameEvent.SIGN1_TAG:
+                DoMission(GameEvent.SIGN1_TAG, 0);
                 break;
-            case GameEvent.COLUMN_CORINTHIAN_TAG:
-                DoMission(GameEvent.COLUMN_CORINTHIAN_TAG, 1);
+            case GameEvent.SIGN2_TAG:
+                DoMission(GameEvent.SIGN2_TAG, 1);
                 break;
-            case GameEvent.COLUMN_IONIC_TAG:
-                DoMission(GameEvent.COLUMN_IONIC_TAG, 2);
+            case GameEvent.SIGN3_TAG:
+                DoMission(GameEvent.SIGN3_TAG, 2);
                 break;
-            case GameEvent.TOPOLINO_TAG:
-                DoMission(GameEvent.TOPOLINO_TAG, 3);
+            case GameEvent.SIGN4_TAG:
+                DoMission(GameEvent.SIGN4_TAG, 3);
                 break;
-            case GameEvent.ONEPIECE_TAG:
-                DoMission(GameEvent.ONEPIECE_TAG, 4);
+            case GameEvent.SIGN5_TAG:
+                DoMission(GameEvent.SIGN5_TAG, 4);
                 break;
-            case GameEvent.SNOOPY_TAG:
-                DoMission(GameEvent.SNOOPY_TAG, 5);
+            case GameEvent.SIGN6_TAG:
+                DoMission(GameEvent.SIGN6_TAG, 5);
                 break;
-            case GameEvent.SUPERMAN_TAG:
-                DoMission(GameEvent.SUPERMAN_TAG, 6);
+            case GameEvent.SIGN7_TAG:
+                DoMission(GameEvent.SIGN7_TAG, 6);
                 break;
             default:
                 break;    
@@ -183,33 +185,33 @@ public class UIMission : MonoBehaviour
     }
   
 
-    private void SetVitruvian()
+    private void SetSign1()
     {
-        tag = GameEvent.VITRUVIAN_TAG;
+        tag = GameEvent.SIGN1_TAG;
     }
-    private void SetCorinthian()
+    private void SetSign2()
     {
-        tag = GameEvent.COLUMN_CORINTHIAN_TAG;
+        tag = GameEvent.SIGN2_TAG;
     }
-    private void SetIonic()
+    private void SetSign3()
     {
-        tag = GameEvent.COLUMN_IONIC_TAG;
+        tag = GameEvent.SIGN3_TAG;
     }
-    private void SetTopolino()
+    private void SetSign4()
     {
-        tag = GameEvent.TOPOLINO_TAG;
+        tag = GameEvent.SIGN4_TAG;
     }
-    private void SetOnePiece()
+    private void SetSign5()
     {
-        tag = GameEvent.ONEPIECE_TAG;
+        tag = GameEvent.SIGN5_TAG;
     }
-    private void SetSnoopy()
+    private void SetSign6()
     {
-        tag = GameEvent.SNOOPY_TAG;
+        tag = GameEvent.SIGN6_TAG;
     }
-    private void SetSuperMan()
+    private void SetSign7()
     {
-        tag = GameEvent.SUPERMAN_TAG;
+        tag = GameEvent.SIGN7_TAG;
     }
 
     private void UIMathMission()
@@ -228,13 +230,13 @@ public class UIMission : MonoBehaviour
     {
         Messenger.AddListener(GameEvent.FIRST_UI_MISSION, ItalianMission);
         Messenger.AddListener("EndItalian", EndItalian);
-        Messenger.AddListener(GameEvent.VITRUVIAN_TAG, SetVitruvian);
-        Messenger.AddListener(GameEvent.COLUMN_CORINTHIAN_TAG, SetCorinthian);
-        Messenger.AddListener(GameEvent.COLUMN_IONIC_TAG, SetIonic);
-        Messenger.AddListener(GameEvent.TOPOLINO_TAG, SetTopolino);
-        Messenger.AddListener(GameEvent.ONEPIECE_TAG, SetOnePiece);
-        Messenger.AddListener(GameEvent.SNOOPY_TAG, SetSnoopy);
-        Messenger.AddListener(GameEvent.SUPERMAN_TAG, SetSuperMan);
+        Messenger.AddListener(GameEvent.SIGN1_TAG, SetSign1);
+        Messenger.AddListener(GameEvent.SIGN2_TAG, SetSign2);
+        Messenger.AddListener(GameEvent.SIGN3_TAG, SetSign3);
+        Messenger.AddListener(GameEvent.SIGN4_TAG, SetSign4);
+        Messenger.AddListener(GameEvent.SIGN5_TAG, SetSign5);
+        Messenger.AddListener(GameEvent.SIGN6_TAG, SetSign6);
+        Messenger.AddListener(GameEvent.SIGN7_TAG, SetSign7);
         Messenger.AddListener("UIMathMission", UIMathMission);
         Messenger.AddListener("MathCamDone", MathCamDone);
     }
@@ -243,13 +245,13 @@ public class UIMission : MonoBehaviour
     {
         Messenger.RemoveListener(GameEvent.FIRST_UI_MISSION, ItalianMission);
         Messenger.RemoveListener("EndItalian", EndItalian);
-        Messenger.RemoveListener(GameEvent.VITRUVIAN_TAG, SetVitruvian);
-        Messenger.RemoveListener(GameEvent.COLUMN_CORINTHIAN_TAG, SetCorinthian);
-        Messenger.RemoveListener(GameEvent.COLUMN_IONIC_TAG, SetIonic);
-        Messenger.RemoveListener(GameEvent.TOPOLINO_TAG, SetTopolino);
-        Messenger.RemoveListener(GameEvent.ONEPIECE_TAG, SetOnePiece);
-        Messenger.RemoveListener(GameEvent.SNOOPY_TAG, SetSnoopy);
-        Messenger.RemoveListener(GameEvent.SUPERMAN_TAG, SetSuperMan);
+        Messenger.RemoveListener(GameEvent.SIGN1_TAG, SetSign1);
+        Messenger.RemoveListener(GameEvent.SIGN2_TAG, SetSign2);
+        Messenger.RemoveListener(GameEvent.SIGN3_TAG, SetSign3);
+        Messenger.RemoveListener(GameEvent.SIGN4_TAG, SetSign4);
+        Messenger.RemoveListener(GameEvent.SIGN5_TAG, SetSign5);
+        Messenger.RemoveListener(GameEvent.SIGN6_TAG, SetSign6);
+        Messenger.RemoveListener(GameEvent.SIGN7_TAG, SetSign7);
         Messenger.RemoveListener("UIMathMission", UIMathMission);
         Messenger.RemoveListener("MathCamDone", MathCamDone);
     }

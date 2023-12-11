@@ -52,6 +52,21 @@ TagManager:
   - Calculator
   - Guernica
   - Collectable
+  - labelE
+  - Camino
+  - Pastelli
+  - Fantasmino
+  - Books
+  - EvilCoin
+  - Brucia
+  - Frigo
+  - Sign1
+  - Sign2
+  - Sign3
+  - Sign4
+  - Sign5
+  - Sign6
+  - Sign7
   layers:
   - Default
   - TransparentFX

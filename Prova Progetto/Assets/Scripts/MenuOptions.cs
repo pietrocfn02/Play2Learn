@@ -13,6 +13,7 @@ public class MenuOptions : MonoBehaviour
     [SerializeField] private TMP_Text[] settingText;
     [SerializeField] private GameObject[] closedPanel;
     private string currentSetting = "Collezionabili";
+    // Questi vanno presi dal database -->
     private Dictionary<string, string> collection = new Dictionary<string, string>()
     {
         {"Guernica", "Art"},
@@ -24,6 +25,7 @@ public class MenuOptions : MonoBehaviour
         {"IonColumn", "Art"},
         {"CorinthianColumn", "Art"},
     };
+    // <--
     private List<string> addedCollectables = new List<string>();
 
     private Animator _animator;

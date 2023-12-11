@@ -44,6 +44,7 @@ public static class GameEvent {
 	public const string EASEL_TAG = "Easel";
 	public const string TRIANGLE_TAG = "Triangle";
 	public const string TUTORIAL_TAG = "Tutorial";
+	// Elimina --> 
 	public const string VITRUVIAN_TAG = "Vitruvian";
 	public const string COLUMN_CORINTHIAN_TAG = "ColumnCorinthian";
 	public const string COLUMN_IONIC_TAG = "ColumnIonic";
@@ -51,6 +52,16 @@ public static class GameEvent {
 	public const string ONEPIECE_TAG = "Onepiece";
 	public const string SNOOPY_TAG = "Snoopy";
 	public const string SUPERMAN_TAG = "Superman";
+	// -->
+	// Aggiunta -->
+	public const string SIGN1_TAG = "Sign1";
+	public const string SIGN2_TAG = "Sign2";
+	public const string SIGN3_TAG = "Sign3";
+	public const string SIGN4_TAG = "Sign4";
+	public const string SIGN5_TAG = "Sign5";
+	public const string SIGN6_TAG = "Sign6";
+	public const string SIGN7_TAG = "Sign7";
+	// <--
 	public const string CLIPBOARD_TAG = "Clipboard";
 	public const string VITRUVIAN_TEXT_TAG = "VitruvianText";
 	public const string COLUMN_CORINTHIAN_TEXT_TAG = "CorinthianText";

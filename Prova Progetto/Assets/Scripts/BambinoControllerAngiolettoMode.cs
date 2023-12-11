@@ -416,14 +416,14 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     {
         if (!InMission(1))
         {
-            string[] signTag = {GameEvent.VITRUVIAN_TAG, 
-                                    GameEvent.COLUMN_CORINTHIAN_TAG,
-                                    GameEvent.COLUMN_IONIC_TAG,
-                                    GameEvent.TOPOLINO_TAG,
-                                    GameEvent.ONEPIECE_TAG,
-                                    GameEvent.SNOOPY_TAG,
-                                    GameEvent.SUPERMAN_TAG
-                                    };
+            string[] signTag = {    GameEvent.SIGN1_TAG, 
+                                    GameEvent.SIGN2_TAG,
+                                    GameEvent.SIGN3_TAG,
+                                    GameEvent.SIGN4_TAG,
+                                    GameEvent.SIGN5_TAG,
+                                    GameEvent.SIGN6_TAG,
+                                    GameEvent.SIGN7_TAG
+                                };
 
             if (interact)
             {
@@ -442,26 +442,26 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.E) && missionActive[1]){
                     switch(tagInteraction)
                     {
-                        case GameEvent.VITRUVIAN_TAG:
-                            Messenger.Broadcast(GameEvent.VITRUVIAN_TAG);
+                        case GameEvent.SIGN1_TAG:
+                            Messenger.Broadcast(GameEvent.SIGN1_TAG);
                             break;
-                        case GameEvent.COLUMN_CORINTHIAN_TAG:
-                            Messenger.Broadcast(GameEvent.COLUMN_CORINTHIAN_TAG);
+                        case GameEvent.SIGN2_TAG:
+                            Messenger.Broadcast(GameEvent.SIGN2_TAG);
                             break;
-                        case GameEvent.COLUMN_IONIC_TAG:
-                            Messenger.Broadcast(GameEvent.COLUMN_IONIC_TAG);
+                        case GameEvent.SIGN3_TAG:
+                            Messenger.Broadcast(GameEvent.SIGN3_TAG);
                             break;
-                        case GameEvent.TOPOLINO_TAG:
-                            Messenger.Broadcast(GameEvent.TOPOLINO_TAG);
+                        case GameEvent.SIGN4_TAG:
+                            Messenger.Broadcast(GameEvent.SIGN4_TAG);
                             break;
-                        case GameEvent.ONEPIECE_TAG:
-                            Messenger.Broadcast(GameEvent.ONEPIECE_TAG);
+                        case GameEvent.SIGN5_TAG:
+                            Messenger.Broadcast(GameEvent.SIGN5_TAG);
                             break;
-                        case GameEvent.SNOOPY_TAG:
-                            Messenger.Broadcast(GameEvent.SNOOPY_TAG);
+                        case GameEvent.SIGN6_TAG:
+                            Messenger.Broadcast(GameEvent.SIGN6_TAG);
                             break;
-                        case GameEvent.SUPERMAN_TAG:
-                            Messenger.Broadcast(GameEvent.SUPERMAN_TAG);
+                        case GameEvent.SIGN7_TAG:
+                            Messenger.Broadcast(GameEvent.SIGN7_TAG);
                             break;
                         
                         default:
@@ -507,9 +507,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                         SetActive(2);
                         RemoveMark();
                         SpawnExplenation();
-                        //Messenger.Broadcast("MathMission");
+                        Messenger.Broadcast("MathMission");
                         SpawnMark("Clipboard");
-                        //RelativeMovement.StopMovement(true);
+                        RelativeMovement.StopMovement(true);
                     }
                     else if (missionActive[2])
                     {
@@ -750,7 +750,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             Destroy(mission.GetComponent<Outline>());
             Messenger.Broadcast("EndItalian");
             SpawnMark(GameEvent.EASEL_TAG);
-            //SpawnMark(GameEvent.EASEL_TAG);
             Debug.Log("Spawn");
         }
     }
@@ -760,13 +759,14 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         Debug.Log("Missione Arte Completa");
         missionActive[1] = false;
         missionComplete[1] = true;
-        //Messenger.Broadcast("MissionComplete");
+        Messenger.Broadcast("MissionComplete");
         if (!InMission(1))
         {
             Debug.Log(missionActive[1]);
             Debug.Log("Cerca in giro per la mappa gli interagibili relativi all'arte");
             SetComplete(1);
             missionType = 0;
+            // Spawna tutti i colezionabili, setta a true il box collider 
         }
     }
 
