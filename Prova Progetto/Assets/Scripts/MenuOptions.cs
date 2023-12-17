@@ -13,6 +13,7 @@ public class MenuOptions : MonoBehaviour
     [SerializeField] private TMP_Text[] settingText;
     [SerializeField] private GameObject[] closedPanel;
     private string currentSetting = "Collezionabili";
+    // private ServerComunication db;
     // Questi vanno presi dal database -->
     private Dictionary<string, string> collection = new Dictionary<string, string>()
     {
@@ -27,7 +28,9 @@ public class MenuOptions : MonoBehaviour
     };
     // <--
     private List<string> addedCollectables = new List<string>();
-
+    // Eliminare -->
+    private List<string> sign1Question = new List<string>();
+    // <--
     private Animator _animator;
     // True se il menu è aperto, false altrimenti 
     private bool _switch = false;
@@ -36,7 +39,9 @@ public class MenuOptions : MonoBehaviour
     private string currentMenu = "Collection"; 
     void Start()
     {
+        // db = new ServerComunication();
         _animator = menu.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -73,6 +78,7 @@ public class MenuOptions : MonoBehaviour
     }
     private void OpenExplanation(string name)
     {
+        // Prende dal db
         explanationText.text = name;
         // Settare anche l'immagine
     }
@@ -87,6 +93,9 @@ public class MenuOptions : MonoBehaviour
             else if(collection[_object.name] == "Art")
             {
                 InstantiateButton(_object.name, 1);
+                Collectable collect = new Collectable(_object.name,_object.name,"Art","GuernicaAsset","Guernica Explanation","Guernica Image", "");
+                ServerComunication.GetInstance().WriteData(collect); // Questo va spostato nella scena del professore
+                
             }
             else 
             {

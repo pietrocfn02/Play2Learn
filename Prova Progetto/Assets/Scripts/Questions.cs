@@ -6,7 +6,7 @@ using TMPro;
 
 public class Questions
 {
-    private static string[] sign1Question = {   "Qual'� il disegno che rappresenta l'unione simbolica tra arte e scienza?",
+    private static string[] sign1Question = {       "Qual'� il disegno che rappresenta l'unione simbolica tra arte e scienza?",
                                                     "In questo disegno sono preseti due strutture geometriche: -il quadrato che rappresenta la Terra; - il cerchio che rappresenta l'Universo. Mi sapresti dire i lsuo nome?",
                                                     "Questo � uno dei disegni pi� famosi di Leonardo da Vinci. Esso indica una sintesi sugli studi del corpo umano. Ricordi come si chiama?",
                                                     "Quale famoso disegno rappresenta un uomo con due braccia e due gambe racchiuso in un quadrato e un cerchio?"

@@ -1,19 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Firebase.Database;
+using Firebase;
+using Firebase.Database;
 public class ServerComunication : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
-    void Start()
-    {
-        
-    }
+    private static DatabaseReference dbReference;
+    private static ServerComunication _instance;
+    // string id = SystemInfo.deviceUniqueIdentifier; 
 
-    // Update is called once per frame
-    void Update()
+    public static ServerComunication GetInstance()
     {
-        
+        if (_instance == null)
+        {
+            GameObject databaseManager = new GameObject("DatabaseManager");
+            dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+            _instance = databaseManager.AddComponent<ServerComunication>();
+            DontDestroyOnLoad(databaseManager);
+        }
+        return _instance;
+    }
+    
+    async void DeleteEntity(DatabaseReference entityRef) {
+        await entityRef.SetRawJsonValueAsync(null);
+    }
+    public void WriteData(Collectable collectable)
+    {
+        try
+        {
+            string json = JsonUtility.ToJson(collectable);
+            dbReference.Child(collectable.GetName()).SetRawJsonValueAsync(json);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Distrutto tutto: " + e.Message);
+        }
     }
 }
