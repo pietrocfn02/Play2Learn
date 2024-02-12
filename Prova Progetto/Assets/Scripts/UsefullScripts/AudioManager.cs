@@ -32,38 +32,6 @@ public class AudioManager : MonoBehaviour
         tmp = GameObject.FindGameObjectsWithTag(GameEvent.TV_CUCINA_TAG);
         tmp[0].GetComponent<AudioSource>().volume = audioLevel;
     }
-
-
-    //Tutti i metodi utili per riprodurre i suoni presentano la medesima logica
-
-    // Cambia il materiale delle televisioni per simulare lo spegnimento della TV
-   public void turnOffTV(string tvSource, AudioClip clip){
-        //Il tag della TV
-        source = tvSource;
-        //Cerco la TV nella scena
-        type =  GameObject.FindGameObjectsWithTag(source);
-        AudioSource audioSource = type[0].GetComponent<AudioSource>();
-        audioSource.volume = audioLevel;
-        audioTv = clip;
-        //Riproduco la clip
-        audioSource.PlayOneShot(audioTv);
-    }
-    
-    //Metodo che riproduce la clip della seconda missione
-    public void reproducePem(AudioClip pem){
-        type =  GameObject.FindGameObjectsWithTag(GameEvent.TV_CUCINA_TAG);
-        AudioSource audioSource = type[0].GetComponent<AudioSource>();
-        audioSource.volume = audioLevel;
-        audioTv = pem;
-        audioSource.PlayOneShot(audioTv);
-    }
-    //Metodo che ferma la clip della TV 
-    public void stopPem(AudioClip pem){
-        type =  GameObject.FindGameObjectsWithTag(GameEvent.TV_CUCINA_TAG);
-        AudioSource audioSource = type[0].GetComponent<AudioSource>();
-        audioSource.volume = audioLevel;
-        audioSource.Stop();
-    }
     //Metodo che riproduce la clip della collezione
     public void collect(AudioClip clip){
         type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER_TAG);
@@ -72,15 +40,6 @@ public class AudioManager : MonoBehaviour
         audioTv = clip;
         audioSource.PlayOneShot(audioTv);
     }
-    //Metodo che riproduce il rilascio dei pastelli all'interno del contenitore
-    public void releaseObject(AudioClip clip){
-        type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER_TAG);
-        AudioSource audioSource = type[0].GetComponent<AudioSource>();
-        audioSource.volume = audioLevel;
-        audioTv = clip;
-        audioSource.PlayOneShot(audioTv);
-    }
-    
     public void stopCollect(AudioClip clip){
         type =  GameObject.FindGameObjectsWithTag(GameEvent.PLAYER_TAG);
         AudioSource audioSource = type[0].GetComponent<AudioSource>();

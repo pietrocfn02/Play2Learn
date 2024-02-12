@@ -11,11 +11,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     
     // Variables... 
 
-    // Controller per azioni della "Angioletto_Scene"
-    private int initialSize = 0;
-    private int angioletto_score = 0;
-
-    
     // Array per l'inventario
     private int[] inventary = {0,0,0,0,0}; // Parola, Clipboard, Coni, Tape, Calcolatrice,... (Da aggiungere quando colleziono)
     
@@ -26,40 +21,12 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     private GameObject player;
     //Tag dell' oggetto colpito
     private string tagInteraction = "";
-    // Prefab
-    [SerializeField] private GameObject goodCoinPrefab;
-    // Material per spegnere la tv
-    [SerializeField] private Material newMaterial;
 
-    // Audio...
-    // Spostare
-    [SerializeField] public AudioClip clipTv;
-    [SerializeField] public AudioClip pemAudio;
-    [SerializeField] public AudioClip collectAudio;
-    [SerializeField] public AudioClip collectCoinAudio;
-    [SerializeField] public AudioClip releseAudio;
-    // I coin
-    //
-    private GameObject[] _coins;
-    // Le TV
-    //
-    private GameObject[] tv;
 
     // Collider dell'oggetto da distruggere
     //
     private Collider objectToDestroy;
-    // Indica le TV spente
-    //
-    private int count = 0;
-    // gestisce l'audio (Da spostare ?)
-    //
-    private AudioManager audio = new AudioManager();
-    // indica il completamento della missione delle Tv
-    //
-    private bool tvComplete = false;
 
-
-    // -----> Gestiscono le missioni
     // Prefabs per gli interagibili
     //
     [SerializeField] private TMP_Text[] projectText;
@@ -112,10 +79,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
 
     void Update(){
-        // Modificare questi due per attivare il tutorial --> 
-        //Tutorial();
-        missionComplete[0] = true;
-        // <--
+        Tutorial();
+        //missionComplete[0] = true;
+        
         
         if (interact && missionComplete[0])
         {
@@ -352,6 +318,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         
         if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
         {
+            
             RelativeMovement.StopMovement(true);
             SpawnMark(GameEvent.FLAG_TAG);
             Messenger.Broadcast("MarkExplanation");
@@ -367,9 +334,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 if (tagInteraction == GameEvent.FLAG_TAG && !spawnedControl)
                 {   
                     RelativeMovement.StopMovement(true);
-                    SpawnExplenation(); // Riproduce la spiegazione
-                    //Mandare un broadcast per dire che spawna la missione
-                    //Quindi è finita la spiegazione nella UI
+                    SpawnExplenation();
                     RemoveMark();
                     SpawnTutorialMission();
                     Messenger.Broadcast("PrefabExplanation");
@@ -406,7 +371,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 missionActive[0] = false;
                 // Attivare gli altri interagibili relativi alle missioni di italiano
                 Messenger.Broadcast("MissionComplete");
-                //SpawnAll(materia);
                 // Attivare gli interagibili relativi alle altre missioni
             }
         }
@@ -669,32 +633,14 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         Debug.Log("Adesso non puoi !!");
         //Messenger.Broadcast(GameEvent.FORGET);
     }
-    // Metodo che cambia il materiale della tv su di cui è stato chiamato OnTriggerEnter
-    public void TurnOffTV(string tag){
-       /* tv = GameObject.FindGameObjectsWithTag(tag);
-        tv[0].GetComponent<Renderer>().material = newMaterial;
-        count ++;
-        GetComponent<AudioSource>().turnOffTV(tag,clipTv);
-    */}
-    // Aggiorna il punteggio e lo comunica alla UI
-    public void UpdateAngioletto(int i) {
-      /*  GetComponent<AudioSource>().releaseObject(collectCoinAudio);
-        angioletto_score+=i;
-        Messenger.Broadcast(GameEvent.ANGIOLETTO_UPDATE);
-    */}
-    // "Raccolgie" l'oggetto, lo comunica alla UI e in fine avvia la clip audio
-    // per fare capire che l'oggetto è stato collezionato
+    
     public void RaccoltoOggetto(int i){
         inventary[i] += 1;
         if(objectToDestroy!= null){
             Transform childText = objectToDestroy.gameObject.GetComponent<Transform>();
             Destroy(objectToDestroy.gameObject);
         }
-        //Messenger.Broadcast(GameEvent.RACCOLTA_UPDATE);
-        //audio.collect(collectAudio);
     }
-    // "Lascia" gli oggetti, lo comunica alla UI e in fine avvia la clip audio
-    // per fare capire che l'oggetto è stato collezionato
     public void LasciaOggetto(int i){
         if(inventary[i]>0){
             inventary[i]=0;
@@ -705,11 +651,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public int getOggettoCount(int i){
         return inventary[i];
     }
-
-    public int getAngiolettoScore() {
-        return angioletto_score;
-    }
-
 
     public void SetOutline(GameObject objectRecived, float power, Color color)
     {
@@ -766,7 +707,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             Debug.Log("Cerca in giro per la mappa gli interagibili relativi all'arte");
             SetComplete(1);
             missionType = 0;
-            // Spawna tutti i colezionabili, setta a true il box collider 
         }
     }
 

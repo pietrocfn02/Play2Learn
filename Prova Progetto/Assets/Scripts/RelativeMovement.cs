@@ -64,7 +64,7 @@ public class RelativeMovement : MonoBehaviour
         if (!moveState)
         {
             if (horInput != 0 || vertInput != 0) {
-                 _animator.SetFloat("speed", 1f);
+                _animator.SetFloat("speed", 1f);
                 movement.x = horInput * moveSpeed;
                 movement.z = vertInput * moveSpeed;
                 movement = Vector3.ClampMagnitude(movement, moveSpeed);
