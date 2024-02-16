@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1906369875696866, guid: e935190224816504ca288ad6b3ff47f2, type: 3}
       propertyPath: m_Name
-      value: FlagPrefab Variant
+      value: Flag
       objectReference: {fileID: 0}
     - target: {fileID: 1906369875696866, guid: e935190224816504ca288ad6b3ff47f2, type: 3}
       propertyPath: m_TagString
-      value: Tmp
+      value: Collectable
       objectReference: {fileID: 0}
     - target: {fileID: 4872248116985424, guid: e935190224816504ca288ad6b3ff47f2, type: 3}
       propertyPath: m_RootOrder
@@ -83,6 +83,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1906369875696866, guid: e935190224816504ca288ad6b3ff47f2, type: 3}
   m_PrefabInstance: {fileID: 8472106859006364582}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &-7849624418714696235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472464523200681796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.59, y: 3.21, z: 2.02}
+  m_Center: {x: 0.010108553, y: 0.27693042, z: 0.6287623}
 --- !u!114 &1696488139
 MonoBehaviour:
   m_ObjectHideFlags: 0

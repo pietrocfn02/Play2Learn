@@ -38,12 +38,10 @@ public class UIMission : MonoBehaviour
 
     public void ItalianMission()
     {
-        // RelativeMovement.StopMovement(true);
         italianMission.gameObject.SetActive(true);
     }
     public void EndItalian()
     {
-        // RelativeMovement.StopMovement(false);
         italianMission.gameObject.SetActive(false);
         Messenger.Broadcast("MissionComplete");
     }
@@ -58,7 +56,6 @@ public class UIMission : MonoBehaviour
         {
             mainCamera.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(true);
-            // RelativeMovement.StopMovement(true);
             artMission.gameObject.SetActive(true);
             isActive = true;
             questionTest.text = Questions.GetRandomQuestion(tag);
@@ -73,7 +70,6 @@ public class UIMission : MonoBehaviour
             artMission.gameObject.SetActive(false);
             cameras[camera].gameObject.SetActive(false);
             mainCamera.gameObject.SetActive(true);
-            // RelativeMovement.StopMovement(false);
             isActive = false;
         }
     }
@@ -94,7 +90,7 @@ public class UIMission : MonoBehaviour
                 newArtPrefab.transform.eulerAngles = new Vector3(90f, -90f, 0f);
             else
                 newArtPrefab.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-            newArtPrefab.name = newArtPrefab.name.Replace("(Clone)","");
+            newArtPrefab.name = newArtPrefab.name.Replace(")","");
             spawned = true;
         }
     }

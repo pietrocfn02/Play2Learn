@@ -80,7 +80,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
 
     void Update(){
         Tutorial();
-        //missionComplete[0] = true;
+        // missionComplete[0] = true;
         
         
         if (interact && missionComplete[0])
@@ -98,6 +98,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         if (Input.GetKeyUp(KeyCode.E))
                         {
+                            Debug.Log(objectToDestroy.tag);
                             if (objectToDestroy != null)
                             {
                                 BroadcastMessage("AddToCollection", objectToDestroy);
@@ -273,7 +274,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         interaction[0] = true;
                         newInstance = Instantiate(prefabsMission[0], new Vector3(20.2f,1.7f,15f), Quaternion.identity);
-                        Destroy(newInstance.GetComponent<BoxCollider>());
+                        newInstance.name = "Flag";
+                        //Destroy(newInstance.GetComponent<BoxCollider>());
                     }
                     else
                     {
@@ -286,6 +288,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         interaction[1] = true;
                         newInstance = Instantiate(prefabsMission[1], new Vector3(27.2f,1.7f,15.2f), Quaternion.Euler(0f, 0f, 45f));
+                        newInstance.name = "Easel";
                         Destroy(newInstance.GetComponent<BoxCollider>());
                     }
                     else
@@ -299,6 +302,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         interaction[2] = true;
                         newInstance = Instantiate(prefabsMission[2], new Vector3(20.3f, 1.7f, 20.46f), Quaternion.Euler(90f, 90f, 0f));
+                        newInstance.name = "Triangle";
                         Destroy(newInstance.GetComponent<MathMission>());
                         Destroy(newInstance.GetComponent<BoxCollider>());
                     }
@@ -339,6 +343,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     SpawnTutorialMission();
                     Messenger.Broadcast("PrefabExplanation");
                     spawnedControl = true;
+                    GameObject mission = GameObject.FindWithTag("Flag");
+                    Destroy(mission.GetComponent<BoxCollider>());
                 }
                 else if (tagInteraction == GameEvent.MARK_TAG)
                 {

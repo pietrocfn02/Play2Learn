@@ -8,43 +8,24 @@ public class MenuOptions : MonoBehaviour
 
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject buttonPrefab;
-    [SerializeField] private GameObject[] scrollPanel;
+    [SerializeField] private GameObject scrollPanel;
     [SerializeField] private TMP_Text explanationText;
     [SerializeField] private TMP_Text[] settingText;
     [SerializeField] private GameObject[] closedPanel;
     private string currentSetting = "Collezionabili";
-    // private ServerComunication db;
-    // Questi vanno presi dal database -->
-    private Dictionary<string, string> collection = new Dictionary<string, string>()
-    {
-        {"Guernica", "Art"},
-        {"Topolino", "Art"},
-        {"OnePiece", "Art"},
-        {"Snoopy", "Art"},
-        {"SuperMan", "Art"},
-        {"VitruvianMan", "Art"},
-        {"IonColumn", "Art"},
-        {"CorinthianColumn", "Art"},
-    };
-    // <--
+    
     private List<string> addedCollectables = new List<string>();
-    // Eliminare -->
-    private List<string> sign1Question = new List<string>();
-    // <--
     private Animator _animator;
     // True se il menu è aperto, false altrimenti 
     private bool _switch = false;
-    // Aggiungere sound controller per i suoni del menu
     // La posizione corrente del menu, viene cambiata ogni volta che si entra in un altro tipo di menù
     private string currentMenu = "Collection"; 
     void Start()
     {
-        // db = new ServerComunication();
         _animator = menu.GetComponent<Animator>();
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -65,43 +46,27 @@ public class MenuOptions : MonoBehaviour
         }
     }
 
-    private void InstantiateButton(string name, int type)
+    private void InstantiateButton(string name)
     {
-        GameObject go = Instantiate(buttonPrefab, scrollPanel[type].transform);
+        GameObject go = Instantiate(buttonPrefab, scrollPanel.transform);
         buttonPrefab.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f,0f);
         var button = go.GetComponent<UnityEngine.UI.Button>();
         button.onClick.AddListener(() => OpenExplanation(name));  
         TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
         buttonText.text = name;  
         addedCollectables.Add(name);
-        Debug.Log("Aggiungo: " + name + " a: " + scrollPanel[type].transform.parent.parent.name);
     }
     private void OpenExplanation(string name)
     {
-        // Prende dal db
-        explanationText.text = name;
-        // Settare anche l'immagine
+        explanationText.text = ServerComunication.GetInstance().ReciveData(name,"explanation");
+        
     }
     private void AddToCollection(Collider _object)
     {
-        if(!addedCollectables.Contains(_object.name))
-        {    
-            if(collection[_object.name] == "Italian")
-            {
-                InstantiateButton(_object.name, 0);
-            }
-            else if(collection[_object.name] == "Art")
-            {
-                InstantiateButton(_object.name, 1);
-                Collectable collect = new Collectable(_object.name,_object.name,"Art","GuernicaAsset","Guernica Explanation","Guernica Image", "");
-                ServerComunication.GetInstance().WriteData(collect); // Questo va spostato nella scena del professore
-                
-            }
-            else 
-            {
-                InstantiateButton(_object.name, 2);
-            }
-        }
+        string type = ServerComunication.GetInstance().ReciveData(_object.name.ToUpper(),"type");
+        Debug.Log(type);  
+        if(!addedCollectables.Contains(_object.name.ToUpper()))  
+            InstantiateButton(_object.name.ToUpper());
     }
     public void OpenCollection()
     {
@@ -123,7 +88,6 @@ public class MenuOptions : MonoBehaviour
     }
     public void OpenControls()
     {
-        Debug.Log("Controls");
         foreach (var i in settingText)
         {
             if (i.name == "ControlsText")
@@ -141,7 +105,6 @@ public class MenuOptions : MonoBehaviour
     }
     public void OpenSettings()
     {
-        Debug.Log("Settings");
         foreach (var i in settingText)
         {
             if (i.name == "SettingsText")
