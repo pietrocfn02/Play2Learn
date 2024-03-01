@@ -79,8 +79,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
 
     void Update(){
-        Tutorial();
-        // missionComplete[0] = true;
+        //Tutorial();
+        missionComplete[0] = true;
         
         
         if (interact && missionComplete[0])
@@ -375,13 +375,11 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 RelativeMovement.StopMovement(true);
                 Messenger.Broadcast("EndTutorial");
                 missionActive[0] = false;
-                // Attivare gli altri interagibili relativi alle missioni di italiano
                 Messenger.Broadcast("MissionComplete");
-                // Attivare gli interagibili relativi alle altre missioni
             }
         }
     }
-    
+    // Art mission
     public void Art()
     {
         if (!InMission(1))
@@ -447,6 +445,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         
     }
 
+    // MAth mission
     private void CreateTape(int corner,Vector3 startPosition, float eulerX, float eulerY, 
                             float eulerZ, float tapeX, int archInt, int project1, int project2, string mt, string line)
     {
@@ -633,6 +632,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
             Debug.Log("Stai svolgendo già una missione. Concludi la missione già iniziata prima di passare alla prossima.");
         }
     }
+    // Some stuff...
     // Per impedire che si facciano delle azioni senza i collezionabili necessari.
     // Appare un messaggio UI che ci avvisa
     public void notNow(){

@@ -106,7 +106,7 @@ public static class GameEvent {
 	public const int TUTORIAL = 0;
 
 	//SCENES
-	public const string START_GAME_SCENE = "StartGame_Scene";
+	public const string START_GAME_SCENE = "StartScene";
 	public const string STORYTELLING_1 = "Storytelling";// Eliminare
 	public const string DIAVOLETTO_SCENE = "Diavoletto_Scene";// Eliminare
 	public const string STORYTELLING_INSEGUIMENTO = "Storytelling_inseguimento";// Eliminare

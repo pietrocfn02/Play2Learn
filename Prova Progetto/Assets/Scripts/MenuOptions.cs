@@ -48,6 +48,7 @@ public class MenuOptions : MonoBehaviour
 
     private void InstantiateButton(string name)
     {
+        
         GameObject go = Instantiate(buttonPrefab, scrollPanel.transform);
         buttonPrefab.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f,0f);
         var button = go.GetComponent<UnityEngine.UI.Button>();
@@ -63,8 +64,6 @@ public class MenuOptions : MonoBehaviour
     }
     private void AddToCollection(Collider _object)
     {
-        string type = ServerComunication.GetInstance().ReciveData(_object.name.ToUpper(),"type");
-        Debug.Log(type);  
         if(!addedCollectables.Contains(_object.name.ToUpper()))  
             InstantiateButton(_object.name.ToUpper());
     }

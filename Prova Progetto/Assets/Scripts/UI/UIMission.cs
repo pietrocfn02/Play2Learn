@@ -90,7 +90,7 @@ public class UIMission : MonoBehaviour
                 newArtPrefab.transform.eulerAngles = new Vector3(90f, -90f, 0f);
             else
                 newArtPrefab.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-            newArtPrefab.name = newArtPrefab.name.Replace(")","");
+            newArtPrefab.name = newArtPrefab.name.Replace("(Clone)","");
             spawned = true;
         }
     }
