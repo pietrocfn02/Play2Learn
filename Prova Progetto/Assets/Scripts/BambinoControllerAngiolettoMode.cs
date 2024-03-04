@@ -9,8 +9,6 @@ using TMPro;
 public class BambinoControllerAngiolettoMode : MonoBehaviour 
 {
     
-    // Variables... 
-
     // Array per l'inventario
     private int[] inventary = {0,0,0,0,0}; // Parola, Clipboard, Coni, Tape, Calcolatrice,... (Da aggiungere quando colleziono)
     
@@ -49,7 +47,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                                                              };
     private GameObject[] newInstance;
     private bool exitCond = false;
-    //<-----
 
     private int missionType = 0;
     //Indica se c'è qualche scena in cui si sta parlando
@@ -79,10 +76,9 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
 
     void Update(){
-        //Tutorial();
-        missionComplete[0] = true;
-        
-        
+        Tutorial();
+        //missionComplete[0] = true;
+
         if (interact && missionComplete[0])
         {
             switch (tagInteraction)
@@ -98,7 +94,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                     {
                         if (Input.GetKeyUp(KeyCode.E))
                         {
-                            Debug.Log(objectToDestroy.tag);
                             if (objectToDestroy != null)
                             {
                                 BroadcastMessage("AddToCollection", objectToDestroy);
@@ -166,7 +161,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
         }
         
     }
-    // Elimina il "!" -- viene usato alla fine di una missione --
     public void RemoveMark()
     {
         GameObject parent = GameObject.Find(tagInteraction);
@@ -320,7 +314,7 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     public void Tutorial()
     {
         
-        if (Input.GetKeyUp(KeyCode.Tab) && !missionActive[0])
+        if (Input.GetKeyUp(KeyCode.Return) && !missionActive[0])
         {
             
             RelativeMovement.StopMovement(true);
