@@ -45,11 +45,6 @@ public class UIMission : MonoBehaviour
         italianMission.gameObject.SetActive(false);
         Messenger.Broadcast("MissionComplete");
     }
-    IEnumerator timer(){
-        yield return new WaitForSecondsRealtime(5);
-        mission = false;
-        
-    }
     private void ActiveArtCameras(string tag, int camera)
     {
         if (!isActive) // && !mission[i] e la missione i non è completa
@@ -79,10 +74,10 @@ public class UIMission : MonoBehaviour
             Vector3[] positions = { new Vector3(22.49f,1.75f,12.4f), 
                                     new Vector3(22.88f,1.8f,14.985f),
                                     new Vector3(25.3f,1.7f,13.38f), 
-                                    new Vector3(27.4f,1.73f,13.28f), 
-                                    new Vector3(27.4f,1.73f,12.7f), 
-                                    new Vector3(27.4f,1.73f,12.25f), 
-                                    new Vector3(27.4f,1.73f,11.61f) 
+                                    new Vector3(27.4f,1.78f,13.28f), 
+                                    new Vector3(27.4f,1.78f,12.7f), 
+                                    new Vector3(27.4f,1.78f,12.25f), 
+                                    new Vector3(27.4f,1.78f,11.61f) 
                                 };
             
             newArtPrefab = Instantiate(artPrefabs[prefab],positions[prefab], Quaternion.identity);
@@ -95,17 +90,14 @@ public class UIMission : MonoBehaviour
         }
     }
 
-    // Prendere le risposte corrette dal database --> 
-    private string[] correctAnswers = {     "UOMO VITRUVIANO",
-                                            "COLONNA CORINZIA",
-                                            "COLONNA IONICA",
+    private string[] correctAnswers =   {   "VITRUVIANMAN",
+                                            "CORINTHIANCOLUMN",
+                                            "IONCOLUMN",
                                             "TOPOLINO",
-                                            "ONE PIECE",
+                                            "ONEPIECE",
                                             "SNOOPY",
-                                            "SUPER MAN"
+                                            "SUPERMAN"
                                         };
-
-    // <--
     public void SetMission()
     {
         artTmp = artText.text.ToUpper();
@@ -123,9 +115,11 @@ public class UIMission : MonoBehaviour
             panelText[i].transform.parent.parent.GetComponent<BoxCollider>().isTrigger = false;
             panelText[i].transform.parent.parent.GetComponent<BoxCollider>().size = new Vector3(0.02f,-0.07f,-0.005f);
             panelText[i].transform.parent.parent.GetComponent<BoxCollider>().center = new Vector3(0.218f,0.03f,0f);
+            string tmp = ServerComunication.GetInstance().ReciveData(correctAnswers[i],"answer");
+            string stringWithoutQuotes = tmp.Replace("\"", "");
             if (Input.GetKeyUp(KeyCode.Return))
             {
-                if (artTmp.Contains(correctAnswers[i]) && artTmp.Length-1 == correctAnswers[i].Length)
+                if (artTmp.Contains(stringWithoutQuotes))
                 {
                     DeactivateArtCameras(i);
                     correctAnswers[i] = "";
@@ -142,6 +136,7 @@ public class UIMission : MonoBehaviour
                     Destroy(newArtPrefab.GetComponent<RotateWithMouse>());
                     ++contDone;
                     RelativeMovement.StopMovement(false);
+                    artTmp = "";
                 }
             }
         }

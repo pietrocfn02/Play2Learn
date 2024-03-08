@@ -76,8 +76,8 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
     }
 
     void Update(){
-        Tutorial();
-        //missionComplete[0] = true;
+        //Tutorial();
+        missionComplete[0] = true;
 
         if (interact && missionComplete[0])
         {
@@ -466,7 +466,6 @@ public class BambinoControllerAngiolettoMode : MonoBehaviour
                 {
                     if (tagInteraction == GameEvent.TRIANGLE_TAG && !missionActive[2])
                     {
-                        Debug.Log("Inizio");
                         SetActive(2);
                         RemoveMark();
                         SpawnExplenation();

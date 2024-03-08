@@ -37,7 +37,7 @@ public class Questions
                                                     "Curiosit�_Snoopy_3",
                                                     "Curiosit�_Snoopy_4"
                                                 };
-    private static string[] sign7Question = {   "Curiosit�_Superman_1",
+    private static string[] sign7Question = {       "Curiosit�_Superman_1",
                                                     "Curiosit�_Superman_2",
                                                     "Curiosit�_Superman_3",
                                                     "Curiosit�_Superman_4"

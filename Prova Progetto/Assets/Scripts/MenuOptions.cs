@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MenuOptions : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MenuOptions : MonoBehaviour
     [SerializeField] private TMP_Text explanationText;
     [SerializeField] private TMP_Text[] settingText;
     [SerializeField] private GameObject[] closedPanel;
+    [SerializeField] private GameObject collectionImage;
     private string currentSetting = "Collezionabili";
     
     private List<string> addedCollectables = new List<string>();
@@ -60,7 +62,37 @@ public class MenuOptions : MonoBehaviour
     private void OpenExplanation(string name)
     {
         explanationText.text = ServerComunication.GetInstance().ReciveData(name,"explanation");
-        
+        ServerComunication.GetInstance().DownloadFromStorage(name+".png", (byte[] fileData) =>
+        {
+            if (fileData != null)
+            {
+                Debug.Log("Dati del file ricevuti con successo!");
+                Texture2D texture = new Texture2D(1, 1);
+                texture.LoadImage(fileData);
+                Image imageComponent = collectionImage.GetComponent<Image>();
+                if (imageComponent != null)
+                {
+                    Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                    imageComponent.sprite = sprite;
+                }
+                else
+                {
+                    RawImage rawImageComponent = collectionImage.GetComponent<RawImage>();
+                    if (rawImageComponent != null)
+                    {
+                        rawImageComponent.texture = texture;
+                    }
+                    else
+                    {
+                        Debug.LogError("Impossibile trovare il componente Image o RawImage.");
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Impossibile recuperare i dati del file.");
+            }
+        });
     }
     private void AddToCollection(Collider _object)
     {
